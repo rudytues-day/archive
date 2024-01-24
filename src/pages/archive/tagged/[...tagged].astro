@@ -1,0 +1,85 @@
+---
+import { getCollection } from "astro:content";
+
+import ArchiveLayout from '../../../layouts/ArchiveLayout.astro';
+import CardPreview from '../../../components/CardPreview.astro';
+
+import { slugify } from "../../../js/utils";
+
+
+export async function getStaticPaths() {
+    const allEntries = await getCollection("entries");
+    const allTags = [...new Set(allEntries.flatMap((entry => 
+    entry.data.tags))),];
+    
+    return allTags.map((tag) => {
+        const taggedEntries = allEntries.filter((entry) =>
+        entry.data.tags.includes(tag));
+        
+        return {
+            params: { tagged: slugify(tag) },
+            props: { taggedEntries: taggedEntries, tag: tag }
+        }}
+        );
+    }
+    
+const {tagged} = Astro.params;
+const {taggedEntries} = Astro.props;
+const {tag} = Astro.props;
+
+import Masonry from "../../../js/masonry";
+
+
+
+---
+
+<ArchiveLayout title="ENTRIES TAGGED {tag}">
+
+        <h1>ENTRIES TAGGED <span>{tag}</span></h1>
+
+        <div class="masonry">
+            {
+                taggedEntries.toReversed().map((entry) => 
+                <CardPreview 
+                    slug={entry.slug}
+                    title={entry.data.title}
+                    date={entry.data.date}
+                    thumb={entry.data.thumb.src}
+                    tags={entry.data.tags}
+                    original={entry.data.original}
+                    medium={entry.data.medium}
+                    Nsfw={entry.data.Nsfw}
+                    Dd={entry.data.Dd}
+                    desc={entry.data.desc}
+                />
+            )}
+        </div>
+
+</Layout>
+
+<style>
+
+    h1 {
+        margin: 2em;
+        font-family: var(--display);
+        /* text-align: center; */
+    }
+
+    span {
+        color: var(--primary-accent-clr)
+    }
+
+    .masonry {
+        padding: 0;
+        margin: 3em 1em;
+        display: grid;
+        grid-template-columns: 
+        repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1em;
+        /* display: flex;
+        flex-flow: row wrap;
+        align-items: stretch;
+        justify-content: center; */
+        }
+
+</style>

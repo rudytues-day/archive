@@ -1,0 +1,144 @@
+---
+
+---
+
+
+    <aside>
+        <header>
+            <div class="image"></div>
+            <ul class="menu">
+                <li class="toggle">
+                    <span class="title">WORKS</span>
+                    <i class="fas fa-lock"></i>
+                </li>
+                <li class="submenu">
+                    <ul>
+                        <li><a href="/">HOME</a></li>
+                        <li><a href="/archive">ARCHIVE</a></li>
+                        <li><a href="/gallery">GALLERY</a></li>
+                        <li><a href="/projects">PROJECTS</a></li>
+                        <li><a href="/writing">WRITING</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </header>
+    </aside>
+
+
+<style>
+
+    aside {
+        background-color: var(--primary-clr-dark);
+        min-width: 100%;
+    }
+
+    header {
+        margin: 2em;
+    }
+
+    .menu {
+        margin: auto;
+        color: var(--white-clr);
+        font-family: var(--display);
+        text-transform: uppercase;
+        /* margin: 0.5em; */
+        font-size: 1.5rem;
+        width: 100%;
+    }
+    
+    ul {
+        list-style: none;
+        margin-inline: 1em;
+        padding: 0;
+        text-align: center;
+    }
+
+    li {
+        padding: 0.25em;
+        margin: auto;
+    }
+
+    .toggle {
+        margin: 0em 1em;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .toggle i {
+        font-size: 0.85em;
+    }
+
+    .submenu {
+        display: flex;
+        flex-direction: column;
+        padding: 0.25em;
+        border-radius: 0px 0px 8px 8px;
+        background: var(--primary-clr-med)
+    }
+
+    li.active {
+        border-radius: 8px 8px 0px 0px;
+    }
+
+    ul.active {
+        height: auto;
+    }
+
+    .image {
+        margin: 3rem auto;
+        background-color: white;
+        height: 150px;
+        width: 150px;
+        border-radius: 100%;
+    }
+
+@media all and (min-width: 700px) {
+
+    header {
+        margin: 1em auto;
+    }
+
+    .submenu {
+        margin: 0em auto;
+        padding: 0;
+        background-color: var(--primary-clr-dark);
+    }
+
+
+    .submenu ul {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .image {
+        margin: 2rem auto;
+    }
+
+}
+
+    .toggle {
+        display: none;
+}
+
+@media all and (min-width: 1000px) {
+
+    header {
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .submenu ul {
+        flex-direction: column;
+        margin: 0em 2em;
+        background: var(--primary-clr-dark);
+    }
+
+    .image {
+        margin: 3em auto;
+    }
+
+}
+
+
+</style>

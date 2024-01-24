@@ -1,0 +1,115 @@
+---
+
+interface Props {
+	title: string;
+	date: Date;
+	desc: string;
+}
+
+const { title, date, desc } = Astro.props;
+
+import Sidebar from '../components/Sidebar.astro';
+import ArchiveSidebar from '../components/ArchiveSidebar.astro';
+
+import '../css/reset.css'
+
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>WORKS // {title}</title>
+		<meta name="description" content={`${(date)} : ${(desc)}`} />
+	
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Darumadrop+One&display=swap" rel="stylesheet">
+	
+		<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+	
+	</head>
+	
+	<body>
+		<div class="columns">
+				<Sidebar class="sidebar" id="header" />
+				<main>
+					<h1>{title}</h1>
+					<slot />
+				</main>
+				<ArchiveSidebar class="sidebar" id="tags" />
+				<footer>
+					<p>all works belong to rudy tuesday unless otherwise specified. unauthorized use and duplication is prohibited.</p>
+				</footer>
+		</div>
+	</body>
+</html>
+
+<style>
+
+	h1 {
+		font-family: 'Darumadrop One';
+		margin: 1.5em auto;
+		text-align: center;
+	}
+	
+	main {
+		margin: auto;
+	}
+
+	.columns {
+		display: flex;
+		flex-direction: column;
+	}
+
+
+	footer {
+		text-align: center;
+        background-color: var(--primary-clr-dark);
+        color: var(--white-clr);
+        padding: 2em 1em;
+    }
+
+	@media all and (min-width: 720px) {}
+	
+	@media all and (min-width: 1000px) {
+
+		.columns {
+			display: grid;
+			grid-template-areas: 
+				"header main"
+				"sidebar main"
+				"footer footer";
+			grid-template-columns: 400px 1fr;
+		}
+		
+		main {
+			grid-area: main;
+			margin: 0 auto;
+		}
+
+		#header {
+			grid-area: header;
+		}
+
+		#uploads {
+			grid-area: sidebar;
+		}
+
+		#tags {
+			grid-area: tags;
+		}
+
+		header, aside {
+			padding-bottom: 2em;
+		}
+
+		footer {
+			grid-area: footer;
+		}
+	}
+
+</style>

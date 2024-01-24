@@ -1,0 +1,52 @@
+---
+const { prevUrl, nextUrl } = Astro.props
+---
+
+<nav>
+    
+    {
+        prevUrl && (
+            <a href={prevUrl}><i class="fas fa-angle-double-left"></i></a>
+        )
+    }
+
+    <span>{Astro.params.page}</span>
+
+    {
+        nextUrl && (
+            <a href={nextUrl}><i class="fas fa-angle-double-right"></i></a>
+        )
+    }
+
+</nav>
+
+<style>
+
+    nav {
+        font-family: var(--display);
+        margin: 2.5em auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1em;
+    }
+
+    i {
+        font-size: 1.125rem;
+        padding-top: 0.5em;
+        font-weight: bold;
+    }
+
+    span {
+        font-size: 1.5rem;
+    }
+
+    nav a {
+        transition: 200ms;
+    }
+
+    nav a:hover {
+        color: var(--primary-accent-clr)
+    }
+
+</style>

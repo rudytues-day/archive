@@ -1,0 +1,155 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+	title: string;
+	thumb: ImageMetadata;
+	href: string;
+	date: string;
+	Nsfw?: boolean;
+	Dd?: boolean;
+	classes?: string;
+	desc: string;
+	medium: string;
+	tags: Array<string>;
+}
+
+const { href, 
+		title,
+		thumb,
+		date,
+		Nsfw,
+		Dd,
+		desc,
+		medium,
+		tags,
+		} = Astro.props as Props;
+
+
+        
+---
+
+<li class="card">
+    <a href={href}>
+        <h1>
+            {title}
+            <div class="icons">
+                
+            </div>
+        </h1>
+        <div class="body">
+			<Image class="thumb"
+				src={thumb}
+				alt={`${title} thumbnail`}
+			/>
+            <div class="description">
+                <div class="flex">
+                    <p class="date">{date}</p>
+                    <div class="icons">
+                        { Nsfw && <i class="fas fa-ban"></i> }
+                        { Dd && <i class="fas fa-feather"></i>}
+                    </div>
+                </div>
+                <p class="text">{desc}</p>
+				<ul class="tags">
+					{tags.map((tag) => (
+						<li>{tag}</li>
+					))}
+					<li>{medium}</li>
+				</ul>
+            </div>
+        </div>
+    </a>
+</li>
+
+<style>
+
+    .card {
+        list-style: none;
+		background-color: #fff;
+        margin: 1em;
+	}
+
+    h1 {
+        margin: 0;
+        font-size: 1.5em;
+        background-color: var(--primary-clr-dark);
+        overflow: hidden;
+        padding: 0.5em 1em;
+        color: var(--white-clr);
+        border-radius: 0.75em 0.75em 0em 0em;
+        transition: ease 0.2s;
+    }
+
+	h1 i {
+		font-size: 0.5em;
+	}
+    
+    .card:hover h1 {
+        color: var(--accent-clr)
+    }
+
+    .body {
+        display: flex;
+        padding: 1em;
+        border: solid 2px var(--primary-clr-dark);		
+        border-radius: 0em 0em 1em 1em;
+    }
+
+    .thumb {
+        margin: auto;
+		height: 150px;
+		width: 150px;
+        background-color: var(--primary-clr-light);
+        margin: 0.5em;
+        border-radius: 0.75em;
+    }
+
+    .description {
+		margin: 0em 1em;
+		display: grid;
+		gap: 1em;
+	}
+
+    .flex {
+        display: flex;
+        gap: 0.5em;
+        align-items: center;
+    }
+
+    .icons {
+		display: flex;
+		gap: 0.25em;
+        padding-top: 0.4em;
+	}
+
+    .date {
+		font-family: var(--display);
+		text-transform: uppercase;
+		font-size: 1.25em;
+        margin: 0;
+	}
+
+	.tags {
+		display: flex;
+		flex-flow: row wrap;
+		list-style: none;
+		padding: 0;
+		gap: 0.25em;
+		margin-bottom: 1em;
+        align-items: center;
+	}
+
+	.tags li {
+		background-color: var(--primary-clr-dark);
+		color: var(--white-clr);
+		font-family: var(--display);
+		text-transform: uppercase;
+		padding: 0.125em 0.3em 0.4em 0.3em;
+		line-height: 1.125;
+		border-radius: 0.25em;
+	}
+
+</style>
+
