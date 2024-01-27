@@ -1,10 +1,4 @@
 ---
-interface Props {
-	title: string;
-}
-
-const { title } = Astro.props;
-
 import Sidebar from '../components/Sidebar.astro'
 import ArchiveSidebar from '../components/ArchiveSidebar.astro';
 
@@ -35,6 +29,7 @@ import '../css/reset.css'
 	<div class="columns">
 		<Sidebar class="sidebar" id="header" />
 		<main>
+			<h1>ARCHIVE</h1>
 			<slot />
 		</main>
 		<ArchiveSidebar class="sidebar" id="tags"/>
