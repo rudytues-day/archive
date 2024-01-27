@@ -1,11 +1,14 @@
 ---
+import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 
 import ArchiveLayout from '../../../layouts/ArchiveLayout.astro';
 import CardPreview from '../../../components/CardPreview.astro';
+import Pagination from "../../../components/Pagination.astro";
 
 import { slugify } from "../../../js/utils";
 
+//old code
 
 export async function getStaticPaths() {
     const allEntries = await getCollection("entries");
@@ -22,24 +25,39 @@ export async function getStaticPaths() {
         }}
         );
     }
-    
+
+// new code
+
+// export const getStaticPaths = async ( { paginate } ) => {
+//     const allEntries = await getCollection("entries"); 
+//     const taggedEntries = allEntries.filter((entry) =>
+//         entry.data.tags.includes(tag));  
+//             return paginate(taggedEntries, {
+//                 pageSize: 7,
+//                 params: {
+//                     // tag: {tag}
+//             }});
+//         };
 const {tagged} = Astro.params;
 const {taggedEntries} = Astro.props;
 const {tag} = Astro.props;
 
-import Masonry from "../../../js/masonry";
+console.log(Astro.props);
+// const { page } = Astro.props;
 
 
+
+// import Masonry from "../../../js/masonry";
 
 ---
 
-<ArchiveLayout title="ENTRIES TAGGED {tag}">
+<ArchiveLayout title={`ARCHIVE : ENTRIES TAGGED ${tag}`}>
 
         <h1>ENTRIES TAGGED <span>{tag}</span></h1>
 
         <div class="masonry">
             {
-                taggedEntries.toReversed().map((entry) => 
+                taggedEntries.toReversed().flatMap((entry) => 
                 <CardPreview 
                     slug={entry.slug}
                     title={entry.data.title}
@@ -55,6 +73,8 @@ import Masonry from "../../../js/masonry";
             )}
         </div>
 
+    <Pagination />
+
 </Layout>
 
 <style>
@@ -62,7 +82,7 @@ import Masonry from "../../../js/masonry";
     h1 {
         margin: 2em;
         font-family: var(--display);
-        /* text-align: center; */
+        text-align: center;
     }
 
     span {
@@ -72,14 +92,14 @@ import Masonry from "../../../js/masonry";
     .masonry {
         padding: 0;
         margin: 3em 1em;
-        display: grid;
+        /* display: grid;
         grid-template-columns: 
-        repeat(auto-fit, minmax(200px, 1fr));
+        repeat(auto-fit, minmax(200px, 1fr)); */
         gap: 1em;
-        /* display: flex;
+        display: flex;
         flex-flow: row wrap;
         align-items: stretch;
-        justify-content: center; */
+        justify-content: center;
         }
 
 </style>

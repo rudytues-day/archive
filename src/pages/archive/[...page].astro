@@ -7,17 +7,19 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import type { GetStaticPaths } from "astro";
 
-import { sortByDate } from '../../js/utils';
+import { sortEntries, sortByCreationDate, sortByUploadDate } from '../../js/utils';
 
 export const getStaticPaths = (async ( { paginate } ) => {
     const entries = await getCollection("entries");
-	const sortedEntries = sortByDate(entries).toReversed();
+	const sortedEntries = entries.sort(sortByCreationDate).toReversed();
     return paginate(sortedEntries, {
         pageSize: 4,
     })
 }) satisfies GetStaticPaths;
 
-const { page } = Astro.props
+const { page } = Astro.props;
+
+// const byUploadDate = sortByUploadDate(entries);
 
 ---
 

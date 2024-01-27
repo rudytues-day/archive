@@ -1,7 +1,7 @@
 ---
 title: 'chiaki'
 date: 2018-11-14
-uploadDate: 2024-01-30
+uploadDate: 2022-06-30
 image: {
     src: "./chiaki.png",
     alt: "chiaki in black and white, floating on a black background.

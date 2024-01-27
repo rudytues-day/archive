@@ -6,7 +6,8 @@ interface Props {
 	title: string;
 	thumb: ImageMetadata;
 	href: string;
-	date: string;
+	date: Date;
+	uploadDate: Date;
 	Nsfw?: boolean;
 	Dd?: boolean;
 	classes?: string;
@@ -19,6 +20,7 @@ const { href,
 		title,
 		thumb,
 		date,
+		uploadDate,
 		Nsfw,
 		Dd,
 		desc,

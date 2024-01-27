@@ -1,21 +1,16 @@
 ---
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-import { slugify } from "../js/utils.js";
 import { formatDate } from "../js/utils.js";
 
 interface Props {
 	slug: string;
 	title: string;
 	thumb: ImageMetadata;
-	date: string;
+	date: Date;
 	Nsfw?: boolean;
 	Dd?: boolean;
-	classes?: string;
 	desc: string;
-	medium: string;
-	tags: Array<string>;
-	original: boolean;
 }
 
 const { 
@@ -26,10 +21,8 @@ const {
 		Nsfw,
 		Dd,
 		desc,
-		medium,
-		original,
-		tags,
 		} = Astro.props as Props;
+
 ---
 
 <div class="card">
@@ -55,7 +48,7 @@ const {
 </div>
 
 <style>
-	
+
 	h1 {
 		margin: 0;
 		font-size: 1.5em;
@@ -78,6 +71,7 @@ const {
 		background: var(--white-clr);
 		border: solid 2px var(--primary-clr-dark);		
 		border-radius: 0em 0em 1em 1em;
+
 	}
 	
 	.thumb {
@@ -114,6 +108,8 @@ const {
         display: flex;
         gap: 0.5em;
         align-items: center;
+		justify-content: center;
+		text-align: center;
 	}
 
 	.icons {

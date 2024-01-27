@@ -1,23 +1,9 @@
 ---
 import EntryLayout from '../../../layouts/EntryLayout.astro';
-import CardPreview from '../../../components/CardPreview.astro';
 
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import { slugify, formatDate } from '../../../js/utils';
-
-const {  
-	entries,
-	title,
-	image,
-	date,
-	Nsfw,
-	Dd,
-	desc,
-	medium,
-	tags,
-	icons,
-} = Astro.props as Props;
 
 export async function getStaticPaths() {
 	const entries = await getCollection("entries");
@@ -33,9 +19,54 @@ export async function getStaticPaths() {
 	});
 }
 
+// function relatedEntries(entries) {
+// 	entries.filter((entry) => 
+// 	if entry.data.tags)
+// }
+
+// filter entries that do not have any tags in common
+
+
+
+// function relatedEntries(entries) {
+// 	const allTags = [...new Set(entries.flatMap((entry => 
+//     entry.data.tags))),];
+// }
+
+// const filter = entries.filter((entry) => {
+//     const allTags = [...new Set(entries.flatMap((entry => 
+//     entry.data.tags))),];
+    
+//     return allTags.map((tag) => {
+//         const taggedEntries = entries.filter((entry) =>
+//         entry.data.tags.includes(tag));
+// 		console.log(taggedEntries);
+// 	})})
+
+
+// const {slug} = Astro.params
+
+// let url = slug + "." + image.src.format
+// console.log(url)
+
+const {  
+	title,
+	image,
+	date,
+	uploadDate,
+	Nsfw,
+	Dd,
+	desc,
+	medium,
+	tags,
+	icons,
+} = Astro.props as Props;
+
+console.log(Astro.props)
+
 ---
 
-<EntryLayout title="ARCHIVE">
+<EntryLayout>
 
 	<div class="card">
 		<h2>
@@ -52,10 +83,10 @@ export async function getStaticPaths() {
 			</div>
 		</h2>
 			<div class="body">
-				<Image class="full-image"
-				src={image.src}
-				alt={`${image.alt}`}
-				/>
+					<Image class="full-image"
+					src={image.src}
+					alt={`${image.alt}`}
+					/>
 				<div class="date">
 					<b>{formatDate(date)}</b>
 					<div class="icons">
@@ -76,7 +107,9 @@ export async function getStaticPaths() {
 	
 			</div>
 
-			<h3>RELATED ENTRIES</h3>
+			<h3>{uploadDate}</h3>
+
+			<!-- <h3>RELATED ENTRIES</h3>
 
 			<div class="card-masonry">
 					{ entries.slice(0, 3).map((entry) =>
@@ -94,7 +127,7 @@ export async function getStaticPaths() {
 							/>
 					)}
 
-			</div>
+			</div> -->
 
 		</div>
 	
@@ -123,9 +156,14 @@ export async function getStaticPaths() {
 	}
 
 	.full-image {
-		margin: 2em 2em 1em 2em;
+		margin: 2em 1em;
+		height: auto;
 		max-height: 80vh;
-		width: auto;
+		max-width: 100%;
+	}
+
+	.icons i {
+		margin-inline: 0.125em;
 	}
 	
 	h2 {
@@ -241,23 +279,7 @@ export async function getStaticPaths() {
 		font-weight: bold;
 		color: var(--primary-link-clr)
 	}
-	
-		/* .react-icons {
-			display: flex;
-			font-size: 1.4rem;
-			gap: 0.5em;
-			margin: auto;
-			text-align: center;
-			align-items: center;
-			justify-content: center;
-			color: var(--primary-clr-light)
-		}
-	
-		.react-icons .fas:last-child {
-			color: var(--primary-accent-clr);
-		} */
-
-		.card-masonry {
+	.card-masonry {
 		margin: 4em auto;
 		display: flex;
 		flex-wrap: wrap;

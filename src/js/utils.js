@@ -9,6 +9,8 @@ export function slugify(text) {
       .replace(/-+$/, '');
   }
 
+  // format dates
+
   export function formatDate(date) {
     return new Date(date).toLocaleDateString('en-US', {
       year: "numeric",
@@ -17,13 +19,14 @@ export function slugify(text) {
     })
   }
 
-  // export function sortByDate(entries) {
-  //     return entries.toSorted((a, b) => new Date(a) - new Date(b))
-  // }
+  // sort functions
 
-export function sortByDate(entries) {
-    const sortedEntries = [...entries];
-    sortedEntries.sort((a, b) => new Date(a) - new Date(b));
-    return sortedEntries;
+export function sortEntries(entries) {
+    const allEntries = [...entries];
+    allEntries.sort(sortFunction);
+    return allEntries;
 }
+
+export const sortByCreationDate = (a, b) => new Date(a) - new Date(b);
+export const sortByUploadDate = (a, b) => new Date(a.data.uploadDate) - new Date(b.data.uploadDate);
 

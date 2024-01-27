@@ -2,7 +2,6 @@
 title: 'nikita'
 date: 2021-07-14
 uploadDate: 2024-01-30
-
 image: {
     src: "./nikita.png",
     alt: "a headshot of nikita wearing a bright red shirt and crown of thorns, looking at the viewer. there are two disembodied hands floating on either side of his head.",

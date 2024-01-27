@@ -5,12 +5,10 @@ interface Props {
 
 const { title } = Astro.props;
 
-// import Variables from '../components/Variables.astro';
 import Sidebar from '../components/Sidebar.astro'
-import Uploads from '../components/Uploads.astro';
+import ArchiveSidebar from '../components/ArchiveSidebar.astro';
 
 import '../css/reset.css'
-import ArchiveSidebar from '../components/ArchiveSidebar.astro';
 ---
 
 <!doctype html>
@@ -95,6 +93,7 @@ import ArchiveSidebar from '../components/ArchiveSidebar.astro';
 
 		main {
 			grid-area: main;
+			margin: 0 auto;
 		}
 
 		#header {

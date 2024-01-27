@@ -1,56 +1,15 @@
 ---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
 import Layout from '../layouts/Layout.astro';
 import CardL from '../components/CardL.astro';
 import CardPreview from '../components/CardPreview.astro';
-import Footer from '../components/Footer.astro';
-import ArtGallery from '../components/ArtGallery.astro';
-
 import Header from '../components/Header.astro';
-import Tags from '../components/ArchiveSidebar.astro';
-import Uploads from '../components/Uploads.astro';
 
-import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
-import { sortByDate } from "../js/utils"
+// import { sortByUploadDate } from "../js/utils.js";
 
 const entries = await getCollection("entries");
-
-function sortByUploadDate(entries) {
-    const sort = [...entries];
-    // @ts-ignore
-    sort.sort((a, b) => new Date(a.data.uploadDate) - new Date(b.data.uploadDate));
-    return sort;
-}
-
-const sortedEntries = sortByUploadDate(entries).toReversed();
-
-interface Props {
-	slug: string;
-	title: string;
-	thumb: ImageMetadata;
-	date: Date;
-	Nsfw?: boolean;
-	Dd?: boolean;
-	classes?: string;
-	desc: string;
-	medium: string;
-	tags: Array<string>;
-	original: boolean;
-}
-
-const { 
-		slug,
-		title,
-		thumb,
-		date,
-		Nsfw,
-		Dd,
-		desc,
-		medium,
-		original,
-		tags,
-		} = Astro.props as Props;
-
 ---
 
 <Layout title="WORKS">
@@ -58,18 +17,17 @@ const {
 <Header />
 
 	<main>
-		<h1>{title}</h1>
+		<h1>WORKS</h1>
 		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, et officia doloribus amet quia asperiores sapiente officiis dolorum, facere iure, tenetur hic praesentium.</p>
 		<div class="wrapper">
 			<h2>RECENT ARCHIVE ENTRIES</h2>
 				<div class="card-masonry">
-					{ sortedEntries.slice(0, 3).map((entry) =>
+					{ entries.slice(0, 3).map((entry) =>
 						<CardPreview
 							slug={entry.slug}
 							title={entry.data.title}
 							date={entry.data.date}
 							thumb={entry.data.thumb.src}
-							tags={entry.data.tags}
 							desc={entry.data.desc}
 							original={entry.data.original}
 							medium={entry.data.medium}
@@ -119,21 +77,6 @@ const {
 				)}
 		</div>
 
-		<!-- <ul role="list" class="card-masonry">
-			{
-				entries.toReversed().map((entry) => 
-				<CardS 
-					title={entry.data.title}
-					date={entry.data.date}
-					thumb={entry.data.thumb.src}
-					tags={entry.data.tags}
-					medium={entry.data.medium}
-					Nsfw={entry.data.Nsfw}
-					Dd={entry.data.Dd}
-					desc={entry.data.desc}
-				/>
-			)}
-		</ul> -->
 	</main>
 
 </Layout>
