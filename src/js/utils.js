@@ -28,5 +28,5 @@ export function sortEntries(entries) {
 }
 
 export const sortByCreationDate = (a, b) => new Date(a) - new Date(b);
-export const sortByUploadDate = (a, b) => new Date(a.data.uploadDate) - new Date(b.data.uploadDate);
+export const sortByUploadDate = (a, b) => new Date(a.data.uploadDate).getTime() - new Date(b.data.uploadDate).getTime();
 
