@@ -21,7 +21,7 @@ import '../css/reset.css'
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>WORKS // {title}</title>
+		<title>{title}</title>
 		<meta name="description" content={`${(date)} : ${(desc)}`} />
 	
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +36,7 @@ import '../css/reset.css'
 		<div class="columns">
 				<Sidebar class="sidebar" id="header" />
 				<main>
-					<h1>{title}</h1>
+					<h1>ARCHIVE</h1>
 					<slot />
 				</main>
 				<ArchiveSidebar class="sidebar" id="tags" />
