@@ -23,7 +23,6 @@ const {
 		title,
 		thumb,
 		date,
-		uploadDate,
 		Nsfw,
 		Dd,
 		desc,
@@ -31,9 +30,8 @@ const {
 		icons,
 		} = Astro.props as Props; 
 
-console.log(uploadDate)
-
 ---
+
 <a href={`/archive/entries/${slug}/`}>
 	<li class="card">
         <h1>
@@ -73,13 +71,9 @@ console.log(uploadDate)
     .card {
         list-style: none;
 		margin: 2em auto;
-		width: 750px;
+		max-width: 750px;
 	}
-
-	li a {
-		transition: 200ms;
-	}
-
+	
     h1 {
         margin: 0;
         font-size: 1.5em;
@@ -95,26 +89,32 @@ console.log(uploadDate)
 		align-items: center;
 		justify-content: space-between;
     }
-
+	
 	h1 i {
 		font-size: 0.8em;
 		padding-bottom: 0.15em;
 	}
     
+	li a {
+		transition: 200ms;
+	}
+
     li:hover h1 {
         color: var(--primary-accent-clr)
     }
 
     .body {
-        display: flex;
+		background: var(--white-clr);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
         padding: 1em;
-		background-color: var(--white-clr);
         border: solid 2px var(--primary-clr-dark);		
         border-radius: 0em 0em 1em 1em;
     }
 
     .thumb {
-        margin: auto;
 		height: 150px;
 		min-width: 150px;
 		max-width: 150px;
@@ -134,8 +134,9 @@ console.log(uploadDate)
 
     .flex {
         display: flex;
+		align-items: center;
+		justify-content: center;
         gap: 0.5em;
-        align-items: center;
     }
 
     .icons {
@@ -183,7 +184,7 @@ console.log(uploadDate)
 		color: var(--primary-accent-clr)
 	}
 
-	@media all and (max-width: 700px) {
+	@media all and (min-width: 700px) {
 
 		.card {
 			max-width: 100%;
@@ -191,20 +192,23 @@ console.log(uploadDate)
 
 		.body {
 			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-		}
-
-
-		.thumb {
-			margin-top: 1.5em;
+			flex-direction: row;
+			align-items: flex-start;
+			justify-content: left;
 		}
 
 		.flex {
-			margin: auto;
-			justify-content: center;
+			justify-content: left;
+			
 		}
+
+		.text {
+		}
+
+		.tags {
+		}
+
+
 
 	}
 
