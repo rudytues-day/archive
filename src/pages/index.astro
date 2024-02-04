@@ -3,13 +3,12 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
 import Layout from '../layouts/Layout.astro';
-import CardL from '../components/CardL.astro';
+import CardProjects from "../components/projects/CardProjects.astro";
 import CardPreview from '../components/CardPreview.astro';
 import Header from '../components/Header.astro';
 
-// import { sortByUploadDate } from "../js/utils.js";
-
 const entries = await getCollection("entries");
+const projects = await getCollection("projects")
 ---
 
 <Layout title="WORKS">
@@ -18,64 +17,67 @@ const entries = await getCollection("entries");
 
 	<main>
 		<h1>WORKS</h1>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, et officia doloribus amet quia asperiores sapiente officiis dolorum, facere iure, tenetur hic praesentium.</p>
-		<div class="wrapper">
+		<section>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, et officia doloribus amet quia asperiores sapiente officiis dolorum, facere iure, tenetur hic praesentium.</p>
+		</section>
+
+		<section>
 			<h2>RECENT ARCHIVE ENTRIES</h2>
 				<div class="card-masonry">
-					{ entries.slice(0, 3).map((entry) =>
+					{ entries.slice(0, 6).map((entry) =>
 						<CardPreview
 							slug={entry.slug}
 							title={entry.data.title}
 							date={entry.data.date}
 							thumb={entry.data.thumb.src}
 							desc={entry.data.desc}
-							original={entry.data.original}
-							medium={entry.data.medium}
 							Nsfw={entry.data.Nsfw}
 							Dd={entry.data.Dd}
 							/>
 					)}
 				</div>
-				<a class="visit" href="">VIEW MORE <i class="fas fa-angles-right"></i></a>
+			<a class="visit" href="">VIEW MORE <i class="fas fa-angles-right"></i></a>
+		</section>
 
-		</div>
-		<div class="wrapper">
+		<section>
+			<h2>GALLERY</h2>
+				<a href="">
+					<div class="gallery-grid">
+						{ entries.map((entry) =>
+								entry.data.gallery &&
+								<Image class="thumb"
+									src={entry.data.thumb.src}
+									alt={`${entry.data.title} thumbnail`}
+								/>
+						)}
+					</div>
+				</a>
+			<a class="visit" href="">VISIT <i class="fas fa-angles-right"></i></a>
+		</section>
 
-		<h2>GALLERY</h2>
-			<a href="">
-				<div class="gallery-grid">
-					{ entries.map((entry) =>
-							entry.data.gallery &&
-							<Image class="thumb"
-								src={entry.data.thumb.src}
-								alt={`${entry.data.title} thumbnail`}
+
+		<section>
+			<h2>PROJECTS</h2>
+				<div class="grid-masonry">
+					{ projects.map((project) =>
+						<CardProjects
+							slug={project.slug}
+							href={project.data.href}
+							title={project.data.title}
+							desc={project.data.desc}
+							createDate={project.data.createDate}
+							finishDate={project.data.finishDate}
+							categories={project.data.categories}
+							featured={project.data.featured}
+							collab={project.data.collab}
+							Nsfw={project.data.Nsfw}
+							Dd={project.data.Dd}
+							icons={project.data.icons}
 							/>
 					)}
-					
 				</div>
-			</a>
-			<a class="visit" href="">VISIT <i class="fas fa-angles-right"></i></a>
-		</div>
-
-
-		<div class="wrapper">
-			<h2>PROJECTS</h2>
-				{ entries.slice(0, 2).map((entry) =>
-					<CardL
-						slug={entry.slug}
-						title={entry.data.title}
-						date={entry.data.date}
-						thumb={entry.data.thumb.src}
-						tags={entry.data.tags}
-						desc={entry.data.desc}
-						original={entry.data.original}
-						medium={entry.data.medium}
-						Nsfw={entry.data.Nsfw}
-						Dd={entry.data.Dd}
-						icons={entry.data.icons}
-						/>
-				)}
-		</div>
+			<a class="visit" href="">VIEW MORE <i class="fas fa-angles-right"></i></a>
+		</section>
 
 	</main>
 
@@ -83,9 +85,24 @@ const entries = await getCollection("entries");
 
 <style>
 
-	.wrapper {
-		margin: auto;
+	section {
+		margin: 3em 0;
 		text-align: center;
+	}
+
+	section p {
+		margin: 1em;
+		max-width: 800px;
+	}
+
+	section:not(:last-child):after {
+		content: '';
+		display: block;
+		background-color: #000;
+		width: 100%;
+		height: 5px;
+		top: 0;
+		margin-block: 5em;
 	}
 
 	.gallery-grid {
@@ -100,7 +117,7 @@ const entries = await getCollection("entries");
 	}
 
 	.card-masonry {
-		margin: 2em auto;
+		margin: 3em auto;
 		display: flex;
 		flex-wrap: wrap;
 		flex-direction: row;
@@ -108,6 +125,13 @@ const entries = await getCollection("entries");
 		align-items: stretch;
 		gap: 1.5em;
 		height: 100%;
+	}
+
+	.grid-masonry {
+		margin: 3em auto;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5em;
 	}
 
 	.thumb {
@@ -139,7 +163,7 @@ const entries = await getCollection("entries");
 	h2 {
 		font-size: 2rem;
 		font-family: var(--display);
-		margin: 1.5em;
+		margin: 2em;
 		text-align: center;
 	}
 	
@@ -151,23 +175,30 @@ const entries = await getCollection("entries");
 
 @media all and (min-width: 700px) {
 
-	 {
+	section {
+		margin: 3em auto;
 	}
 
-}
-
-@media all and (min-width: 1000px) {
-		
-	main .archive-cards {
+	section p {
+		margin: auto;
 	}
 
-}
-
-@media all and (min-width: 1200px) {
-		
-		.card-masonry {
-		}
+	.card-masonry {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		max-width: 800px;
+	}
 	
+	.grid-masonry {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		max-width: 800px;
 	}
+
+}
+
+@media all and (min-width: 1000px) {}
+
+@media all and (min-width: 1200px) {}
 
 </style>

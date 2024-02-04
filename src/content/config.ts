@@ -27,8 +27,36 @@ const allEntries = defineCollection({
             Dd: z.boolean().optional(),
           }),
 });
+
+const allProjects = defineCollection({ 
+  type: 'content',
+  schema: ({ image }: SchemaContext) => 
+      z.object({
+        title: z.string(),
+        href: z.string(),
+        createDate: z.date(),
+        finishDate: z.date(),
+        desc: z.string(),
+        // thumb: z.object({
+        //   src: image(),
+        //   alt: z.string()
+        // }),
+        // image: z.object({
+        //     src: image(),
+        //     alt: z.string(),
+        // }),
+        categories: z.array(z.string()),
+        icons: z.array(z.string()),
+        featured: z.boolean(),
+        collab: z.boolean(),
+        Nsfw: z.boolean().optional(),
+        Dd: z.boolean().optional(),
+        }),
+});
+
 // 3. Export a single `collections` object to register your collection(s)
 //    This key should match your collection directory name in "src/content"
 export const collections = {
   'entries': allEntries,
+  'projects': allProjects,
 };
