@@ -1,8 +1,7 @@
 ---
 
 import { getCollection } from "astro:content";
-import { slugify } from "../js/utils";
-import { formatDate, sortByUploadDate } from "../js/utils.js";
+import { slugify, formatDate, sortByUploadDate } from "../utility/utils";
 
 const entries = await getCollection("entries");
 
