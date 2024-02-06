@@ -158,6 +158,21 @@ const projects = await getCollection("projects")
 		margin-bottom: 0em;
 	}
 
+	section p {
+		margin: 1em;
+		max-width: 800px;
+	}
+
+	section:not(:last-child):after {
+		content: '';
+		display: block;
+		background-color: #000;
+		width: 100%;
+		height: 5px;
+		top: 0;
+		margin-block: 5em;
+	}
+
 	.gallery-grid {
 		display: flex;
 		flex-direction: row;
