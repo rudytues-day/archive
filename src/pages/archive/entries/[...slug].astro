@@ -1,9 +1,10 @@
 ---
 import EntryLayout from '../../../layouts/EntryLayout.astro';
+import CardPreview from '../../../components/CardPreview.astro';
 
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-import { slugify, formatDate } from '../../../js/utils';
+import { slugify, formatDate } from '../../../utility/utils';
 
 export async function getStaticPaths() {
 	const entries = await getCollection("entries");
@@ -11,7 +12,7 @@ export async function getStaticPaths() {
 		return {
 			params: { slug: entry.slug },
 			props: { 
-				// entry: entry ?
+				entries: entries,
 				renderContent: entry.render,
 				...entry.data
 			 }
@@ -19,54 +20,46 @@ export async function getStaticPaths() {
 	});
 }
 
-// function relatedEntries(entries) {
-// 	entries.filter((entry) => 
-// 	if entry.data.tags)
+// export function getSimilarEntries(allEntries, currentSlug, currentTags) {
+// 	const similarEntries = allEntries.filter(entry =>
+// 	entry.slug !== currentSlug &&
+// 	entry.data.tags.includes)
 // }
-
-// filter entries that do not have any tags in common
-
-
-
-// function relatedEntries(entries) {
-// 	const allTags = [...new Set(entries.flatMap((entry => 
-//     entry.data.tags))),];
-// }
-
-// const filter = entries.filter((entry) => {
-//     const allTags = [...new Set(entries.flatMap((entry => 
-//     entry.data.tags))),];
-    
-//     return allTags.map((tag) => {
-//         const taggedEntries = entries.filter((entry) =>
-//         entry.data.tags.includes(tag));
-// 		console.log(taggedEntries);
-// 	})})
-
-
-// const {slug} = Astro.params
-
-// let url = slug + "." + image.src.format
-// console.log(url)
 
 const {  
 	title,
 	image,
 	date,
-	// uploadDate,
+	uploadDate,
 	Nsfw,
 	Dd,
 	desc,
 	medium,
 	tags,
+	entries,
 	icons,
 } = Astro.props as Props;
 
-console.log(Astro.props)
+const { slug } = Astro.params;
 
+// function sortBySimilar(entries) {
+// 	// filter the current entry by slug
+// 	const otherEntries = entries.filter((entry =>
+// 		entry.slug !== slug));
+// 	const entryTags = new Set(tags);
+// 	const otherTags = otherEntries.forEach((entry => {
+// 		new Set(entries.data.tags);
+// 		return otherTags;
+// 	}));
+// };
+
+console.log("test")
+
+// console.log(sortBySimilar(entries));
+console.log(tags);
 ---
 
-<EntryLayout title={`WORKS // ${title}`}>
+<EntryLayout title={title}>
 
 	<div class="card">
 		<h2>
@@ -82,54 +75,51 @@ console.log(Astro.props)
 				))}
 			</div>
 		</h2>
-			<div class="body">
-					<Image class="full-image"
-					src={image.src}
-					alt={`${image.alt}`}
-					/>
-				<div class="date">
-					<b>{formatDate(date)}</b>
-					<div class="icons">
-						{ Nsfw && <i class="fas fa-ban"></i> }
-						{ Dd && <i class="fas fa-feather"></i>}
-					</div>
-					<b>{medium}</b>
+		<div class="body">
+				<Image class="full-image"
+				src={image.src}
+				alt={`${image.alt}`}
+				/>
+			<div class="date">
+				<b>{formatDate(date)}</b>
+				<div class="icons">
+					{ Nsfw && <i class="fas fa-ban"></i> }
+					{ Dd && <i class="fas fa-feather"></i>}
 				</div>
-				<div class="description">
-					<p class="text">{desc}</p>
-					<ul class="tags">
-						{tags.map((tag) => (
-							<li><a href={`/archive/tagged/${slugify(tag)}/`}>{tag}</a></li>
-						))}
-					</ul>
-
-				</div>
-	
+				<b>{medium}</b>
 			</div>
-
-			<!-- <h3>RELATED ENTRIES</h3>
-
-			<div class="card-masonry">
-					{ entries.slice(0, 3).map((entry) =>
-						<CardPreview
-							slug={entry.slug}
-							title={entry.data.title}
-							date={entry.data.date}
-							thumb={entry.data.thumb.src}
-							tags={entry.data.tags}
-							desc={entry.data.desc}
-							original={entry.data.original}
-							medium={entry.data.medium}
-							Nsfw={entry.data.Nsfw}
-							Dd={entry.data.Dd}
-							/>
-					)}
-
-			</div> -->
-
+			<div class="description">
+				<p class="text">{desc}</p>
+				<ul class="tags">
+					{tags.map((tag) => (
+						<li><a href={`/archive/tagged/${slugify(tag)}/`}>{tag}</a></li>
+					))}
+				</ul>
+			</div>
 		</div>
+	</div>
 	
-</Layout>
+	<h3>RELATED ENTRIES</h3>
+
+	<div class="card-masonry">
+			{ entries.slice(0, 3).map((entry) =>
+				<CardPreview
+					slug={entry.slug}
+					title={entry.data.title}
+					date={entry.data.date}
+					thumb={entry.data.thumb.src}
+					desc={entry.data.desc}
+					original={entry.data.original}
+					medium={entry.data.medium}
+					Nsfw={entry.data.Nsfw}
+					Dd={entry.data.Dd}
+					/>
+			)}
+
+	</div>
+
+</EntryLayout>
+
 
 <style>
 
@@ -192,7 +182,7 @@ console.log(Astro.props)
 	
 	ul {
 		padding: 0;
-		margin: 1em;
+		margin: auto;
 	}
 	
 	.date {
@@ -257,26 +247,12 @@ console.log(Astro.props)
 	.tags li:hover {
 		color: var(--primary-accent-clr)
 	}
-	
-	.return {
-		margin: 2em auto;
-		text-align: center;
-		cursor: pointer;
-	}
-
-	.return i {
-		font-size: 0.85em;
-	}
-
-	.return:not(i) {
-		font-family: var(--display);
-		font-size: 1.5rem;
-	}
 
 	p a {
 		font-weight: bold;
 		color: var(--primary-link-clr)
 	}
+
 	.card-masonry {
 		margin: 4em auto;
 		display: flex;
@@ -285,11 +261,22 @@ console.log(Astro.props)
 		justify-content: center;
 		align-items: stretch;
 		gap: 1.5em;
-		height: 100%;
 	}
 	
 	@media all and (min-width: 700px) {
 		
+		main {
+			margin: auto;
+		}
+
+		ul {
+			margin: 1em;
+		}
+
+		.card {
+			margin-inline: auto;
+		}
+
 		.card-masonry {
 			grid-template-columns: repeat(2, 1fr);
 			gap: 1em;

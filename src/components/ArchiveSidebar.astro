@@ -5,6 +5,8 @@ import { slugify, formatDate, sortByUploadDate } from "../utility/utils";
 
 const entries = await getCollection("entries");
 
+
+
 // sort tags by frequency
 
 const allEntryTags = entries.map((entry => 
@@ -27,6 +29,74 @@ const sortedTags = [... new Set(allEntryTags.sort(sortByFrequency).toReversed().
 
 <aside>
 
+	<div class="filters">
+		<h2>FILTERS</h2>
+				<!-- <span>the future home of filters</span> -->
+				<!-- <div class="search-wrapper">
+					<input 
+						type="search"
+						required
+						min="2"
+						max="30"
+						name="search"
+						id="search"
+						placeholder="title, tag, character name, medium...">
+					<button>
+						<i class="fas fa-magnifying-glass"></i>
+					</button>
+				</div> -->
+			<div class="wrapper">
+				<fieldset id="rating">
+					<legend>RATING</legend>
+					<div class="form-flex">
+						<div class="wrapper">
+							<input type="checkbox" id="baby" name="baby" value="baby">
+							<label for="baby"><i class="fas fa-baby"></i></label>
+						</div>
+						<div class="wrapper">
+							<input type="checkbox" id="nsfw" name="nsfw" value="nsfw" checked>
+							<label for="nsfw"><i class="fas fa-ban"></i></label>
+						</div>
+						<div class="wrapper">
+							<input type="checkbox" id="dd" name="dd" value="dd" checked>
+							<label for="dd"><i class="fas fa-feather"></i></label>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset id="medium">
+					<legend>MEDIUM</legend>
+						<div class="wrapper">
+							<input type="checkbox" id="analog" name="analog" value="analog" checked>
+							<label for="analog" checked>ANALOG</label>
+						</div>
+						<div class="wrapper">
+							<input type="checkbox" id="digital" name="digital" value="digital" checked>
+							<label for="digital">DIGITAL</label>
+						</div>
+						<div class="wrapper">
+							<input type="checkbox" id="multi-media" name="multi-media" value="multi-media" checked>
+							<label for="multi-media">MIXED</label>
+						</div>
+				</fieldset>
+				<fieldset id="sort">
+					<legend>SORT BY</legend>
+						<div class="wrapper">
+							<input type="radio" id="newest" name="sort" value="newest" checked>
+							<label for="newest">NEWEST</label>
+						</div>
+						<div class="wrapper">
+							<input type="radio" id="oldest" name="sort" value="oldest">
+							<label for="oldest">OLDEST</label>
+						</div>
+						<div class="wrapper">
+							<input type="radio" id="random" name="sort" value="random">
+							<label for="random">RANDOM</label>
+						</div>
+				</fieldset>
+			</div>
+
+	</div>
+
 	<div class="uploads">
         <h2>RECENT UPLOADS</h2>
         <ul class="scrollbox">
@@ -46,25 +116,6 @@ const sortedTags = [... new Set(allEntryTags.sort(sortByFrequency).toReversed().
         </ul>
     </div>
 
-	<!-- <div class="search">
-		<h2>SEARCH</h2>
-		<form action="" class="search-form">
-			<span>enter a search term to search the archive</span>
-			<div class="search-wrapper">
-				<input 
-					type="search"
-					required
-					min="2"
-					max="30"
-					name="search"
-					id="search"
-					placeholder="title, tag, character name, medium...">
-				<button>
-					<i class="fas fa-magnifying-glass"></i>
-				</button>
-			</div>
-		</form>
-	</div> -->
 	
 	<div class="tags">
 		<h2>TAGS</h2>
@@ -79,6 +130,102 @@ const sortedTags = [... new Set(allEntryTags.sort(sortByFrequency).toReversed().
 </aside>
 
 <style>
+
+	.filters .wrapper {
+		display: grid;
+		grid-template-areas:
+			'rating rating'
+			'med sort';
+			gap: 0.5em;
+		margin-inline: 1em;
+	}
+
+	#medium legend,
+	#sort legend {
+		margin: auto;
+	}
+
+	.filters #rating {
+		grid-area: rating;
+	}
+
+	.filters #medium {
+		grid-area: med;
+	}
+
+	.filters #sort {
+		grid-area: sort;
+	}
+
+
+	fieldset {
+		/* margin: 1em; */
+		padding-block: 1em 1.25em;
+		border-radius: 0.5em;
+		border: 2px solid var(--primary-clr-med);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	legend {
+		margin-left: 0.5em;
+		font-family: var(--display);
+		font-size: 1.5rem;
+	}
+
+	.form-flex {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0em;
+	}
+
+	#medium,
+	#sort {
+		font-family: var(--display);
+		font-size: 1.25rem;
+	}
+
+	.filters .fas {
+		font-size: 1.75rem;
+	}
+
+	input[type="checkbox"],
+	input[type="radio"] {
+		height: 0;
+		width: 0;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		opacity: 0;
+	}
+
+	label {
+		color: var(--primary-clr-light);
+		opacity: 40%;
+		transition: 0.2s;
+	}
+
+	label:hover{
+		color: var(--primary-accent-clr);
+		opacity: 100%;
+	}
+	
+	input[type="checkbox"]:checked + label,
+	input[type="radio"]:checked + label {
+		color: #fff;
+		opacity: 100%;
+	}
+
+	input[type="checkbox"]:checked + .fa-feather {
+		color: var(--primary-clr-light);
+	}
+
+	input[type="checkbox"]:checked + .fa-ban {
+		color: var(--primary-accent-clr);
+	}
 
 	b {
 		font-family: var(--display);
@@ -95,7 +242,7 @@ const sortedTags = [... new Set(allEntryTags.sort(sortByFrequency).toReversed().
 		margin: 5em 1em;
 	}
 
-	.search {
+	/* .search {
 		text-align: center;
 	}
 
@@ -122,7 +269,7 @@ const sortedTags = [... new Set(allEntryTags.sort(sortByFrequency).toReversed().
 		display: flex;
 		align-items: center;
 		justify-content: center;
-	}
+	} */
 
 	button {
 		color: var(--white-clr);
@@ -180,7 +327,7 @@ const sortedTags = [... new Set(allEntryTags.sort(sortByFrequency).toReversed().
 		overflow: scroll;
 		overflow-x: hidden;
 		text-wrap: wrap;
-		height: 200px;
+		height: 278px;
 		list-style: none;
 		margin: 3em 2em;
 		padding: 0.25em 0.5em;
@@ -208,9 +355,11 @@ const sortedTags = [... new Set(allEntryTags.sort(sortByFrequency).toReversed().
 		aside {
 			display: grid;
 			grid-template-areas: 
-				'uploads search'
+				'filters uploads'
 				'tags tags';
-			padding: 4em 1em;
+				grid-template-columns: 1fr 1fr;
+			padding: 4em 1em 2em 1em;
+			row-gap: 2em;
 		}
 
 		aside > * {
@@ -221,8 +370,8 @@ const sortedTags = [... new Set(allEntryTags.sort(sortByFrequency).toReversed().
 			grid-area: uploads;
 		}
 
-		.search {
-			grid-area: search;
+		.filters {
+			grid-area: filters;
 			margin-inline: 3em;
 		}
 
@@ -235,11 +384,13 @@ const sortedTags = [... new Set(allEntryTags.sort(sortByFrequency).toReversed().
 	@media all and (min-width: 1000px) {
 
 		aside {
+			padding-block: 0;
 			display: block;
+			row-gap: 0;
 		}
 
 		aside > * {
-			
+			margin-block: 5em;
 		}
 
 	}

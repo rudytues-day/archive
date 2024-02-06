@@ -36,7 +36,7 @@ const projects = await getCollection("projects")
 							/>
 					)}
 				</div>
-			<a class="visit" href="">VIEW MORE <i class="fas fa-angles-right"></i></a>
+			<a class="visit" href="./archive">VIEW MORE <i class="fas fa-angles-right"></i></a>
 		</section>
 
 		<section>
@@ -84,9 +84,53 @@ const projects = await getCollection("projects")
 </Layout>
 
 <style>
+	
+	h1 {
+		font-size: 2.5rem;
+		font-weight: 700;
+		line-height: 1;
+		text-align: center;
+		margin-bottom: 1em;
+	}
 
+	/* h1::before,
+	h1:after {
+		content: '';
+		background-image: url('/imgs/chain_1_horizontal.png');
+		display: block;
+		width: 100%;
+		height: 20px;
+		bottom: 0;
+	} */
+
+	h2 {
+		font-size: 2rem;
+		font-family: var(--display);
+		margin: 2em;
+		text-align: center;
+	}
+	
+	main::before {
+		content: '';
+		background-image: url('/imgs/chain_1_horizontal.png');
+		display: block;
+		width: 100%;
+		height: 20px;
+		top: 0;
+		margin-block: 0.25em 5em;
+	}
+
+	ul {
+		padding: 0;
+		margin: 1em;
+	}
 	section {
 		margin: 3em 0;
+		text-align: center;
+	}
+
+	section:last-child {
+		margin-bottom: 2.75em;
 		text-align: center;
 	}
 
@@ -95,14 +139,23 @@ const projects = await getCollection("projects")
 		max-width: 800px;
 	}
 
-	section:not(:last-child):after {
+	section::after {
 		content: '';
+		background-image: url('/imgs/chain_1_horizontal.png');
 		display: block;
-		background-color: #000;
+		/* background-color: #000; */
 		width: 100%;
-		height: 5px;
+		height: 20px;
 		top: 0;
 		margin-block: 5em;
+	}
+
+	section:last-child {
+		margin-bottom: 0.25em;
+	}
+
+	section:last-child::after {
+		margin-bottom: 0em;
 	}
 
 	.gallery-grid {
@@ -142,36 +195,21 @@ const projects = await getCollection("projects")
 
 	.visit {
 		margin: auto;
-		font-size: 1.5rem;
+		font-size: 2rem;
+		color: var(--primary-clr-dark);
 		text-align: center;
 		font-family: var(--display);
 		text-decoration: none;
+		transition: ease 0.2s;
 	}
 
 	.visit .fas {
 		font-size: 0.8em;
 	}
 
-	h1 {
-		font-size: 2.5rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
+	.visit:hover {
+		color: var(--primary-accent-clr)
 	}
-
-	h2 {
-		font-size: 2rem;
-		font-family: var(--display);
-		margin: 2em;
-		text-align: center;
-	}
-	
-	ul {
-		padding: 0;
-		margin: 1em;
-	}
-
 
 @media all and (min-width: 700px) {
 

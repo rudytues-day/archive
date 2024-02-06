@@ -1,6 +1,6 @@
 ---
-import Layout from '../../layouts/ArchiveLayout.astro';
-import CardL from '../../components/CardL.astro';
+import ProjectsLayout from '../../layouts/ProjectsLayout.astro';
+import CardProjects from '../../components/projects/CardProjects.astro';
 import Pagination from '../../components/Pagination.astro';
 
 import { Image } from "astro:assets";
@@ -9,11 +9,10 @@ import type { GetStaticPaths } from "astro";
 
 import { sortEntries, sortByCreationDate, sortByUploadDate } from '../../utility/utils';
 
+const projects = await getCollection("projects");
 export const getStaticPaths = (async ( { paginate } ) => {
-    const entries = await getCollection("entries");
-	const sortedEntries = entries.sort(sortByCreationDate).toReversed();
-    return paginate(sortedEntries, {
-        pageSize: 5,
+    return paginate(projects, {
+        pageSize: 4,
     })
 }) satisfies GetStaticPaths;
 
@@ -24,30 +23,33 @@ const { page } = Astro.props;
 ---
 
 
-<Layout title="ARCHIVE">
+<ProjectsLayout title="ARCHIVE">
 
 <main>
 
 	<ul role="list">
-		{
-			page.data.map((entry) => 
-				<CardL
-					slug={entry.slug}
-					title={entry.data.title}
-					date={entry.data.date}
-					thumb={entry.data.thumb.src}
-					tags={entry.data.tags}
-					desc={entry.data.desc}
-					original={entry.data.original}
-					medium={entry.data.medium}
-					Nsfw={entry.data.Nsfw}
-					Dd={entry.data.Dd}
-					icons={entry.data.icons}
+		<div class="grid-masonry">
+			{ projects.map((project) =>
+				<CardProjects
+					slug={project.slug}
+					href={project.data.href}
+					title={project.data.title}
+					desc={project.data.desc}
+					createDate={project.data.createDate}
+					finishDate={project.data.finishDate}
+					categories={project.data.categories}
+					featured={project.data.featured}
+					collab={project.data.collab}
+					Nsfw={project.data.Nsfw}
+					Dd={project.data.Dd}
+					icons={project.data.icons}
 					/>
-		)}
+			)}
+		</div>
+
 	</ul>
 
-	<Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+	<!-- <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} /> -->
 
 	</main>
 
@@ -59,11 +61,20 @@ const { page } = Astro.props;
 		margin: auto;
 	}
 
+	h1 {
+		font-size: 2.5rem;
+		font-weight: 700;
+		line-height: 1;
+		text-align: center;
+		margin: 1em;
+	}
+	
 	ul {
 		padding: 0;
 		margin: 1em;
-		max-width: 800px;
 	}
+	
+
 
 	.card-masonry {
 		display: grid;
@@ -78,18 +89,10 @@ const { page } = Astro.props;
 		gap: 1em;
 	}
 
-	ul {
-		margin: auto;
-	}
-
 }
 
 @media all and (min-width: 1000px) {
 		
-	ul {
-		margin: auto;
-	}
-
 	.card-masonry {
 		grid-template-columns: repeat(3, 1fr);
 	}

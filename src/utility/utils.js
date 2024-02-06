@@ -37,6 +37,7 @@ export const sortByCreationDate = (a, b) => new Date(a) - new Date(b);
 export const sortByUploadDate = (a, b) => new Date(a.data.uploadDate).getTime() - new Date(b.data.uploadDate).getTime();
 
 export function sortBySimilar(entries) {
+  const allEntries = [...entries];
   // get entries with current entry filtered out
   // get tag array of current entry
   // loop through entry tag arrays
@@ -48,3 +49,4 @@ export function sortBySimilar(entries) {
   // return similar entries randomized
 }
 
+export const sortProjectByCreationDate = (a, b) => new Date(a) - new Date(b);
