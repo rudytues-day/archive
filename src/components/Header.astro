@@ -1,32 +1,21 @@
 ---
-
 ---
-
 
 <header>
     <div class="image"></div>
     <ul class="menu">
         <li class="toggle">
             <span class="title">WORKS</span>
-            <i class="fas fa-lock"></i>
+            <i class="fas fa-lock" id="lock" aria-label="menu toggle"></i>
         </li>
-        <li class="submenu">
-            <ul>
-                <li><a href="/">HOME</a></li>
-                <li><a href="/archive">ARCHIVE</a></li>
-                <li><a href="/gallery">GALLERY</a></li>
-                <li><a href="/projects">PROJECTS</a></li>
-                <!-- <li><a href="/writing">WRITING</a></li> -->
-            </ul>
-        </li>
+        <li class="item"><a href="/">HOME</a></li>
+        <li class="item"><a href="/archive">ARCHIVE</a></li>
+        <li class="item"><a href="/gallery">GALLERY</a></li>
+        <li class="item"><a href="/projects">PROJECTS</a></li>
     </ul>
 </header>
 
-
 <style>
-
-    aside {
-    }
     
     header {
         background-color: var(--primary-clr-dark);
@@ -34,22 +23,18 @@
     }
 
     .menu {
-        margin: auto;
         color: var(--white-clr);
         font-family: var(--display);
         text-transform: uppercase;
         font-size: 1.5rem;
-        width: 100%;
-    }
-    
-    ul {
+        max-width: 100%;
         list-style: none;
-        margin-inline: 1em;
+        margin: 0em 1em;
         padding: 0;
         text-align: center;
     }
 
-    li {
+    .item {
         padding: 0.25em;
         margin: auto;
     }
@@ -61,24 +46,15 @@
         justify-content: space-between;
     }
 
-    .toggle i {
+    #lock {
         font-size: 0.85em;
     }
 
-    .submenu {
-        display: flex;
-        flex-direction: column;
-        padding: 0.25em;
-        border-radius: 0px 0px 8px 8px;
-        background: var(--primary-clr-med)
+    .item {
+        display: none;
     }
-
-    li.active {
-        border-radius: 8px 8px 0px 0px;
-    }
-
-    ul.active {
-        height: auto;
+    .item.active {
+        display: block;
     }
 
     .image {
@@ -91,16 +67,10 @@
 
 @media all and (min-width: 700px) {
 
-    .submenu {
-        margin: 0em auto;
-        padding: 0;
-        background-color: var(--primary-clr-dark);
-    }
-
-
-    .submenu ul {
+    .menu {
         display: flex;
         flex-direction: row;
+        background-color: var(--primary-clr-dark);
     }
 
     .image {
@@ -112,25 +82,36 @@
     }
 }
 
-
-@media all and (min-width: 1000px) {
-
-    /* header {
-        margin: 0 auto;
-        padding: 0;
-    }
-
-    .submenu ul {
-        flex-direction: column;
-        margin: 0em 2em;
-        background: var(--primary-clr-dark);
-    }
-
-    .image {
-        margin: 3em auto;
-    } */
-
-}
-
-
 </style>
+
+<script>
+
+const toggle = document.getElementById("lock");
+const menu = document.querySelector("menu");
+const menuItem = document.querySelectorAll(".item");
+
+toggle?.addEventListener("click", () => {
+    menuItem.forEach((item) =>
+    item.classList.toggle("active"));
+    if (toggle.classList.contains("fa-lock")) {
+        toggle.classList.remove("fa-lock");
+        toggle.classList.add("fa-unlock-keyhole");
+    } else {
+        toggle.classList.remove("fa-unlock-keyhole");
+        toggle.classList.add("fa-lock");
+    }
+})
+
+// function closeSubmenu(e) {
+//     if (menuItem.querySelector(".active")) {
+//     let isClickInside = menuItem
+//       .querySelector(".submenu-active")
+//       .contains(e.target);
+//     if (!isClickInside && menuItem.querySelector(".active")) {
+//       menuItem.querySelector(".active").classList.remove("active");
+//     }
+//   }
+// }
+
+
+</script>
