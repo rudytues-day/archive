@@ -19,8 +19,6 @@ export const getStaticPaths = (async ( { paginate } ) => {
 
 const { page } = Astro.props;
 
-// const byUploadDate = sortByUploadDate(entries);
-
 ---
 
 
@@ -43,7 +41,7 @@ const { page } = Astro.props;
 					Nsfw={entry.data.Nsfw}
 					Dd={entry.data.Dd}
 					icons={entry.data.icons}
-					/>
+			/>
 		)}
 	</ul>
 

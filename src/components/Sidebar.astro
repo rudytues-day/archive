@@ -11,14 +11,10 @@
                     <span class="title">WORKS</span>
                     <i class="fas fa-lock"></i>
                 </li>
-                <li class="submenu">
-                    <ul>
-                        <li><a href="/">HOME</a></li>
-                        <li><a href="/archive">ARCHIVE</a></li>
-                        <li><a href="/gallery">GALLERY</a></li>
-                        <li><a href="/projects">PROJECTS</a></li>
-                    </ul>
-                </li>
+                <li class="item"><a href="/">HOME</a></li>
+                <li class="item"><a href="/archive">ARCHIVE</a></li>
+                <li class="item"><a href="/gallery">GALLERY</a></li>
+                <li class="item"><a href="/projects">PROJECTS</a></li>
             </ul>
         </header>
     </aside>
@@ -103,7 +99,6 @@
         background-color: var(--primary-clr-dark);
     }
 
-
     .submenu ul {
         display: flex;
         flex-direction: row;
@@ -113,10 +108,9 @@
         margin: 2rem auto;
     }
 
-}
-
     .toggle {
         display: none;
+    }
 }
 
 @media all and (min-width: 1000px) {
@@ -137,6 +131,5 @@
     }
 
 }
-
 
 </style>

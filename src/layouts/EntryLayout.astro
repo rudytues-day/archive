@@ -129,7 +129,14 @@ import '../utility/reset.css'
 		
 		main {
 			grid-area: main;
+			position: relative;
 			margin: 0 auto;
+		}
+
+		main::after {
+			position: absolute;
+			bottom: 0;
+			margin-block: 3em 0.25em;
 		}
 
 		#header {
@@ -143,6 +150,8 @@ import '../utility/reset.css'
 		#tags {
 			grid-area: tags;
 		}
+
+		
 
 		header, aside {
 			padding-bottom: 2em;

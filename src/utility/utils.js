@@ -1,3 +1,5 @@
+// slugify
+
 export function slugify(text) {
     return text
       .toString()
@@ -34,7 +36,7 @@ export function sortEntries(entries) {
 }
 
 export const sortByCreationDate = (a, b) => new Date(a) - new Date(b);
-export const sortByUploadDate = (a, b) => new Date(a.data.uploadDate).getTime() - new Date(b.data.uploadDate).getTime();
+export const sortByUploadDate = (a, b) => new Date(a.data.uploadDate) - new Date(b.data.uploadDate);
 
 export function sortBySimilar(entries) {
   const allEntries = [...entries];
@@ -48,5 +50,3 @@ export function sortBySimilar(entries) {
   // add to new array of similar entries
   // return similar entries randomized
 }
-
-export const sortProjectByCreationDate = (a, b) => new Date(a) - new Date(b);

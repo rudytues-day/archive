@@ -6,6 +6,8 @@ import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import { slugify, formatDate } from '../../../utility/utils';
 
+
+
 export async function getStaticPaths() {
 	const entries = await getCollection("entries");
 	return entries.map(entry => {
@@ -19,6 +21,7 @@ export async function getStaticPaths() {
 		}
 	});
 }
+
 
 // export function getSimilarEntries(allEntries, currentSlug, currentTags) {
 // 	const similarEntries = allEntries.filter(entry =>
@@ -42,59 +45,61 @@ const {
 
 const { slug } = Astro.params;
 
-// function sortBySimilar(entries) {
-// 	// filter the current entry by slug
-// 	const otherEntries = entries.filter((entry =>
-// 		entry.slug !== slug));
-// 	const entryTags = new Set(tags);
-// 	const otherTags = otherEntries.forEach((entry => {
-// 		new Set(entries.data.tags);
-// 		return otherTags;
-// 	}));
-// };
+function sortBySimilar(entries) {
+	// filter the current entry by slug
+	const otherEntries = entries.filter((entry =>
+		entry.slug !== slug));
+	// create a set of entry tags
+	// const entryTags = new Set(tags);
+	// const entryTags2 = [...tags];
+	// console.log(entryTags);
+	// console.log(entryTags2);
+};
 
-console.log("test")
+const randomEntries = entries.map(value => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value)
 
-// console.log(sortBySimilar(entries));
-console.log(tags);
 ---
 
-<EntryLayout title={title}>
+<EntryLayout title={title} desc=`${date} // ${desc}`>
 
-	<div class="card">
-		<h2>
-			<div class="icons">
-				{icons.toReversed().map((icon) => (
-					<i class={`fas ${(icon)}`}></i>
-				))}
-			</div>
-			<span>{title}</span>
-			<div class="icons">
-				{icons.map((icon) => (
-					<i class={`fas ${(icon)}`}></i>
-				))}
-			</div>
-		</h2>
-		<div class="body">
-				<Image class="full-image"
-				src={image.src}
-				alt={`${image.alt}`}
-				/>
-			<div class="date">
-				<b>{formatDate(date)}</b>
+	<div class="card-wrapper">
+		<div class="card">
+			<h2>
 				<div class="icons">
-					{ Nsfw && <i class="fas fa-ban"></i> }
-					{ Dd && <i class="fas fa-feather"></i>}
-				</div>
-				<b>{medium}</b>
-			</div>
-			<div class="description">
-				<p class="text">{desc}</p>
-				<ul class="tags">
-					{tags.map((tag) => (
-						<li><a href={`/archive/tagged/${slugify(tag)}/`}>{tag}</a></li>
+					{icons.toReversed().map((icon) => (
+						<i class={`fas ${(icon)}`}></i>
 					))}
-				</ul>
+				</div>
+				<span>{title}</span>
+				<div class="icons">
+					{icons.map((icon) => (
+						<i class={`fas ${(icon)}`}></i>
+					))}
+				</div>
+			</h2>
+			<div class="body">
+					<Image class="full-image"
+					src={image.src}
+					alt={`${image.alt}`}
+					/>
+				<div class="date">
+					<b>{formatDate(date)}</b>
+					<div class="icons">
+						{ Nsfw && <i class="fas fa-ban" role="img" aria-label="nsfw"></i> }
+						{ Dd && <i class="fas fa-feather" role="img" aria-label="dead dove"></i>}
+					</div>
+					<b>{medium}</b>
+				</div>
+				<div class="description">
+					<p class="text">{desc}</p>
+					<ul class="tags">
+						{tags.map((tag) => (
+							<li><a href={`/archive/tagged/${slugify(tag)}/`}>{tag}</a></li>
+						))}
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -102,14 +107,13 @@ console.log(tags);
 	<h3>RELATED ENTRIES</h3>
 
 	<div class="card-masonry">
-			{ entries.slice(0, 3).map((entry) =>
+			{ randomEntries.slice(0, 3).map((entry) =>
 				<CardPreview
 					slug={entry.slug}
 					title={entry.data.title}
 					date={entry.data.date}
 					thumb={entry.data.thumb.src}
 					desc={entry.data.desc}
-					original={entry.data.original}
 					medium={entry.data.medium}
 					Nsfw={entry.data.Nsfw}
 					Dd={entry.data.Dd}
@@ -263,14 +267,18 @@ console.log(tags);
 		gap: 1.5em;
 	}
 	
-	@media all and (min-width: 800px) {
+	@media all and (min-width: 700px) {
 		
 		main {
-			margin: 1em;
+			margin: auto;
 		}
 
+		.card-wrapper {
+		padding-inline: 1em;
+	}
+
 		ul {
-			margin: auto;
+			margin: 1em;
 		}
 
 		.card {
@@ -285,7 +293,7 @@ console.log(tags);
 	}
 	
 	@media all and (min-width: 1000px) {
-
+		
 		.card-masonry {
 			grid-template-columns: repeat(3, 1fr);
 		}
