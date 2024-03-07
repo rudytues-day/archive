@@ -2,85 +2,79 @@
 
 ---
 
-
-    <aside>
-        <header>
-            <div class="image"></div>
-            <ul class="menu">
-                <li class="toggle">
-                    <span class="title">WORKS</span>
-                    <i class="fas fa-lock"></i>
-                </li>
-                <li class="item"><a href="/">HOME</a></li>
-                <li class="item"><a href="/archive">ARCHIVE</a></li>
-                <li class="item"><a href="/gallery">GALLERY</a></li>
-                <li class="item"><a href="/projects">PROJECTS</a></li>
-            </ul>
-        </header>
-    </aside>
-
+<header>
+    <div class="image"></div>
+    <ul class="menu">
+        <li class="toggle">
+            <span class="title">MY WORKS</span>
+            <i class="fas fa-lock" id="lock" aria-label="menu toggle"></i>
+        </li>
+        <li class="item"><a href="/">HOME</a></li>
+        <li class="item"><a href="/archive">ARCHIVE</a></li>
+        <li class="item"><a href="/gallery">GALLERY</a></li>
+        <li class="item"><a href="/projects">PROJECTS</a></li>
+    </ul>
+</header>
 
 <style>
 
-    aside {
+    header {
         background-color: var(--primary-clr-dark);
         min-width: 100%;
-    }
-
-    header {
-        margin: 2em;
+        padding: 1em;
     }
 
     .menu {
-        margin: auto;
         color: var(--white-clr);
+        max-width: 100%;
+        margin: 0.5em;
+        padding: 0;
+        font-size: 1.5rem;
         font-family: var(--display);
         text-transform: uppercase;
-        font-size: 1.5rem;
-        width: 100%;
-    }
-    
-    ul {
-        list-style: none;
-        margin-inline: 1em;
-        padding: 0;
         text-align: center;
+        list-style: none;
     }
 
-    li {
+    .item {
         padding: 0.25em;
         margin: auto;
     }
 
     .toggle {
-        margin: 0em 1em;
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
 
     .toggle i {
-        font-size: 0.85em;
+        font-size: 0.8em;
     }
 
-    .submenu {
-        display: flex;
-        flex-direction: column;
-        padding: 0.25em;
-        border-radius: 0px 0px 8px 8px;
+    .toggle:has(+ .item.active ){
+        margin-bottom: 0.25em;
+    }
+
+    .item {
+        display: none;
+    }
+    
+    .item.active {
         background: var(--primary-clr-med);
+        display: block;
     }
 
-    li.active {
+    .item:nth-child(2) {
+        padding-top: 0.5em;
         border-radius: 8px 8px 0px 0px;
     }
-
-    ul.active {
-        height: auto;
+    .item:nth-child(5) {
+        padding-bottom: 0.5em;
+        border-radius: 0px 0px 8px 8px;
     }
 
     .image {
-        margin: 3rem auto;
+        margin: 2rem auto;
         background-color: white;
         height: 150px;
         width: 150px;
@@ -89,19 +83,14 @@
 
 @media all and (min-width: 700px) {
 
-    header {
-        margin: 1em auto;
-    }
-
-    .submenu {
-        margin: 0em auto;
-        padding: 0;
-        background-color: var(--primary-clr-dark);
-    }
-
-    .submenu ul {
+    .menu {
         display: flex;
         flex-direction: row;
+    }
+
+    .item { 
+        display: block;
+        background-color: var(--primary-clr-dark);
     }
 
     .image {
@@ -120,10 +109,11 @@
         padding: 0;
     }
 
-    .submenu ul {
-        flex-direction: column;
-        margin: 0em 2em;
+    .menu {
         background: var(--primary-clr-dark);
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
     }
 
     .image {
@@ -133,3 +123,21 @@
 }
 
 </style>
+
+<script>
+
+const toggle = document.getElementById("lock");
+const menuItem = document.querySelectorAll(".item");
+
+toggle?.addEventListener("click", () => {
+    menuItem.forEach((item) =>
+    item.classList.toggle("active"));
+    if (toggle.classList.contains("fa-lock")) {
+        toggle.classList.remove("fa-lock");
+        toggle.classList.add("fa-unlock-keyhole");
+    } else {
+        toggle.classList.remove("fa-unlock-keyhole");
+        toggle.classList.add("fa-lock");
+    }
+})
+</script>

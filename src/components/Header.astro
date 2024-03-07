@@ -5,7 +5,7 @@
     <div class="image"></div>
     <ul class="menu">
         <li class="toggle">
-            <span class="title">WORKS</span>
+            <span class="title">MY WORKS</span>
             <i class="fas fa-lock" id="lock" aria-label="menu toggle"></i>
         </li>
         <li class="item"><a href="/">HOME</a></li>
@@ -19,18 +19,19 @@
     
     header {
         background-color: var(--primary-clr-dark);
+        min-width: 100%;
         padding: 1em;
     }
 
     .menu {
         color: var(--white-clr);
+        max-width: 100%;
+        margin: 0.5em;
+        padding: 0;
+        font-size: 1.5rem;
         font-family: var(--display);
         text-transform: uppercase;
-        font-size: 1.5rem;
-        max-width: 100%;
         list-style: none;
-        margin: 0em 1em;
-        padding: 0;
         text-align: center;
     }
 
@@ -40,26 +41,37 @@
     }
 
     .toggle {
-        margin: auto;
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
 
-    #lock {
-        font-size: 0.85em;
+    .toggle i {
+        font-size: 0.8em;
+    }
+
+    .toggle:has(+ .item.active ){
+        margin-bottom: 0.25em;
     }
 
     .item {
-        background-color: var(--primary-clr-med);
         display: none;
     }
+    
     .item.active {
+        background-color: var(--primary-clr-med);
         display: block;
     }
 
+    .item:nth-child(2) {
+        border-radius: 8px 8px 0px 0px;
+    }
+    .item:nth-child(5) {
+        border-radius: 0px 0px 8px 8px;
+    }
+
     .image {
-        margin: 3rem auto;
+        margin: 2rem auto;
         background-color: white;
         height: 150px;
         width: 150px;
@@ -71,7 +83,6 @@
     .menu {
         display: flex;
         flex-direction: row;
-        background-color: var(--primary-clr-dark);
     }
 
     .item {
@@ -93,7 +104,6 @@
 <script>
 
 const toggle = document.getElementById("lock");
-const menu = document.querySelector("menu");
 const menuItem = document.querySelectorAll(".item");
 
 toggle?.addEventListener("click", () => {
@@ -107,17 +117,6 @@ toggle?.addEventListener("click", () => {
         toggle.classList.add("fa-lock");
     }
 })
-
-// function closeSubmenu(e) {
-//     if (menuItem.querySelector(".active")) {
-//     let isClickInside = menuItem
-//       .querySelector(".submenu-active")
-//       .contains(e.target);
-//     if (!isClickInside && menuItem.querySelector(".active")) {
-//       menuItem.querySelector(".active").classList.remove("active");
-//     }
-//   }
-// }
 
 
 </script>

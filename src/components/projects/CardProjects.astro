@@ -40,9 +40,11 @@ const {
         <h1>
 			<span>{title}</span>
 			<div class="icons">
-				{icons.map((icon) => (
+				{ featured && <i class="fas fa-stars" role="img" aria-label="collaborative"></i> }
+				<!-- {icons.map((icon) => (
 					<i class={`fas ${(icon)}`}></i>
-				))}
+					))} -->
+				{ collab && <i class="fas fa-people-pulling" role="img" aria-label="collaborative"></i> || <i class="fas fa-person-running" role="img" aria-label="independent"></i> }
 			</div>
 		</h1>
         <div class="body">
@@ -55,8 +57,8 @@ const {
                 <div class="flex">
                     <p class="date">{formatDateYear(createDate)}</p>
                     <div class="icons">
-                        { Nsfw && <i class="fas fa-ban"></i> }
-                        { Dd && <i class="fas fa-feather"></i>}
+                        { Nsfw && <i class="fas fa-ban" role="img" aria-label="adult content"></i> }
+                        { Dd && <i class="fas fa-feather" role="img" aria-label="dead dove"></i>}
                     </div>
                 </div>
                 <p class="text">{desc}</p>
