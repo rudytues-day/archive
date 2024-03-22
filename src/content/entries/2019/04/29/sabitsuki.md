@@ -2,7 +2,6 @@
 title: 'sabitsuki doodle'
 date: 2019-04-29
 uploadDate: 2024-01-30
-
 image: {
     src: "./sabi.png",
     alt: "a portrait of sabitsuki from .flow",

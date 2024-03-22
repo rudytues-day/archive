@@ -14,7 +14,7 @@ thumb: {
 }
 desc: "my kinktober 2021 entry for 'ghost and lollipop' from a friend who didn't know what kinktober was."
 tags: ["insertion", "kinktober 2021", "original", "digital"]
-icons: ["fa-sparkles","fa-moon"]
+icons: ["fa-moon-stars"]
 medium: 'clip studio paint'
 original: true
 gallery: true

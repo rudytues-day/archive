@@ -1,0 +1,137 @@
+---
+
+---
+
+<div class="filter-wrapper">
+    <fieldset id="rating">
+        <legend>RATING</legend>
+        <div class="form-flex">
+            <div class="wrapper">
+                <input type="checkbox" id="baby" name="baby" value="baby" checked>
+                <label for="baby"><i class="fas fa-baby" role="img" aria-label="baby mode"></i></label>
+            </div>
+            <div class="wrapper">
+                <input type="checkbox" id="nsfw" name="nsfw" value="nsfw" checked>
+                <label for="nsfw"><i class="fas fa-ban" role="img" aria-label="adult content"></i></label>
+            </div>
+            <div class="wrapper">
+                <input type="checkbox" id="dd" name="dd" value="dd" checked>
+                <label for="dd"><i class="fas fa-feather" role="img" aria-label="dead dove"></i></label>
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+<style>
+
+	.filter-wrapper {
+        background-color: var(--primary-clr-dark);
+		margin: 0 auto;
+        padding: 1.75rem 3rem 2.5rem 3rem;
+        width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	fieldset {
+		margin: 0em auto;
+		padding: 1em 1.5em 1.75em 1.5em;
+		border-radius: 0.5em;
+		border: 2px solid var(--primary-clr-med);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	legend {
+		margin-left: 0.5em;
+		font-family: var(--display);
+        color: var(--white-clr);
+		font-size: 1.5rem;
+	}
+
+	.form-flex {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 1.75em;
+		padding: 0.5em 1em;
+	}
+
+	.fas {
+		font-size: 1.75rem;
+	}
+
+	input[type="checkbox"],
+	input[type="radio"] {
+		height: 0;
+		width: 0;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		opacity: 0;
+	}
+
+	label {
+		color: var(--primary-clr-light);
+		opacity: 40%;
+		transition: 0.2s;
+	}
+
+	label:hover{
+		color: var(--primary-accent-clr);
+		opacity: 100%;
+	}
+	
+	input[type="checkbox"]:checked + label,
+	input[type="radio"]:checked + label {
+		color: #fff;
+		opacity: 100%;
+	}
+
+	input[type="checkbox"]:checked + .fa-feather {
+		color: var(--primary-clr-light);
+	}
+
+	input[type="checkbox"]:checked + .fa-ban {
+		color: var(--primary-accent-clr);
+	}
+
+	b {
+		font-family: var(--display);
+		font-weight: normal;
+	}
+
+	aside {
+		background-color: #111;
+		color: var(--white-clr);
+		min-width: 100%;
+	}
+
+	aside > * {
+		margin: 5em 1em;
+	}
+
+	button {
+		color: var(--white-clr);
+		border: none;
+		background-color: var(--primary-clr-dark);
+		padding: 0;
+        font-size: 3rem;
+		transition: 200ms;
+		cursor: pointer;
+	}
+
+	button:hover,
+	button:focus {
+		color: var(--primary-accent-clr)
+	}
+
+</style>
+
+<script>
+
+</script>

@@ -7,8 +7,11 @@ const { title } = Astro.props;
 
 import Sidebar from '../components/Sidebar.astro'
 import ArchiveSidebar from '../components/ArchiveSidebar.astro';
+import Filters from '../components/Filters.astro';
+import Tags from '../components/Tags.astro';
 
 import '../utility/reset.css'
+import RecentUploads from '../components/RecentUploads.astro';
 ---
 
 <!doctype html>
@@ -36,7 +39,11 @@ import '../utility/reset.css'
 			<h1>ARCHIVE</h1>
 			<slot />
 		</main>
-		<ArchiveSidebar class="sidebar" id="tags"/>
+		<div class="sidebar-wrapper">
+			<Filters />
+			<RecentUploads />
+			<Tags />
+		</div>
 		<footer>
 			<p>all works belong to rudy tuesday unless otherwise specified. unauthorized use and duplication is prohibited.</p>
 		</footer>
@@ -107,10 +114,11 @@ import '../utility/reset.css'
 		display: grid;
 		grid-template-areas: 
 			"header main"
-			"uploads main"
-			"tags main"
+			"archive-sidebar main"
 			"footer footer";
 		grid-template-columns: 400px 1fr;
+		gap: 0;
+		grid-template-rows: max-content 1fr max-content;
 	}
 
 
@@ -119,21 +127,12 @@ import '../utility/reset.css'
 			margin: 0 auto;
 		}
 
+		.sidebar-wrapper {
+			grid-area: archive-sidebar;
+		}
+		
 		#header {
 			grid-area: header;
-		}
-
-		#uploads {
-			grid-area: sidebar;
-		}
-
-		#tags {
-			grid-area: tags;
-			max-width: 10%;
-		}
-
-		header, aside {
-			padding-bottom: 2em;
 		}
 
 		footer {

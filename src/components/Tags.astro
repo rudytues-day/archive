@@ -1,0 +1,83 @@
+---
+import { getCollection } from "astro:content";
+import { slugify } from "../utility/utils";
+
+const entries = await getCollection("entries");
+
+// sort tags by frequency
+
+const allEntryTags = entries.map((entry => 
+	entry.data.tags)).reduce((accumulator, value) => accumulator.concat(value), [])
+
+let frequency = {}
+allEntryTags.forEach(tag => {
+	if (frequency[tag]) {
+		frequency[tag]++;}
+	else {frequency[tag] = 1}
+})
+
+function sortByFrequency(a, b) {
+	return frequency[a] - frequency[b];
+}
+
+const sortedTags = [... new Set(allEntryTags.sort(sortByFrequency).toReversed().flat())];
+
+---
+
+
+<div class="tags">
+    <h2>TAGS</h2>
+    <ul>
+        {sortedTags.map(tag => (
+            <li><a href={`/archive/tagged/${slugify(tag)}/`}>{tag}</a></li>
+        ))
+        }
+    </ul>
+</div>
+
+<style>
+
+    h2 {
+        font-family: var(--display);
+        text-align: center;
+        color: white;
+    }
+
+    .tags {
+        margin: 0 auto;
+        padding: 2em 0;
+        background: var(--primary-clr-dark)
+    }
+
+    .tags ul {
+		display: flex;
+		flex-flow: row wrap;
+		list-style: none;
+		padding: 0;
+		gap: 0.4em;
+        justify-content: center;
+        margin: 2em 3em;
+	}
+
+    .tags li {
+		background-color: var(--primary-clr-med);
+		color: var(--white-clr);
+		font-family: var(--display);
+		text-transform: uppercase;
+		padding: 0.125em 0.3em 0.4em 0.3em;
+		line-height: 1;
+		border-radius: 0.25em;
+		transition: ease 0.2s;
+	}
+
+	li a {
+		transition: 200ms;
+	}
+
+	li a:hover {
+		color: var(--primary-accent-clr)
+	}
+
+
+
+</style>
