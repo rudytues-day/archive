@@ -10,7 +10,7 @@ thumb: {
     src: "./rabbit2_sig_thumb.png",
     alt: "francesca thumbnail"
 }
-desc: 'my first drawing of francesca.'
+desc: 'my first drawing of francesca'
 tags: ["francesca", "pin-up", "original", "digital"]
 medium: 'clip studio paint'
 icons: ["fa-rabbit"]

@@ -1,11 +1,11 @@
 ---
-import EntryLayout from '../../../layouts/EntryLayout.astro';
+import ArchiveLayout from '../../../layouts/ArchiveLayout.astro';
 import CardPreview from '../../../components/CardPreview.astro';
 import intersection from 'set.prototype.intersection';
 
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-import { slugify, formatDate, sortBySimilar } from '../../../utility/utils';
+import { slugify, formatDate } from '../../../utility/utils';
 
 export async function getStaticPaths() {
 	const entries = await getCollection("entries");
@@ -61,7 +61,7 @@ const similarEntries = sortBySimilar(entries).slice(0, 5).sort(() => Math.random
 
 ---
 
-<EntryLayout title={title} desc=`${date} // ${desc}`>
+<ArchiveLayout title={title} desc=`${date} // ${desc}`>
 
 	<div class="card-wrapper">
 		<div class="card">
@@ -120,7 +120,7 @@ const similarEntries = sortBySimilar(entries).slice(0, 5).sort(() => Math.random
 
 	</div>
 
-</EntryLayout>
+</ArchiveLayout>
 
 
 <style>

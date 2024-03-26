@@ -10,7 +10,7 @@ thumb: {
     src: "./catch_fire_thumb.png",
     alt: "catch fire thumbnail"
 }
-desc: "fanart of paula polestar from earthbound."
+desc: "paula polestar from earthbound"
 tags: ["earthbound", "paula polestar", "fanart", "digital"]
 icons: ["fa-fire"]
 medium: 'paint tool sai'

@@ -10,7 +10,7 @@ thumb: {
     src: "./take_flight_thumb.png",
     alt: "take flight thumbnail"
 }
-desc: 'the brothers kappel at bedtime.'
+desc: 'the brothers kappel'
 tags: ["lancelin kappel", "johannes kappel", "johancelin", "mlm", "incest", "bro-con", "original", "digital"]
 medium: 'clip studio paint'
 icons: ["fa-dove"]

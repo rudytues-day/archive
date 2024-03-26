@@ -1,23 +1,15 @@
 ---
 
+
 ---
 
 <div class="filter-wrapper">
     <fieldset id="rating">
         <legend>RATING</legend>
         <div class="form-flex">
-            <div class="wrapper">
-                <input type="checkbox" id="baby" name="baby" value="baby" checked>
-                <label for="baby"><i class="fas fa-baby" role="img" aria-label="baby mode"></i></label>
-            </div>
-            <div class="wrapper">
-                <input type="checkbox" id="nsfw" name="nsfw" value="nsfw" checked>
-                <label for="nsfw"><i class="fas fa-ban" role="img" aria-label="adult content"></i></label>
-            </div>
-            <div class="wrapper">
-                <input type="checkbox" id="dd" name="dd" value="dd" checked>
-                <label for="dd"><i class="fas fa-feather" role="img" aria-label="dead dove"></i></label>
-            </div>
+			<button id="ratedBaby"><i class="fas fa-baby" role="img" aria-label="baby mode"></i></label>
+			<button id="ratedNsfw"><i class="fas fa-ban" role="img" aria-label="adult content"></i></label>
+			<button id="ratedDove"><i class="fas fa-feather" role="img" aria-label="dead dove"></i></label>
         </div>
     </fieldset>
 </div>
@@ -27,7 +19,7 @@
 	.filter-wrapper {
         background-color: var(--primary-clr-dark);
 		margin: 0 auto;
-        padding: 1.75rem 3rem 2.5rem 3rem;
+        padding: 3rem 3rem 2.5rem 3rem;
         width: 100%;
 		display: flex;
 		flex-direction: column;
@@ -37,7 +29,7 @@
 
 	fieldset {
 		margin: 0em auto;
-		padding: 1em 1.5em 1.75em 1.5em;
+		padding: 0em 2.25em 1.5em 2.25em;
 		border-radius: 0.5em;
 		border: 2px solid var(--primary-clr-med);
 		display: flex;
@@ -58,7 +50,7 @@
 		justify-content: center;
 		align-items: center;
 		gap: 1.75em;
-		padding: 0.5em 1em;
+		/* padding: 0em 1em 0.5em 1em; */
 	}
 
 	.fas {
@@ -75,31 +67,18 @@
 		opacity: 0;
 	}
 
-	label {
-		color: var(--primary-clr-light);
+	button {
+		color: #fff;
 		opacity: 40%;
 		transition: 0.2s;
+		cursor: pointer;
 	}
 
-	label:hover{
-		color: var(--primary-accent-clr);
+	button:hover,
+	.active {
 		opacity: 100%;
 	}
 	
-	input[type="checkbox"]:checked + label,
-	input[type="radio"]:checked + label {
-		color: #fff;
-		opacity: 100%;
-	}
-
-	input[type="checkbox"]:checked + .fa-feather {
-		color: var(--primary-clr-light);
-	}
-
-	input[type="checkbox"]:checked + .fa-ban {
-		color: var(--primary-accent-clr);
-	}
-
 	b {
 		font-family: var(--display);
 		font-weight: normal;
@@ -125,13 +104,31 @@
 		cursor: pointer;
 	}
 
-	button:hover,
-	button:focus {
-		color: var(--primary-accent-clr)
-	}
-
 </style>
 
 <script>
+
+import { getCookie, setCookie } from 'typescript-cookie'
+	
+const ratingButton = document.querySelectorAll("button")
+
+ratingButton.forEach(button => {
+	let rating = button.id;
+	if (getCookie(rating) === "on") {
+		button.classList.add("active")
+	}});
+
+ratingButton.forEach(button => {
+	button.addEventListener("click", () => {
+		let rating = button.id;
+		if (getCookie(rating) === `off` || undefined) {
+			setCookie(rating, "on", { expires: 365 });
+			button.classList.add("active")
+		} else { 
+			setCookie(rating, "off", { expires: 365 });
+			button.classList.remove("active")
+		}
+	});
+});
 
 </script>

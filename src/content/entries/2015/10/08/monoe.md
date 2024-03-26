@@ -12,8 +12,8 @@ thumb: {
     src: "./monoe_thumb.png",
     alt: "monoe thumbnail"
 }
-desc: 'monoe from a yume nikki themed october art challenge.'
-tags: ["yume nikki", "monoe", "fanart", "digital"]
+desc: 'monoe from a yume nikki themed october art challenge'
+tags: ["yumetober 2015", "yume nikki", "monoe", "fanart", "digital"]
 medium: 'paint tool sai'
 icons: ["fa-eye"]
 original: false

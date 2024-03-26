@@ -12,8 +12,8 @@ thumb: {
     src: "./cat_effect_t.png",
     alt: "neko night thumbnail"
 }
-desc: 'cat effect from a yume nikki themed october art challenge.'
-tags: ["yume nikki", "madotsuki", "fanart", "digital"]
+desc: 'cat effect from a yume nikki themed october art challenge'
+tags: ["yumetober 2015", "yume nikki", "madotsuki", "fanart", "digital"]
 icons: ["fa-sparkles"]
 medium: 'paint tool sai'
 original: false

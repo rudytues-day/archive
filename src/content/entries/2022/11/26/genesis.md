@@ -12,7 +12,7 @@ thumb: {
     src: "./genesis_thumb.png",
     alt: "genesis thumbnail",
 }
-desc: 'darby in my genesis alternate universe.'
+desc: 'darby as daphne in my genesis alternate universe'
 tags: ["darby allsorts", "daphne", "genesis", "original", "digital"]
 icons: ["fa-wreath-laurel"]
 medium: 'clip studio paint'

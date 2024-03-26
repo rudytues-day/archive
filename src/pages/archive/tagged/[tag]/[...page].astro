@@ -8,23 +8,6 @@ import Pagination from "../../../../components/Pagination.astro";
 
 import { slugify } from "../../../../utility/utils";
 
-// old code
-
-// export async function getStaticPaths() {
-//     const allEntries = await getCollection("entries");
-//     const allTags = [...new Set(allEntries.flatMap((entry => 
-//     entry.data.tags))),];
-    
-//     return allTags.map((tag) => {
-//         const taggedEntries = allEntries.filter((entry) =>
-//         entry.data.tags.includes(tag));
-        
-//         return {
-            // params: { tagged: slugify(tag) },
-            // props: { taggedEntries: taggedEntries, tag: tag }
-//         }}
-//     );
-// }
 
 export const getStaticPaths = ( async ({paginate}) => {
     const entries = await getCollection("entries");
@@ -34,7 +17,7 @@ export const getStaticPaths = ( async ({paginate}) => {
         const taggedEntries = entries.toReversed().filter((entry) =>
             entry.data.tags?.includes(tag)); 
         return paginate(taggedEntries, { 
-            pageSize: 12,
+            pageSize: 9,
             params: { tag: `${slugify(tag)}` },
             props: { tag: tag }
         });
@@ -43,6 +26,8 @@ export const getStaticPaths = ( async ({paginate}) => {
 
 const { page, tag } = Astro.props;
 
+
+const pathName = new URL(Astro.request.url).pathname.slice(0, -1);
 const titleTag = tag.toUpperCase();
 
 ---
@@ -66,7 +51,14 @@ const titleTag = tag.toUpperCase();
             )}
         </div>
 
-        <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+        <Pagination 
+            firstUrl={pathName}
+            prevUrl={page.url.prev} 
+            currentUrl={page.url.current}
+            currentPage={page.currentPage}
+            nextUrl={page.url.next}
+            lastUrl={`${pathName}/${page.lastPage}`}
+        />
 
 </Layout>
 
@@ -100,11 +92,8 @@ const titleTag = tag.toUpperCase();
         justify-content: center;
     }
 
-    /* #pagination {
-        height: 100px;
-        width: 100px;
-        margin: auto;
-
-    } */
+    .masonry > * {
+		flex: 1;
+	}
 
 </style>

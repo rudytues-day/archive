@@ -16,7 +16,8 @@
     "astro": "^3.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "set.prototype.intersection": "^1.1.3"
+    "set.prototype.intersection": "^1.1.3",
+    "typescript-cookie": "^1.0.6"
   },
   "devDependencies": {
     "@types/node": "^20.11.16"

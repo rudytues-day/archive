@@ -12,7 +12,7 @@ thumb: {
     src: "./nikita_thumb.png",
     alt: "nikita thumbnail",
 }
-desc: "a friend's original character, nikita, from their yume nikki fangame."
+desc: "a friend's original character, nikita, from their yume nikki fangame"
 tags: ["nikita", "original", "digital"]
 icons: ["fa-hand-sparkles"]
 medium: 'clip studio paint'

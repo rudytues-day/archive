@@ -11,7 +11,7 @@ thumb: {
     src: "./chiaki_thumb.png",
     alt: "chiaki thumbnail"
 }
-desc: 'chiaki from super danganronpa 2.'
+desc: 'chiaki from super danganronpa 2'
 tags: ["super danganronpa 2", "chiaki nanami", "fanart", "digital"]
 medium: 'ms paint'
 icons: ["fa-circles-overlap"]

@@ -10,7 +10,7 @@ thumb: {
     src: "./sabi_thumb.png",
     alt: "sabitsuki thumbnail"
 }
-desc: "fanart of sabitsuki from .flow."
+desc: "sabitsuki from .flow"
 tags: [".flow", "sabitsuki", "fanart", "sketchbook", "analog"]
 icons: ["fa-network-wired"]
 medium: 'pen & paper'

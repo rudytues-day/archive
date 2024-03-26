@@ -25,8 +25,7 @@ const {
 
 ---
 
-<div class="card">
-	<a href={`/archive/entries/${slug}/`}>
+	<a class="card" href={`/archive/entries/${slug}/`}>
 		<h1>{title}</h1>
 		<div class="body">
 			<Image class="thumb"
@@ -45,7 +44,6 @@ const {
 			</div>
 		</div>
 	</a>
-</div>
 
 <style>
 
@@ -57,9 +55,20 @@ const {
 		padding: 0.5em;
 		color: var(--white-clr);
 		font-family: var(--display);
-		border-radius: 0.75em 0.75em 0em 0em;
+		/* border-radius: 0.75em 0.75em 0em 0em; */
 		text-align: center;
 		transition: ease 0.2s;
+		max-height: 100%;
+	}
+
+	.card {
+		text-decoration: none;
+		color: #000;
+		border: solid 2px var(--primary-clr-dark);		
+		border-radius: 0.75em;
+		/* border-radius: 0.75em; */
+		background: var(--white-clr);
+		overflow:hidden;
 	}
 
 	.card:hover h1 {
@@ -68,17 +77,13 @@ const {
 	
 	.body {
 		padding: 1em;
-		background: var(--white-clr);
-		border: solid 2px var(--primary-clr-dark);		
-		border-radius: 0em 0em 1em 1em;
-
 	}
 	
 	.thumb {
 		height: 150px;
 		width: 150px;
 		margin: 0.5em auto 0em auto;
-		border-radius: 0.75em;
+		
 	}
 
 	.description {
