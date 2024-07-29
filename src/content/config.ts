@@ -1,7 +1,17 @@
 // 1. Import utilities from `astro:content`
 import { string } from 'astro/zod';
 import { defineCollection,  z, type SchemaContext } from 'astro:content';
+
 // 2. Define your collection(s)
+const allNewsletters
+ = defineCollection({
+  type: 'content',
+  schema: z.object({
+      title: z.string().optional(),
+      date: z.date(),
+
+})});
+
 const allEntries = defineCollection({ 
     type: 'content',
     schema: ({ image }: SchemaContext) => 
@@ -54,9 +64,21 @@ const allProjects = defineCollection({
         }),
 });
 
+const allCharacters
+ = defineCollection({
+  type: 'content',
+  schema: ({ image }: SchemaContext) => 
+        z.object({
+          name: z.string(),
+          age: z.string(),
+          presentation: z.string(),
+          orientation: z.string(),
+})});
+
 // 3. Export a single `collections` object to register your collection(s)
 //    This key should match your collection directory name in "src/content"
 export const collections = {
   'entries': allEntries,
   'projects': allProjects,
+  'newsletter': allNewsletters
 };

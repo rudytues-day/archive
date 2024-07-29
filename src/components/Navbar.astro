@@ -1,0 +1,142 @@
+---
+---
+
+<header>
+    
+    <ul class="menu">
+        <li class="toggle">
+            <span class="title">RUDY TUESDAY</span>
+            <i class="fas fa-lock" id="lock" aria-label="menu toggle"></i>
+        </li>
+        <li class="item"><a href="/">HOME</a></li>
+        <li class="item has-submenu"><a tabindex="0">WORKS</a>
+            <ul class="submenu">
+                <li class="subitem">WEB SERIES</li>
+                <li class="subitem"><a href="">ARCHIVE</a></li>
+                <li class="subitem"><a href="">GALLERY</a></li>
+                <li class="subitem"><a href="">PROJECTS</a></li>
+            </ul>
+        </li>
+        <li class="item"><a href="/shop">SHOP</a></li>
+        <li class="item has-submenu"><a tabindex="0">EXTRAS</a>
+            <ul class="submenu">
+                <li class="subitem"><a href="">BLOG</a></li>
+                <li class="subitem"><a href="">LINKS</a></li>
+                <li class="subitem"><a href="">REC ROOM</a></li>
+                <li class="subitem"><a href="">TOYBOX</a></li>
+            </ul>
+        </li>
+        <li class="item has-submenu"><a tabindex="0">CONTACT</a>
+            <ul class="submenu">
+                <li class="subitem"><a href="">MESSAGE</a></li>
+                <li class="subitem"><a href="">NEWSLETTER</a></li>
+                <li class="subitem"><a href="">GUESTBOOK</a></li>
+            </ul></li>
+    </ul>
+</header>
+
+<style>
+    
+    header {
+        background-color: var(--primary-clr-dark);
+        min-width: 100%;
+        padding: 1em;
+    }
+
+    .menu {
+        color: var(--white-clr);
+        max-width: 100%;
+        margin: 0.5em;
+        padding: 0;
+        font-size: 1.5rem;
+        font-family: var(--display);
+        text-transform: uppercase;
+        list-style: none;
+        text-align: center;
+    }
+
+    .item {
+        padding: 0.25em;
+        margin: auto;
+    }
+
+    .toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .toggle i {
+        font-size: 0.8em;
+    }
+
+    .toggle:has(+ .item.active ){
+        margin-bottom: 0.25em;
+    }
+
+    .item {
+        display: none;
+    }
+    
+    .item.active {
+        background-color: var(--primary-clr-med);
+        display: block;
+    }
+
+    .item:nth-child(2) {
+        border-radius: 8px 8px 0px 0px;
+    }
+    .item:nth-child(5) {
+        border-radius: 0px 0px 8px 8px;
+    }
+
+    .image {
+        margin: 2rem auto;
+        background-color: white;
+        height: 150px;
+        width: 150px;
+        border-radius: 100%;
+    }
+
+@media all and (min-width: 700px) {
+
+    .menu {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .item {
+        display: block;
+        background-color: var(--primary-clr-dark);
+	}
+
+    .image {
+        margin: 2rem auto;
+    }
+    
+    .toggle {
+        display: none;
+    }
+}
+
+</style>
+
+<script>
+
+const toggle = document.getElementById("lock");
+const menuItem = document.querySelectorAll(".item");
+
+toggle?.addEventListener("click", () => {
+    menuItem.forEach((item) =>
+    item.classList.toggle("active"));
+    if (toggle.classList.contains("fa-lock")) {
+        toggle.classList.remove("fa-lock");
+        toggle.classList.add("fa-unlock-keyhole");
+    } else {
+        toggle.classList.remove("fa-unlock-keyhole");
+        toggle.classList.add("fa-lock");
+    }
+})
+
+
+</script>

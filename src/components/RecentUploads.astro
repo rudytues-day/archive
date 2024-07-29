@@ -40,7 +40,8 @@ const entries = await getCollection("entries");
 .uploads {
     background: var(--primary-clr-dark);
     color: var(--white-clr);
-    padding: 2rem;
+    padding: 2rem 1rem;
+    margin: auto;
 }
 
 .scrollbox {
@@ -50,7 +51,7 @@ const entries = await getCollection("entries");
     text-wrap: wrap;
     height: 278px;
     list-style: none;
-    margin: 2em 2em 0em 2em;
+    margin: 2em auto 0em auto;
     padding: 0.25em 0.5em;
     text-align: left;
     border-radius: 0.5em;
@@ -76,7 +77,7 @@ const entries = await getCollection("entries");
 @media all and (min-width: 700px) {
 
     .scrollbox {
-        margin-inline: auto;
+        margin-inline: 1.5em;
     }
 
 }

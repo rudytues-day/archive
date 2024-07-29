@@ -6,7 +6,6 @@ interface Props {
 const { title } = Astro.props;
 
 import Sidebar from '../components/Sidebar.astro'
-import ArchiveSidebar from '../components/ArchiveSidebar.astro';
 import Filters from '../components/Filters.astro';
 import Tags from '../components/Tags.astro';
 
@@ -52,13 +51,6 @@ import RecentUploads from '../components/RecentUploads.astro';
 </html>
 
 <style>
-
-	h1 {
-		font-family: var(--display);
-		font-size: 2.75rem;
-		margin: 1.5em auto;
-		text-align: center;
-	}
 	
 	main {
 		margin: auto;

@@ -3,80 +3,105 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
 import Layout from '../layouts/Layout.astro';
-import CardProjects from "../components/projects/CardProjects.astro";
-import CardPreview from '../components/CardPreview.astro';
-import Header from '../components/Header.astro';
+import Navbar from '../components/Navbar.astro';
+import Card from '../components/cards/Card.astro';
+import Newsletters from '../components/cards/Newsletters.astro'
 
-const entries = await getCollection("entries");
-const projects = await getCollection("projects")
+const newsletter = await getCollection("newsletter");
+
 ---
 
-<Layout title="WORKS">
+<Layout title="RUDY TUESDAY">
 
-<Header />
+	<Navbar />
 
 	<main>
-		<h1>WORKS</h1>
+		<header>
+			<h1>LOOK UPON MY WORKS, YE MIGHTY, AND DESPAIR</h1>
+			<p>... nothing beside remains</p>
+		</header>
+
 		<section>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, et officia doloribus amet quia asperiores sapiente officiis dolorum, facere iure, tenetur hic praesentium.</p>
+
+			<Card 
+				title="NEWS"
+				icon="fa-newspaper">
+				{ newsletter.map(async (letter) => {
+					const renderedLetter = await letter.render();
+					return (
+					<Newsletters
+						slug={letter.slug}
+						title={letter.data.title}
+						date={letter.data.date} 
+					>
+						<renderedLetter.Content />
+					</Newsletters>
+				
+				)
+					}
+				)}
+			</Card>
+
+			<Card 
+				title="SUBSCRIBE"
+				icon="fa-paper-plane">
+				<p>enter your email below to subscribe to my newsletter where i send out project and site updates, commission opening notifications, a round up of new entries to my art log and other goodies every so often.</p>
+			</Card>
+
 		</section>
 
 		<section>
-			<h2>RECENT ARCHIVE ENTRIES</h2>
-				<div class="card-masonry">
-					{ entries.slice(0, 6).map((entry) =>
-						<CardPreview
-							slug={entry.slug}
-							title={entry.data.title}
-							date={entry.data.date}
-							thumb={entry.data.thumb.src}
-							desc={entry.data.desc}
-							Nsfw={entry.data.Nsfw}
-							Dd={entry.data.Dd}
-							/>
-					)}
-				</div>
-			<a class="visit" href="./archive">VIEW MORE <i class="fas fa-angles-right"></i></a>
+
+			<h2>LINKS</h2>
+
+			<div class="card-masonry">
+				<Card
+					title="ONLINE"
+					icon="fa-globe">
+						<ul class="card-list">
+							<li><b>MASTODON:</b> <a href=""></a></li>
+							<li><b>BLUESKY:</b> <a href=""></a></li>
+							<li><b>TWITTER:</b> <a href=""></a></li>
+							<li><b>RETROSPRING:</b> @<a href="https://retrospring.net/@rudytuesday">rudytuesday</a></li>
+							<li><b>AO3:</b> <a href=""></a></li>
+							<li><b>DREAMWIDTH:</b> <a href=""></a></li>
+							<li><b>COHOST:</b> <a href=""></a></li>
+							<li><b>KO-FI:</b> <a href=""></a></li>
+							<li><b>THRONE:</b> <a href=""></a></li>
+							<li><b>ITCH.IO</b> <a href=""></a></li>
+							<li><b>ARTISTREE:</b> <a href=""></a></li>
+							<li><b>BOOSTY:</b> <a href=""></a></li>
+						</ul>
+				</Card>
+				<Card
+					title="MY SITES"
+					icon="fa-code">
+						<ul class="card-list">
+							<li><a href="">rudytues.day</a></li>
+							<li><a href="">ux.rudytues.day</a></li>
+							<li><a href="">works.rudytues.day</a></li>
+							<li><a href="">toybox.rudytues.day</a></li>
+							<li><a href="">toybox.rudytues.day/dollby</a></li>
+							<li><a href="">dollfreaks.neocities.com</a></li>
+							<li><a href=""></a></li>
+						</ul>
+				</Card>
+			</div>
+
 		</section>
 
 		<section>
-			<h2>GALLERY</h2>
-				<a href="">
-					<div class="gallery-grid">
-						{ entries.map((entry) =>
-								entry.data.gallery &&
-								<Image class="thumb"
-									src={entry.data.thumb.src}
-									alt={`${entry.data.title} thumbnail`}
-								/>
-						)}
-					</div>
-				</a>
-			<a class="visit" href="">VISIT <i class="fas fa-angles-right"></i></a>
-		</section>
 
+			<h2>OTHER</h2>
 
-		<section>
-			<h2>PROJECTS</h2>
-				<div class="grid-masonry">
-					{ projects.map((project) =>
-						<CardProjects
-							slug={project.slug}
-							href={project.data.href}
-							title={project.data.title}
-							desc={project.data.desc}
-							createDate={project.data.createDate}
-							finishDate={project.data.finishDate}
-							categories={project.data.categories}
-							featured={project.data.featured}
-							collab={project.data.collab}
-							Nsfw={project.data.Nsfw}
-							Dd={project.data.Dd}
-							icons={project.data.icons}
-							/>
-					)}
-				</div>
-			<a class="visit" href="">VIEW MORE <i class="fas fa-angles-right"></i></a>
+			<Card
+				title="NICETIES"
+				icon="fa-gift"></Card>
+
+			<Card
+				title="AFFILIATES"
+				icon="fa-heart"></Card>
+
 		</section>
 
 	</main>
@@ -84,54 +109,31 @@ const projects = await getCollection("projects")
 </Layout>
 
 <style>
-	
-	h1 {
-		font-size: 2.5rem;
-		font-weight: 700;
-		line-height: 1;
+
+	header {
 		text-align: center;
-		margin-bottom: 1em;
+		margin-bottom: 4em;
 	}
 
-	/* h1::before,
-	h1:after {
-		content: '';
-		background-image: url('/imgs/chain_1_horizontal.png');
-		display: block;
-		width: 100%;
-		height: 20px;
-		bottom: 0;
-	} */
-
-	h2 {
-		font-size: 2rem;
-		font-family: var(--display);
-		margin: 2em;
-		text-align: center;
-	}
-	
-	main::before {
-		content: '';
-		background-image: url('/imgs/chain_1_horizontal.png');
-		display: block;
-		width: 100%;
-		height: 20px;
-		top: 0;
-		margin-block: 0.25em 5em;
-	}
-
-	ul {
-		padding: 0;
+	.card-list {
 		margin: 1em;
+		padding: 0;
 	}
-	section {
+
+	.card-list li {
+		padding-left: 1em;
+	}
+	.card-list li::marker {
+		content: '/';
+	}
+
+	section p {
 		margin: 3em 0;
 		text-align: center;
 	}
 
 	section:last-child {
 		margin-bottom: 2.75em;
-		text-align: center;
 	}
 
 	section p {
@@ -139,16 +141,6 @@ const projects = await getCollection("projects")
 		max-width: 800px;
 	}
 
-	section::after {
-		content: '';
-		background-image: url('/imgs/chain_1_horizontal.png');
-		display: block;
-		/* background-color: #000; */
-		width: 100%;
-		height: 20px;
-		top: 0;
-		margin-block: 5em;
-	}
 
 	section:last-child {
 		margin-bottom: 0.25em;
@@ -163,16 +155,6 @@ const projects = await getCollection("projects")
 		max-width: 800px;
 	}
 
-	section:not(:last-child):after {
-		content: '';
-		display: block;
-		background-color: #000;
-		width: 100%;
-		height: 5px;
-		top: 0;
-		margin-block: 5em;
-	}
-
 	.gallery-grid {
 		display: flex;
 		flex-direction: row;
@@ -184,13 +166,17 @@ const projects = await getCollection("projects")
 		max-width: 600px;
 	}
 
+	.card-wrapper {
+		margin: 3em auto;
+		max-width: 750px;
+	}
+
 	.card-masonry {
 		margin: 3em auto;
 		display: flex;
-		flex-wrap: wrap;
-		flex-direction: row;
+		flex-flow: row wrap;
 		justify-content: center;
-		align-items: stretch;
+		align-items: center;
 		gap: 1.5em;
 		height: 100%;
 	}
@@ -226,6 +212,11 @@ const projects = await getCollection("projects")
 		color: var(--primary-accent-clr)
 	}
 
+	b {
+		font-family: var(--display);
+		font-size: 1.125rem;
+    }
+
 @media all and (min-width: 700px) {
 
 	section {
@@ -237,9 +228,13 @@ const projects = await getCollection("projects")
 	}
 
 	.card-masonry {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
+		display: flex;
+		justify-content: center;
 		max-width: 800px;
+	}
+
+	.card-masonry > * {
+		margin: 1em;
 	}
 	
 	.grid-masonry {

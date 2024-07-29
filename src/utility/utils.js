@@ -37,26 +37,26 @@ export function sortEntries(entries) {
 
   // sort by similar
 
-// export function sortBySimilar(entries) {
-//     const thisEntryTags = new Set(tags);
-//     const otherEntries = entries.filter((entry =>
-//       entry.slug !== slug));
-//     const otherEntryTags = otherEntries.map((entry) => {
-//       return new Set(entry.data.tags);
-//     });
-//     const similarTagCount = otherEntryTags.map((tagArray) => {
-//       return intersection(thisEntryTags, tagArray)});
-//     const slugsAndTags = otherEntries.map((entry, index) => {
-//       return { slug: entry.slug, tags: similarTagCount[index] };
-//     });
-//     const sortedSets = slugsAndTags.sort((a, b) => b.tags.size - a.tags.size);
-//     console.log(sortedSets)
-//     const similarEntries = sortedSets.map((set) => {
-//       const similar = otherEntries.find((entry) => entry.slug === set.slug);
-//       return similar;
-//     });
-//     return similarEntries;
-//   };
+//   function sortBySimilar(entries) {
+// 	const thisEntryTags = new Set(tags);
+// 	const otherEntries = entries.filter((entry =>
+// 		entry.slug !== slug));
+// 	const otherEntryTags = otherEntries.map((entry) => {
+// 		return new Set(entry.data.tags);
+// 	});
+// 	const similarTagCount = otherEntryTags.map((tagArray) => {
+// 		return intersection(thisEntryTags, tagArray)});
+// 	const slugsAndTags = otherEntries.map((entry, index) => {
+// 		return { slug: entry.slug, tags: similarTagCount[index] };
+// 	});
+// 	const sortedSets = slugsAndTags.sort((a, b) => b.tags.size - a.tags.size);
+// 	console.log(sortedSets)
+// 	const similarEntries = sortedSets.map((set) => {
+// 		const similar = otherEntries.find((entry) => entry.slug === set.slug);
+// 		return similar;
+// 	});
+// 	return similarEntries;
+// };
 
 export const sortByCreationDate = (a, b) => new Date(a) - new Date(b);
-export const sortByUploadDate = (a, b) => new Date(a.data.uploadDate) - new Date(b.data.uploadDate);
+export const sortByUploadDate = (a, b) => new Date(b.data.uploadDate) - new Date(a.data.uploadDate);

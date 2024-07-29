@@ -12,8 +12,8 @@ thumb: {
     src: "./guillotine_t.png",
     alt: "guillotine thumbnail"
 }
-desc: 'severed head effect from a yume nikki themed october art challenge.'
-tags: ["yume nikki", "madotsuki", "gore", "self-harm", "fanart", "digital"]
+desc: 'severed head effect from a yume nikki themed october art challenge'
+tags: ["yumetober 2015", "yume nikki", "madotsuki", "gore", "self-harm", "fanart", "digital"]
 medium: 'paint tool sai'
 icons: ["fa-scissors"]
 original: false

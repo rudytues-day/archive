@@ -1,0 +1,55 @@
+---
+import { formatDate } from "../../utility/utils.js";
+
+interface Props {
+	slug: string;
+	title: string;
+	date: Date;
+}
+
+const { slug, title, date } = Astro.props as Props;
+---
+
+<ul>
+	<li>
+		<h3>{formatDate(date)}{title && ` / ${title}`}</h3>
+		<slot />
+	</li>
+</ul>
+
+<style>
+
+	b {}
+
+ul {
+	list-style: none;
+	padding-left: 0.5em;
+}
+
+li {
+	margin: 1em;
+}
+
+li::marker {
+	font-family: 'Font Awesome 6 Pro';
+	font-weight: bold;
+	font-size: 1.25rem;
+	content: '\f084'
+
+}
+
+h3 {
+	text-align: left;
+	padding-left: 0.5em;
+}
+
+b {
+		font-family: var(--display);
+		font-size: 1.125rem;
+
+        color: blue;
+    }
+
+
+
+</style>

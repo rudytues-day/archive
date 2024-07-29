@@ -1,0 +1,320 @@
+---
+import GalleryLayout from '../../layouts/GalleryLayout.astro';
+import CardL from '../../components/CardL.astro';
+import Pagination from '../../components/Pagination.astro';
+
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import { getCookie, setCookie } from 'typescript-cookie'
+
+import { sortEntries, sortByCreationDate, sortByUploadDate } from '../../utility/utils';
+
+const entries = await getCollection("entries");           
+
+const galleryEntries = entries.filter((entry => entry.data.gallery === true));
+
+const originalEntries = galleryEntries.filter((entry => entry.data.tags.includes("original")));
+const fanartEntries = galleryEntries.filter((entry => entry.data.tags.includes("fanart")));
+
+// const sketchEntries = galleryEntries.filter((entry => entry.data.tags.includes("sketchbook")));
+// const studyEntries = galleryEntries.filter((entry => entry.data.tags.includes("study")));
+// const sketchAnalog = 
+
+function filterEntries(entries) {
+    
+}
+
+
+// const commissionEntries = galleryEntries.filter((entry => entry.data.tags.includes("commission")));
+// const personalEntries = galleryEntries.filter((entry) => {
+//     if (entry.data.tags.includes("personal")) {
+//         console.log("no");
+//         return entry;
+//     }});
+
+---
+
+<GalleryLayout title="GALLERY">
+
+    <div class="gallery-card">
+
+        <h1>GALLERY
+            <div class="icons"></div>
+                </h1>
+                <div class="body">
+                    <!-- <Image class="thumb"
+                        src={thumb}
+                        alt={`${title} thumbnail`}
+                    /> -->
+                    <div class="description">
+                        <div class="flex">
+                            <p class="date"></p>
+                            <div class="icons">
+                                <i class="fas fa-ban"></i> 
+                                <i class="fas fa-feather"></i> 
+                            </div>
+                        </div>
+                        <p class="text">click on the etc.</p>
+                    </div>
+                </div>
+    </div>
+
+    <div class=".folder-wrapper">
+
+        <div class="tabs-wrapper">
+            <ul class="tabs">
+                <li class="tab-button active" data-toggle-section="illustration" data-toggle-group="group1"><h3>ILLUSTRATION</h3></li></a>
+                <li class="tab-button" data-toggle-section="commission" data-toggle-group="group1"><h3>COMMISSIONS</h3></li></a>
+                <li class="tab-button" data-toggle-section="sketchbook" data-toggle-group="group1"><h3>SKETCHBOOK</h3></li></a>
+                <li class="tab-button" data-toggle-section="studies" data-toggle-group="group1"><h3>STUDIES</h3></li>
+            </ul>
+            
+            <div class="tab-section active" data-pane-section="illustration" data-toggle-group="group1">
+            
+                <h3>PERSONAL</h3>
+                <div class="thumbnail-container">
+                    { originalEntries.map((entry) => (
+                        <div class="image">
+                            <figure>
+                                <button class="thumbnail">
+                                    <Image class="thumb"
+                                        src={entry.data.thumb.src}
+                                        alt="alt"
+                                    />
+                                </button>
+                                <Image class="full-size"
+                                        src={entry.data.image.src}
+                                        alt="alt"
+                                />
+                                <figcaption>
+                                    <p>{entry.data.desc}</p>
+                                    <p><b>{entry.data.date}</b></p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    ))}
+                </div>
+            
+                 <h3>FANWORKS</h3>
+                 <div class="thumbnail-container">
+                    { fanartEntries.map((entry) => (
+                        <div class="image">
+                            <figure>
+                                <button class="thumbnail">
+                                    <Image class="thumb"
+                                        src={entry.data.thumb.src}
+                                        alt="alt"
+                                    />
+                                </button>
+                                <Image class="full-size"
+                                        src={entry.data.image.src}
+                                        alt="alt"
+                                />
+                                <figcaption>
+                                    <p>{entry.data.desc}</p>
+                                    <p><b>{entry.data.date}</b></p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    ))}
+
+                     </div>
+             </div>
+                <div class="tab-section" data-pane-section="sketchbook" data-toggle-group="group1">
+                    <h4>DIGITAL</h4>
+                        <div class="thumbnail-container">
+                        </div>
+                    <h4>ANALOG</h4>
+                        <div class="thumbnail-container">
+                        </div>
+                </div>
+            
+                <div class="tab-section" data-pane-section="commission" data-toggle-group="group1">
+                    <h4>COMMISSIONS</h4>
+                        <div class="thumbnail-container">
+                        </div>
+                </div>
+                <div class="tab-section" data-pane-section="studies" data-toggle-group="group1">
+                    <h4>DIGITAL</h4>
+                        <div class="thumbnail-container">
+                        </div>
+                    <h4>ANALOG</h4>
+                        <div class="thumbnail-container">
+                        </div>
+                </div>
+        </div>
+        </div>
+
+
+</GalleryLayout>
+
+<style>
+
+    .gallery-card {
+        list-style: none;
+		background-color: #fff;
+        margin: 1em;
+	}
+
+    h1 {
+        margin: 0;
+        font-size: 1.5em;
+        font-family: var(--display);
+        background-color: var(--primary-clr-dark);
+        overflow: hidden;
+        padding: 0.25em 1em 0.5em 1em;
+        color: var(--white-clr);
+        border-radius: 0.75em 0.75em 0em 0em;
+        transition: ease 0.2s;
+    }
+
+    .tabs-wrapper .full-size,
+    .tabs-wrapper figcaption {
+        display: none;
+    }
+
+	h1 i {
+		font-size: 0.5em;
+	}
+    
+    .card:hover h1 {
+        color: var(--accent-clr)
+    }
+
+    .body {
+        display: flex;
+        padding: 1em;
+        border: solid 2px var(--primary-clr-dark);		
+        border-radius: 0em 0em 1em 1em;
+    }
+
+    .thumbnail-container {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 1em;
+        margin: 1em auto;
+    }
+
+    .thumbnail {
+        padding: 0;
+        background: transparent;
+        outline: none;
+        border-radius: 1em 1em;
+    }
+    
+    .thumbnail > * {
+        margin: auto;
+        height: 100px;
+        width: 100px;
+        border-radius: 0.75em;
+        height: auto;
+    }
+
+    .description {
+		margin: 0em 1em;
+		display: grid;
+		gap: 1em;
+	}
+
+    .flex {
+        display: flex;
+        gap: 0.5em;
+        align-items: center;
+    }
+
+    .icons {
+		display: flex;
+		gap: 0.25em;
+        padding-top: 0.4em;
+	}
+
+    .date {
+		font-family: var(--display);
+		text-transform: uppercase;
+		font-size: 1.25em;
+        margin: 0;
+	}
+
+    .tabs-wrapper {
+        margin: 1em;
+    }
+
+    .tabs {
+            display: flex;
+            flex-direction: column;
+            flex-flow: column-reverse;
+            background: var(--primary-clr-dark);
+            border-radius: 0.6em 0.6em 0 0;
+            list-style: none;
+            padding: 0;
+        }
+
+        .tab-button {
+            margin: 0;
+            color: #fff;
+            font-family: 'Darumadrop One';
+            font-size: 1.25rem;
+            font-weight: 400;
+            line-height: 0.9;
+            background-color: var(--primary-clr-dark);
+            width: 100%;
+            text-align: left;
+            left: 0;
+            order: 1;
+            width: 100%;
+        }
+
+        .tab-button h3 {
+            padding: 0.75em;
+            border-radius: 0.6em 0.6em 0px 0px;
+        }
+
+        .tab-button:not(.active) {
+            outline: 2px solid rgba(0, 0, 0, 0.2);
+            outline-offset: -0.08em;
+            border-radius: 0.6em 0.6em 0em 0em;
+        }
+
+        .tab-button h3 {
+            padding-bottom: 0.6em
+        }
+
+        .tab-button:not(.active) h3 {
+            background: var(--primary-clr-med);
+            transition: ease all 0.3s;
+        }
+
+        .tab-button:not(.active) h3:hover {
+            color: var(--accent-clr);
+        }
+
+        .tab-button h3::before {
+            content: "\f07b";
+            display: inline-block;
+            font-family: "Font Awesome 6 Pro";
+            font-size: 0.75em;
+            margin-right: 0.6em;
+            font-weight: 900;
+        }
+
+        .tab-button.active > h3::before {
+            content: "\f07c";
+        }
+
+        .tab-section {
+            display: none;
+            color: var(--primary-clr-dark);
+            background-color: #fff;
+            border: 2px solid #111;
+            border-radius: 0em 0em 0.6em 0.6em;
+            max-width: 100%;
+            margin-block: -1px 3em;
+            padding: 1em;
+            text-align: center;
+        }
+
+        .tab-section.active {
+            display: block;
+        }
+
+</style>

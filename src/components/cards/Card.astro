@@ -1,0 +1,70 @@
+---
+interface Props {
+	title: string;
+	icon: string;
+}
+
+const { title, icon } = Astro.props as Props;
+---
+
+<div class="card">
+    <h1>
+        <i class=`fas ${icon}` aria-label="none"></i> <span>{title}</span>
+    </h1>
+    <div class="body">
+        <slot />
+    </div>
+</div>
+
+<style>
+
+    .card {
+        list-style: none;
+		margin: 3em 1em;
+		max-width: 750px;
+	}
+	
+    h1 {
+        margin: 0;
+        font-size: 1.5em;
+		font-family: var(--display);
+        background-color: var(--primary-clr-dark);
+        overflow: hidden;
+        padding: 0.5em 1em;
+        color: var(--white-clr);
+        border-radius: 0.75em 0.75em 0em 0em;
+        transition: ease 0.2s;
+		text-align: left;
+    }
+
+	h1 i {
+		font-size: 0.8em;
+		padding: 0 0.75em 0.15em 0;
+	}
+
+    h3 {
+        text-align: left;
+    }
+
+    .body {
+		background: var(--white-clr);
+        padding: 1em;
+        border: solid 2px var(--primary-clr-dark);		
+        border-radius: 0em 0em 1em 1em;
+		box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 5%);
+    }
+
+
+	@media all and (min-width: 700px) {
+
+		.card {
+            margin: 2em auto;
+		}
+
+		.body {
+		}
+
+	}
+
+</style>
+
