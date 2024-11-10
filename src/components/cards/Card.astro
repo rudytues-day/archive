@@ -13,16 +13,10 @@ const { title, icon } = Astro.props as Props;
     </h1>
     <div class="body">
         <slot />
-    </div>
+    </div>  
 </div>
 
 <style>
-
-    .card {
-        list-style: none;
-		margin: 3em 1em;
-		max-width: 750px;
-	}
 	
     h1 {
         margin: 0;
@@ -42,9 +36,21 @@ const { title, icon } = Astro.props as Props;
 		padding: 0 0.75em 0.15em 0;
 	}
 
-    h3 {
-        text-align: left;
-    }
+    h2:first-of-type {
+			text-align: left;
+			margin-block: 1.5em 1em;
+			font-size: 1.5em;
+		}
+
+		h2::before {
+			content: '\f084';
+			font-family: 'Font Awesome 6 Pro';
+			font-weight: bold;
+			font-size: 1.25rem;
+			margin-right: 0.5rem;
+		}
+
+    h3 {}
 
     .body {
 		background: var(--white-clr);
@@ -53,6 +59,47 @@ const { title, icon } = Astro.props as Props;
         border-radius: 0em 0em 1em 1em;
 		box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 5%);
     }
+
+    .card {
+        list-style: none;
+		margin: 3em 1em;
+		max-width: 750px;
+	}
+
+    b {
+
+        font-family: var(--display);
+		font-size: 1.125rem;
+    }
+
+ul {
+list-style: none;
+padding: 0;
+}
+
+li {
+margin: 1em;
+color: purple
+}
+
+li::marker {
+    font-family: 'Font Awesome 6 Pro';
+    font-weight: bold;
+    font-size: 1.25rem;
+    content: '\f084'
+}
+
+h3 {
+text-align: left;
+padding-left: 1e
+}
+
+b {
+    font-family: var(--display);
+    font-size: 1.125rem;
+    color: blue;
+}
+
 
 
 	@media all and (min-width: 700px) {

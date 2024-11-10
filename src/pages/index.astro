@@ -3,128 +3,180 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
 import Card from '../components/cards/Card.astro';
-import Newsletters from '../components/cards/Newsletters.astro'
+import Newsletters from '../components/cards/Newsletters.astro';
 
 const newsletter = await getCollection("newsletter");
-
+const letterPreviews = newsletter 
 ---
 
 <Layout title="RUDY TUESDAY">
 
-	<Navbar />
+	<div class="three-column">
 
-	<main>
-		<header>
-			<h1>LOOK UPON MY WORKS, YE MIGHTY, AND DESPAIR</h1>
-			<p>... nothing beside remains</p>
-		</header>
+		<main>
 
-		<section>
+			<section>
+				<header>
+					<h1>LOOK UPON MY WORKS, YE MIGHTY, AND DESPAIR</h1>
+					<p>... nothing beside remains</p>
+				</header>
+			</section>
+	
+			<section class="newsletter">
+				<h1>NEWS</h1>
 
-			<Card 
-				title="NEWS"
-				icon="fa-newspaper">
-				{ newsletter.map(async (letter) => {
-					const renderedLetter = await letter.render();
-					return (
-					<Newsletters
-						slug={letter.slug}
-						title={letter.data.title}
-						date={letter.data.date} 
-					>
-						<renderedLetter.Content />
-					</Newsletters>
-				
-				)
-					}
-				)}
-			</Card>
+				<div class="card-wrapper">
+					
+					<Card
+						title="NEWSLETTER"
+						icon="fa-newspaper">
+						<div class="news-scrollbox">
+							<div class="newsletters">
+								<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati, accusamus. Recusandae fuga nemo ipsam, possimus voluptate facilis rem consequatur eius quis sed culpa doloremque facere iusto ullam inventore dolore reiciendis porro repellat. Facere dolorem nesciunt tempora ut cum provident. Dicta quas recusandae qui aliquam repellendus voluptatum, atque corporis consequatur inventore distinctio, accusamus quos, praesentium expedita quo tempore omnis dignissimos voluptas quaerat tempora! Nostrum obcaecati facere cupiditate nisi quidem, natus qui accusamus nihil, sunt dignissimos tempore harum quam. Voluptatem at ad totam accusantium debitis itaque blanditiis ipsam necessitatibus quo dolor. Voluptas sit eaque impedit ipsum beatae dolores rem vero consequatur explicabo?</p>
+							</div>
+							<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati, accusamus. Recusandae fuga nemo ipsam, possimus voluptate facilis rem consequatur eius quis sed culpa doloremque facere iusto ullam inventore dolore reiciendis porro repellat. Facere dolorem nesciunt tempora ut cum provident. Dicta quas recusandae qui aliquam repellendus voluptatum, atque corporis consequatur inventore distinctio, accusamus quos, praesentium expedita quo tempore omnis dignissimos voluptas quaerat tempora! Nostrum obcaecati facere cupiditate nisi quidem, natus qui accusamus nihil, sunt dignissimos tempore harum quam. Voluptatem at ad totam accusantium debitis itaque blanditiis ipsam necessitatibus quo dolor. Voluptas sit eaque impedit ipsum beatae dolores rem vero consequatur explicabo?</p>
+						</div>
+					</Card>
+	
+					<Card
+						title="SUBSCRIBE"
+						icon="fa-paper-plane">
+						<p>enter your email below to subscribe to my newsletter where i send out project and site updates, commission opening notifications, a round up of new entries to my art log and other goodies every so often.</p>
+						<form
+							action="https://buttondown.com/api/emails/embed-subscribe/rudytuesday"
+							method="post"
+							target="popupwindow"
+							onsubmit="window.open('https://buttondown.com/rudytuesday', 'popupwindow')"
+							class="embeddable-buttondown-form"
+							>
+							<label for="bd-email">Enter your email</label>
+							<input type="email" name="email" id="bd-email" />
+							
+							<input type="submit" value="subscribe" />
+							<p>powered by <a href="https://buttondown.com/refer/rudytuesday" target="_blank"></a>buttondown</a></p>
+						</form>
 
-			<Card 
-				title="SUBSCRIBE"
-				icon="fa-paper-plane">
-				<p>enter your email below to subscribe to my newsletter where i send out project and site updates, commission opening notifications, a round up of new entries to my art log and other goodies every so often.</p>
-			</Card>
+						<style>
 
-		</section>
+						</style>
+					</Card>
+				</div>
 
-		<section>
+			</section>
+		</main>
 
-			<h2>LINKS</h2>
-
-			<div class="card-masonry">
-				<Card
-					title="ONLINE"
-					icon="fa-globe">
-						<ul class="card-list">
-							<li><b>MASTODON:</b> <a href=""></a></li>
-							<li><b>BLUESKY:</b> <a href=""></a></li>
-							<li><b>TWITTER:</b> <a href=""></a></li>
-							<li><b>RETROSPRING:</b> @<a href="https://retrospring.net/@rudytuesday">rudytuesday</a></li>
-							<li><b>AO3:</b> <a href=""></a></li>
-							<li><b>DREAMWIDTH:</b> <a href=""></a></li>
-							<li><b>COHOST:</b> <a href=""></a></li>
-							<li><b>KO-FI:</b> <a href=""></a></li>
-							<li><b>THRONE:</b> <a href=""></a></li>
-							<li><b>ITCH.IO</b> <a href=""></a></li>
-							<li><b>ARTISTREE:</b> <a href=""></a></li>
-							<li><b>BOOSTY:</b> <a href=""></a></li>
-						</ul>
-				</Card>
-				<Card
-					title="MY SITES"
-					icon="fa-code">
-						<ul class="card-list">
-							<li><a href="">rudytues.day</a></li>
-							<li><a href="">ux.rudytues.day</a></li>
-							<li><a href="">works.rudytues.day</a></li>
-							<li><a href="">toybox.rudytues.day</a></li>
-							<li><a href="">toybox.rudytues.day/dollby</a></li>
-							<li><a href="">dollfreaks.neocities.com</a></li>
-							<li><a href=""></a></li>
-						</ul>
-				</Card>
+		<aside class="column leftColumn">
+			<div class="column-wrapper">
+				<div class="image"></div>
+				<h2>LINKS</h2>
+				<ul>
+					<li><a href="">GITHUB</a></li>
+					<li><a href="">CODEPEN</a></li>
+					<li><a href="">FEDIVERSE</a></li>
+					<li><a href="">BLUESKY</a></li>
+					<!-- <li><a href="">TWITTER</a></li> -->
+					<li><a href="">POMF.TV</a></li>
+				</ul>
 			</div>
+			<div class="column-wrapper">
+				<div class="image"></div>
+				<h2>SUPPORT ME</h2>
+				<ul>
+					<li><a href="">KO-FI</a></li>
+					<li><a href="">BOOSTY</a></li>
+					<li><a href="">COMMISSION</a></li>
+				</ul>
+			</div>
+		</aside>
 
-		</section>
+		<aside class="column rightColumn">
+			<div class="column-wrapper">
+				<div class="image"></div>
+				<h2>ABOUT</h2>
+					<p>rudy tuesday is a queer and neurodivergent webMaster, erotic artist and content collector.</p>
+					<p>he has no greater achievements or accolades but he does have a very nice website.</p>
+				<p><a href="/about">READ MORE <i class="fas fa-angles-right"></i></a></p>
+			</div>
+		</aside>
 
-		<section>
 
-			<h2>OTHER</h2>
 
-			<Card
-				title="NICETIES"
-				icon="fa-gift"></Card>
+	</div>
 
-			<Card
-				title="AFFILIATES"
-				icon="fa-heart"></Card>
-
-		</section>
-
-	</main>
 
 </Layout>
 
 <style>
 
+
+.newsletters {}
+	.news-scrollbox {
+		margin: 1em;
+		border: 2px solid #000;
+		border-radius: 1em;
+		overflow: scroll;
+		overflow-x: hidden;
+		/* height: 100%; */
+		height: 350px;
+	}
+
+	.three-column {
+		display: flex;
+		flex-direction: column;
+	}
+
+	main {
+		z-index: -9;
+		border-radius: 8px;
+		box-shadow: var(--primary-clr-dark) 0 0 0 20px;
+	}
+
+	.image {
+		aspect-ratio: 1/1;
+		width: 150px;
+		margin: 3em auto;
+		background-color: #fff;
+		border-radius: 100%;
+	}
+
+	aside {
+		background: var(--primary-clr-dark);
+		color: white;
+	}
+
+	aside h2,
+	aside a {
+		font-family: var(--display);
+		font-size: 1.5rem;
+	}
+
+	aside p {
+		margin: 1em 2em;
+		text-align: center;
+	}
+
+	aside ul {
+		list-style: none;
+		text-align: center;
+		padding: 0;
+	}
+	aside li {
+		margin-bottom: 0.5em;
+	}
+
+	.column-wrapper {
+		margin-block: 5em;
+	}
+
+	form {
+		display: grid;
+		gap: 1em;
+	}
+
 	header {
 		text-align: center;
 		margin-bottom: 4em;
-	}
-
-	.card-list {
-		margin: 1em;
-		padding: 0;
-	}
-
-	.card-list li {
-		padding-left: 1em;
-	}
-	.card-list li::marker {
-		content: '/';
 	}
 
 	section p {
@@ -140,7 +192,6 @@ const newsletter = await getCollection("newsletter");
 		margin: 1em;
 		max-width: 800px;
 	}
-
 
 	section:last-child {
 		margin-bottom: 0.25em;
@@ -171,29 +222,6 @@ const newsletter = await getCollection("newsletter");
 		max-width: 750px;
 	}
 
-	.card-masonry {
-		margin: 3em auto;
-		display: flex;
-		flex-flow: row wrap;
-		justify-content: center;
-		align-items: center;
-		gap: 1.5em;
-		height: 100%;
-	}
-
-	.grid-masonry {
-		margin: 3em auto;
-		display: flex;
-		flex-direction: column;
-		gap: 1.5em;
-	}
-
-	.thumb {
-		max-width: 100px;
-		max-height: 100px;
-		border-radius: 0.5em;
-	}
-
 	.visit {
 		margin: auto;
 		font-size: 2rem;
@@ -217,7 +245,7 @@ const newsletter = await getCollection("newsletter");
 		font-size: 1.125rem;
     }
 
-@media all and (min-width: 700px) {
+@media all and (min-width: 1250px) {
 
 	section {
 		margin: 3em auto;
@@ -227,16 +255,23 @@ const newsletter = await getCollection("newsletter");
 		margin: auto;
 	}
 
-	.card-masonry {
-		display: flex;
-		justify-content: center;
-		max-width: 800px;
+	.three-column {
+		display: grid;
+		grid-template-columns: 300px 1fr 300px;
+		grid-template-areas: 'left middle right'
 	}
 
-	.card-masonry > * {
-		margin: 1em;
+	.leftColumn {
+		grid-area: left
 	}
-	
+
+	.rightColumn {
+		grid-area: right;
+	}
+
+	main {
+		grid-area: middle;
+	}
 	.grid-masonry {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
@@ -245,8 +280,13 @@ const newsletter = await getCollection("newsletter");
 
 }
 
-@media all and (min-width: 1000px) {}
+@media all and (min-width: 1200px) {
 
-@media all and (min-width: 1200px) {}
+	.card-wrapper {
+		padding: 0em 1em;
+		margin: 5em auto;
+	}
+
+}
 
 </style>

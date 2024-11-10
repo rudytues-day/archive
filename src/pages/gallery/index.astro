@@ -1,0 +1,429 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { formatDate } from '../../utility/utils';
+
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
+import placeholderImage from "./abstract_daughter.png";
+
+// import { sortEntries, sortByCreationDate, sortByUploadDate } from '../../../utility/utils';
+
+const entries = await getCollection("entries");           
+
+const galleryEntries = entries.filter((entry => entry.data.gallery === true));
+
+const originalEntries = galleryEntries.filter((entry => entry.data.tags.includes("original")));
+const fanartEntries = galleryEntries.filter((entry => entry.data.tags.includes("fanart")));
+
+// const sketchEntries = galleryEntries.filter((entry => entry.data.tags.includes("sketchbook")));
+// const sketchAnalog = 
+// const studyEntries = galleryEntries.filter((entry => entry.data.tags.includes("study")));
+
+function filterEntries(entries) {
+    
+}
+
+
+// const commissionEntries = galleryEntries.filter((entry => entry.data.tags.includes("commission")));
+// const personalEntries = galleryEntries.filter((entry) => {
+//     if (entry.data.tags.includes("personal")) {
+//         console.log("no");
+//         return entry;
+//     }});
+
+---
+
+<Layout title="GALLERY">
+
+    
+    <main>
+    <h1>GALLERY</h1>
+
+    <div class="gallery-card" id="display">
+        <div class="image">
+            <h2>GALLERY</h2>
+            <figure>
+                <Image class="full-size"
+                        src={placeholderImage}
+                        alt="alt"
+                />
+                <figcaption>
+                    <p></p>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    
+        <div class="folder-wrapper">
+    
+            <div class="tabs-wrapper">
+
+                <ul class="tabs">
+                    <li class="tab-button active" data-tab-section="illustration">ILLUSTRATION</li></a>
+                    <li class="tab-button" data-tab-section="commission">COMMISSIONS</li></a>
+                    <li class="tab-button" data-tab-section="sketchbook">SKETCHBOOK</li></a>
+                    <li class="tab-button" data-tab-section="studies">STUDIES</li>
+                </ul>
+    
+                <div class="tab-section active" data-pane-section="illustration" data-toggle-group="group1">
+    
+                    <h3>PERSONAL</h3>
+                    <div class="thumbnail-container">
+                        { originalEntries.map((entry) => (
+                            <a href="#display">
+                                <div class="image">
+                                    <figure>
+                                        <h2>{entry.data.title}</h2>
+                                        <button class="thumbnail">
+                                            <Image class="thumb"
+                                                src={entry.data.thumb.src}
+                                                alt="alt"
+                                            />
+                                        </button>
+                                        <Image class="full-size"
+                                                src={entry.data.image.src}
+                                                alt="alt"
+                                        />
+                                        <figcaption>
+                                            <p class="title">{entry.data.title}</p>
+                                            <p>{entry.data.desc}</p>
+                                            <p><b>{entry.data.medium}<br/>{formatDate(entry.data.date)}</b></p>
+                                        </figcaption>
+                                    </figure>
+                            </a>
+                                </div>
+                        ))}
+                    
+                    </div>
+    
+                     <h3>FANWORKS</h3>
+                     <div class="thumbnail-container">
+                        { fanartEntries.map((entry) => (
+    
+                            <div class="image">
+                                <figure>
+                                    <button class="thumbnail">
+                                        <Image class="thumb"
+                                            src={entry.data.thumb.src}
+                                            alt="alt"
+                                        />
+                                    </button>
+                                    <Image class="full-size"
+                                            src={entry.data.image.src}
+                                            alt="alt"
+                                    />
+                                    <figcaption>
+                                        <p>{entry.data.desc}</p>
+                                        <p><b>{entry.data.date}</b></p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        ))}
+    
+                         </div>
+                 </div>
+                    <div class="tab-section" data-pane-section="sketchbook" data-toggle-group="group1">
+                        <h4>DIGITAL</h4>
+                            <div class="thumbnail-container">
+                            </div>
+                        <h4>ANALOG</h4>
+                            <div class="thumbnail-container">
+                            </div>
+                    </div>
+    
+                    <div class="tab-section" data-pane-section="commission" data-toggle-group="group1">
+                        <h4>COMMISSIONS</h4>
+                            <div class="thumbnail-container">
+                            </div>
+                    </div>
+                    <div class="tab-section" data-pane-section="studies" data-toggle-group="group1">
+                        <h4>DIGITAL</h4>
+                            <div class="thumbnail-container">
+                            </div>
+                        <h4>ANALOG</h4>
+                            <div class="thumbnail-container">
+                            </div>
+                    </div>
+            </div>
+            </div>
+    
+</main>
+
+</Layout>
+
+<style>
+
+    h1 {
+        margin-block: 2em;
+    }
+
+    .gallery-card {
+		background-color: #fff;
+        margin: 1em 1em 2em 1em;
+        border: 2px solid #000;
+        border-radius: 0.75rem;
+        overflow: hidden;
+
+	}
+
+    .gallery-card button {
+        display: none;
+    }
+
+    .gallery-card img {
+		height: auto;
+		max-height: 80vh;
+		width: auto;
+        margin-bottom: 3em;
+    }
+
+
+    
+
+    h2 {
+        margin: 0;
+        font-size: 1.5rem;
+        font-family: var(--display);
+        background-color: var(--primary-clr-dark);
+        overflow: hidden;
+        padding: 0.5em 1em 0.75em 1em;
+        color: var(--white-clr);
+        transition: ease 0.2s;
+        text-align: left;
+        margin-block: 
+    }
+
+    h2::before {
+        content: '\f660';
+        display: inline-block;
+            font-family: "Font Awesome 6 Pro";
+            font-size: 0.75em;
+            margin-right: 1em;
+            font-weight: 900;
+    }
+
+    .thumbnail-container h2 {
+        display: none;
+    }
+
+    .gallery-card figure {
+        margin: 3em 1em;
+    }
+    
+
+    .tabs-wrapper .full-size,
+    .tabs-wrapper figcaption {
+        display: none;
+    }
+    
+
+    figcaption {
+        text-align: center;
+        display: grid;
+        gap: 1em;
+    }
+
+    figcaption b {
+        text-transform: uppercase;
+    }
+
+    .title {
+        font-family: var(--display);
+        text-transform: uppercase;
+        font-size: 1.325rem;
+    }
+
+
+    .full-size {
+        max-width: 100%;
+        height: auto;
+        margin: auto;
+    }
+    
+    .body {
+        display: flex;
+        padding: 1em;
+        border: solid 2px var(--primary-clr-dark);		
+        border-radius: 0em 0em 1em 1em;
+    }
+
+    .thumbnail-container {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5em;
+        margin: 3em auto;
+    }
+
+    .thumbnail {
+        padding: 0;
+        background: transparent;
+        outline: none;
+        border-radius: 1em 1em;
+    }
+    
+    .thumbnail > * {
+        margin: auto;
+        height: 100px;
+        width: 100px;
+        border-radius: 0.75em;
+        height: auto;
+    }
+
+    .description {
+		margin: 0em 1em;
+		display: grid;
+		gap: 1em;
+	}
+
+    .flex {
+        display: flex;
+        gap: 0.5em;
+        align-items: center;
+    }
+
+    .icons {
+		display: flex;
+		gap: 0.25em;
+        padding-top: 0.4em;
+	}
+
+    .date {
+		font-family: var(--display);
+		text-transform: uppercase;
+		font-size: 1.25em;
+        margin: 0;
+	}
+
+    .tabs-wrapper {
+        margin: 0em 1em;
+    }
+
+    .tabs {
+        margin: 0;
+        display: flex;
+        flex-flow: column-reverse;
+        background: var(--primary-clr-dark);
+        border-radius: 0.6em 0.6em 0 0;
+        list-style: none;
+        padding: 0;
+    }
+
+    .tab-button {
+        background-color: var(--primary-clr-dark);
+        margin: 0;
+        color: #fff;
+        font-family: 'Darumadrop One';
+        font-size: 1.25rem;
+        font-weight: 400;
+        line-height: 0.9;
+        width: 100%;
+        text-align: left;
+        left: 0;
+        order: 1;
+        width: 100%;
+        padding: 0.9em 1em;
+        border-radius: 0.6em 0.6em 0px 0px;
+    }
+
+        .tab-button::before {
+            content: "\f07b";
+            display: inline-block;
+            font-family: "Font Awesome 6 Pro";
+            font-size: 0.75em;
+            margin-right: 1em;
+            font-weight: 900;
+        }
+
+        .tab-button:not(.active) {
+            outline: 2px solid rgba(0, 0, 0, 0.2);
+            outline-offset: -0.08em;
+            border-radius: 0.6em 0.6em 0em 0em;
+            background: var(--primary-clr-med);
+            transition: ease all 100ms;
+        }
+
+        .tab-button:not(.active):hover {
+            color: var(--primary-accent-clr);
+        }
+
+        .tab-button.active::before {
+            content: "\f07c";
+        }
+
+        .tab-section {
+            display: none;
+            color: var(--primary-clr-dark);
+            background-color: #fff;
+            border: 2px solid #111;
+            border-radius: 0em 0.6em 0.6em 0.6em;
+            max-width: 100%;
+            margin-block: -1px 3em;
+            padding: 1em;
+            text-align: center;
+        }
+
+        .tab-section.active {
+            display: block;
+        }
+
+        @media all and (min-width: 780px) {
+
+            .tabs {
+            }
+            
+        }
+        
+        @media all and (min-width: 1000px) {
+            
+            .gallery-card,
+            .folder-wrapper {
+                max-width: 1000px;
+                margin: auto;
+            }
+
+            .gallery-card {
+                margin-bottom: 2em;
+            }
+            
+            .tabs {
+                flex-flow: row;
+                width: fit-content;
+            }
+            
+            .tab-button {
+            min-width: 225px;
+        }
+        }
+
+</style>
+
+<script>
+
+const thumbnails = document.querySelectorAll('.thumbnail-container .image');
+const fullsizeDisplay = document.querySelector('.gallery-card .image');
+
+thumbnails.forEach(thumbnail => {
+    thumbnail.addEventListener('click', function() {
+        const thumbFig = thumbnail.querySelector("figure");
+        const fullsizeFig = fullsizeDisplay?.querySelector("figure");
+        // const thumbTitle = thumbnail.querySelector("h2");
+        // const fullsizeTitle = fullsizeDisplay?.querySelector("h2");
+        if (!thumbFig || !fullsizeFig) {
+            return;
+        }
+        fullsizeDisplay?.replaceChild(thumbFig.cloneNode(true), fullsizeFig);
+
+        
+        
+
+        
+        
+
+        
+    })
+})
+
+</script>

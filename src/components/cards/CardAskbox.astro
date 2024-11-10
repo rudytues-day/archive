@@ -1,0 +1,202 @@
+---
+interface Props {
+	user: string;
+	title: string;
+	date: Date;
+    
+}
+
+const { slug, title, date, } = Astro.props as Props;
+---
+
+
+<div class="card">
+    <div class="question-header">
+        <div class="question-details">
+            <p><span class="fas fa-user"></span>ANONYMOUS</p>
+            <p>10/10/1010</p>
+    
+        </div>
+        
+    </div>
+    <div class="question-wrapper">
+        <p class="question">this is where a question would go if i had one. here is some additional dummy text, really stretch it out. maybe a few more lines so i can get three lines and then i will be free.</p>
+        <p class="answer-wrapper">
+            <slot />
+        </p>
+        <div class="read-more">SEE FULL ANSWER</div>
+    </div>
+    <ul class="tags"><li>lorem</li>
+    <li>ipsum dolor</li>
+    <li>sit amet</li>
+    <li>darby allsorts</li>
+    <li>web dev</li>
+    <li>other stuff</li>
+    <li>just a</li>
+    <li>few</li>
+    <li>more tags</li>
+</ul>
+</div>
+
+<style>
+
+.card {
+    max-width: 800px;
+    border: 2px solid black;
+    border-radius: 1em;
+    margin: 2em;
+}
+
+    .question-header {
+        margin: 0;
+        font-size: 1.125rem;
+		font-family: var(--display);
+        background-color: var(--primary-clr-dark);
+        overflow: hidden;
+        padding: 0.5em 1em;
+        color: var(--white-clr);
+        border-radius: 0.75em 0.75em 0em 0em;
+        transition: ease 0.2s;
+		text-align: left;
+        text-transform: uppercase;
+    }
+
+    .question-details {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.25rem;
+    }
+
+    .question-details .fas {
+        font-size: 0.8em;
+        display: inline-block;
+        margin-right: 0.5em;
+    }
+
+    .question {
+		font-family: var(--display);
+        margin: 1.25em;
+        position: relative;
+        max-width: fit-content;
+        text-align: left;
+        /* text-align: center; */
+        line-height: 1.3;
+        text-transform: uppercase;
+        font-size: 1.125rem;
+    }
+
+    /* .question::before,
+    .question::after {
+        font-family: 'Font Awesome 6 Pro';
+        font-weight: bold;
+        font-size: 0.9rem;
+        color: var(--primary-clr-med)
+    }
+
+    .question::before {
+        content: '\f10d';
+        top: 0.325em;
+        left: -1.25em;
+    }
+
+    .question::after {
+        content: '\f10e';
+        bottom: 0.325;
+        right: -1.25em;
+    } */
+
+    .answer {
+        margin: 1.25em;
+    }
+
+    .tags {
+		display: flex;
+		flex-flow: row wrap;
+		list-style: none;
+		padding: 0;
+		gap: 0.25em;
+		margin: 1.5em;
+        align-items: center;
+	}
+
+	.tags li,
+    .read-more {
+		background-color: var(--primary-clr-dark);
+		color: var(--white-clr);
+		font-family: var(--display);
+		text-transform: uppercase;
+		padding: 0.125em 0.3em 0.4em 0.3em;
+		line-height: 1.125;
+		border-radius: 0.25em;
+	}
+
+    .read-more {
+        padding: 0.2em 0.4em 0.5em 0.4em;
+        margin: auto;
+        max-width: fit-content;
+    }
+
+	.tags li a {
+		transition: 200ms;
+	}
+
+	.tags li a:hover {
+		color: var(--primary-accent-clr)
+	}
+
+    button {
+        margin: auto;
+        text-align: center;
+    }
+
+
+	h1 i {
+		font-size: 0.8em;
+		padding: 0 0.75em 0.15em 0;
+	}
+
+    h2:first-of-type {
+			text-align: left;
+			margin-block: 1.5em 1em;
+			font-size: 1.5em;
+		}
+
+		h2::before {
+			content: '\f084';
+			font-family: 'Font Awesome 6 Pro';
+			font-weight: bold;
+			font-size: 1.25rem;
+			margin-right: 0.5rem;
+		}
+
+        .red {
+            color: red;
+        }
+</style>
+
+<script>
+import Newsletters from "./Newsletters.astro";
+
+    const readMoreBtn = document.querySelectorAll(".read-more");
+
+    
+    readMoreBtn.forEach(button => {
+        button.addEventListener("click", () => {
+            // let getAnswer = function(button, selector) {
+                let answer = button.previousElementSibling;
+                console.log(answer);
+                answer?.classList.toggle("red")
+            }
+        // let newsletters = document.querySelectorAll(".answer");
+        // console.log(newsletters);
+        // newsletters.forEach(letter => {
+        //     letter.classList.toggle("red")
+        // });
+    )
+})
+
+;
+    
+
+    // )
+</script>

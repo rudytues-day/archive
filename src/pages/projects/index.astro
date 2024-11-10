@@ -1,0 +1,110 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CardProjects from '../../components/cards/CardProjects.astro';
+import Pagination from '../../components/Pagination.astro';
+
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import type { GetStaticPaths } from "astro";
+
+import { sortEntries, sortByCreationDate, sortByUploadDate } from '../../utility/utils';
+
+const projects = await getCollection("projects");
+export const getStaticPaths = (async ( { paginate } ) => {
+    return paginate(projects, {
+        pageSize: 4,
+    })
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+
+// const byUploadDate = sortByUploadDate(entries);
+
+---
+
+
+<Layout title="ARCHIVE">
+
+<main>
+
+	<ul role="list">
+		<div class="grid-masonry">
+			{ projects.map((project) =>
+				<CardProjects
+					slug={project.slug}
+					href={project.data.href}
+					title={project.data.title}
+					desc={project.data.desc}
+					createDate={project.data.createDate}
+					finishDate={project.data.finishDate}
+					categories={project.data.categories}
+					featured={project.data.featured}
+					collab={project.data.collab}
+					Nsfw={project.data.Nsfw}
+					Dd={project.data.Dd}
+					icons={project.data.icons}
+					/>
+			)}
+		</div>
+
+	</ul>
+
+	<!-- <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} /> -->
+
+	</main>
+
+</Layout>
+
+<style>
+
+	main {
+		margin: auto;
+	}
+
+	h1 {
+		font-size: 2.5rem;
+		font-weight: 700;
+		line-height: 1;
+		text-align: center;
+		margin: 1em;
+	}
+	
+	ul {
+		padding: 0;
+		margin: 1em;
+	}
+	
+
+
+	.card-masonry {
+		display: grid;
+		gap: 1em;
+		max-width: 100%;
+	}
+
+@media all and (min-width: 700px) {
+
+	.card-masonry {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1em;
+	}
+
+}
+
+@media all and (min-width: 1000px) {
+		
+	.card-masonry {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+}
+
+@media all and (min-width: 1200px) {
+		
+		.card-masonry {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	
+	}
+
+</style>

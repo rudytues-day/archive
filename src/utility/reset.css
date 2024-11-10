@@ -1,7 +1,8 @@
 :root {
-    --primary-clr-dark: #111;
-    --primary-clr-med: #241F26;
-    --primary-clr-light: #645280;
+    --primary-clr-dark: hsl(0, 0%, 7%);
+    --primary-clr-med: hsl(283, 10%, 14%);
+    --primary-clr-light: hsl(263, 10%, 20%);
+    --primary-clr-200: hsl(261, 10%, 40%);
 
     --primary-accent-clr: #F40662;
     --primary-link-clr: #BF95A5;
@@ -82,5 +83,5 @@ textarea:not([rows]) {
 }
 
 .fa-feather {
-    color: var(--primary-clr-light);
+    color: var(--primary-clr-200);
 }

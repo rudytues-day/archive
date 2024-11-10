@@ -1,0 +1,217 @@
+---
+// import { Image } from "astro:assets";
+// import { getCollection } from "astro:content";
+
+import Layout from '../../layouts/Layout.astro';
+import Card from '../../components/cards/Card.astro';
+---
+
+<Layout title="RUDY TUESDAY">
+
+    <main>
+        <section>
+			<h2>LINKS</h2>
+
+			<div class="card-masonry">
+
+				<Card
+					title="ONLINE"
+					icon="fa-globe">
+						<ul class="card-list">
+							<li><b>FEDIVERSE:</b> 
+								<ul>
+									<li><b>AETHY.COM:</b> <a href="" class="external">@rudytuesday</a></li>
+									<li><b>BARAAG.NET:</b> <a href="https://baraag.net/@rudytuesday" class="external">@rudytuesday</a> <em>(inactive)</em></li>
+									<li><b>BLORBO.SOCIAL:</b> <a href="https://blorbo.social/@dollby" class="external">@dollby</a> <em>(inactive)</em></li>
+									<li><b>BLUESKY BRIDGE:</b> <em style="font-style:normal">@rudytues.day@bsky.brid.gy</em></li>
+								</ul>
+							<li><b>BLUESKY:</b> <a href="https://bsky.app/profile/rudytues.day" class="external">@rudytues.day</a></li>
+							<li><b>TWITTER:</b> <a href="https://twitter.com/wifefactory" class="external">@wifefactory</a></li>
+							<li><b>RETROSPRING:</b> <a href="https://retrospring.net/@rudytuesday" class="external">@rudytuesday</a></li>
+							<li><b>AO3:</b> <a href="" class="external">rudytuesday</a> <em>(inactive)</em></li>
+							<li><b>DREAMWIDTH:</b> <a href="https://rudytuesday.dreamwidth.org/" class="external">rudytuesday</a> <em>(inactive)</em></li>
+							<li><b>COHOST:</b> <a href="https://toybox.rudytues.day/pages/cohost/" class="external">@rudytuesday</a></li>
+							<li><b>KO-FI:</b> <a href="https://ko-fi.com/dollby" class="external">dollby</a></li>
+							<li><b>THRONE:</b> <a href="https://throne.com/dollby" class="external">dollby</a></li>
+							<li><b>BOOSTY:</b> <a href="https://boosty.to/rudytuesday" class="external">rudytuesday</a></li>
+							<li><b>ARTISTREE:</b> <a href="https://artistree.io/rudytuesday" class="external">rudytuesday</a></li>
+							<li><b>COMMISS.IO:</b> <a href="https://commiss.io/rudytuesday" class="external">rudytuesday</a> <em>(inactive)</em></li>
+							<li><b>ITCH.IO:</b> <a href="https://itch.io/profile/rudytuesday" class="external">rudytuesday</a></li>
+						</ul>
+				</Card>
+
+				<Card
+					title="MY SITES"
+					icon="fa-code">
+						<ul class="card-list">
+							<li><a href="https://rudytues.day">rudytues.day</a></li>
+							<li><a href="https://ux.rudytues.day">ux.rudytues.day</a></li>
+							<li><a href="https://works.rudytues.day">works.rudytues.day</a></li>
+							<li><a href="https://toybox.rudytues.day">toybox.rudytues.day</a></li>
+							<li><a href="https://toybox.rudytues.day/dollby">toybox.rudytues.day/dollby</a></li>
+							<!-- <li><a href="" class="external">dollfreaks.neocities.com</a></li> -->
+						</ul>
+				</Card>
+
+			</div>
+
+		</section>
+
+		<section>
+
+			<h2>OTHER</h2>
+
+				<Card
+					title="NICETIES"
+					icon="fa-gift">
+					<ul class="card-list">
+						<li><a class="external" href="http://digitoxin.github.io/snowworld/">snow world</a> a first-person walking sim through yume nikki's snow world</li>
+						<li><a class="external" href="https://molleindustria.org/everydaythesamedream/everydaythesamedream.html">every day the same dream</a> a game about alienation and refusal of labour</li>
+						<li><a class="external" href="https://www.heavendeluxe.com/scraps/shapequiz">heaven deluxe's shape quiz</a> find out what you are shaped like</li>
+						<li><a class="external" href="https://www.skolnickfilms.com/the-music-of-erich-zann">the music of erich zann</a> a film adaptation of lovecraft by jared skolnick</li>
+						<li><a href="https://www.catsuka.com/player/hd/vulvine_reine_d_extase" class="external">vulvine reine d'extase</a> a formerly underground erotic student film</li>
+						<li><a href="https://makefrontendshitagain.party/" class="external">make frontend shit again</a> remember when frontend was fun?</li>
+						<li><a href="http://www.truegamer.net/SA_911/911%20SATHREAD/" class="external">somethingawful wtc thread</a> site captures from somethingawful on the morning of 9/11</li>
+						<li><a href="http://tane.us/ac" class="external">tane.us/ac</a> a tane.us web toy that plays animal crossing ost by the hour</li>
+						<li><a href="https://www.thisman.org/" class="external">thisman.org</a> every night throughout the world hundreds of people dream about this face</li>
+						<li><a href="https://www.youtube.com/watch?v=_wubgAIiWpY" class="external">big egg</a> elman511 cracks open the big egg</li>
+					</ul>
+				</Card>
+
+				<Card
+					title="AFFILIATES"
+					icon="fa-heart">
+                
+                </Card>
+
+		</section>
+
+	</main>
+
+</Layout>
+
+<style>
+
+	section p {
+		margin: 3em 0;
+		text-align: center;
+	}
+
+	section:last-child {
+		margin-bottom: 2.75em;
+	}
+
+	section p {
+		margin: 1em;
+		max-width: 800px;
+	}
+
+
+	section:last-child {
+		margin-bottom: 0.25em;
+	}
+
+	section:last-child::after {
+		margin-bottom: 0em;
+	}
+
+	section p {
+		margin: 1em;
+		max-width: 800px;
+	}
+
+	.gallery-grid {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: 1em;
+		align-items: center;
+		justify-content: center;
+		margin: 3em auto;
+		max-width: 600px;
+	}
+
+	.card-wrapper {
+		margin: 3em auto;
+		max-width: 750px;
+	}
+
+	.card-masonry {
+		margin: 3em auto;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: center;
+		align-items: center;
+		gap: 1.5em;
+		height: 100%;
+	}
+
+	.grid-masonry {
+		margin: 3em auto;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5em;
+	}
+
+	.thumb {
+		max-width: 100px;
+		max-height: 100px;
+		border-radius: 0.5em;
+	}
+
+	.visit {
+		margin: auto;
+		font-size: 2rem;
+		color: var(--primary-clr-dark);
+		text-align: center;
+		font-family: var(--display);
+		text-decoration: none;
+		transition: ease 0.2s;
+	}
+
+	.visit .fas {
+		font-size: 0.8em;
+	}
+
+	.visit:hover {
+		color: var(--primary-accent-clr)
+	}
+
+	b {
+		font-family: var(--display);
+		font-size: 1.125rem;
+    }
+
+@media all and (min-width: 700px) {
+
+	section {
+		margin: 3em auto;
+	}
+
+	section p {
+		margin: auto;
+	}
+
+	.card-masonry {
+		display: flex;
+		justify-content: center;
+		max-width: 800px;
+	}
+
+	.card-masonry > * {
+		margin: 1em;
+	}
+	
+	.grid-masonry {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		max-width: 800px;
+	}
+
+}
+
+@media all and (min-width: 1000px) {}
+
+@media all and (min-width: 1200px) {}
+
+</style>

@@ -1,0 +1,291 @@
+---
+// import { Image } from "astro:assets";
+// import { getCollection } from "astro:content";
+
+import Layout from '../../layouts/Layout.astro';
+import Card from '../../components/cards/Card.astro';
+---
+
+<Layout title="RUDY TUESDAY">
+
+    <main>
+        <section>
+			<h2>ABOUT</h2>
+
+			<div class="card-masonry">
+
+				<Card
+					title="RUDY TUESDAY"
+					icon="fa-person-booth">
+                    <p>something very nice that spans</p>
+				</Card>
+
+			</div>
+
+		</section>
+
+		<!-- <section>
+			<h2>REVIEWS</h2>
+			<div class="card-grid">
+				<Card
+				title="ANONYMOUS"
+				icon="fa-user-secret">
+				<p>I'm genuinely in awe of the things you post! Your OCs are endearing with such fun dynamics ... after reading your most recent tweets I'm excited to start setting up my very own site sometime today!</p>
+			</Card>
+
+			<Card
+			title="ANONYMOUS"
+			icon="fa-user-secret">
+			<p>i love your art so much. your style is really comforting to me and the bits and pieces of story you've dropped are so amazing, everything you do leaves me always so fascinated by your mind.</p>
+		</Card>
+
+		<Card
+		title="ANONYMOUS"
+		icon="fa-user-secret">
+		<p>pieces of story you've dropped are so amazing, everything you do leaves me always so fascinated by your mind.</p>
+	</Card>
+
+	<Card
+	title="ANONYMOUS"
+	icon="fa-user-secret">
+	<p>everything you do leaves me always so fascinated by your mind.</p>
+</Card>
+
+		<Card
+			title="RUDY TUESDAY"
+			icon="fa-person-booth">
+			<p>this is where my artist statement would be... if i had one</p>
+		</Card> -->
+
+			</div>
+		</section>
+
+		<section id="sitemap">
+            <h2>SITE INFORMATION</h2>
+
+            <div class="card-masonry">
+                <Card
+                title="SITEMAP"
+                icon="fa-sitemap">
+                    <ul class="card-list sitemap">
+                        <li><a href="">index</a> <em>(you are here)</em></li>
+                        <li><a href="">about</a></li>
+                        <li><a href="">works</a></li>
+                        <li>
+                            <ul>
+                                <li><a href="">ux</a></li>
+                                <li><a href="">archive</a></li>
+                                <li><a href="">gallery</a></li>
+                                <li><a href="">projects</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="">toybox</a></li>
+                        <li><a href="">links</a></li>
+                        <li><a href="">recroom</a></li>
+                        <li><a href="">message</a></li>
+                        <li><a href="" class="external">guestbook</a></li>
+                        <li><a href="" class="external">newsletter</a></li>
+                        <li><a href="">rss</a></li>
+                        <li><a href="">not_found.html</a></li>
+                    </ul>
+                        </Card>
+                
+                <Card
+                title="BUILD TOOLS"
+                icon="fa-code">
+                    <ul class="card-list">
+                        <li><b>LANGUAGES</b></li>
+                            <ul>
+                                <li>astro</li>
+                                <li>typescript</li>
+                                <li>javascript</li>
+                                <li>css</li>
+                                <li>markdown</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="card-list">
+                        <li><b>DEPENDENCIES</b></li>
+                            <ul>
+                                <li>set.prototype.intersection</li>
+                            </ul>
+                        </ul>
+                    </ul>
+                    <ul class="card-list">
+                        <li><b>FONTS</b></li>
+                            <ul>
+                                <li>darumadrop</li>
+                                <li>averia libre</li>
+                                <li>font awesome</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </Card>
+            </div>
+
+        <div class="card-sm">
+            <Card
+            title="CREDITS"
+            icon="fa-ribbon">
+            <ul class="card-list">
+
+                <p>thank you to the fandom coders for supporting me on this journey</p>
+            </Card>
+        </div>
+
+
+
+		</section>
+
+	</main>
+
+</Layout>
+
+<style>
+
+.card-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+		align-items: center;
+		gap: 2rem;
+		padding: 0;
+		margin: 2rem;
+	}
+
+    .card-sm {
+        max-width: 350px;
+        margin: auto;
+    }
+    
+    .card-sm p {
+        margin: 1em;
+        /* text-wrap: */
+    }
+
+    .sitemap li:has(> ul)::marker {
+        content: '';
+    }
+
+	section p {
+		margin: 3em 0;
+		text-align: center;
+	}
+
+	section:last-child {
+		margin-bottom: 2.75em;
+	}
+
+	section p {
+		margin: 1em;
+		max-width: 800px;
+	}
+
+
+	section:last-child {
+		margin-bottom: 0.25em;
+	}
+
+	section:last-child::after {
+		margin-bottom: 0em;
+	}
+
+	section p {
+		margin: 1em;
+		max-width: 800px;
+	}
+
+	.gallery-grid {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: 1em;
+		align-items: center;
+		justify-content: center;
+		margin: 3em auto;
+		max-width: 600px;
+	}
+
+	.card-wrapper {
+		margin: 3em auto;
+		max-width: 750px;
+	}
+
+	.card-masonry {
+		margin: 3em auto;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: center;
+		align-items: center;
+		gap: 1.5em;
+		height: 100%;
+	}
+
+	.grid-masonry {
+		margin: 3em auto;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5em;
+	}
+
+	.thumb {
+		max-width: 100px;
+		max-height: 100px;
+		border-radius: 0.5em;
+	}
+
+	.visit {
+		margin: auto;
+		font-size: 2rem;
+		color: var(--primary-clr-dark);
+		text-align: center;
+		font-family: var(--display);
+		text-decoration: none;
+		transition: ease 0.2s;
+	}
+
+	.visit .fas {
+		font-size: 0.8em;
+	}
+
+	.visit:hover {
+		color: var(--primary-accent-clr)
+	}
+
+	b {
+		font-family: var(--display);
+		font-size: 1.125rem;
+    }
+
+@media all and (min-width: 700px) {
+
+	section {
+		margin: 3em auto;
+	}
+
+	section p {
+		margin: auto;
+	}
+
+	.card-masonry {
+		display: flex;
+		justify-content: center;
+		max-width: 800px;
+	}
+
+	.card-masonry > * {
+		margin: 1em;
+	}
+	
+	.grid-masonry {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		max-width: 800px;
+	}
+
+}
+
+@media all and (min-width: 1000px) {}
+
+@media all and (min-width: 1200px) {}
+
+</style>

@@ -1,0 +1,74 @@
+---
+import AskboxLayout from "../../layouts/AskboxLayout.astro"
+import CardAskbox from "../../components/cards/CardAskbox.astro"
+import Card from "../../components/cards/Card.astro";
+import Layout from "../../layouts/Layout.astro";
+
+import { getCollection } from "astro:content";
+
+// const questions = await getCollection("questions");
+
+
+
+---
+<Layout>
+    
+    <Card
+        title="FREQUENTLY ASKED QUESTIONS"
+        icon="fa-newspaper">
+        <p class="question">what media do you consider to be your greatest inspirations?</p>
+        <p class="answer">this is a difficult question because i don't think any media i find inspirational is reflected in my art, but i'll let you decide.</p>
+        <p>homestuck is what immediately comes to mind as one of the first web series of its kind that implemented </p>
+        <p></p>
+        <p class="question">what media do you consider to be your greatest inspirations?</p>
+        <p class="answer">test</p>
+        <p class="question">what media do you consider to be your greatest inspirations?</p>
+        <p class="answer">test</p>
+    
+    
+    </Card>
+
+    <CardAskbox
+    user=""
+    title=""
+    >
+
+    </CardAskbox>
+</Layout>
+<style>
+        .question {
+		font-family: var(--display);
+        margin: 1.25em;
+        position: relative;
+        max-width: fit-content;
+        text-align: left;
+        /* text-align: center; */
+        line-height: 1.3;
+        text-transform: uppercase;
+        font-size: 1.125rem;
+    }
+
+    /* .question::before,
+    .question::after {
+        font-family: 'Font Awesome 6 Pro';
+        font-weight: bold;
+        font-size: 0.9rem;
+        color: var(--primary-clr-med)
+    }
+
+    .question::before {
+        content: '\f10d';
+        top: 0.325em;
+        left: -1.25em;
+    }
+
+    .question::after {
+        content: '\f10e';
+        bottom: 0.325;
+        right: -1.25em;
+    } */
+
+    .answer {
+        margin: 1.25em;
+    }
+</style>

@@ -1,7 +1,7 @@
 ---
 title: 'portrait study'
-date: 2014-12-26
-uploadDate: 2024-03-11
+date: 2015-10-08
+uploadDate: 2021-01-14
 image: {
     src: "./portrait_study.jpg",
     alt: "a woman with a bowl cut facing away from the viewer.",
@@ -10,7 +10,7 @@ image: {
 }
 thumb: {
     src: "./portrait_study_thumb.jpg",
-    alt: "portrait study thumbnail"
+    alt: "portrait study thumbnail",
 }
 desc: 'a portrait study of a young woman'
 tags: ["study", "sketchbook", "analog"]

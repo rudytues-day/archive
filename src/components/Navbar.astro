@@ -1,36 +1,86 @@
 ---
+import { Image } from 'astro:assets';
+import chain1 from '../utility/image/chain_1.png';
+import chain2 from "../utility/image/chain_2.png";
+import chain3 from "../utility/image/chain_3.png";
+import darby from "../utility/image/header_darby.png";
+
 ---
 
 <header>
+    <a href="/">
+        <div class="hero">
+                <div class="chains">
+                    <Image src={chain1}
+                        alt=""
+                        height="225"
+                        class="desktop-chain"
+                    />
+                    <Image src={chain2}
+                        alt=""
+                        height="225"
+                    />
+                    <Image src={chain3}
+                        alt=""
+                        height="225"
+                        class="desktop-chain"
+                    />
+                    <Image src={chain3}
+                        alt=""
+                        height="225"
+                        class="desktop-chain"
+                    />
+                    <Image src={chain1}
+                        alt=""
+                        height="225"
+                        
+                    />
+                    <Image src={chain2}
+                        alt=""
+                        height="225"
+                        class="desktop-chain"
+                    />
+                </div>
+                <div class="header-logo">
+                    <Image src={darby} 
+                        alt="darby"
+                        class="darby"
+                        height="225"
+                    />
+                    <span id="rudy-tuesday">RUDY<br>TUES<span class="hover">DAY</span></span>
+                </div>
+            </div>
     
+        </div>
+    </a>
     <ul class="menu">
         <li class="toggle">
             <span class="title">RUDY TUESDAY</span>
             <i class="fas fa-lock" id="lock" aria-label="menu toggle"></i>
         </li>
-        <li class="item"><a href="/">HOME</a></li>
-        <li class="item has-submenu"><a tabindex="0">WORKS</a>
+        <li class="link"><a href="/">HOME</a></li>
+        <li class="link has-submenu"><a tabindex="0">WORKS</a>
             <ul class="submenu">
-                <li class="subitem">WEB SERIES</li>
-                <li class="subitem"><a href="">ARCHIVE</a></li>
-                <li class="subitem"><a href="">GALLERY</a></li>
-                <li class="subitem"><a href="">PROJECTS</a></li>
+                <li class="sublink"><s>WEB SERIES</s></li>
+                <li class="sublink"><a href="/archive">ARCHIVE</a></li>
+                <li class="sublink"><a href="/gallery">GALLERY</a></li>
+                <li class="sublink"><a href="/projects">PROJECTS</a></li>
             </ul>
         </li>
-        <li class="item"><a href="/shop">SHOP</a></li>
-        <li class="item has-submenu"><a tabindex="0">EXTRAS</a>
+        <!-- <li class="link"><a href="/shop">SHOP</a></li> -->
+        <li class="link has-submenu"><a tabindex="0">EXTRAS</a>
             <ul class="submenu">
-                <li class="subitem"><a href="">BLOG</a></li>
-                <li class="subitem"><a href="">LINKS</a></li>
-                <li class="subitem"><a href="">REC ROOM</a></li>
-                <li class="subitem"><a href="">TOYBOX</a></li>
+                <li class="sublink"><s>DIARY</s></li>
+                <li class="sublink"><a href="/links">LINKS</a></li>
+                <!-- <li class="sublink"><a href="">REC ROOM</a></li> -->
+                <li class="sublink"><a href="">TOYBOX</a></li>
             </ul>
         </li>
-        <li class="item has-submenu"><a tabindex="0">CONTACT</a>
+        <li class="link has-submenu"><a tabindex="0">CONTACT</a>
             <ul class="submenu">
-                <li class="subitem"><a href="">MESSAGE</a></li>
-                <li class="subitem"><a href="">NEWSLETTER</a></li>
-                <li class="subitem"><a href="">GUESTBOOK</a></li>
+                <li class="sublink"><a href="/contact">MESSAGE</a></li>
+                <li class="sublink"><a href="/askbox">ASK BOX</a></li>
+                <li class="sublink"><a href="http://users3.smartgb.com/g/g.php?a=s&i=g36-34043-2c">GUESTBOOK</a></li>
             </ul></li>
     </ul>
 </header>
@@ -38,26 +88,119 @@
 <style>
     
     header {
-        background-color: var(--primary-clr-dark);
         min-width: 100%;
-        padding: 1em;
+    }
+
+    .hero {
+        height: 225px;
+        position: relative;
+        background: var(--bg-clr);
+    }
+
+    .hero img {
+        position: absolute;
+        
+    }
+
+    .darby {
+        height: auto;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        z-index: 1;
+        transition: 
+            ease-in-out margin 500ms,
+            forwards left 500ms,
+            forwards right 500ms;
+    }
+
+    #rudy-tuesday {
+        color: var(--primary-clr-dark);
+        font-size: 3.25em;
+        font-family: var(--display);
+        font-weight: 400;
+        text-align: center;
+        line-height: 0.85;
+        text-decoration: none;
+        position: absolute;
+        top: 1.3em;
+        right: 20%;
+        opacity: 0;
+        transform: translateY(-200%);
+        transition: 
+            transform 250ms ease-in-out,
+            opacity 300ms ease-in-out;
+    }
+
+    #rudy-tuesday span {
+        color: var(--link-clr);
+        transition: color 0.25s ease;
+    }
+
+    #rudy-tuesday:hover span {
+        color: var(--primary-clr-dark);
+    }
+    
+    #rudy-tuesday::after {
+        z-index: -1;
+        content: '\f0c1';
+        font-family: "Font Awesome 6 Pro";
+        position: absolute;
+        font-size: 2.5em;
+        opacity: 30%;
+        left: 10%;
+        bottom: -20%;
+        color: var(--link-clr);
+        transition: 300ms;
+    }
+
+    #rudy-tuesday:hover::after {
+        color: var(--primary-accent-clr);
+        opacity: 80%;
+    }
+
+    .hover {
+        transition: ease-in 0.25s;
+    }
+
+    .chains > * {
+        position: absolute;
+        height: 120%;
+    }
+
+    .chains > :nth-child(1) { left: 5% }
+    .chains > :nth-child(2) { left: 10% }
+    .chains > :nth-child(3) { left: 20% }
+    .chains > :nth-child(4) { right: 15% }
+    .chains > :nth-child(5) { right: 10% }
+    .chains > :nth-child(6) { right: 5% }
+
+    .desktop-chain {
+        transform: translateY(-101%);
+        transition: 150ms;
+    }
+
+    .chains {
+        overflow: hidden;
+    }
+
+    #header:hover {
+        background-image: var(--header-image)
     }
 
     .menu {
+        background-color: var(--primary-clr-dark);
         color: var(--white-clr);
-        max-width: 100%;
-        margin: 0.5em;
-        padding: 0;
+        position: relative;
+        min-width: 100%;
+        margin: 0;
+        padding: 1em;
         font-size: 1.5rem;
         font-family: var(--display);
         text-transform: uppercase;
-        list-style: none;
         text-align: center;
-    }
-
-    .item {
-        padding: 0.25em;
-        margin: auto;
+        list-style: none;
     }
 
     .toggle {
@@ -70,23 +213,80 @@
         font-size: 0.8em;
     }
 
-    .toggle:has(+ .item.active ){
-        margin-bottom: 0.25em;
+    .toggle:has(+ .link.active ){
+        margin-bottom: 1em;
     }
 
-    .item {
+    li a:hover {
+        color: var(--primary-accent-clr);
+    }
+
+    .link {
+        margin: auto;
         display: none;
+        position: relative;
+        padding: 0.5em;
+        min-width: 175px;
     }
     
-    .item.active {
+    .link.active,
+    .menu .submenu-active {
         background-color: var(--primary-clr-med);
         display: block;
     }
 
-    .item:nth-child(2) {
+    .submenu {
+        display: none;
+        background-color: var(--primary-clr-med);
+        list-style: none;
+        padding: 1em;
+        border-radius: 8px;
+        height: 0;
+        transition: height 1s ease;
+    }
+
+    .submenu-active {
+        display: block;
+        padding-bottom: 0.25em;
+        position: relative;
+        height: auto;
+    }
+
+    .has-submenu a {
+
+    }
+
+    .has-submenu > a::after {
+        content: '\f103';
+        color: white;
+        font-family: 'Font Awesome 6 Pro';
+        display: inline-block;
+        font-weight: bold;
+		font-size: 1.25rem;
+		margin-left: 0.5rem;   
+        transition: transform 200ms ease;
+    }
+
+    .has-submenu > a:hover::after {
+        color: var(--primary-accent-clr);
+    }
+    
+    .submenu-active > a::after {
+        transform: rotateX(180deg); 
+    }
+
+    .sublink {
+        background: var(--primary-clr-light);
+        padding: 0.5em;
+    }
+
+    .link:nth-child(2),
+    .sublink:first-child {
         border-radius: 8px 8px 0px 0px;
     }
-    .item:nth-child(5) {
+
+    .link:last-child,
+    .sublink:last-child {
         border-radius: 0px 0px 8px 8px;
     }
 
@@ -100,15 +300,68 @@
 
 @media all and (min-width: 700px) {
 
+    .darby {
+        left: 25%;
+        right: auto;
+        margin: 0;
+        transition: margin 100ms forwards;
+    }
+    
+    #rudy-tuesday {
+        transform: translateY(0%);
+        opacity: 1;
+        transition: 
+            transform 500ms ease-in-out, 
+            right 500ms ease-in-out;
+            opacity 200ms ease-in-out;
+    }
+
+    .desktop-chain {
+            transform: translateY(0);
+            transition: 150ms;
+        }
+
     .menu {
         display: flex;
         flex-direction: row;
+        padding: 0;
+        justify-content: space-evenly;
     }
 
-    .item {
+    .link {
         display: block;
         background-color: var(--primary-clr-dark);
+        margin: 0;
 	}
+    
+    .link.active {
+        background-color: var(--primary-clr-dark);
+    }
+
+    .has-submenu.submenu-active {
+        background-color: var(--primary-clr-med);
+        border-radius: 8px 8px 0px 0px;
+    }
+
+    .submenu {
+        position: absolute;
+        z-index: 9;
+        min-width: 175px;
+        top: 100%;
+        left: 0;
+        padding: 0;
+        border-radius: 0px 0px 8px 8px;
+    }
+
+    .sublink {
+        background-color: var(--primary-clr-med);
+        padding: 0;
+        margin: 0.5em;
+    }
+
+    .sublink:last-child {
+        margin-bottom: 0.75em;
+    }
 
     .image {
         margin: 2rem auto;
@@ -119,24 +372,170 @@
     }
 }
 
+@media all and (min-width: 1000px) {
+
+    .darby {
+        left: 30%;
+        right: auto;
+        transition: left 500ms ease;
+    }
+
+    #rudy-tuesday {
+        left: auto;
+        right: 30%;
+        transition: right 500ms ease-in-out;
+    }
+}
+
 </style>
 
 <script>
 
 const toggle = document.getElementById("lock");
-const menuItem = document.querySelectorAll(".item");
+const menuLinks = document.querySelectorAll(".link");
+const hasSubmenu = document.querySelectorAll(".has-submenu");
+
+// open mobile menu
 
 toggle?.addEventListener("click", () => {
-    menuItem.forEach((item) =>
-    item.classList.toggle("active"));
+    menuLinks.forEach((link) =>  
+    link.classList.toggle("active"));
+    hasSubmenu.forEach((submenuLink) => {
+        let submenu = submenuLink.querySelector(".submenu");
+        submenuLink.classList.remove("submenu-active");
+        submenu?.classList.remove("submenu-active");
+    });
     if (toggle.classList.contains("fa-lock")) {
         toggle.classList.remove("fa-lock");
         toggle.classList.add("fa-unlock-keyhole");
     } else {
         toggle.classList.remove("fa-unlock-keyhole");
         toggle.classList.add("fa-lock");
-    }
-})
+    };
+});
 
+// open submenus
+
+hasSubmenu.forEach((submenuLink) => {
+    submenuLink.addEventListener("click", () => {
+        let submenu = submenuLink.querySelector(".submenu");
+        if (submenuLink.classList.contains("submenu-active")) {
+            submenuLink.classList.remove("submenu-active");
+            submenu?.classList.remove("submenu-active");
+        } else {
+            menuLinks.forEach((menuLink) => {
+                let submenu = menuLink.querySelector(".submenu");
+                menuLink.classList.remove("submenu-active");
+                submenu?.classList.remove("submenu-active");
+            });
+            submenuLink.classList.add("submenu-active");
+            submenu?.classList.add("submenu-active");
+        }
+        if (submenuLink.classList.contains("submenu-active")) {
+            menuLinks.forEach((menuLink) => {
+                menuLink.classList.add("active");
+                toggle?.classList.remove("fa-lock");
+                toggle?.classList.add("fa-unlock-keyhole");
+            });
+        } 
+        // else {
+        //     menuLinks.forEach((menuLink) => {
+        //         menuLink.classList.remove("active");
+        //         toggle?.classList.remove("fa-unlock-keyhole");
+        //         toggle?.classList.add("fa-lock");
+        //     })
+        // }
+    });
+});
+
+
+// const hasSubmenu = document.querySelectorAll(".has-submenu");
+
+const submenus = document.querySelectorAll(".submenu");
+
+function closeSubmenu(menus) {
+  menus.forEach((menu) => {
+    if (menu.classList.contains("submenu-active")) {
+        console.log("contains submenu active");
+        let openMenu = menu;
+        let clickMenu = openMenu.contains(menu.target);
+        if (clickMenu) {
+            console.log("clicked the submenu")
+        } else {
+            console.log("clicked outside of the submenu")
+        }
+    if (!clickMenu && openMenu) {
+        console.log("click outside open submenu")
+    } else {
+        console.log("false");
+    }
+    closeSubmenu(submenus)
+
+//else {
+//         console.log("click outside");
+
+//     // if (!isClickInside && menu.querySelector(".submenu-active")) {
+//     //   menu.querySelector(".submenu-active").classList.remove("submenu-active");
+//     // }
+// })
+}})}
+
+// function closeSubmenu(e) {
+//     hasSubmenu.forEach((submenu) => {
+//         let openSubmenu = submenu.querySelector(".submenu-active");
+//         console.log(openSubmenu);
+//         // let isClickInside = openMenu.contains(e.target);
+//         // if (!isClickInside && link.querySelector(".submenu-active")) {
+//             //   link.querySelector(".submenu-active").classList.remove("submenu-active");
+//         }
+//     )}
+    
+    document.addEventListener("click", closeSubmenu);
 
 </script>
+
+<!-- // const toggle = document.querySelector(".toggle");
+const menu = document.querySelector(".menu");
+const items = document.querySelectorAll(".item");
+
+
+ // open submenu -->
+
+<!-- function toggleItem() {
+  if (this.classList.contains("submenu-active")) {
+    
+    this.classList.remove("submenu-active");
+  } else if (menu.querySelector(".submenu-active")) {
+    menu.querySelector(".submenu-active").classList.remove("submenu-active");
+    this.classList.add("submenu-active");
+  } else {
+    this.classList.add("submenu-active");
+  }
+} -->
+
+
+
+<!-- // close submenu on click away -->
+
+<!-- function closeSubmenu(e) {
+  if (menu.querySelector(".submenu-active")) {
+    let isClickInside = menu
+      .querySelector(".submenu-active")
+      .contains(e.target);
+
+    if (!isClickInside && menu.querySelector(".submenu-active")) {
+      menu.querySelector(".submenu-active").classList.remove("submenu-active");
+    }
+  }
+}
+
+/* event listeners */
+
+toggle.addEventListener("click", toggleMenu, false);
+for (let item of items) {
+  if (item.querySelector(".submenu")) {
+    item.addEventListener("click", toggleItem, false);
+  }
+  item.addEventListener("keypress", toggleItem, false);
+}
+document.addEventListener("click", closeSubmenu, false); -->

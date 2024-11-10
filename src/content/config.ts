@@ -7,7 +7,7 @@ const allNewsletters
  = defineCollection({
   type: 'content',
   schema: z.object({
-      title: z.string().optional(),
+      title: z.string(),
       date: z.date(),
 
 })});
@@ -61,8 +61,21 @@ const allProjects = defineCollection({
         collab: z.boolean(),
         Nsfw: z.boolean().optional(),
         Dd: z.boolean().optional(),
-        }),
+    }),
 });
+
+const allQuestions = defineCollection({ 
+  type: 'content',
+  schema: ({ image }: SchemaContext) => 
+      z.object({
+        user: z.string(),
+        href: z.string(),
+        date: z.date(),
+        tags: z.array(z.string()),
+        question: z.string(),
+    }),
+});
+
 
 const allCharacters
  = defineCollection({
@@ -80,5 +93,6 @@ const allCharacters
 export const collections = {
   'entries': allEntries,
   'projects': allProjects,
-  'newsletter': allNewsletters
+  'newsletter': allNewsletters,
+  'questions': allQuestions,
 };
