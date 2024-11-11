@@ -5,7 +5,6 @@ interface Props {
 
 const { title } = Astro.props;
 
-import Sidebar from '../components/Sidebar.astro'
 import Header from '../components/Navbar.astro';
 import Tags from '../components/Tags.astro';
 import Footer from '../components/Footer.astro';
@@ -36,7 +35,6 @@ import Scrollbox from '../components/Scrollbox.astro';
 <body>
 	<Header />
 	<div class="columns">
-		<!-- <Sidebar class="sidebar" id="header" /> -->
 		<main>
 			<h1>ARCHIVE</h1>
 			<slot />
@@ -47,10 +45,8 @@ import Scrollbox from '../components/Scrollbox.astro';
 			<Scrollbox />
 			<Tags />
 		</aside>
-		<footer>
-			<Footer />
-		</footer>
 	</div> 
+	<Footer />
 </body>
 </html>
 
@@ -83,6 +79,10 @@ import Scrollbox from '../components/Scrollbox.astro';
 		margin-block: 0.25em 3em;
 	}
 
+	input[type="submit"] {
+		background: red;
+	}
+
 	main::after {
 		position: absolute;
 		bottom: 0;
@@ -100,20 +100,10 @@ import Scrollbox from '../components/Scrollbox.astro';
 	.fa-feather {
 		color: var(--primary-clr-200);
 	}
-
-	footer {
-		text-align: center;
-        background-color: var(--primary-clr-dark);
-        color: var(--white-clr);
-        padding: 1em;
-		text-wrap: balance;
-    }
-
 	
-
-.image {
-	display: none;
-}
+	.image {
+		display: none;
+	}
 
 	aside {
 		background: var(--primary-clr-dark)

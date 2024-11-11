@@ -36,24 +36,23 @@ function filterEntries(entries) {
 
 <Layout title="GALLERY">
 
-    
     <main>
-    <h1>GALLERY</h1>
+        <h1>GALLERY</h1>
 
-    <div class="gallery-card" id="display">
-        <div class="image">
-            <h2>GALLERY</h2>
-            <figure>
-                <Image class="full-size"
-                        src={placeholderImage}
-                        alt="alt"
-                />
-                <figcaption>
-                    <p></p>
-                </figcaption>
-            </figure>
-        </div>
-    </div>
+            <div class="gallery-card" id="display">
+                <div class="image">
+                    <h2>GALLERY</h2>
+                    <figure>
+                        <Image class="full-size"
+                                src={placeholderImage}
+                                alt="alt"
+                        />
+                        <figcaption>
+                            <p></p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
     
         <div class="folder-wrapper">
     
@@ -66,7 +65,7 @@ function filterEntries(entries) {
                     <li class="tab-button" data-tab-section="studies">STUDIES</li>
                 </ul>
     
-                <div class="tab-section active" data-pane-section="illustration" data-toggle-group="group1">
+                <div class="tab-section active" data-pane-section="illustration">
     
                     <h3>PERSONAL</h3>
                     <div class="thumbnail-container">
@@ -100,30 +99,31 @@ function filterEntries(entries) {
                      <h3>FANWORKS</h3>
                      <div class="thumbnail-container">
                         { fanartEntries.map((entry) => (
-    
-                            <div class="image">
-                                <figure>
-                                    <button class="thumbnail">
-                                        <Image class="thumb"
-                                            src={entry.data.thumb.src}
-                                            alt="alt"
+                            <a href="#display">
+                                <div class="image">
+                                    <figure>
+                                        <button class="thumbnail">
+                                            <Image class="thumb"
+                                                src={entry.data.thumb.src}
+                                                alt="alt"
+                                            />
+                                        </button>
+                                        <Image class="full-size"
+                                                src={entry.data.image.src}
+                                                alt="alt"
                                         />
-                                    </button>
-                                    <Image class="full-size"
-                                            src={entry.data.image.src}
-                                            alt="alt"
-                                    />
-                                    <figcaption>
-                                        <p>{entry.data.desc}</p>
-                                        <p><b>{entry.data.date}</b></p>
-                                    </figcaption>
-                                </figure>
-                            </div>
+                                        <figcaption>
+                                            <p>{entry.data.desc}</p>
+                                            <p><b>{entry.data.date}</b></p>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </a>
                         ))}
     
                          </div>
                  </div>
-                    <div class="tab-section" data-pane-section="sketchbook" data-toggle-group="group1">
+                    <div class="tab-section" data-pane-section="sketchbook">
                         <h4>DIGITAL</h4>
                             <div class="thumbnail-container">
                             </div>
@@ -132,12 +132,12 @@ function filterEntries(entries) {
                             </div>
                     </div>
     
-                    <div class="tab-section" data-pane-section="commission" data-toggle-group="group1">
+                    <div class="tab-section" data-pane-section="commission">
                         <h4>COMMISSIONS</h4>
                             <div class="thumbnail-container">
                             </div>
                     </div>
-                    <div class="tab-section" data-pane-section="studies" data-toggle-group="group1">
+                    <div class="tab-section" data-pane-section="studies">
                         <h4>DIGITAL</h4>
                             <div class="thumbnail-container">
                             </div>
