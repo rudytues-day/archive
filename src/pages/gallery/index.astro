@@ -59,10 +59,10 @@ function filterEntries(entries) {
             <div class="tabs-wrapper">
 
                 <ul class="tabs">
-                    <li class="tab-button active" data-tab-section="illustration">ILLUSTRATION</li></a>
-                    <li class="tab-button" data-tab-section="commission">COMMISSIONS</li></a>
-                    <li class="tab-button" data-tab-section="sketchbook">SKETCHBOOK</li></a>
-                    <li class="tab-button" data-tab-section="studies">STUDIES</li>
+                    <li class="tab-button active" data-toggle-section="illustration">ILLUSTRATION</li></a>
+                    <li class="tab-button" data-toggle-section="commission">COMMISSIONS</li></a>
+                    <li class="tab-button" data-toggle-section="sketchbook">SKETCHBOOK</li></a>
+                    <li class="tab-button" data-toggle-section="studies">STUDIES</li>
                 </ul>
     
                 <div class="tab-section active" data-pane-section="illustration">
@@ -73,16 +73,19 @@ function filterEntries(entries) {
                             <a href="#display">
                                 <div class="image">
                                     <figure>
-                                        <h2>{entry.data.title}</h2>
-                                        <button class="thumbnail">
+                                        <button class="thumbnail" aria-label={`${entry.data.title} thumbnail`}>
                                             <Image class="thumb"
                                                 src={entry.data.thumb.src}
-                                                alt="alt"
+                                                alt=""
                                             />
+                                            <div class="ratings">
+                                                {entry.data.Nsfw && <i class="fa-solid fa-ban" aria-label="adult content"></i>}
+                                                {entry.data.Dd && <i class="fa-solid fa-feather" aria-label="sensitive content"></i>}
+                                            </div>
                                         </button>
                                         <Image class="full-size"
                                                 src={entry.data.image.src}
-                                                alt="alt"
+                                                alt={entry.data.image.alt}
                                         />
                                         <figcaption>
                                             <p class="title">{entry.data.title}</p>
@@ -90,8 +93,8 @@ function filterEntries(entries) {
                                             <p><b>{entry.data.medium}<br/>{formatDate(entry.data.date)}</b></p>
                                         </figcaption>
                                     </figure>
-                            </a>
-                                </div>
+                                </a>
+                            </div>
                         ))}
                     
                     </div>
@@ -113,39 +116,42 @@ function filterEntries(entries) {
                                                 alt="alt"
                                         />
                                         <figcaption>
+                                            <p class="title">{entry.data.title}</p>
                                             <p>{entry.data.desc}</p>
-                                            <p><b>{entry.data.date}</b></p>
+                                            <p><b>{entry.data.medium}<br/>{formatDate(entry.data.date)}</b></p>
                                         </figcaption>
                                     </figure>
                                 </div>
                             </a>
                         ))}
-    
-                         </div>
+                    </div>
                  </div>
-                    <div class="tab-section" data-pane-section="sketchbook">
-                        <h4>DIGITAL</h4>
-                            <div class="thumbnail-container">
-                            </div>
-                        <h4>ANALOG</h4>
-                            <div class="thumbnail-container">
-                            </div>
-                    </div>
+
+                <div class="tab-section" data-pane-section="sketchbook">
+                    <h4>DIGITAL</h4>
+                        <div class="thumbnail-container">
+                        </div>
+                    <h4>ANALOG</h4>
+                        <div class="thumbnail-container">
+                        </div>
+                </div>
     
-                    <div class="tab-section" data-pane-section="commission">
-                        <h4>COMMISSIONS</h4>
-                            <div class="thumbnail-container">
-                            </div>
+                <div class="tab-section" data-pane-section="commission">
+                    <h4>COMMISSIONS</h4>
+                        <div class="thumbnail-container">
+                        </div>
                     </div>
-                    <div class="tab-section" data-pane-section="studies">
-                        <h4>DIGITAL</h4>
-                            <div class="thumbnail-container">
-                            </div>
-                        <h4>ANALOG</h4>
-                            <div class="thumbnail-container">
-                            </div>
+
+                <div class="tab-section" data-pane-section="studies">
+                    <h4>DIGITAL</h4>
+                        <div class="thumbnail-container">
+                        </div>
+                    <h4>ANALOG</h4>
+                        <div class="thumbnail-container">
+                        </div>
                     </div>
-            </div>
+                    
+                </div>
             </div>
     
 </main>
@@ -164,7 +170,6 @@ function filterEntries(entries) {
         border: 2px solid #000;
         border-radius: 0.75rem;
         overflow: hidden;
-
 	}
 
     .gallery-card button {
@@ -177,9 +182,6 @@ function filterEntries(entries) {
 		width: auto;
         margin-bottom: 3em;
     }
-
-
-    
 
     h2 {
         margin: 0;
@@ -197,14 +199,35 @@ function filterEntries(entries) {
     h2::before {
         content: '\f660';
         display: inline-block;
-            font-family: "Font Awesome 6 Pro";
-            font-size: 0.75em;
-            margin-right: 1em;
-            font-weight: 900;
+        font-family: "Font Awesome 6 Pro";
+        font-size: 0.75em;
+        margin-right: 1em;
+        font-weight: 900;
     }
 
     .thumbnail-container h2 {
         display: none;
+    }
+
+    .ratings {
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        gap: 0.25em;
+        top: 0.25em;
+        right: 0.25em;
+        justify-content: right;
+    }
+
+    .thumb {
+        opacity: 33%;
+        /* outline-color: transparent; */
+        transform: opacity 750ms ease;
+    }
+
+    .thumb:hover {
+        opacity: 100%;
+        outline: 2px var(--primary-accent-clr) solid;
     }
 
     .gallery-card figure {
@@ -262,12 +285,13 @@ function filterEntries(entries) {
         background: transparent;
         outline: none;
         border-radius: 1em 1em;
+        position: relative;
+        height: 75px;
+        width: 75px;
     }
     
     .thumbnail > * {
         margin: auto;
-        height: 100px;
-        width: 100px;
         border-radius: 0.75em;
         height: auto;
     }
@@ -373,11 +397,16 @@ function filterEntries(entries) {
 
             .tabs {
             }
+            .thumbnail {
+                height: 100px;
+                width: 100px;
+            }
             
         }
         
         @media all and (min-width: 1000px) {
             
+
             .gallery-card,
             .folder-wrapper {
                 max-width: 1000px;
@@ -415,15 +444,47 @@ thumbnails.forEach(thumbnail => {
             return;
         }
         fullsizeDisplay?.replaceChild(thumbFig.cloneNode(true), fullsizeFig);
-
-        
-        
-
-        
-        
-
-        
     })
 })
+
+// function initialize(groupId) {
+  const toggles = document.querySelectorAll<HTMLElement>(`[data-toggle-section]`);
+  const sections = document.querySelectorAll<HTMLElement>(`[data-pane-section]`);
+  const sectionIds = Array.from(sections).map((section) => {
+    return section.dataset.paneSection;
+  });
+
+  const hash = document.location.hash.replace("#", "");
+
+  function activateSection(sectionId) {
+    sections.forEach((section) => {
+      section.classList.remove("active");
+      if (section.dataset.paneSection === sectionId) {
+        section.classList.add("active");
+      }
+    });
+    toggles.forEach((toggle) => {
+      toggle.classList.remove("active");
+      if (toggle.dataset.toggleSection === sectionId) {
+        toggle.classList.add("active");
+      }
+    });
+  };
+
+  toggles.forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      const sectionId = toggle.dataset.toggleSection;
+      console.log(sectionId);
+      activateSection(sectionId);
+      const current = new URL(window.location.href);
+      console.log(current)
+      current.hash = sectionId;
+      location.replace(current);
+    });
+  });
+
+  if (sectionIds.includes(hash)) {
+    activateSection(hash);
+  }
 
 </script>

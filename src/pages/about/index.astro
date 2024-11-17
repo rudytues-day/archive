@@ -15,9 +15,10 @@ import Card from '../../components/cards/Card.astro';
 			<div class="card-masonry">
 
 				<Card
-					title="RUDY TUESDAY"
+					title="RUDOLF DIENSTAG"
 					icon="fa-person-booth">
-                    <p>something very nice that spans</p>
+					<p class="card-p">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta ex quas dolorum exercitationem voluptas reiciendis necessitatibus ab nobis provident iure deserunt consectetur reprehenderit, praesentium quaerat alias. Similique accusantium sunt deserunt?</p>
+					<p class="card-p">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit a nam obcaecati nobis doloremque qui, et delectus rerum ex hic?</p>
 				</Card>
 
 			</div>
@@ -70,23 +71,16 @@ import Card from '../../components/cards/Card.astro';
                     <ul class="card-list sitemap">
                         <li><a href="">index</a> <em>(you are here)</em></li>
                         <li><a href="">about</a></li>
-                        <li><a href="">works</a></li>
-                        <li>
-                            <ul>
-                                <li><a href="">ux</a></li>
-                                <li><a href="">archive</a></li>
-                                <li><a href="">gallery</a></li>
-                                <li><a href="">projects</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="">toybox</a></li>
+                        <li><a href="">archive</a></li>
+                        <li><a href="">gallery</a></li>
+                        <li><a href="">projects</a></li>
                         <li><a href="">links</a></li>
-                        <li><a href="">recroom</a></li>
+                        <!-- <li><a href="">recroom</a></li> -->
                         <li><a href="">message</a></li>
                         <li><a href="" class="external">guestbook</a></li>
                         <li><a href="" class="external">newsletter</a></li>
                         <li><a href="">rss</a></li>
-                        <li><a href="">not_found.html</a></li>
+                        <li><a href="">not_found.astro</a></li>
                     </ul>
                         </Card>
                 
@@ -259,11 +253,15 @@ import Card from '../../components/cards/Card.astro';
 @media all and (min-width: 700px) {
 
 	section {
-		margin: 3em auto;
+		margin: 1em auto;
 	}
 
 	section p {
-		margin: auto;
+		margin-block: 1em;
+	}
+
+	.card-p {
+		margin: 1em;
 	}
 
 	.card-masonry {

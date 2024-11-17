@@ -93,6 +93,6 @@ const allCharacters
 export const collections = {
   'entries': allEntries,
   'projects': allProjects,
-  'newsletter': allNewsletters,
+  'newsletters': allNewsletters,
   'questions': allQuestions,
 };
