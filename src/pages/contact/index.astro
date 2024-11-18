@@ -1,0 +1,60 @@
+---
+// import { Image } from "astro:assets";
+// import { getCollection } from "astro:content";
+
+import Layout from '../../layouts/Layout.astro';
+import Card from '../../components/cards/Card.astro';
+---
+
+<Layout title="RUDY TUESDAY">
+    <main>
+        <h1>CONTACT</h1>
+        <div class="card-wrapper">
+            <Card
+                title="MESSAGE"
+                icon="fa-envelopes-bulk">
+                <!-- <p class="card-p">you can use the form below to send me an email.</p>
+                <p class="card-p"><b>COMMISSIONS ARE CURRENTLY OPEN!</b> click <a href="#">here</a> for more information.</p> -->
+                <p class="card-p">fields denoted with a <i class="fas fa-asterisk"></i> are required.</p>
+                <form
+                    action="https://formspree.io/f/xnnaeobz"
+                    method="POST"
+                    >
+                    <label for="name">NAME</label>
+                    <input 
+                        type="text" 
+                        name="name" 
+                        id="name"
+                        />
+                        <!-- placeholder="webMaster dienstag" -->
+                    <label for="email">EMAIL</label>
+                    <input 
+                        type="email" 
+                        name="email" 
+                        id="email" 
+                        required=""
+                        aria-required="true"
+                        />
+                        <!-- placeholder="webMaster@rudytues.day" -->
+                    <label for="message">MESSAGE</label>
+                    <textarea 
+                        name="message"
+                        id="message"
+                        rows="8"
+                        cols="30"
+                        aria-required="true"
+                        required=""
+                        ></textarea>
+                        <!-- placeholder="a kind and thoughtful message"  -->
+                    <button type="submit">SEND</button>
+                </form>
+            </Card>
+            <!-- <Card
+                title="COMMISSIONS"
+                icon="fa-palette">
+                <p class="card-p"><b>COMMISSIONS ARE CURRENTLY OPEN!</b> click <a href="#">here</a> for more information.</p>
+            </Card> -->
+        </div>
+    </main>
+
+</Layout>

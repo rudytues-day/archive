@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { formatDate } from '../../utility/utils';
+import { formatDate, tabToggles } from '../../utility/utils';
 
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
@@ -430,6 +430,8 @@ function filterEntries(entries) {
 </style>
 
 <script>
+import { tabToggles } from "../../utility/utils";
+
 
 const thumbnails = document.querySelectorAll('.thumbnail-container .image');
 const fullsizeDisplay = document.querySelector('.gallery-card .image');
@@ -447,44 +449,49 @@ thumbnails.forEach(thumbnail => {
     })
 })
 
-// function initialize(groupId) {
-  const toggles = document.querySelectorAll<HTMLElement>(`[data-toggle-section]`);
-  const sections = document.querySelectorAll<HTMLElement>(`[data-pane-section]`);
-  const sectionIds = Array.from(sections).map((section) => {
-    return section.dataset.paneSection;
-  });
-
-  const hash = document.location.hash.replace("#", "");
-
-  function activateSection(sectionId) {
-    sections.forEach((section) => {
-      section.classList.remove("active");
-      if (section.dataset.paneSection === sectionId) {
-        section.classList.add("active");
-      }
-    });
+const toggles = document.querySelectorAll<HTMLElement>(`[data-toggle-section]`);
     toggles.forEach((toggle) => {
-      toggle.classList.remove("active");
-      if (toggle.dataset.toggleSection === sectionId) {
-        toggle.classList.add("active");
-      }
-    });
-  };
+        toggle.addEventListener('click', tabToggles);
+        })
 
-  toggles.forEach((toggle) => {
-    toggle.addEventListener("click", () => {
-      const sectionId = toggle.dataset.toggleSection;
-      console.log(sectionId);
-      activateSection(sectionId);
-      const current = new URL(window.location.href);
-      console.log(current)
-      current.hash = sectionId;
-      location.replace(current);
-    });
-  });
+// function tabToggles() {
+//   const toggles = document.querySelectorAll<HTMLElement>(`[data-toggle-section]`);
+//   const sections = document.querySelectorAll<HTMLElement>(`[data-pane-section]`);
+//   const sectionIds = Array.from(sections).map((section) => {
+//     return section.dataset.paneSection;
+//   });
 
-  if (sectionIds.includes(hash)) {
-    activateSection(hash);
-  }
+//   const hash = document.location.hash.replace("#", "");
 
+//   function activateSection(sectionId) {
+//     sections.forEach((section) => {
+//       section.classList.remove("active");
+//       if (section.dataset.paneSection === sectionId) {
+//         section.classList.add("active");
+//       }
+//     });
+//     toggles.forEach((toggle) => {
+//       toggle.classList.remove("active");
+//       if (toggle.dataset.toggleSection === sectionId) {
+//         toggle.classList.add("active");
+//       }
+//     });
+//   };
+
+//   toggles.forEach((toggle) => {
+//     toggle.addEventListener("click", () => {
+//       const sectionId = toggle.dataset.toggleSection;
+//       console.log(sectionId);
+//       activateSection(sectionId);
+//       const current = new URL(window.location.href);
+//       console.log(current)
+//       current.hash = sectionId;
+//       location.replace(current);
+//     });
+//   });
+
+//   if (sectionIds.includes(hash)) {
+//     activateSection(hash);
+//   }
+// }
 </script>
