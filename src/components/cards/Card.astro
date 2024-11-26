@@ -4,94 +4,60 @@ interface Props {
 	icon: string;
 }
 
+// import '../../utility/styles/variables.css'
+import '../../utility/styles/card-styles.css'
+
 const { title, icon } = Astro.props as Props;
 ---
 
-<div class="card">
-    <h1>
-        <i class=`fas ${icon}` aria-label="none"></i> <span>{title}</span>
+<div class:list={'card'}>
+    <h1 class:list={['card-title', 'card-title-left', 'card-title-icon']}>
+        <i class:list={['card-title-icon', `fas ${icon}`]} aria-label="none"></i> <span>{title}</span>
     </h1>
-    <div class="body">
+    <div class:list={'card-body'}>
         <slot />
     </div>  
 </div>
 
 <style>
-	
-    h1 {
-        margin: 0;
-        font-size: 1.5em;
-		font-family: var(--display);
-        background-color: var(--primary-clr-dark);
-        overflow: hidden;
-        padding: 0.5em 1em;
-        color: var(--white-clr);
-        border-radius: 0.75em 0.75em 0em 0em;
-        transition: ease 0.2s;
-		text-align: left;
-    }
 
-	h1 i {
-		font-size: 0.8em;
-		padding: 0 0.75em 0.15em 0;
+
+</style>
+
+<style is:global>
+    
+	.card-p a,
+	.card-list a {
+		font-weight: bold;
+		color: var(--primary-link-clr);
+		text-decoration: underline;
 	}
 
-    h2:first-of-type {
-        text-align: left;
-        margin-block: 1.5em 1em;
-        font-size: 1.5em;
-    }
-
-    h2::before {
-        content: '\f084';
-        font-family: 'Font Awesome 6 Pro';
-        font-weight: bold;
-        font-size: 1.25rem;
-        margin-right: 0.5rem;
-    }
-
-    h3 {}
-
-    .body {
-		background: var(--white-clr);
-        padding: 1em;
-        border: solid 2px var(--primary-clr-dark);		
-        border-radius: 0em 0em 1em 1em;
-		box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 5%);
-    }
-
-    .card {
-        list-style: none;
-		margin: 3em 1em;
-		max-width: 750px;
+	.card-p {
+		margin: 1em;
 	}
 
-    b {
-        font-family: var(--display);
-		font-size: 1.125rem;
-    }
+	.card-list,
+	.card-list ul {
+		margin: 1em;
+		padding: 0;
+		list-style: none;
+	}
 
-    ul {
-        list-style: none;
-        padding: 0;
-    }
+	.card-list li {
+		padding-left: 0.5em;
+	}
+    
+	.card-list li::marker {
+		content: '/';
+	}
 
-    li::marker {
-        font-family: 'Font Awesome 6 Pro';
-        font-weight: bold;
-        font-size: 1.25rem;
-        content: '\f084'
-    }
+	.card-list b + a {
+		padding-left: 0.25em;
+	}
 
-	@media all and (min-width: 700px) {
-
-		.card {
-            margin: 2em auto;
-		}
-
-		.body {
-		}
-
+	.card-list ul {
+		margin-block: 0;
 	}
 
 </style>

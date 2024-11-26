@@ -11,6 +11,8 @@ import Footer from '../components/Footer.astro';
 import MetaTags from '../components/MetaTags.astro';
 import ToTop from '../components/ToTop.astro';
 
+import '../utility/styles/variables.css'
+
 ---
 
 <!doctype html>
@@ -42,7 +44,25 @@ import ToTop from '../components/ToTop.astro';
 
 <style is:global>
 
-	h1, h2, h3, h4 {
+:root {
+    --primary-clr-dark: hsl(0, 0%, 7%);
+    --primary-clr-med: hsl(283, 10%, 14%);
+    --primary-clr-light: hsl(263, 10%, 20%);
+    --primary-clr-200: hsl(261, 10%, 40%);
+
+    --primary-accent-clr: #F40662;
+    --primary-link-clr: #BF95A5;
+    --white-clr: #ffffff;
+
+    --bg-clr: #FBFBFB;
+    --display: "Darumadrop One";
+    --body: 'Averia Libre';
+}
+
+	h1, 
+	h2, 
+	h3, 
+	h4 {
 		font-family: var(--display);
 		text-align: center;
 	}
@@ -55,10 +75,18 @@ import ToTop from '../components/ToTop.astro';
 		font-size: 2rem;
 		margin: 1.5em 0em;
 	}
-	h3 {
-		font-size: 1.325rem;
-		margin: 1.25em auto 1em auto;
-	}
+	
+    h3 {
+		margin-block: 1em 0.75em;
+		/* text-align: left; */
+        text-align: left;
+        font-size: 1.5rem;
+        margin-left: 0.75em;
+    }
+
+    h3:first-child {
+        margin-block: 0.5em 0.75em;
+    }
 
 	h4 {
 		font-size: 1.325rem;
@@ -73,33 +101,6 @@ import ToTop from '../components/ToTop.astro';
 		font-size: 1.125rem;
 		font-weight: normal;
 	}
-	article ul {
-		
-	}
-
-	article h1 {
-		font-size: 1.5em;
-		margin: 1.25em 1em 1em 1em;
-		text-align: center;
-		color: coral
-	}
-
-	article h1:first-of-type {
-		text-align: left;
-		margin-block: 1em 1em;
-		font-size: 1.5em;
-	}
-
-	article h1::before {
-		content: '\f084';
-		font-family: 'Font Awesome 6 Pro';
-		font-weight: bold;
-		font-size: 1.25rem;
-		margin-right: 0.5rem;
-		color: orange;
-	}
-
-
 
 	a:hover {
 		color: var(--primary-accent-clr);
@@ -155,21 +156,20 @@ import ToTop from '../components/ToTop.astro';
 		margin-block: 5em;
 	}
 
-	/* card styling */
-
-	.card-wrapper {
-		margin: 3em auto;
-		max-width: 750px;
-	}
-	
-	.card-p a,
+	/* .card-p a,
 	.card-list a {
 		font-weight: bold;
 		color: var(--primary-link-clr);
 		text-decoration: underline;
 	}
+
+	.card-p a:hover,
+	.card-list a:hover {
+		color: var(--primary-accent-clr);
+	}
 	.card-p {
 		margin: 1em;
+		padding: 0;
 	}
 
 	.card-list,
@@ -182,7 +182,7 @@ import ToTop from '../components/ToTop.astro';
 	.card-list li {
 		padding-left: 0.5em;
 	}
-    
+
 	.card-list li::marker {
 		content: '/';
 	}
@@ -193,8 +193,9 @@ import ToTop from '../components/ToTop.astro';
 
 	.card-list ul {
 		margin-block: 0;
-	}
+	} */
 
+	/* card styling */
 	/* form styling */
 
 	form {
@@ -239,11 +240,16 @@ import ToTop from '../components/ToTop.astro';
 		text-transform: uppercase;
 		font-size: 1.5rem;
 		line-height: 1.5;
-		border-radius: 12px;
+		border-radius: 1rem;
 		border-color: #000;
 		width: 8em;
 		cursor: pointer;
 		/* transition: color 100ms ease; */
+	}
+
+	button[role="tab"] {
+		border-radius: 1rem 1rem 1rem 0rem;
+		width: fit-content;
 	}
 	
                 
@@ -265,7 +271,6 @@ import ToTop from '../components/ToTop.astro';
 	textarea {
 		max-width: 50ch;
 	}
-
 
 	.fa-ban {
 		color: var(--primary-accent-clr);

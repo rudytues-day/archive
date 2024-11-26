@@ -2,8 +2,28 @@
 // import { Image } from "astro:assets";
 // import { getCollection } from "astro:content";
 
+import Tabs from '@xexiu/astro-tabs';
+
+const blogs = {
+    latest: [{
+        id: 1,
+        title: "Test 1",
+    }],
+    pinned: [{
+        id: 2,
+        title: "Test 2",
+    }],
+    private: [{
+        id: 3,
+        title: "Test 3",
+    }]
+}
+
+const keys = Object.keys(blogs)
+
 import Layout from '../../layouts/Layout.astro';
 import Card from '../../components/cards/Card.astro';
+// import Tabs from '../../components/Tabs.astro';
 ---
 
 <Layout title="RUDY TUESDAY">
@@ -12,7 +32,7 @@ import Card from '../../components/cards/Card.astro';
         <section>
 			<h2>LINKS</h2>
 
-			<div class="card-masonry">
+			<div class="card-wrapper card-flex">
 
 				<Card
 					title="ONLINE"
@@ -64,33 +84,53 @@ import Card from '../../components/cards/Card.astro';
 			
 			<div class="card-wrapper">
 				<Card
-						title="NICETIES"
-						icon="fa-gift">
+					title="NICETIES"
+					icon="fa-gift">
+					<h3>WEB</h3>
 						<ul class="card-list">
 							<li><a class="external" href="http://digitoxin.github.io/snowworld/">snow world</a> a first-person walking sim through yume nikki's snow world</li>
 							<li><a class="external" href="https://molleindustria.org/everydaythesamedream/everydaythesamedream.html">every day the same dream</a> a game about alienation and refusal of labour</li>
 							<li><a class="external" href="https://www.heavendeluxe.com/scraps/shapequiz">heaven deluxe's shape quiz</a> find out what you are shaped like</li>
+							<li><a href="http://tane.us/ac" class="external">tane.us/ac</a> a tane.us web toy that plays animal crossing ost by the hour</li>
+							<li><a href="https://makefrontendshitagain.party/" class="external">make frontend shit again</a> remember when frontend was fun?</li>
+							<li><a href="https://www.thisman.org/" class="external">thisman.org</a> every night throughout the world hundreds of people dream about this face</li>
+							<li><a href="http://www.truegamer.net/SA_911/911%20SATHREAD/" class="external">somethingawful wtc thread</a> site captures from somethingawful on the morning of 9/11</li>
+						</ul>
+						<h3>VIDEO</h3>
+						<ul class="card-list">
 							<li><a class="external" href="https://www.skolnickfilms.com/the-music-of-erich-zann">the music of erich zann</a> a film adaptation of lovecraft by jared skolnick</li>
 							<li><a href="https://www.catsuka.com/player/hd/vulvine_reine_d_extase" class="external">vulvine reine d'extase</a> a formerly underground erotic student film</li>
-							<li><a href="https://makefrontendshitagain.party/" class="external">make frontend shit again</a> remember when frontend was fun?</li>
-							<li><a href="http://www.truegamer.net/SA_911/911%20SATHREAD/" class="external">somethingawful wtc thread</a> site captures from somethingawful on the morning of 9/11</li>
-							<li><a href="http://tane.us/ac" class="external">tane.us/ac</a> a tane.us web toy that plays animal crossing ost by the hour</li>
-							<li><a href="https://www.thisman.org/" class="external">thisman.org</a> every night throughout the world hundreds of people dream about this face</li>
 							<li><a href="https://www.youtube.com/watch?v=_wubgAIiWpY" class="external">big egg</a> elman511 cracks open the big egg</li>
 						</ul>
-					</Card>
-					<Card
-						title="AFFILIATES"
-						icon="fa-heart">
-									
-									</Card>
-								</div>
+				</Card>
+				<Card
+					title="AFFILIATES"
+					icon="fa-heart">
+								
+				</Card>
+			</div>
 
 		</section>
 
 		<section>
 			<h2>RESOURCES</h2>
+			
 		<div class="tab-folder">
+			<Tabs {keys} tabTitles={['Title for Latest', 'Title for Private', 'Title for Pinned']}>
+				{
+					(key: string) => {
+						return (
+							<Fragment>
+								<div>{blogs[key].id}</div> // 1, 2, 3
+								<div>{blogs[key].title}</div> // Test 1, Test 2, Test 3
+							</Fragment>
+						);
+					}
+				}
+			</Tabs>
+		</div>
+		<div class="tab-folder">
+
 			<div role="tablist" aria-label="tabs">
 
 				<button
@@ -98,8 +138,8 @@ import Card from '../../components/cards/Card.astro';
 					aria-selected="true"
 					aria-controls="panel-1"
 					id="tab-1"
-					tabindex="0"
-				> WEB DEV
+					tabindex="0"> 
+						WEB DEV
 				</button>
 
 				<button
@@ -107,12 +147,10 @@ import Card from '../../components/cards/Card.astro';
 					aria-selected="false"
 					aria-controls="panel-2"
 					id="tab-2"
-					tabindex="-1"
-				> ART & COMICS
+					tabindex="-1"> 
+						ART & COMICS
 				</button>
 				
-
-
 			</div>
 
 			<div 
@@ -121,23 +159,18 @@ import Card from '../../components/cards/Card.astro';
 				tabindex="0" 
 				aria-labelledby="tab-1">
 				<div class="">
-					<h1>GETTING STARTED</h1>
+					<h3>GETTING STARTED</h3>
 					<ul class="card-list">
 						<li><a href="">nero's personal website guide</a></li>
 						<li><a href="">sadgrl.online</a></li>
 					</ul>
 
-					<h1>TEST</h1>
+					<h3>TEST</h3>
 					<ul class="card-list">
 						<li><a href="">nero's personal website guide</a></li>
 						<li><a href="">sadgrl.online</a></li>
 					</ul>
 
-					<h1>TEST</h1>
-					<ul class="card-list">
-						<li><a href="">nero's personal website guide</a></li>
-						<li><a href="">sadgrl.online</a></li>
-					</ul>
 				</div>
 			</div>
 
@@ -174,200 +207,104 @@ import Card from '../../components/cards/Card.astro';
 </Layout>
 
 <style>
-	
-	section p {
-		margin: 3em 0;
-		text-align: center;
-	}
-
-	section:last-child {
-		margin-bottom: 2.75em;
-	}
-
-	section p {
-		margin: 1em;
-		max-width: 800px;
-	}
-
-
-	section:last-child {
-		margin-bottom: 0.25em;
-	}
-
-	section:last-child::after {
-		margin-bottom: 0em;
-	}
-
-	section p {
-		margin: 1em;
-		max-width: 800px;
-	}
-
-	.gallery-grid {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		gap: 1em;
-		align-items: center;
-		justify-content: center;
-		margin: 3em auto;
-		max-width: 600px;
-	}
 
 	.card-wrapper {
 		margin: 3em auto;
-		max-width: 750px;
+		height: 100%;
+		gap: 1.25em;
+		display: flex;
+		flex-direction: column;
 	}
 
-	.card-masonry {
-		margin: 3em auto;
-		display: flex;
+	.card-flex {
 		flex-flow: row wrap;
 		justify-content: center;
 		align-items: center;
-		gap: 1.5em;
-		height: 100%;
+		gap: 1.25em;
 	}
-
-	.grid-masonry {
-		margin: 3em auto;
-		display: flex;
-		flex-direction: column;
-		gap: 1.5em;
-	}
-
-	.thumb {
-		max-width: 100px;
-		max-height: 100px;
-		border-radius: 0.5em;
-	}
-
-	.visit {
-		margin: auto;
-		font-size: 2rem;
-		color: var(--primary-clr-dark);
-		text-align: center;
-		font-family: var(--display);
-		text-decoration: none;
-		transition: ease 0.2s;
-	}
-
-	.visit .fas {
-		font-size: 0.8em;
-	}
-
-	.visit:hover {
-		color: var(--primary-accent-clr)
-	}
-
-	b {
-		font-family: var(--display);
-		font-size: 1.125rem;
-    }
 
 @media all and (min-width: 700px) {
 
-	section {
-		margin: 3em auto;
-	}
-
-	section p {
-		margin: auto;
-	}
-
-	.card-masonry {
-		display: flex;
-		justify-content: center;
+	.card-wrapper {
 		max-width: 800px;
 	}
-
-	.card-masonry > * {
-		margin: 1em;
-	}
-	
-	.grid-masonry {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		max-width: 800px;
-	}
-
 }
 
-@media all and (min-width: 1000px) {}
-
-@media all and (min-width: 1200px) {}
-
 </style>
+<!-- <script src="../../utility/scripts/tabs.ts"></script> -->
+<!-- <script>
 
-<script>
 window.addEventListener("DOMContentLoaded", () => {
-	const tabList = document.querySelector('[role="tablist"]');
-	const tabs = tabList!.querySelectorAll(':scope > [role="tab"]');
+        const tabList = document.querySelector('[role="tablist"]');
+        const tabs = tabList!.querySelectorAll(':scope > [role="tab"]');
 
-  // Add a click event handler to each tab
-	tabs.forEach((tab) => {
-		tab.addEventListener("click", changeTabs);
-	});
+    // Add a click event handler to each tab
+        tabs.forEach((tab) => {
+            tab.addEventListener("click", changeTabs);
+        });
 
-  // Enable arrow navigation between tabs in the tab list
-	let tabFocus = 0;
+    // Enable arrow navigation between tabs in the tab list
+    // if read hash switch to specific tab
+    // s 
+    // check
+        let tabFocus = 0;
 
-	tabList!.addEventListener("keydown", (e) => {
-		// Move right
-		let keyboardEvent = (e as KeyboardEvent);
-		if (keyboardEvent.key === "ArrowRight" || keyboardEvent.key === "ArrowLeft") {
-			tabs[tabFocus].setAttribute("tabindex", "-1");
-			if (keyboardEvent.key === "ArrowRight") {
-				tabFocus++;
-			// If we're at the end, go to the start
-				if (tabFocus >= tabs.length) {
-					tabFocus = 0;
-				}
-			// Move left
-		} else if (keyboardEvent.key === "ArrowLeft") {
-			tabFocus--;
-			// If we're at the start, move to the end
-			if (tabFocus < 0) {
-			tabFocus = tabs.length - 1;
-			}
-		}
+        // 
 
-		tabs[tabFocus].setAttribute("tabindex", "0");
-		(tabs[tabFocus] as HTMLElement).focus();
-		}
-	});
+        tabList!.addEventListener("keydown", (e) => {
+            // Move right
+            let keyboardEvent = (e as KeyboardEvent);
+            if (keyboardEvent.key === "ArrowRight" || keyboardEvent.key === "ArrowLeft") {
+                tabs[tabFocus].setAttribute("tabindex", "-1");
+                if (keyboardEvent.key === "ArrowRight") {
+                    tabFocus++;
+                // If we're at the end, go to the start
+                    if (tabFocus >= tabs.length) {
+                        tabFocus = 0;
+                    }
+                // Move left
+            } else if (keyboardEvent.key === "ArrowLeft") {
+                tabFocus--;
+                // If we're at the start, move to the end
+                if (tabFocus < 0) {
+                tabFocus = tabs.length - 1;
+                }
+            }
 
-function changeTabs(e) {
-	const targetTab = e.target;
-	const tabList = targetTab.parentNode;
-	const tabGroup = tabList.parentNode;
+            tabs[tabFocus].setAttribute("tabindex", "0");
+            (tabs[tabFocus] as HTMLElement).focus();
+            }
+        });
 
-  // Remove all current selected tabs
-	tabList
-		.querySelectorAll(':scope > [aria-selected="true"]')
-		.forEach((t) => t.setAttribute("aria-selected", false));
+    function changeTabs() {
+        const targetTab = e.target;
+        
+        const tabList = targetTab.parentNode;
+        const tabGroup = tabList.parentNode;
 
-  // Set this tab as selected
-	targetTab.setAttribute("aria-selected", true);
+    // Remove all current selected tabs
+        tabList
+            .querySelectorAll(':scope > [aria-selected="true"]')
+            .forEach((t) => t.setAttribute("aria-selected", false));
 
-  // Hide all tab panels
-	tabGroup
-		.querySelectorAll(':scope > [role="tabpanel"]')
-		.forEach((p) => p.setAttribute("hidden", true));
+    // Set this tab as selected
+        targetTab.setAttribute("aria-selected", true);
 
-  // Show the selected panel
-	tabGroup
-		.querySelector(`#${targetTab.getAttribute("aria-controls")}`)
-		.removeAttribute("hidden");
+    // Hide all tab panels
+        tabGroup
+            .querySelectorAll(':scope > [role="tabpanel"]')
+            .forEach((p) => p.setAttribute("hidden", true));
 
-		
-		
-	}
-	
-	const hash = document.location.hash.replace("#", "");
-	if (targetTab.includes(hash)) {
-	
-	}
+    // Show the selected panel
+        tabGroup
+            .querySelector(`#${targetTab.getAttribute("aria-controls")}`)
+            .removeAttribute("hidden");
 
-})
-</script>
+        }
+        
+    })
+
+
+
+</script> -->
+
