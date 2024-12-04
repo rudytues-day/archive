@@ -59,17 +59,23 @@ import '../utility/styles/variables.css'
     --body: 'Averia Libre';
 }
 
-	h1, 
-	h2, 
-	h3, 
-	h4 {
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+	h1, h2, h3, h4 {
 		font-family: var(--display);
 		text-align: center;
 	}
 	h1 {
 		font-size: 2rem;
 		margin-block: 1.5em 1em;
-		
 	}
 	h2 {
 		font-size: 2rem;
@@ -84,9 +90,7 @@ import '../utility/styles/variables.css'
         margin-left: 0.75em;
     }
 
-    h3:first-child {
-        margin-block: 0.5em 0.75em;
-    }
+
 
 	h4 {
 		font-size: 1.325rem;
@@ -100,6 +104,7 @@ import '../utility/styles/variables.css'
 		font-family: var(--display);
 		font-size: 1.125rem;
 		font-weight: normal;
+		text-transform: uppercase;
 	}
 
 	a:hover {
@@ -156,46 +161,6 @@ import '../utility/styles/variables.css'
 		margin-block: 5em;
 	}
 
-	/* .card-p a,
-	.card-list a {
-		font-weight: bold;
-		color: var(--primary-link-clr);
-		text-decoration: underline;
-	}
-
-	.card-p a:hover,
-	.card-list a:hover {
-		color: var(--primary-accent-clr);
-	}
-	.card-p {
-		margin: 1em;
-		padding: 0;
-	}
-
-	.card-list,
-	.card-list ul {
-		margin: 1em;
-		padding: 0;
-		list-style: none;
-	}
-
-	.card-list li {
-		padding-left: 0.5em;
-	}
-
-	.card-list li::marker {
-		content: '/';
-	}
-
-	.card-list b + a {
-		padding-left: 0.25em;
-	}
-
-	.card-list ul {
-		margin-block: 0;
-	} */
-
-	/* card styling */
 	/* form styling */
 
 	form {

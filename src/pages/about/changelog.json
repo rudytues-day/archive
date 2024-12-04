@@ -1,0 +1,137 @@
+[
+
+    
+            {
+                "id": "770d2cd09b2d01032f8b5f94169b4e92a84427e2",
+                "date": "11/18/24",
+                "message": "created contact page and firmly grasped tabs"
+            },
+            {
+                "id": "0cece031ca0a1800280521f742c74914cd03715b",
+                "date": "11/16/24",
+                "message": "gallery tab functionality, css clean up"
+            },
+            {
+                "id": "1779de962184bb41d837d83e465ee15f240799fa",
+                "date": "11/10/24",
+                "message": "deleted unused components and fixed indents"
+            },
+
+            {
+                "id": "7b98bee3d9a430dd44d9d206cf2b01c3dfe0980f",
+                "date": "11/10/24",
+                "message": "create pages and header component",
+                "details": "create about, links, projects and askbox pages; create navbar and header components; remove /works directory in favor of individual directions for archive and gallery; remove /works component directory."
+            },
+            {
+                "id": "92a246e43b61635b014b3cb41493b2ccaccff1b5",
+                "date": "07/29/24",
+                "message": "began full astro rebuild",
+                "details": "created and rearranged directories to include a main page; created top and bottom navigation and cards; created newsletters collection; css clean up."
+            },
+            {
+                "id": "b6a7ece26a4765b96302c213bb7548a57aa04f7e",
+                "date": "03/25/24",
+                "message": "fixed tag pagination and baked cookies",
+                "details": "rebuild pagination components and functions' created rating cookie function; deleted 'entry layout' in favor of 'archive layout'; tweaked preview cards to stretch horizontally."
+            },
+            {
+                "id": "ed8315026fba4594e7033c851b7281a0d155d719",
+                "date": "03/21/24",
+                "message": "split sidebar components and paginated tag pages",
+                "details": "split sidebar up into components; paginated tag pages; began creating gallery; closes #10."
+            },
+            {
+                "id": "ed1709b0eae0bdf54852ce2f7647ebcc93925242",
+                "date": "03/07/24",
+                "message": "menu collapse",
+                "details": "updated Header and Sidebar styling to match; made menu collapsable, closes #7."
+            },
+            {
+                "id": "14b9790f1b257f6ccb7b6a47e9d19e012a125fdd",
+                "date": "03/07/24",
+                "message": "created 3/3 sort functions",
+                "details": "created 'sort by similar' function with intersection polyfill, closes #7; updated project name in package.json."
+            },
+            {
+                "id": "d8f9ade7ba35b8d52afa8d667e2e9362e6cf47fa",
+                "date": "03/05/24",
+                "message": "aria labels, filter styling, 2/3 sort functions",
+                "details": "added aria labels to icons; created sort functions for 'creation date' and 'upload date'; created filter component; fixed entry change alignment, fixes #12."
+            },
+            {
+                "id": "c6541a60200301a8e4ec2c974c6e62a31532c652",
+                "date": "02/07/24",
+                "message": "implement navbar toggling"
+            },
+            {
+                "id": "dac5e8e78eaa1ec84daff341c0bf8d2a22b1a2d7",
+                "date": "02/05/24",
+                "message": "merge branch 'main'"
+            },
+            {
+                "id": "488afd1cbada092d7af7f7fa69e6f53114658c76",
+                "date": "02/05/24",
+                "message": "merge conflict fixes to main"
+            },
+            {
+                "id": "f77bbfb47fe30f487007aa8b45a01b97ed455487",
+                "date": "02/05/24",
+                "message": "broke stuff ?"
+            },
+            {
+                "id": "a074e05aac7cc31cc668db15b0aa0fcfd9864c78",
+                "date": "02/05/24",
+                "message": "add chain decals and create filter widget",
+                "details": "also pushing project mds"
+            },
+            {
+                "id": "d4e032e146f4f6641c6b6e9b04b03b7db18e1344",
+                "date": "02/03/24",
+                "message": "made projects real, closes #11 and #2"
+            },
+            {
+                "id": "8f0c2e96fb0b3006d504672a8b3a63cd417213d1",
+                "date": "02/03/24",
+                "message": "added projects and updated landing page",
+                "details": "also merged reset.css into new 'utilities' folder and updated components and pages accordingly."
+            },
+            {
+                "id": "8f0c2e96fb0b3006d504672a8b3a63cd417213d1",
+                "date": "02/03/24",
+                "message": "fixed horizontal card media query + tidying",
+                "details": "updated archive scroll box date font to display; updated archive and entry layout titles; deleted redundant code bits."
+            },
+            {
+                "id": "906427bf545b160b2b7168b9603d2d0de388ae2b",
+                "date": "02/03/24",
+                "message": "merge branch 'main'"
+            },
+            {
+                "id": "5505d67484a41860d86220b1587d202bf4d9c80c",
+                "date": "02/03/24",
+                "message": "fixed image squish"
+            },
+
+            {
+                "id": "521440fafeefa2b803f5691d3a2cfc4840dfef37",
+                "date": "01/27/24",
+                "message": "made git work"
+            },
+
+            {
+                "id": "26eedecc2c0fcdce14a4996570d665894e27e8ca",
+                "date": "01/26/24",
+                "message": "moved and broke sort functions",
+                "details": "created flex masonry styling; troubleshooted <Image /> squishing issues; deleted unused components."
+            },
+
+
+            {
+                "id": "13a09e854aa0689cd3fca0b796b66b8f09dda608",
+                "date": "01/23/23",
+                "message": "did everything",
+                "details": "created and designed main and archive layouts; created content schema for archive entries; created utility and sorting functions; created card, tag and scrollbox components; created static path and pagination functions."
+            }
+            
+]

@@ -1,0 +1,30 @@
+/* CardL.astro */
+/*  tags component */
+
+.tags {
+    display: flex;
+    flex-flow: row wrap;
+    list-style: none;
+    padding: 0;
+    gap: 0.25em;
+    margin-top: 0em;
+    align-items: center;
+}
+
+.tags li {
+    background-color: var(--primary-clr-dark);
+    padding: 0.125em 0.3em 0.4em 0.3em;
+    color: var(--white-clr);
+    font-family: var(--display);
+    text-transform: uppercase;
+    line-height: 1.125;
+    border-radius: 0.25em;
+}
+
+.tags li a {
+    transition: 200ms;
+}
+
+.tags li a:hover {
+    color: var(--primary-accent-clr)
+}

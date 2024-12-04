@@ -4,6 +4,10 @@
 
 import Layout from '../../layouts/Layout.astro';
 import Card from '../../components/cards/Card.astro';
+
+import '../../utility/styles/scrollbox-styles.css';
+
+import changelog from './changelog.json';
 ---
 
 <Layout title="RUDY TUESDAY">
@@ -62,6 +66,7 @@ import Card from '../../components/cards/Card.astro';
 		</section>
 
 		<section id="sitemap">
+			
             <h2>SITE INFORMATION</h2>
 
             <div class="card-masonry">
@@ -69,13 +74,12 @@ import Card from '../../components/cards/Card.astro';
                 title="SITEMAP"
                 icon="fa-sitemap">
                     <ul class="card-list sitemap">
-                        <li><a href="">index</a> <em>(you are here)</em></li>
-                        <li><a href="">about</a></li>
+                        <li><a href="">index</a></li>
+                        <li><a href="">about</a> <em>(you are here)</em></li>
                         <li><a href="">archive</a></li>
                         <li><a href="">gallery</a></li>
                         <li><a href="">projects</a></li>
                         <li><a href="">links</a></li>
-                        <!-- <li><a href="">recroom</a></li> -->
                         <li><a href="">message</a></li>
                         <li><a href="" class="external">guestbook</a></li>
                         <li><a href="" class="external">newsletter</a></li>
@@ -115,9 +119,31 @@ import Card from '../../components/cards/Card.astro';
                         </li>
                     </ul>
                 </Card>
+				
             </div>
 
+			<div class="card-wrapper">
+				<Card
+				title="CHANGELOG"
+				icon="fa-pencil">
+					<div class="scrollbox scrollbox-s scrollbox-light">
+						<div class="scrollbox-list">
+							{changelog.map((change) => {
+								return <li>
+									<a href={`https://github.com/rudytues-day/archive/commit/${change.id}`} class="external">
+										<b>{change.date} :</b> {change.message}<em>{change.details && "— " + `${change.details}` + " "}</em>({change.id.slice(0,6)})
+									</a>
+								</li>
+							})}
+						</div>
+					</div>
+				</Card>
+			</div>
+
+		
+
         <div class="card-sm">
+
             <Card
             title="CREDITS"
             icon="fa-ribbon">

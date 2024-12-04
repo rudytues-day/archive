@@ -2,11 +2,17 @@
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
+// import "../utility/styles/card-styles.css";
+import '../utility/styles/scrollbox-styles.css';
+
+import changelog from './about/changelog.json';
+
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/cards/Card.astro';
 
-const newsletters = await getCollection("newsletters");
-const newsletterSlice = newsletters.toReversed().slice(0,3);
+// const newsletters = await getCollection("newsletters");
+// const newsletterSlice = newsletters.toReversed().slice(0,3);
+
 
 import viewport1 from '../utility/image/viewport1.png'
 import viewport2 from '../utility/image/viewport2.png'
@@ -34,42 +40,53 @@ import viewport3 from '../utility/image/viewport3.png'
 					<Card
 						title="NEWSLETTER"
 						icon="fa-newspaper">
-						<div class="news-scrollbox">
+						<div class="scrollbox scrollbox-m">
 							<div class="newsletters">
 								<!-- {
-									newsletters.map(async (newsletter) => {
+									newsletterSlice.map(async (newsletter) => {
 									  const renderedNewsletter = await newsletter.render();
 									  return (
-										  <renderedNewsletter.Content />
+										  <NewsletterLayout><renderedNewsletter.Content /></NewsletterLayout>
 									  );
 									})
 								  } -->
-{
+<!-- {
 								  newsletterSlice.map((newsletter => {
 									console.log(newsletter)
-								  }))}
+								  }))} -->
 
 							</div>
 							</div>
+							<p class="card-p" style="margin:1.5em"><b>enter your email</b> to subscribe to my newsletter where i send out archive, project and site updates, commission openings, and other goodies every few months.</p>
+							<form
+								action="https://buttondown.com/api/emails/embed-subscribe/rudytuesday"
+								method="post"
+								target="popupwindow"
+								onsubmit="window.open('https://buttondown.com/rudytuesday', 'popupwindow')"
+								class="embeddable-buttondown-form"
+								>
+								<label for="bd-email" class="visually-hidden">Enter your email</label>
+								<input type="email" name="email" id="bd-email" placeholder="email@address.com" />
+								
+								<input type="submit" value="subscribe" />
+								<p>powered by <a href="https://buttondown.com/refer/rudytuesday" target="_blank"></a>buttondown</a></p>
+							</form>
 					</Card>
 	
 				<Card
-					title="SUBSCRIBE"
-					icon="fa-paper-plane">
-					<p>enter your email below to subscribe to my newsletter where i send out project and site updates, commission opening notifications, a round up of new entries to my art log and other goodies every so often.</p>
-					<form
-						action="https://buttondown.com/api/emails/embed-subscribe/rudytuesday"
-						method="post"
-						target="popupwindow"
-						onsubmit="window.open('https://buttondown.com/rudytuesday', 'popupwindow')"
-						class="embeddable-buttondown-form"
-						>
-						<label for="bd-email">Enter your email</label>
-						<input type="email" name="email" id="bd-email" />
-						
-						<input type="submit" value="subscribe" />
-						<p>powered by <a href="https://buttondown.com/refer/rudytuesday" target="_blank"></a>buttondown</a></p>
-					</form>
+					title="CHANGELOG"
+					icon="fa-pencil">
+					<div class="scrollbox scrollbox-s scrollbox-light">
+						<div class="scrollbox-list">
+							{changelog.map((change) => {
+								return <li>
+									<a href={`https://github.com/rudytues-day/archive/commit/${change.id}`} class="external">
+										<b>{change.date} :</b> {change.message}<em>{change.details && "— " + `${change.details}` + " "}</em>({change.id.slice(0,6)})
+									</a>
+								</li>
+							})}
+						</div>
+					</div>
 				</Card>
 				</div>
 
@@ -137,7 +154,7 @@ import viewport3 from '../utility/image/viewport3.png'
 	section:first-of-type h1 {
 		margin: 1em;
 	}
-	.news-scrollbox {
+	/* .scrollbox {
 		margin: 1em;
 		border: 2px solid #000;
 		border-radius: 1em;
@@ -145,6 +162,18 @@ import viewport3 from '../utility/image/viewport3.png'
 		overflow-x: hidden;
 		height: 350px;
 	}
+
+	.scrollbox-l {
+		height: 350px;
+	}
+	.scrollbox-m {
+		height: 250px;
+	}
+
+	.scrollbox-s {
+		height: 150px;
+	} */
+
 
 	.newsletters {
 		/* height: auto; */
@@ -227,10 +256,7 @@ import viewport3 from '../utility/image/viewport3.png'
 		max-width: 800px;
 	}
 
-	.card-wrapper {
-		margin: 3em auto;
-		max-width: 750px;
-	}
+
 
 	.visit {
 		margin: auto;

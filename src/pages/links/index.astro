@@ -1,29 +1,19 @@
 ---
-// import { Image } from "astro:assets";
-// import { getCollection } from "astro:content";
-
-import Tabs from '@xexiu/astro-tabs';
-
-const blogs = {
-    latest: [{
-        id: 1,
-        title: "Test 1",
-    }],
-    pinned: [{
-        id: 2,
-        title: "Test 2",
-    }],
-    private: [{
-        id: 3,
-        title: "Test 3",
-    }]
-}
-
-const keys = Object.keys(blogs)
+import { getCollection } from "astro:content";
+const affiliates = await getCollection("affiliates");
+const banners = affiliates.filter((affiliate => affiliate.data.type === "banner"));
+const buttons = affiliates.filter((affiliate => affiliate.data.type === "button"));
+const groupButton = affiliates.filter((affiliate => affiliate.data.type === "group button"));
 
 import Layout from '../../layouts/Layout.astro';
 import Card from '../../components/cards/Card.astro';
-// import Tabs from '../../components/Tabs.astro';
+import Tabs from '../../components/cards/Tabs.astro';
+import TabPanelsTest from '../../components/cards/TabPanelsTest.astro';
+import TabsTest from '../../components/cards/TabsTest.astro';
+import { Image } from "astro:assets";
+
+import '../../utility/styles/tab-styles.css'
+
 ---
 
 <Layout title="RUDY TUESDAY">
@@ -40,8 +30,9 @@ import Card from '../../components/cards/Card.astro';
 						<ul class="card-list">
 							<li><b>FEDIVERSE:</b> 
 								<ul>
-									<li><b>AETHY.COM:</b> <a href="" class="external">@rudytuesday</a></li>
 									<li><b>BARAAG.NET:</b> <a href="https://baraag.net/@rudytuesday" class="external">@rudytuesday</a> <em>(inactive)</em></li>
+									<li><b>FREAKSONLY.SPACE:</b> <a href="https://freaksonly.space/@rudytuesday" class="external">@rudytuesday</a> <em>(inactive)</em></li>
+									<li><b>AETHY.COM:</b> <a href="" class="external">@rudytuesday</a></li>
 									<li><b>BLORBO.SOCIAL:</b> <a href="https://blorbo.social/@dollby" class="external">@dollby</a> <em>(inactive)</em></li>
 									<li><b>BLUESKY BRIDGE:</b> <em style="font-style:normal">@rudytues.day@bsky.brid.gy</em></li>
 								</ul>
@@ -95,6 +86,9 @@ import Card from '../../components/cards/Card.astro';
 							<li><a href="https://makefrontendshitagain.party/" class="external">make frontend shit again</a> remember when frontend was fun?</li>
 							<li><a href="https://www.thisman.org/" class="external">thisman.org</a> every night throughout the world hundreds of people dream about this face</li>
 							<li><a href="http://www.truegamer.net/SA_911/911%20SATHREAD/" class="external">somethingawful wtc thread</a> site captures from somethingawful on the morning of 9/11</li>
+							<li><a href="http://anipike.asie.pl/" class="external">anime web turnpike</a> your #1 guide to the anime and manga internet world</li>
+							<li><a href="http://catb.org/esr/jargon/" class="external">the jargon file</a></li>
+							<li><a href="https://gutterotica.com/" class="external">gutterotica manifesto</a> fuck art or die</li>
 						</ul>
 						<h3>VIDEO</h3>
 						<ul class="card-list">
@@ -103,103 +97,206 @@ import Card from '../../components/cards/Card.astro';
 							<li><a href="https://www.youtube.com/watch?v=_wubgAIiWpY" class="external">big egg</a> elman511 cracks open the big egg</li>
 						</ul>
 				</Card>
+
 				<Card
 					title="AFFILIATES"
 					icon="fa-heart">
-								
+						<div class="affiliate flex-wrap">
+							{ banners.map((banner) => {
+								return <a href={banner.data.url}>
+									<Image
+										src={banner.data.image.src}
+										alt={`${banner.data.name} banner`}
+									/>
+								</a>
+							})}
+							</div>
+
+							<div class="affiliate flex-wrap">
+								{ buttons.map((button) => {
+									return <a href={button.data.url}>
+										<Image
+											src={button.data.image.src}
+											alt={`${button.data.name} banner`}
+										/>
+									</a>
+								})}
+							</div>
+							<div class="affiliate flex-wrap">
+								{ groupButton.map((button) => {
+									return <a href={button.data.url}>
+										<Image
+											src={button.data.image.src}
+											alt={`${button.data.name} banner`}
+										/>
+									</a>
+								})}
+							</div>
+						</div>
 				</Card>
 			</div>
 
 		</section>
 
 		<section>
+
 			<h2>RESOURCES</h2>
-			
-		<div class="tab-folder">
-			<Tabs {keys} tabTitles={['Title for Latest', 'Title for Private', 'Title for Pinned']}>
-				{
-					(key: string) => {
-						return (
-							<Fragment>
-								<div>{blogs[key].id}</div> // 1, 2, 3
-								<div>{blogs[key].title}</div> // Test 1, Test 2, Test 3
-							</Fragment>
-						);
-					}
-				}
-			</Tabs>
-		</div>
-		<div class="tab-folder">
 
-			<div role="tablist" aria-label="tabs">
+			<div class="card-wrapper">
 
-				<button
-					role="tab"
-					aria-selected="true"
-					aria-controls="panel-1"
-					id="tab-1"
-					tabindex="0"> 
-						WEB DEV
-				</button>
+				<div role="tablist" aria-label="tabs">
 
-				<button
-					role="tab"
-					aria-selected="false"
-					aria-controls="panel-2"
-					id="tab-2"
-					tabindex="-1"> 
-						ART & COMICS
-				</button>
-				
-			</div>
+					<button
+						role="tab"
+						aria-selected="true"
+						aria-controls="panel-1"
+						id="tab-1"
+						tabindex="0"> 
+							WEB DEV
+					</button>
 
-			<div 
-				id="panel-1" 
-				role="tabpanel" 
-				tabindex="0" 
-				aria-labelledby="tab-1">
-				<div class="">
-					<h3>GETTING STARTED</h3>
-					<ul class="card-list">
-						<li><a href="">nero's personal website guide</a></li>
-						<li><a href="">sadgrl.online</a></li>
-					</ul>
+					<button
+						role="tab"
+						aria-selected="false"
+						aria-controls="panel-2"
+						id="tab-2"
+						tabindex="-1"> 
+							ART & COMICS
+					</button>
 
-					<h3>TEST</h3>
-					<ul class="card-list">
-						<li><a href="">nero's personal website guide</a></li>
-						<li><a href="">sadgrl.online</a></li>
-					</ul>
+					<button
+						role="tab"
+						aria-selected="false"
+						aria-controls="panel-3"
+						id="tab-3"
+						tabindex="-1"> 
+							ASSETS
+					</button>
+					
+					<button
+						role="tab"
+						aria-selected="false"
+						aria-controls="panel-4"
+						id="tab-4"
+						tabindex="-1"> 
+							OTHER
+					</button>
+					
+				</div>
 
+				<div 
+					id="panel-1" 
+					role="tabpanel" 
+					tabindex="0" 
+					aria-labelledby="tab-1">
+						<h3>GETTING STARTED</h3>
+							<ul class="card-list">
+								<li><a href="">nero's quick'n'dirty personal website guide</a></li>
+								<li><a href="">sadgrl.online</a></li>
+							</ul>
+
+						<h3>GENERAL EDUCATION</h3>
+							<ul class="card-list">
+								<li><a href="">nero's personal website guide</a></li>
+								<li><a href="">sadgrl.online</a></li>
+							</ul>
+
+						<h3>CODE & LAYOUTS</h3>
+							<ul class="card-list">
+								<li><a href="https://github.com/swyxio/spark-joy" class="external">spark joy</a></li>
+								<li><a href="https://uiverse.io/" class="external">uiverse</a> a community-built library of ui elements</li>
+								<li><a href="" class="external"></a></li>
+							</ul>
+
+						<h3>OTHER</h3>
+							<ul class="card-list">
+								<li><a href="https://github.com/bradtraversy/design-resources-for-developers" class="external">brad traversy's design resources for developers</a></li>
+								<li><a href="https://piccalil.li/blog/a-more-modern-css-reset/" class="external">andy bell's (more) modern css reset</a></li>
+								<li><a href="https://tinytools.directory/" class="external">tinytools.directory</a></li>
+								<li><a href="https://qr.birdcat.cafe/" class="external">libreqr</a></li>
+							</ul>
+
+					</div>
+
+				<div
+					id="panel-2"
+					role="tabpanel"
+					tabindex="0"
+					aria-labelledby="tab-2"
+					hidden >
+						<h3>COLOR THEORY & PALETTES</h3>
+							<ul class="card-list">
+								<li><a href="https://stuff.veekun.com/pkcolor/" class="external">purple kecleon's brief explanation of color theory</a></li>
+								<li><a href="https://www.design-seeds.com/" class="external">design seeds</a> inspiration and color palettes for all who love color</li>
+							</ul>
+						<h3>COMICS</h3>
+							<ul class="card-list">
+								<li><a href="" class="external">understanding comics</a></li>
+								<li><a href="https://comicsdevices.com/" class="external">the creator's guide to comics devices</a></li>
+							</ul>
+						<h3>OTHER</h3>
+							<ul class="card-list">
+								<li><a href="https://hedgiespresso.itch.io/quarter-zine" class="external">1/4 fold-over zine template</a></li>
+								<li><a href="https://tofupixel.tumblr.com/post/753826462739611648/so-you-want-to-learn-pixel-art" class="external">so you want to learn pixel art?</a></li>
+								<li><a href="https://docs.google.com/spreadsheets/d/1s_VxE-T96rIxA6Pc4_-hze_S0CyzHYPF/edit?gid=2093176756#gid=2093176756" class="external">commission pricing worksheet</a> don't sell yourself short!</li>
+							</ul>
+					</div>
+
+				<div 
+					id="panel-3" 
+					role="tabpanel" 
+					tabindex="0" 
+					aria-labelledby="tab-3" 
+					hidden >
+						<h3>BRUSHES</h3>
+							<ul class="card-list">
+								<li><a href="https://assets.clip-studio.com/en-us/detail?id=1870475" class="external">mameo pencil</a> <em>(clip studio paint)</em></li>
+								<li><a href="https://assets.clip-studio.com/ja-jp/detail?id=2090040" class="external">homemade rainbow colored pencil</a> <em>(clip studio paint)</em></li>
+								<li><a href="https://assets.clip-studio.com/en-us/detail?id=1972956" class="external">mirre's cross hatch brush set</a> <em>(clip studio paint)</em></li>
+							</ul>
+
+						<h3>FONTS</h3>
+							<ul class="card-list">
+								<li><a href="https://mangafonts.carrd.co/" class="external">manga font directory</a></li>
+								<li><a href="https://blambot.com/collections/all-fonts" class="external">blambot</a></li>
+								<li><a href="https://itch.io/c/2892190/fonts" class="external">not jam's pixel fonts</a></li>
+								<li><a href="https://www.bombingscience.com/80-free-graffiti-fonts/" class="external">80 free graffiti fonts</a></li>
+							</ul>
+
+						<h3>OTHER</h3>
+							<ul class="card-list">
+								<li><a href="https://www.truegrittexturesupply.com/" class="external">true grit texture supply</a> </li>
+								<li><a href="https://www.culturehustleusa.com/products/freetone" class="external">stuart semple's freetone</a> the pantone color palette for free (unless you work for adobe)</li>
+								<li><a href="https://assets.clip-studio.com/en-us/detail?id=2070226" class="external">null's gradient set</a> <em>(clip studio paint)</em></li>
+							</ul>
+				</div>
+				<div 
+					id="panel-4" 
+					role="tabpanel" 
+					tabindex="0" 
+					aria-labelledby="tab-4" 
+					hidden >
+						<h3>PRESERVATION</h3>
+						<ul class="card-list">
+							<li><a href="https://thetransfemininereview.com/2024/11/13/a-practical-guide-to-resisting-censorship/" class="external">the trans literature preservation project: a practical guide to resisting censorship</a></li>
+						</ul>
+						<h3>ONLINE SAFETY</h3>
+						<ul class="card-list">
+							<li><a href="https://www.kradeelav.com/cancelled-resources.html">kradeelav's cancelled resources</a></li>
+							<li><a href="https://www.youtube.com/watch?v=wmVkJvieaOA" class="external">the alt-right playbook</a> never play defense</li>
+							<li><a href="http://www.crashoverridenetwork.com/coach.html">crash override's automated cybersecurity helper</a></li>
+							<li><a href="https://github.com/Qwaxi-Lixard/yes-porn-allowed" class="external">yes porn allowed</a> a list of sites and services that don't ban adult content</li>
+							<li><a href="https://docs.google.com/document/d/1615pZB11BhsR0KtvyiXfzfMUBlxZi47HzzhWHIRpxwU/edit?tab=t.0" class="external">anonymize your online footprint</a></li>
+							<li><a href="https://everestpipkin.github.io/image-scrubber/" class="external">image scrubber</a></li>
+						</ul>
+						<h3>SEX & KINK</h3>
+						<ul class="card-list">
+							<li><a href="https://www.evilmonk.org/a/menu.cfm" class="external">evilmonk.org</a></li>
+							<li><a href="https://jirosworld.com/transgender/TransGuys-cliniq-safers.pdf" class="external">cruising: a trans guy's guide to the gay sex scene</a></li>
+						</ul>
 				</div>
 			</div>
 
-			<div
-				id="panel-2"
-				role="tabpanel"
-				tabindex="0"
-				aria-labelledby="tab-2"
-				hidden >
-				<div class="">
-					<h1>COLOR THEORY</h1>
-					<ul class="card-list">
-						<li><a href="">nero's personal website guide</a></li>
-						<li><a href="">sadgrl.online</a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div 
-				id="panel-3" 
-				role="tabpanel" 
-				tabindex="0" 
-				aria-labelledby="tab-3" 
-				hidden >
-				<div class="">
-					<h1>TEST3</h1>
-				</div>
-			</div>
-		</div>
 	</section>
 
 	</main>
@@ -223,6 +320,14 @@ import Card from '../../components/cards/Card.astro';
 		gap: 1.25em;
 	}
 
+	.flex-wrap {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: center;
+		gap: 1em;
+		margin: 1em;
+	}
+
 @media all and (min-width: 700px) {
 
 	.card-wrapper {
@@ -231,8 +336,7 @@ import Card from '../../components/cards/Card.astro';
 }
 
 </style>
-<!-- <script src="../../utility/scripts/tabs.ts"></script> -->
-<!-- <script>
+<script>
 
 window.addEventListener("DOMContentLoaded", () => {
         const tabList = document.querySelector('[role="tablist"]');
@@ -276,7 +380,7 @@ window.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-    function changeTabs() {
+    function changeTabs(e) {
         const targetTab = e.target;
         
         const tabList = targetTab.parentNode;
@@ -306,5 +410,5 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-</script> -->
+</script>
 
