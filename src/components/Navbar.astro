@@ -217,6 +217,13 @@ import darby from "../utility/image/header_darby.png";
         margin-bottom: 1em;
     }
 
+    li a {
+        text-decoration: none;
+        color: var(--white-clr);
+    }
+    li a:visited {
+    }
+
     li a:hover {
         color: var(--primary-accent-clr);
     }
@@ -439,25 +446,15 @@ hasSubmenu.forEach((submenuLink) => {
                 toggle?.classList.add("fa-unlock-keyhole");
             });
         } 
-        // else {
-        //     menuLinks.forEach((menuLink) => {
-        //         menuLink.classList.remove("active");
-        //         toggle?.classList.remove("fa-unlock-keyhole");
-        //         toggle?.classList.add("fa-lock");
-        //     })
-        // }
     });
 });
 
-
 // const hasSubmenu = document.querySelectorAll(".has-submenu");
-
 const submenus = document.querySelectorAll(".submenu");
 
 function closeSubmenu(menus) {
   menus.forEach((menu) => {
     if (menu.classList.contains("submenu-active")) {
-        console.log("contains submenu active");
         let openMenu = menu;
         let clickMenu = openMenu.contains(menu.target);
         if (clickMenu) {
@@ -472,14 +469,8 @@ function closeSubmenu(menus) {
     }
     closeSubmenu(submenus)
 
-//else {
-//         console.log("click outside");
-
-//     // if (!isClickInside && menu.querySelector(".submenu-active")) {
-//     //   menu.querySelector(".submenu-active").classList.remove("submenu-active");
-//     // }
-// })
-}})}
+}}
+)}
 
 // function closeSubmenu(e) {
 //     hasSubmenu.forEach((submenu) => {
@@ -491,7 +482,7 @@ function closeSubmenu(menus) {
 //         }
 //     )}
     
-    document.addEventListener("click", closeSubmenu);
+    // document.addEventListener("click", closeSubmenu);
 
 </script>
 

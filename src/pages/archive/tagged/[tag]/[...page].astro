@@ -82,14 +82,14 @@ const titleTag = tag.toUpperCase();
     }
 
     .masonry {
+        display: grid;
         padding: 0;
+        grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
         margin: 3em 2em;
-        gap: 1.5em;
-        row-gap: 2em;
-        display: flex;
-        flex-flow: row wrap;
-        align-items: stretch;
+        gap: 0em 1.5em;
+        justify-items: center;
         justify-content: center;
+        align-items: stretch;
     }
 
     .masonry > * {

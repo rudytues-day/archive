@@ -88,10 +88,8 @@ export function tabToggles() {
   toggles.forEach((toggle) => {
     toggle.addEventListener("click", () => {
       const sectionId = toggle.dataset.toggleSection;
-      console.log(sectionId);
       activateSection(sectionId);
       const current = new URL(window.location.href);
-      console.log(current)
       current.hash = sectionId;
       location.replace(current);
     });

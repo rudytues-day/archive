@@ -4,61 +4,17 @@ interface Props {
 	icon: string;
 }
 
-// import '../../utility/styles/variables.css'
 import '../../utility/styles/card-styles.css'
 
 const { title, icon } = Astro.props as Props;
 ---
 
 <div class:list={'card'}>
-    <h1 class:list={['card-title', 'card-title-left', 'card-title-icon']}>
-        <i class:list={['card-title-icon', `fas ${icon}`]} aria-label="none"></i> <span>{title}</span>
+    <h1 class:list={['card-title']}>
+        <i class:list={[`fas ${icon}`]} aria-label="none"></i>
+		<span>{title}</span>
     </h1>
     <div class:list={'card-body'}>
         <slot />
     </div>  
 </div>
-
-<style>
-
-
-</style>
-
-<style is:global>
-    
-	.card-p a,
-	.card-list a {
-		font-weight: bold;
-		color: var(--primary-link-clr);
-		text-decoration: underline;
-	}
-
-	.card-p {
-		margin: 1em;
-	}
-
-	.card-list,
-	.card-list ul {
-		margin: 1em;
-		padding: 0;
-		list-style: none;
-	}
-
-	.card-list li {
-		padding-left: 0.5em;
-	}
-    
-	.card-list li::marker {
-		content: '/';
-	}
-
-	.card-list b + a {
-		padding-left: 0.25em;
-	}
-
-	.card-list ul {
-		margin-block: 0;
-	}
-
-</style>
-

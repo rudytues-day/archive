@@ -5,7 +5,7 @@ import { getCollection } from "astro:content";
 import Layout from '../../layouts/Layout.astro';
 import CardProjects from "../../components/cards/CardProjects.astro";
 import CardPreview from '../../components/cards/CardPreview.astro';
-import Header from '../../components/Header.astro';
+import Navbar from '../../components/Navbar.astro';
 import { sortByUploadDate } from '../../utility/utils';
 
 
@@ -16,7 +16,7 @@ const projects = await getCollection("projects")
 
 <Layout title="WORKS">
 
-<Header />
+<Navbar />
 
 	<main>
 		<h1>WORKS</h1>
@@ -164,7 +164,7 @@ const projects = await getCollection("projects")
 		text-align: center;
 		font-family: var(--display);
 		text-decoration: none;
-		transition: ease 0.2s;
+		transition: var(--link-transition);
 	}
 
 	.visit .fas {

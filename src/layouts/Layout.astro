@@ -11,8 +11,6 @@ import Footer from '../components/Footer.astro';
 import MetaTags from '../components/MetaTags.astro';
 import ToTop from '../components/ToTop.astro';
 
-import '../utility/styles/variables.css'
-
 ---
 
 <!doctype html>
@@ -45,6 +43,7 @@ import '../utility/styles/variables.css'
 <style is:global>
 
 :root {
+
     --primary-clr-dark: hsl(0, 0%, 7%);
     --primary-clr-med: hsl(283, 10%, 14%);
     --primary-clr-light: hsl(263, 10%, 20%);
@@ -57,6 +56,8 @@ import '../utility/styles/variables.css'
     --bg-clr: #FBFBFB;
     --display: "Darumadrop One";
     --body: 'Averia Libre';
+	
+	--link-transition: 200ms;
 }
 
 .visually-hidden:not(:focus):not(:active) {

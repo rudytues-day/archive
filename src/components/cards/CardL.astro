@@ -3,6 +3,9 @@ import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import { slugify, formatDate } from "../../utility/utils.js";
 
+import '../../utility/styles/card-styles.css';
+import '../../utility/styles/tag-styles.css';
+
 interface Props {
 	slug: string;
 	title: string;
@@ -35,175 +38,47 @@ const {
 ---
 
 <a href={`/archive/entries/${slug}/`}>
-	<li class="card">
-        <h1>
+	<div class="card card-archive">
+        <h1 class="card-title">
 			<span>{title}</span>
-			<div class="icons">
+			<div>
 				{icons.map((icon) => (
-					<i class={`fas ${(icon)}`}></i>
+					<i class:list={[`fas ${(icon)}`]} aria-hidden="true"></i>
 				))}
 			</div>
 		</h1>
-        <div class="body">
-			<Image class="thumb"
+        <div class="card-body">
+			<Image class="card-thumbnail"
 				src={thumb}
 				alt={`${title} thumbnail`}
 			/>
             <div class="description">
-                <div class="flex">
-                    <p class="date">{formatDate(date)}</p>
-                    <div class="icons">
-                        { Nsfw && <i class="fas fa-ban" aria-label="adult content"></i> }
-                        { Dd && <i class="fas fa-feather" aria-label="dead dove"></i>}
-                    </div>
-                </div>
-                <p class="text">{desc}</p>
+
+				<div class="flex-wrapper">
+					<span class="date">{formatDate(date)}</span>
+					<div class="content-flags">
+						{ Nsfw && <i class="fas fa-ban" role="img" aria-label="adult content"></i> }
+						{ Dd && <i class="fas fa-feather" role="img" aria-label="dead dove"></i>}
+					</div>
+				</div>
+
+				<p>{desc}</p>
+
 				<ul class="tags">
 					{tags.map((tag) => (
 						<li><a href={`/works/archive/tagged/${slugify(tag)}`}>{tag}</a></li>
 					))}
 				</ul>
+				
             </div>
         </div>
-	</li>
+	</div>
 </a>
 
 <style>
 
     .card {
-        list-style: none;
 		margin: 2em auto;
-		max-width: 750px;
-	}
-	
-    h1 {
-        margin: 0;
-        font-size: 1.5em;
-		font-family: var(--display);
-        background-color: var(--primary-clr-dark);
-        overflow: hidden;
-        padding: 0.5em 1em;
-        color: var(--white-clr);
-        border-radius: 0.75em 0.75em 0em 0em;
-        transition: ease 0.2s;
-		text-align: left;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-    }
-	
-	h1 i {
-		font-size: 0.8em;
-		padding-bottom: 0.15em;
-	}
-    
-	li a {
-		transition: 200ms;
-	}
-
-    li:hover h1 {
-        color: var(--primary-accent-clr)
-    }
-
-    .body {
-		background: var(--white-clr);
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-        padding: 1em;
-        border: solid 2px var(--primary-clr-dark);		
-        border-radius: 0em 0em 1em 1em;
-		/* box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 5%) */
-    }
-
-    .thumb {
-		height: 150px;
-		min-width: 150px;
-		max-width: 150px;
-        margin: 0.5em;
-        border-radius: 0.75em;
-    }
-
-    .description {
-		display: grid;
-		gap: 1em;
-		margin: 1em;
-	}
-
-	.text {
-		margin-bottom: 0.75em;
-	}
-
-    .flex {
-        display: flex;
-		align-items: center;
-		justify-content: center;
-        gap: 0.5em;
-    }
-
-    .icons {
-		display: flex;
-		gap: 0.25em;
-        padding-top: 0.4em;
-	}
-
-	.flex .icons {
-		margin-block: 0 1.25em;
-	}
-
-    .date {
-		font-family: var(--display);
-		text-transform: uppercase;
-		font-size: 1.25em;
-        margin-bottom: 1em;
-	}
-
-	.tags {
-		display: flex;
-		flex-flow: row wrap;
-		list-style: none;
-		padding: 0;
-		gap: 0.25em;
-		margin-top: 0em;
-        align-items: center;
-	}
-
-	.tags li {
-		background-color: var(--primary-clr-dark);
-		color: var(--white-clr);
-		font-family: var(--display);
-		text-transform: uppercase;
-		padding: 0.125em 0.3em 0.4em 0.3em;
-		line-height: 1.125;
-		border-radius: 0.25em;
-	}
-
-	.tags li a {
-		transition: 200ms;
-	}
-
-	.tags li a:hover {
-		color: var(--primary-accent-clr)
-	}
-
-	@media all and (min-width: 700px) {
-
-		.card {
-			max-width: 100%;
-		}
-
-		.body {
-			display: flex;
-			flex-direction: row;
-			align-items: flex-start;
-			justify-content: left;
-		}
-
-		.flex {
-			justify-content: left;
-		}
-
 	}
 
 </style>

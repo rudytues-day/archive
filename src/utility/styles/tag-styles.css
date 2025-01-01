@@ -1,20 +1,21 @@
-/* CardL.astro */
-/*  tags component */
-
 .tags {
     display: flex;
     flex-flow: row wrap;
-    list-style: none;
-    padding: 0;
     gap: 0.25em;
-    margin-top: 0em;
+    padding: 0;
+    list-style: none;
+
+}
+
+.tags-cloud {
     align-items: center;
+    justify-content: center;
 }
 
 .tags li {
     background-color: var(--primary-clr-dark);
-    padding: 0.125em 0.3em 0.4em 0.3em;
     color: var(--white-clr);
+    padding: 0.125em 0.3em 0.4em 0.3em;
     font-family: var(--display);
     text-transform: uppercase;
     line-height: 1.125;
@@ -22,9 +23,9 @@
 }
 
 .tags li a {
-    transition: 200ms;
+    transition: var(--link-transition);
 }
 
 .tags li a:hover {
-    color: var(--primary-accent-clr)
+    color: var(--primary-accent-clr);
 }
