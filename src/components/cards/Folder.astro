@@ -1,0 +1,20 @@
+---
+interface Props {
+    tabTitle: string,
+    index: boolean,
+}
+
+import '../../utility/styles/card-styles.css';
+
+const { tabTitle, index } = Astro.props as Props
+
+---
+
+<details open={index}>
+    <summary class="tab-title">
+        {tabTitle}
+    </summary>
+    <div class="folder-body">
+        <slot />
+    </div>
+</details>

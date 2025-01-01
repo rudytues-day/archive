@@ -1,9 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Folder from '../../components/cards/Folder.astro';
 import { formatDate, tabToggles } from '../../utility/utils';
 
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
+
+import '../../utility/styles/card-styles.css';
 
 import placeholderImage from "./abstract_daughter.png";
 
@@ -44,8 +47,8 @@ function filterEntries(entries) {
                     <h2>GALLERY</h2>
                     <figure>
                         <Image class="full-size"
-                                src={placeholderImage}
-                                alt="alt"
+                            src={placeholderImage}
+                            alt=""
                         />
                         <figcaption>
                             <p></p>
@@ -53,20 +56,13 @@ function filterEntries(entries) {
                     </figure>
                 </div>
             </div>
-    
-        <div class="folder-wrapper">
-    
-            <div class="tabs-wrapper">
 
-                <ul class="tabs">
-                    <li class="tab-button active" data-toggle-section="illustration">ILLUSTRATION</li></a>
-                    <li class="tab-button" data-toggle-section="commission">COMMISSIONS</li></a>
-                    <li class="tab-button" data-toggle-section="sketchbook">SKETCHBOOK</li></a>
-                    <li class="tab-button" data-toggle-section="studies">STUDIES</li>
-                </ul>
-    
-                <div class="tab-section active" data-pane-section="illustration">
-    
+            <div class="details-wrapper">
+
+                <Folder
+                    tabTitle="TEST CLOSED"
+                    index={true}
+                >
                     <h3>PERSONAL</h3>
                     <div class="thumbnail-container">
                         { originalEntries.map((entry) => (
@@ -93,14 +89,14 @@ function filterEntries(entries) {
                                             <p><b>{entry.data.medium}<br/>{formatDate(entry.data.date)}</b></p>
                                         </figcaption>
                                     </figure>
-                                </a>
-                            </div>
+                                </div>
+                            </a>
                         ))}
                     
                     </div>
-    
-                     <h3>FANWORKS</h3>
-                     <div class="thumbnail-container">
+
+                    <h3>FANWORKS</h3>
+                    <div class="thumbnail-container">
                         { fanartEntries.map((entry) => (
                             <a href="#display">
                                 <div class="image">
@@ -125,34 +121,25 @@ function filterEntries(entries) {
                             </a>
                         ))}
                     </div>
-                 </div>
+                </Folder>
 
-                <div class="tab-section" data-pane-section="sketchbook">
-                    <h4>DIGITAL</h4>
-                        <div class="thumbnail-container">
-                        </div>
-                    <h4>ANALOG</h4>
-                        <div class="thumbnail-container">
-                        </div>
-                </div>
-    
-                <div class="tab-section" data-pane-section="commission">
-                    <h4>COMMISSIONS</h4>
-                        <div class="thumbnail-container">
-                        </div>
-                    </div>
+                <Folder
+                    tabTitle="TEST CLOSED"
+                    index={true}
+                >
+                    <p>lorem ipsum dolor sit amet</p>
+                    <p>some extra text to push this "tab" up because i'm good like that</p>
+                </Folder>
 
-                <div class="tab-section" data-pane-section="studies">
-                    <h4>DIGITAL</h4>
-                        <div class="thumbnail-container">
-                        </div>
-                    <h4>ANALOG</h4>
-                        <div class="thumbnail-container">
-                        </div>
-                    </div>
-                    
-                </div>
+                <Folder
+                    tabTitle="TEST CLOSED"
+                    index={false}
+                >
+                <p>lorem ipsum</p>
+                </Folder>
+                
             </div>
+
     
 </main>
 
@@ -183,28 +170,6 @@ function filterEntries(entries) {
         margin-bottom: 3em;
     }
 
-    h2 {
-        margin: 0;
-        font-size: 1.5rem;
-        font-family: var(--display);
-        background-color: var(--primary-clr-dark);
-        overflow: hidden;
-        padding: 0.5em 1em 0.75em 1em;
-        color: var(--white-clr);
-        transition: ease 0.2s;
-        text-align: left;
-        margin-block: 
-    }
-
-    h2::before {
-        content: '\f660';
-        display: inline-block;
-        font-family: "Font Awesome 6 Pro";
-        font-size: 0.75em;
-        margin-right: 1em;
-        font-weight: 900;
-    }
-
     .thumbnail-container h2 {
         display: none;
     }
@@ -221,7 +186,6 @@ function filterEntries(entries) {
 
     .thumb {
         opacity: 33%;
-        /* outline-color: transparent; */
         transform: opacity 750ms ease;
     }
 
@@ -235,8 +199,8 @@ function filterEntries(entries) {
     }
     
 
-    .tabs-wrapper .full-size,
-    .tabs-wrapper figcaption {
+    .details-wrapper .full-size,
+    .details-wrapper figcaption {
         display: none;
     }
     
@@ -321,82 +285,8 @@ function filterEntries(entries) {
         margin: 0;
 	}
 
-    .tabs-wrapper {
-        margin: 0em 1em;
-    }
-
-    .tabs {
-        margin: 0;
-        display: flex;
-        flex-flow: column-reverse;
-        background: var(--primary-clr-dark);
-        border-radius: 0.6em 0.6em 0 0;
-        list-style: none;
-        padding: 0;
-    }
-
-    .tab-button {
-        background-color: var(--primary-clr-dark);
-        margin: 0;
-        color: #fff;
-        font-family: 'Darumadrop One';
-        font-size: 1.25rem;
-        font-weight: 400;
-        line-height: 0.9;
-        width: 100%;
-        text-align: left;
-        left: 0;
-        order: 1;
-        width: 100%;
-        padding: 0.9em 1em;
-        border-radius: 0.6em 0.6em 0px 0px;
-    }
-
-        .tab-button::before {
-            content: "\f07b";
-            display: inline-block;
-            font-family: "Font Awesome 6 Pro";
-            font-size: 0.75em;
-            margin-right: 1em;
-            font-weight: 900;
-        }
-
-        .tab-button:not(.active) {
-            outline: 2px solid rgba(0, 0, 0, 0.2);
-            outline-offset: -0.08em;
-            border-radius: 0.6em 0.6em 0em 0em;
-            background: var(--primary-clr-med);
-            transition: ease all 100ms;
-        }
-
-        .tab-button:not(.active):hover {
-            color: var(--primary-accent-clr);
-        }
-
-        .tab-button.active::before {
-            content: "\f07c";
-        }
-
-        .tab-section {
-            display: none;
-            color: var(--primary-clr-dark);
-            background-color: #fff;
-            border: 2px solid #111;
-            border-radius: 0em 0.6em 0.6em 0.6em;
-            max-width: 100%;
-            margin-block: -1px 3em;
-            padding: 1em;
-            text-align: center;
-        }
-
-        .tab-section.active {
-            display: block;
-        }
-
         @media all and (min-width: 780px) {
 
-            .tabs {
-            }
             .thumbnail {
                 height: 100px;
                 width: 100px;
@@ -422,9 +312,6 @@ function filterEntries(entries) {
                 width: fit-content;
             }
             
-            .tab-button {
-            min-width: 225px;
-        }
         }
 
 </style>
@@ -449,49 +336,4 @@ thumbnails.forEach(thumbnail => {
     })
 })
 
-const toggles = document.querySelectorAll<HTMLElement>(`[data-toggle-section]`);
-    toggles.forEach((toggle) => {
-        toggle.addEventListener('click', tabToggles);
-        })
-
-// function tabToggles() {
-//   const toggles = document.querySelectorAll<HTMLElement>(`[data-toggle-section]`);
-//   const sections = document.querySelectorAll<HTMLElement>(`[data-pane-section]`);
-//   const sectionIds = Array.from(sections).map((section) => {
-//     return section.dataset.paneSection;
-//   });
-
-//   const hash = document.location.hash.replace("#", "");
-
-//   function activateSection(sectionId) {
-//     sections.forEach((section) => {
-//       section.classList.remove("active");
-//       if (section.dataset.paneSection === sectionId) {
-//         section.classList.add("active");
-//       }
-//     });
-//     toggles.forEach((toggle) => {
-//       toggle.classList.remove("active");
-//       if (toggle.dataset.toggleSection === sectionId) {
-//         toggle.classList.add("active");
-//       }
-//     });
-//   };
-
-//   toggles.forEach((toggle) => {
-//     toggle.addEventListener("click", () => {
-//       const sectionId = toggle.dataset.toggleSection;
-//       console.log(sectionId);
-//       activateSection(sectionId);
-//       const current = new URL(window.location.href);
-//       console.log(current)
-//       current.hash = sectionId;
-//       location.replace(current);
-//     });
-//   });
-
-//   if (sectionIds.includes(hash)) {
-//     activateSection(hash);
-//   }
-// }
 </script>
