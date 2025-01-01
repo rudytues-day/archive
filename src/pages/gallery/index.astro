@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Folder from '../../components/cards/Folder.astro';
+import CardFolder from '../../components/cards/CardFolder.astro';
 import { formatDate, tabToggles } from '../../utility/utils';
 
 import { Image } from "astro:assets";
@@ -44,23 +44,26 @@ function filterEntries(entries) {
 
             <div class="gallery-card" id="display">
                 <div class="image">
-                    <h2>GALLERY</h2>
+                    <!-- <h2>GALLERY</h2> -->
                     <figure>
                         <Image class="full-size"
                             src={placeholderImage}
                             alt=""
                         />
                         <figcaption>
-                            <p></p>
+                            <p class="title">NAVIGATION</p>
+                            
+                            <p>click on the <b>tabs</b> to navigate between sections, the <b>thumbnails</b> to view the full images, and the <b>images</b> to open them in a new tab</p>
+
                         </figcaption>
                     </figure>
                 </div>
             </div>
 
-            <div class="details-wrapper">
+            <div class="folder-wrapper">
 
-                <Folder
-                    tabTitle="TEST CLOSED"
+                <CardFolder
+                    tabTitle="ILLUSTRATION"
                     index={true}
                 >
                     <h3>PERSONAL</h3>
@@ -121,23 +124,30 @@ function filterEntries(entries) {
                             </a>
                         ))}
                     </div>
-                </Folder>
+                </CardFolder>
 
-                <Folder
-                    tabTitle="TEST CLOSED"
-                    index={true}
+                <CardFolder
+                    tabTitle="SKETCHBOOK"
+                    index={false}
                 >
                     <p>lorem ipsum dolor sit amet</p>
                     <p>some extra text to push this "tab" up because i'm good like that</p>
-                </Folder>
+                </CardFolder>
 
-                <Folder
-                    tabTitle="TEST CLOSED"
+                <CardFolder
+                    tabTitle="COMMISSIONS"
                     index={false}
                 >
-                <p>lorem ipsum</p>
-                </Folder>
+                    <p class="card-p">this is where my commissions would go... if i uploaded them</p>
+                </CardFolder>
                 
+                <CardFolder
+                    tabTitle="STUDIES"
+                    index={false}
+                >
+                    <p>lorem ipsum</p>
+                </CardFolder>
+
             </div>
 
     
@@ -170,6 +180,11 @@ function filterEntries(entries) {
         margin-bottom: 3em;
     }
 
+    .gallery-card figcaption {
+        margin-inline: auto;
+        max-width: 500px;
+    }
+
     .thumbnail-container h2 {
         display: none;
     }
@@ -199,8 +214,8 @@ function filterEntries(entries) {
     }
     
 
-    .details-wrapper .full-size,
-    .details-wrapper figcaption {
+    .folder-wrapper .full-size,
+    .folder-wrapper figcaption {
         display: none;
     }
     

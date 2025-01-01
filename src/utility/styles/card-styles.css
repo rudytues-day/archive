@@ -27,6 +27,8 @@ h1.card-title,
     transition: var(--link-transition);
 }
 
+
+
 details > .tab-title::marker {
     content: '';
 }
@@ -90,7 +92,8 @@ h3 {
 }
 
 .folder-body {
-    border: none;;}
+    border: none;
+}
 
 
 .card-thumbnail {
@@ -107,6 +110,7 @@ h3 {
     justify-content: center;
     margin: 1em;
     gap: 1em;
+    
 }
 
 .card-preview .description > p {
@@ -167,16 +171,14 @@ h3 {
     max-width: 750px;
 }
 
-.details-wrapper {
-    margin: 3em auto;
+.folder-wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 4em auto 3em auto;
     max-width: 700px;
-    /* background-color: var(--primary-clr-med); */
     border: var(--border);
     border-radius: var(--folder-border-radius);
     overflow: hidden;
-    display: flex;
-    flex-direction: column-reverse;
-
 }
 
 /* children styling */

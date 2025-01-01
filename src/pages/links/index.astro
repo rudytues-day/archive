@@ -7,12 +7,8 @@ const groupButton = affiliates.filter((affiliate => affiliate.data.type === "gro
 
 import Layout from '../../layouts/Layout.astro';
 import Card from '../../components/cards/Card.astro';
-import Tabs from '../../components/cards/Tabs.astro';
-import TabPanelsTest from '../../components/cards/TabPanelsTest.astro';
-import TabsTest from '../../components/cards/TabsTest.astro';
+import CardFolder from "../../components/cards/CardFolder.astro";
 import { Image } from "astro:assets";
-
-import '../../utility/styles/tab-styles.css'
 
 ---
 
@@ -142,159 +138,130 @@ import '../../utility/styles/tab-styles.css'
 
 			<h2>RESOURCES</h2>
 
-			<div class="card-wrapper">
+			<div class="folder-wrapper">
 
-				<div role="tablist" aria-label="tabs">
+				<CardFolder
+					tabTitle="WEB DESIGN"
+					index={true}>
 
-					<button
-						role="tab"
-						aria-selected="true"
-						aria-controls="panel-1"
-						id="tab-1"
-						tabindex="0"> 
-							WEB DEV
-					</button>
+					<h3>GETTING STARTED</h3>
+						<ul class="card-list">
+							<li><a href="">nero's quick'n'dirty personal website guide</a> an easy to follow guide for getting your personal site up and running with tons of resources</li>
+							<li><a href="https://htmlforpeople.com/">html for people</a></li>
+							<li><a href="https://sadgrl.online/" class="external">sadgrl.online</a> a great resource for beginners with tons of free code and templates</li>
+						</ul>
 
-					<button
-						role="tab"
-						aria-selected="false"
-						aria-controls="panel-2"
-						id="tab-2"
-						tabindex="-1"> 
-							ART & COMICS
-					</button>
+					<h3>GENERAL EDUCATION</h3>
+						<ul class="card-list">
+							<li><a href="https://www.w3schools.com/default.asp" class="external">w3schools</a> a beginner friendly online resource for all things related to web development</li>
+							<li><a class="external" href="https://www.youtube.com/@KevinPowell">kevin powell's youtube channel</a> the youtube guy who helped me fall deeply, madly in love with css</li>
+							<li><a class="external" href="https://archive.org/details/SteveKrugDontMakeMeThink">don't make me think</a> the ux textbook that inspired me to pursue web development</li>
+							<li><a class="external" href="https://practicaltypography.com/">practical typography</a> an online typography textbook</li>
+						</ul>
 
-					<button
-						role="tab"
-						aria-selected="false"
-						aria-controls="panel-3"
-						id="tab-3"
-						tabindex="-1"> 
-							ASSETS
-					</button>
-					
-					<button
-						role="tab"
-						aria-selected="false"
-						aria-controls="panel-4"
-						id="tab-4"
-						tabindex="-1"> 
-							OTHER
-					</button>
-					
-				</div>
+					<h3>CODE & LAYOUTS</h3>
+						<ul class="card-list">
+							<li><a href="https://github.com/swyxio/spark-joy" class="external">spark joy</a></li>
+							<li><a href="https://uiverse.io/" class="external">uiverse</a> a community-built library of ui elements</li>
+						</ul>
 
-				<div 
-					id="panel-1" 
-					role="tabpanel" 
-					tabindex="0" 
-					aria-labelledby="tab-1">
-						<h3>GETTING STARTED</h3>
-							<ul class="card-list">
-								<li><a href="">nero's quick'n'dirty personal website guide</a></li>
-								<li><a href="">sadgrl.online</a></li>
-							</ul>
+					<h3>OTHER</h3>
+						<ul class="card-list">
+							<li><a href="https://github.com/swyxio/spark-joy" class="external">spark joy</a> design tools to add charm to your website</li>
+							<li><a href="https://uiverse.io/" class="external">uiverse</a> open source ui elements</li>
+							<li><a href="https://rarebit.neocities.org/" class="external">rarebit</a> an open source webcomic template</li>
+							<li><a href="https://realtimecolors.com/" class="external">realtime colors</a> a color palette visualizer</li>
+							<li><a class="external" href="https://knifequeerart.com/">knifequeerart's gallery template</a></li>
+							<li><a class="external" href="https://kmclaude.com/">k.m. claude's gallery template</a></li>
+							<li><a href="https://scumsuck.com/links#web" class="external">scumsuck's web resources</a> you should spend some time on scumsuck's site anyway</li>
+						</ul>
 
-						<h3>GENERAL EDUCATION</h3>
-							<ul class="card-list">
-								<li><a href="">nero's personal website guide</a></li>
-								<li><a href="">sadgrl.online</a></li>
-							</ul>
+				</CardFolder>
 
-						<h3>CODE & LAYOUTS</h3>
-							<ul class="card-list">
-								<li><a href="https://github.com/swyxio/spark-joy" class="external">spark joy</a></li>
-								<li><a href="https://uiverse.io/" class="external">uiverse</a> a community-built library of ui elements</li>
-								<li><a href="" class="external"></a></li>
-							</ul>
+				<CardFolder
+					tabTitle="ART & COMICS"
+					index={false}>
 
-						<h3>OTHER</h3>
-							<ul class="card-list">
-								<li><a href="https://github.com/bradtraversy/design-resources-for-developers" class="external">brad traversy's design resources for developers</a></li>
-								<li><a href="https://piccalil.li/blog/a-more-modern-css-reset/" class="external">andy bell's (more) modern css reset</a></li>
-								<li><a href="https://tinytools.directory/" class="external">tinytools.directory</a></li>
-								<li><a href="https://qr.birdcat.cafe/" class="external">libreqr</a></li>
-							</ul>
+					<h3>COLOR THEORY & PALETTES</h3>
+						<ul class="card-list">
+							<li><a href="https://stuff.veekun.com/pkcolor/" class="external">purple kecleon's brief explanation of color theory</a></li>
+							<li><a href="https://www.design-seeds.com/" class="external">design seeds</a> inspiration and color palettes for all who love color</li>
+							<li><a href="https://coolors.co/" class="external">coolors</a> a color palette generator</li>
+						</ul>
 
-					</div>
+					<h3>COMICS</h3>
+						<ul class="card-list">
+							<li><a href="" class="external">understanding comics</a></li>
+							<li><a href="https://archive.org/details/comicbookdesign0000mill" class="external">comic book design</a> by gary spencer millidge, creator of strangehaven</li>
+							<li><a href="https://comicsdevices.com/" class="external">the creator's guide to comics devices</a></li>
+						</ul>
 
-				<div
-					id="panel-2"
-					role="tabpanel"
-					tabindex="0"
-					aria-labelledby="tab-2"
-					hidden >
-						<h3>COLOR THEORY & PALETTES</h3>
-							<ul class="card-list">
-								<li><a href="https://stuff.veekun.com/pkcolor/" class="external">purple kecleon's brief explanation of color theory</a></li>
-								<li><a href="https://www.design-seeds.com/" class="external">design seeds</a> inspiration and color palettes for all who love color</li>
-							</ul>
-						<h3>COMICS</h3>
-							<ul class="card-list">
-								<li><a href="" class="external">understanding comics</a></li>
-								<li><a href="https://comicsdevices.com/" class="external">the creator's guide to comics devices</a></li>
-							</ul>
-						<h3>OTHER</h3>
-							<ul class="card-list">
-								<li><a href="https://hedgiespresso.itch.io/quarter-zine" class="external">1/4 fold-over zine template</a></li>
-								<li><a href="https://tofupixel.tumblr.com/post/753826462739611648/so-you-want-to-learn-pixel-art" class="external">so you want to learn pixel art?</a></li>
-								<li><a href="https://docs.google.com/spreadsheets/d/1s_VxE-T96rIxA6Pc4_-hze_S0CyzHYPF/edit?gid=2093176756#gid=2093176756" class="external">commission pricing worksheet</a> don't sell yourself short!</li>
-							</ul>
-					</div>
+					<h3>OTHER</h3>
+						<ul class="card-list">
+							<li><a href="https://hedgiespresso.itch.io/quarter-zine" class="external">1/4 fold-over zine template</a></li>
+							<li><a href="https://tofupixel.tumblr.com/post/753826462739611648/so-you-want-to-learn-pixel-art" class="external">so you want to learn pixel art?</a></li>
+							<li><a href="https://docs.google.com/spreadsheets/d/1s_VxE-T96rIxA6Pc4_-hze_S0CyzHYPF/edit?gid=2093176756#gid=2093176756" class="external">commission pricing worksheet</a> don't sell yourself short!</li>
+						</ul>
 
-				<div 
-					id="panel-3" 
-					role="tabpanel" 
-					tabindex="0" 
-					aria-labelledby="tab-3" 
-					hidden >
-						<h3>BRUSHES</h3>
-							<ul class="card-list">
-								<li><a href="https://assets.clip-studio.com/en-us/detail?id=1870475" class="external">mameo pencil</a> <em>(clip studio paint)</em></li>
-								<li><a href="https://assets.clip-studio.com/ja-jp/detail?id=2090040" class="external">homemade rainbow colored pencil</a> <em>(clip studio paint)</em></li>
-								<li><a href="https://assets.clip-studio.com/en-us/detail?id=1972956" class="external">mirre's cross hatch brush set</a> <em>(clip studio paint)</em></li>
-							</ul>
+				</CardFolder>
 
-						<h3>FONTS</h3>
-							<ul class="card-list">
-								<li><a href="https://mangafonts.carrd.co/" class="external">manga font directory</a></li>
-								<li><a href="https://blambot.com/collections/all-fonts" class="external">blambot</a></li>
-								<li><a href="https://itch.io/c/2892190/fonts" class="external">not jam's pixel fonts</a></li>
-								<li><a href="https://www.bombingscience.com/80-free-graffiti-fonts/" class="external">80 free graffiti fonts</a></li>
-							</ul>
+				<CardFolder
+					tabTitle="ASSETS & DOWNLOADS"
+					index={false}>
 
-						<h3>OTHER</h3>
-							<ul class="card-list">
-								<li><a href="https://www.truegrittexturesupply.com/" class="external">true grit texture supply</a> </li>
-								<li><a href="https://www.culturehustleusa.com/products/freetone" class="external">stuart semple's freetone</a> the pantone color palette for free (unless you work for adobe)</li>
-								<li><a href="https://assets.clip-studio.com/en-us/detail?id=2070226" class="external">null's gradient set</a> <em>(clip studio paint)</em></li>
-							</ul>
-				</div>
-				<div 
-					id="panel-4" 
-					role="tabpanel" 
-					tabindex="0" 
-					aria-labelledby="tab-4" 
-					hidden >
-						<h3>PRESERVATION</h3>
+					<h3>BRUSHES</h3>
+						<ul class="card-list">
+							<li><a href="https://assets.clip-studio.com/en-us/detail?id=1870475" class="external">mameo pencil</a> <em>(clip studio paint)</em></li>
+							<li><a href="https://assets.clip-studio.com/ja-jp/detail?id=2090040" class="external">homemade rainbow colored pencil</a> <em>(clip studio paint)</em></li>
+							<li><a href="https://assets.clip-studio.com/en-us/detail?id=1972956" class="external">mirre's cross hatch brush set</a> <em>(clip studio paint)</em></li>
+						</ul>
+
+					<h3>FONTS</h3>
+						<ul class="card-list">
+							<li><a href="https://www.dafont.com/">da font</a></li>
+							<li><a href="https://mangafonts.carrd.co/" class="external">manga font directory</a></li>
+							<li><a href="https://blambot.com/collections/all-fonts" class="external">blambot</a></li>
+							<li><a href="https://itch.io/c/2892190/fonts" class="external">not jam's pixel fonts</a></li>
+							<li><a href="https://www.bombingscience.com/80-free-graffiti-fonts/" class="external">80 free graffiti fonts</a></li>
+						</ul>
+
+					<h3>OTHER</h3>
+						<ul class="card-list">
+							<li><a href="https://www.truegrittexturesupply.com/" class="external">true grit texture supply</a> </li>
+							<li><a href="https://www.culturehustleusa.com/products/freetone" class="external">stuart semple's freetone</a> the pantone color palette for free (unless you work for adobe)</li>
+							<li><a href="https://assets.clip-studio.com/en-us/detail?id=2070226" class="external">null's gradient set</a> <em>(clip studio paint)</em></li>
+						</ul>
+
+				</CardFolder>
+
+				<CardFolder
+					tabTitle="OTHER"
+					index={false}>
+
+					<h3>PRESERVATION</h3>
 						<ul class="card-list">
 							<li><a href="https://thetransfemininereview.com/2024/11/13/a-practical-guide-to-resisting-censorship/" class="external">the trans literature preservation project: a practical guide to resisting censorship</a></li>
 						</ul>
-						<h3>ONLINE SAFETY</h3>
+
+					<h3>ONLINE SAFETY</h3>
 						<ul class="card-list">
-							<li><a href="https://www.kradeelav.com/cancelled-resources.html">kradeelav's cancelled resources</a></li>
+							<li><a href="https://www.kradeelav.com/cancelled-resources.html">kradeelav's cancelled resources</a> krad is a dear friend of mine who created a critical resource page for artists facing harassment campaigns</li>
 							<li><a href="https://www.youtube.com/watch?v=wmVkJvieaOA" class="external">the alt-right playbook</a> never play defense</li>
 							<li><a href="http://www.crashoverridenetwork.com/coach.html">crash override's automated cybersecurity helper</a></li>
 							<li><a href="https://github.com/Qwaxi-Lixard/yes-porn-allowed" class="external">yes porn allowed</a> a list of sites and services that don't ban adult content</li>
 							<li><a href="https://docs.google.com/document/d/1615pZB11BhsR0KtvyiXfzfMUBlxZi47HzzhWHIRpxwU/edit?tab=t.0" class="external">anonymize your online footprint</a></li>
+							<li><a href="">have i been pwned</a> a site that allows you to check if your email has been compromised in a data breach</li>
 							<li><a href="https://everestpipkin.github.io/image-scrubber/" class="external">image scrubber</a></li>
 						</ul>
-						<h3>SEX & KINK</h3>
+
+					<h3>SEX & KINK</h3>
 						<ul class="card-list">
 							<li><a href="https://www.evilmonk.org/a/menu.cfm" class="external">evilmonk.org</a></li>
 							<li><a href="https://jirosworld.com/transgender/TransGuys-cliniq-safers.pdf" class="external">cruising: a trans guy's guide to the gay sex scene</a></li>
 						</ul>
-				</div>
+
+				</CardFolder>
+				
 			</div>
 
 	</section>
@@ -326,6 +293,15 @@ import '../../utility/styles/tab-styles.css'
 		justify-content: center;
 		gap: 1em;
 		margin: 1em;
+	}
+
+	h3 {
+		text-align: left;
+		margin-block: 1.5em 1em
+	}
+
+	h3:first-child {
+		margin-block: 1em;
 	}
 
 @media all and (min-width: 700px) {

@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/ArchiveLayout.astro';
-import CardL from '../../components/cards/CardL.astro';
+import CardArchive from '../../components/cards/CardArchive.astro';
 import Pagination from '../../components/Pagination.astro';
 
 import { getCollection } from "astro:content";
@@ -30,8 +30,8 @@ const firstPath = pathname[1];
 
 	<ul role="list">
 		{
-			page.data.map((entry) => 
-				<CardL
+			page.data.map((entry) =>
+				<CardArchive
 					slug={entry.slug}
 					title={entry.data.title}
 					date={entry.data.date}
