@@ -6,6 +6,9 @@ interface Props {
 const { title } = Astro.props;
 
 import '../utility/reset.css';
+import '../utility/styles/form-styles.css';
+import '../utility/styles/main-styles.css'
+
 import Header from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import MetaTags from '../components/MetaTags.astro';
@@ -40,7 +43,7 @@ import ToTop from '../components/ToTop.astro';
 
 </html>
 
-<style is:global>
+<style>
 
 :root {
 
@@ -58,193 +61,8 @@ import ToTop from '../components/ToTop.astro';
     --body: 'Averia Libre';
 	
 	--link-transition: 200ms;
+
 }
-
-.visually-hidden:not(:focus):not(:active) {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
-
-	h1, h2, h3, h4 {
-		font-family: var(--display);
-		text-align: center;
-	}
-	h1 {
-		font-size: 2rem;
-		margin-block: 1.5em 1em;
-	}
-	h2 {
-		font-size: 2rem;
-		margin: 1.5em 0em;
-	}
-	
-    h3 {
-		margin-block: 1em 0.75em;
-		/* text-align: left; */
-        text-align: left;
-        font-size: 1.5rem;
-        margin-left: 0.75em;
-    }
-
-
-
-	h4 {
-		font-size: 1.325rem;
-		font-family: var(--display);
-		margin: 1.25em auto 1em auto;
-		text-align: center;
-	}
-
-	b,
-	article b {
-		font-family: var(--display);
-		font-size: 1.125rem;
-		font-weight: normal;
-		text-transform: uppercase;
-	}
-
-	a:hover {
-		color: var(--primary-accent-clr);
-	}
-
-	.external::after {
-		display: inline-block;
-		content: "\f08e";
-		font-family: "Font Awesome 6 Pro";
-		font-size: 0.8em;
-		padding-left: 0.3em;
-		font-weight: 900;
-	}
-
-	em {
-		color: var(--primary-clr-light);
-		padding-left: 0.3em;
-	}
-
-	main {
-		margin: auto;
-		width: 100%;
-		position: relative;
-
-	}
-
-	main::before,
-	main::after {
-		content: '';
-		background-image: url('/imgs/chain_1_horizontal.png');
-		display: block;
-		width: 100%;
-		height: 20px;
-
-	}
-
-	main::before {
-		top: 0;
-		margin-block: 0.25em 5em;
-	}
-
-	main::after {
-		bottom: 0;
-		margin-block: 5em 0.25em;
-	}
-
-	section:not(:last-of-type)::after {
-		content: '';
-		background-image: url('/imgs/chain_1_horizontal.png');
-		display: block;
-		width: 100%;
-		height: 20px;
-		margin-block: 5em;
-	}
-
-	/* form styling */
-
-	form {
-		display: grid;
-		gap: 2em;
-		margin: 2em 1em;
-		justify-content: center;
-	}
-
-	form label {
-		font-family: var(--display);
-		font-size: 1.325rem;
-		text-align: center;
-		position: relative;
-	}
-
-	label:has(+ [aria-required="true"])::after,
-	.fa-asterisk {
-		content: "\2a";
-		font-family: 'Font Awesome 6 Pro';
-		font-size: 0.825rem;
-		display: inline-block;
-		padding-left: 0.5em;
-		position: absolute;
-		bottom: 0;
-		color: var(--primary-accent-clr);
-		font-weight: bold;
-	}
-
-	.fa-asterisk {
-		padding-inline: 0.125em;
-		position: relative;
-	}
-
-	button,
-	input[type="submit"] {
-		background-color: var(--primary-clr-dark);
-		color: var(--white-clr);
-		margin: auto;
-		padding: 0.125em 0.75em 0.3em 0.75em;
-		font-family: var(--display);
-		text-transform: uppercase;
-		font-size: 1.5rem;
-		line-height: 1.5;
-		border-radius: 1rem;
-		border-color: #000;
-		width: 8em;
-		cursor: pointer;
-		/* transition: color 100ms ease; */
-	}
-
-	button[role="tab"] {
-		border-radius: 1rem 1rem 1rem 0rem;
-		width: fit-content;
-	}
-	
-                
-	button:hover,
-	input[type="submit"]:hover {
-		color: var(--primary-accent-clr); 
-	}
-
-	input[type="text"],
-	input[type="email"],
-	textarea {
-		margin: auto;
-		width: 25ch;
-		border-radius: 1em;
-		padding: 0.325em 1em;
-		font-family: inherit;
-	}
-
-	textarea {
-		max-width: 50ch;
-	}
-
-	.fa-ban {
-		color: var(--primary-accent-clr);
-	}
-	
-	.fa-feather {
-		color: var(--primary-clr-200);
-	}
 
 	@media all and (min-width: 720px) {
 

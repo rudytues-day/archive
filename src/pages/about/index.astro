@@ -5,6 +5,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Card from '../../components/cards/Card.astro';
 
+import '../../utility/styles/main-styles.css';
 import '../../utility/styles/scrollbox-styles.css';
 
 import changelog from './changelog.json';
@@ -21,48 +22,12 @@ import changelog from './changelog.json';
 				<Card
 					title="RUDOLF DIENSTAG"
 					icon="fa-person-booth">
-					<p class="card-p">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta ex quas dolorum exercitationem voluptas reiciendis necessitatibus ab nobis provident iure deserunt consectetur reprehenderit, praesentium quaerat alias. Similique accusantium sunt deserunt?</p>
-					<p class="card-p">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit a nam obcaecati nobis doloremque qui, et delectus rerum ex hic?</p>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta ex quas dolorum exercitationem voluptas reiciendis necessitatibus ab nobis provident iure deserunt consectetur reprehenderit, praesentium quaerat alias. Similique accusantium sunt deserunt?</p>
+					<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit a nam obcaecati nobis doloremque qui, et delectus rerum ex hic?</p>
 				</Card>
 
 			</div>
 
-		</section>
-
-		<!-- <section>
-			<h2>REVIEWS</h2>
-			<div class="card-grid">
-				<Card
-				title="ANONYMOUS"
-				icon="fa-user-secret">
-				<p>I'm genuinely in awe of the things you post! Your OCs are endearing with such fun dynamics ... after reading your most recent tweets I'm excited to start setting up my very own site sometime today!</p>
-			</Card>
-
-			<Card
-			title="ANONYMOUS"
-			icon="fa-user-secret">
-			<p>i love your art so much. your style is really comforting to me and the bits and pieces of story you've dropped are so amazing, everything you do leaves me always so fascinated by your mind.</p>
-		</Card>
-
-		<Card
-		title="ANONYMOUS"
-		icon="fa-user-secret">
-		<p>pieces of story you've dropped are so amazing, everything you do leaves me always so fascinated by your mind.</p>
-	</Card>
-
-	<Card
-	title="ANONYMOUS"
-	icon="fa-user-secret">
-	<p>everything you do leaves me always so fascinated by your mind.</p>
-</Card>
-
-		<Card
-			title="RUDY TUESDAY"
-			icon="fa-person-booth">
-			<p>this is where my artist statement would be... if i had one</p>
-		</Card> -->
-
-			</div>
 		</section>
 
 		<section id="sitemap">
@@ -73,7 +38,7 @@ import changelog from './changelog.json';
                 <Card
                 title="SITEMAP"
                 icon="fa-sitemap">
-                    <ul class="card-list sitemap">
+                    <ul>
                         <li><a href="">index</a></li>
                         <li><a href="">about</a> <em>(you are here)</em></li>
                         <li><a href="">archive</a></li>
@@ -81,8 +46,8 @@ import changelog from './changelog.json';
                         <li><a href="">projects</a></li>
                         <li><a href="">links</a></li>
                         <li><a href="">message</a></li>
-                        <li><a href="" class="external">guestbook</a></li>
-                        <li><a href="" class="external">newsletter</a></li>
+                        <li><a href="" aria-label="external">guestbook</a></li>
+                        <li><a href="" aria-label="external">newsletter</a></li>
                         <li><a href="">rss</a></li>
                         <li><a href="">not_found.astro</a></li>
                     </ul>
@@ -91,7 +56,7 @@ import changelog from './changelog.json';
                 <Card
                 title="BUILD TOOLS"
                 icon="fa-code">
-                    <ul class="card-list">
+                    <ul>
                         <li><b>LANGUAGES</b></li>
                             <ul>
                                 <li>astro</li>
@@ -102,14 +67,14 @@ import changelog from './changelog.json';
                             </ul>
                         </li>
                     </ul>
-                    <ul class="card-list">
+                    <ul>
                         <li><b>DEPENDENCIES</b></li>
                             <ul>
                                 <li>set.prototype.intersection</li>
                             </ul>
                         </ul>
                     </ul>
-                    <ul class="card-list">
+                    <ul>
                         <li><b>FONTS</b></li>
                             <ul>
                                 <li>darumadrop</li>
@@ -130,7 +95,7 @@ import changelog from './changelog.json';
 						<div class="scrollbox-list">
 							{changelog.map((change) => {
 								return <li>
-									<a href={`https://github.com/rudytues-day/archive/commit/${change.id}`} class="external">
+									<a href={`https://github.com/rudytues-day/archive/commit/${change.id}`} aria-label="external">
 										<b>{change.date} :</b> {change.message}<em>{change.details && "— " + `${change.details}` + " "}</em>({change.id.slice(0,6)})
 									</a>
 								</li>
@@ -147,8 +112,6 @@ import changelog from './changelog.json';
             <Card
             title="CREDITS"
             icon="fa-ribbon">
-            <ul class="card-list">
-
                 <p>thank you to the fandom coders for supporting me on this journey</p>
             </Card>
         </div>

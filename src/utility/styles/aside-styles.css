@@ -1,0 +1,46 @@
+aside {
+    background: var(--primary-clr-dark);
+    color: white;
+}
+
+.column-wrapper h2 {
+    margin-bottom: 1em;
+}
+
+.column-wrapper ul {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
+.column-wrapper ul li {
+    padding: 0;
+    margin-bottom: 0.75em;
+}
+
+.column-wrapper h2,
+.column-wrapper p a,
+.column-wrapper ul li a {
+    font-family: var(--display);
+    font-size: 1.5rem;
+    color: white;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.column-wrapper h2 {
+    font-size: 1.625rem;
+}
+
+.column-wrapper ul li::marker {
+    content: ''
+}
+
+aside p {
+    margin: 1em 2em;
+    text-align: center;
+}
+
+aside li {
+    margin-bottom: 0.5em;
+}
