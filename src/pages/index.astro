@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
-// import "../utility/styles/card-styles.css";
+import "../utility/styles/card-styles.css";
 import '../utility/styles/scrollbox-styles.css';
 
 import changelog from './about/changelog.json';
@@ -10,9 +10,13 @@ import changelog from './about/changelog.json';
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/cards/Card.astro';
 
-// const newsletters = await getCollection("newsletters");
-// const newsletterSlice = newsletters.toReversed().slice(0,3);
+import '../utility/styles/main-styles.css';
+import '../utility/styles/aside-styles.css';
+import '../utility/styles/card-styles.css';
+import '../utility/styles/form-styles.css';
 
+const newsletters = await getCollection("newsletters");
+const newsletterSlice = newsletters.toReversed().slice(0,3);
 
 import viewport1 from '../utility/image/viewport1.png'
 import viewport2 from '../utility/image/viewport2.png'
@@ -42,55 +46,57 @@ import viewport3 from '../utility/image/viewport3.png'
 						icon="fa-newspaper">
 						<div class="scrollbox scrollbox-m">
 							<div class="newsletters">
-								<!-- {
+								{
 									newsletterSlice.map(async (newsletter) => {
 									  const renderedNewsletter = await newsletter.render();
 									  return (
-										  <NewsletterLayout><renderedNewsletter.Content /></NewsletterLayout>
+											<article>
+												<renderedNewsletter.Content />
+											</article>
 									  );
 									})
-								  } -->
-<!-- {
-								  newsletterSlice.map((newsletter => {
-									console.log(newsletter)
-								  }))} -->
-
+								  }
 							</div>
-							</div>
-							<p class="card-p" style="margin:1.5em"><b>enter your email</b> to subscribe to my newsletter where i send out archive, project and site updates, commission openings, and other goodies every few months.</p>
-							<form
-								action="https://buttondown.com/api/emails/embed-subscribe/rudytuesday"
-								method="post"
-								target="popupwindow"
-								onsubmit="window.open('https://buttondown.com/rudytuesday', 'popupwindow')"
-								class="embeddable-buttondown-form"
-								>
-								<label for="bd-email" class="visually-hidden">Enter your email</label>
-								<input type="email" name="email" id="bd-email" placeholder="email@address.com" />
-								
-								<input type="submit" value="subscribe" />
-								<p>powered by <a href="https://buttondown.com/refer/rudytuesday" target="_blank"></a>buttondown</a></p>
-							</form>
+							<!-- <button><a href="">READ MORE</a></button> -->
+						</div>
+						<p><b>enter your email</b> to subscribe to my newsletter where i send out archive, project and site updates, commission openings, and other goodies every few months.</p>
+						<form
+							action="https://buttondown.com/api/emails/embed-subscribe/rudytuesday"
+							method="post"
+							target="popupwindow"
+							onsubmit="window.open('https://buttondown.com/rudytuesday', 'popupwindow')"
+							class="embeddable-buttondown-form"
+							>
+							<label for="bd-email" class="visually-hidden">Enter your email</label>
+							<input type="email" name="email" id="bd-email" placeholder="email@address.com" />
+							
+							<input type="submit" value="subscribe" />
+							<p>powered by <a href="https://buttondown.com/refer/rudytuesday" target="_blank"></a>buttondown</a></p>
+						</form>
 					</Card>
 	
-				<Card
-					title="CHANGELOG"
-					icon="fa-pencil">
-					<div class="scrollbox scrollbox-s scrollbox-light">
-						<div class="scrollbox-list">
-							{changelog.map((change) => {
-								return <li>
-									<a href={`https://github.com/rudytues-day/archive/commit/${change.id}`} class="external">
-										<b>{change.date} :</b> {change.message}<em>{change.details && "— " + `${change.details}` + " "}</em>({change.id.slice(0,6)})
-									</a>
-								</li>
-							})}
+					<Card
+						title="CHANGELOG"
+						icon="fa-pencil">
+						<div class="scrollbox scrollbox-s scrollbox-light">
+							<div class="scrollbox-list">
+								{changelog.map((change) => {
+									return (
+										<li>
+											<a href={`https://github.com/rudytues-day/archive/commit/${change.id}`} aria-label="external">
+												<b>{change.date} :</b> {change.message}<em>{change.details && " — " + `${change.details}` + " "}</em>({change.id.slice(0,6)})
+											</a>
+										</li>
+									)
+								})}
+							</div>
 						</div>
-					</div>
-				</Card>
+					</Card>
+
 				</div>
 
 			</section>
+
 		</main>
 
 		<aside class="column leftColumn">
@@ -111,6 +117,7 @@ import viewport3 from '../utility/image/viewport3.png'
 					<li><a href="">POMF.TV</a></li>
 				</ul>
 			</div>
+
 			<div class="column-wrapper">
 				<Image 
 					src={viewport2}
@@ -124,6 +131,7 @@ import viewport3 from '../utility/image/viewport3.png'
 					<li><a href="">COMMISSION</a></li>
 				</ul>
 			</div>
+
 		</aside>
 
 		<aside class="column rightColumn">
@@ -137,7 +145,8 @@ import viewport3 from '../utility/image/viewport3.png'
 				<h2>ABOUT</h2>
 					<p>rudy tuesday is a queer and neurodivergent webMaster, erotic artist and content collector.</p>
 					<p>he has no greater achievements or accolades but he does have a very nice website.</p>
-				<p><a href="/about">READ MORE <i class="fas fa-angles-right"></i></a></p>
+					<p><a href="/about">READ MORE <i class="fas fa-angles-right"></i></a></p>
+				</div>
 			</div>
 		</aside>
 
@@ -146,82 +155,16 @@ import viewport3 from '../utility/image/viewport3.png'
 </Layout>
 
 <style>
-
-	section:first-of-type header p {
-		margin: auto;
-	}
-
 	section:first-of-type h1 {
 		margin: 1em;
 	}
-	/* .scrollbox {
-		margin: 1em;
-		border: 2px solid #000;
-		border-radius: 1em;
-		overflow: auto;
-		overflow-x: hidden;
-		height: 350px;
-	}
-
-	.scrollbox-l {
-		height: 350px;
-	}
-	.scrollbox-m {
-		height: 250px;
-	}
-
-	.scrollbox-s {
-		height: 150px;
-	} */
-
-
-	.newsletters {
-		/* height: auto; */
-	}
-
 	.three-column {
 		display: flex;
 		flex-direction: column;
 	}
 
-	main {
-		/* z-index: -9; */
-		border-radius: 8px;
-		/* box-shadow: var(--primary-clr-dark) 0 0 0 20px; */
-	}
-
-	aside {
-		background: var(--primary-clr-dark);
-		color: white;
-	}
-
-	aside h2,
-	aside a {
-		font-family: var(--display);
-		font-size: 1.5rem;
-	}
-
-	aside p {
-		margin: 1em 2em;
-		text-align: center;
-	}
-
-	aside ul {
-		list-style: none;
-		text-align: center;
-		padding: 0;
-	}
-	aside li {
-		margin-bottom: 0.5em;
-	}
-
 	.column-wrapper {
 		margin-block: 5em;
-	}
-
-	form {
-		display: grid;
-		gap: 1em;
 	}
 
 	header {
@@ -231,18 +174,14 @@ import viewport3 from '../utility/image/viewport3.png'
 
 	section p {
 		margin: 3em 0;
+		margin: 1em;
+		max-width: 800px;
 		text-align: center;
 	}
 
 	section:last-child {
 		margin-bottom: 2.75em;
 	}
-
-	section p {
-		margin: 1em;
-		max-width: 800px;
-	}
-
 	section:last-child {
 		margin-bottom: 0.25em;
 	}
@@ -256,30 +195,10 @@ import viewport3 from '../utility/image/viewport3.png'
 		max-width: 800px;
 	}
 
-
-
-	.visit {
-		margin: auto;
-		font-size: 2rem;
-		color: var(--primary-clr-dark);
-		text-align: center;
-		font-family: var(--display);
-		text-decoration: none;
-		transition: ease 0.2s;
-	}
-
-	.visit .fas {
-		font-size: 0.8em;
-	}
-
-	.visit:hover {
-		color: var(--primary-accent-clr)
-	}
-
-	b {
-		font-family: var(--display);
-		font-size: 1.125rem;
-    }
+.card-wrapper {
+	display: grid;
+	gap: 1em;
+}
 
 @media all and (min-width: 1250px) {
 
