@@ -7,33 +7,41 @@ import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
 // const questions = await getCollection("questions");
-
+import faq from "./faq.md";
+import { render } from "astro:content";
+const {Content} = await render(faq)
+console.log(faq)
 
 
 ---
 <Layout title="ASKBOX">
+<main>
+    <h1>ASKBOX</h1>
+        <Content />
     
-    <Card
-        title="FREQUENTLY ASKED QUESTIONS"
-        icon="fa-newspaper">
-        <p class="question">what media do you consider to be your greatest inspirations?</p>
-        <p class="answer">this is a difficult question because i don't think any media i find inspirational is reflected in my art, but i'll let you decide.</p>
-        <p>homestuck is what immediately comes to mind as one of the first web series of its kind that implemented </p>
-        <p></p>
-        <p class="question">what media do you consider to be your greatest inspirations?</p>
-        <p class="answer">test</p>
-        <p class="question">what media do you consider to be your greatest inspirations?</p>
-        <p class="answer">test</p>
+        <Card
+            title="FREQUENTLY ASKED QUESTIONS"
+            icon="fa-newspaper">
+            <p class="question">what media do you consider to be your greatest inspirations?</p>
+            <p class="answer">this is a difficult question because i don't think any media i find inspirational is reflected in my art, but i'll let you decide.</p>
+            <p>homestuck is what immediately comes to mind as one of the first web series of its kind that implemented </p>
+            <p></p>
+            <p class="question">what media do you consider to be your greatest inspirations?</p>
+            <p class="answer">test</p>
+            <p class="question">what media do you consider to be your greatest inspirations?</p>
+            <p class="answer">test</p>
     
     
-    </Card>
-
-    <CardAskbox
-    user=""
-    title=""
-    >
-
-    </CardAskbox>
+        </Card>
+    
+        <CardAskbox
+        user=""
+        title=""
+        >
+        <Content />
+    
+        </CardAskbox>
+</main>
 </Layout>
 <style>
         .question {
