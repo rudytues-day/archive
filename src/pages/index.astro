@@ -14,6 +14,7 @@ import '../utility/styles/main-styles.css';
 import '../utility/styles/aside-styles.css';
 import '../utility/styles/card-styles.css';
 import '../utility/styles/form-styles.css';
+import '../utility/styles/wrapper-styles.css';
 
 const newsletters = await getCollection("newsletters");
 const newsletterSlice = newsletters.toReversed().slice(0,3);
@@ -155,61 +156,21 @@ import viewport3 from '../utility/image/viewport3.png'
 </Layout>
 
 <style>
-	section:first-of-type h1 {
+	header h1 {
 		margin: 1em;
-	}
-	.three-column {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.column-wrapper {
-		margin-block: 5em;
 	}
 
 	header {
 		text-align: center;
+		width: 100%;
 		margin-bottom: 4em;
 	}
-
-	section p {
-		margin: 3em 0;
-		margin: 1em;
-		max-width: 800px;
-		text-align: center;
-	}
-
-	section:last-child {
-		margin-bottom: 2.75em;
-	}
-	section:last-child {
-		margin-bottom: 0.25em;
-	}
-
-	section:last-child::after {
-		margin-bottom: 0em;
-	}
-
-	section p {
-		margin: 1em;
-		max-width: 800px;
-	}
-
-.card-wrapper {
-	display: grid;
-	gap: 1em;
-}
 
 @media all and (min-width: 1250px) {
 
 	section {
-		margin: 3em auto;
+		/* margin: 3em auto; */
 	}
-
-	section p {
-		margin: auto;
-	}
-
 	.three-column {
 		display: grid;
 		grid-template-columns: 300px 1fr 300px;
@@ -226,20 +187,6 @@ import viewport3 from '../utility/image/viewport3.png'
 
 	main {
 		grid-area: middle;
-	}
-	.grid-masonry {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		max-width: 800px;
-	}
-
-}
-
-@media all and (min-width: 1200px) {
-
-	.card-wrapper {
-		padding: 0em 1em;
-		margin: 5em auto;
 	}
 
 }

@@ -30,11 +30,14 @@ const { page, tag } = Astro.props;
 const pathName = new URL(Astro.request.url).pathname.slice(0, -1);
 const titleTag = tag.toUpperCase();
 
+import '../../../../utility/styles/wrapper-styles.css';
+// import '../../../../utility/styles/main-styles.css';
+
 ---
 
 <ArchiveLayout title={`WORKS // ENTRIES TAGGED "${titleTag}"`}>
 
-    <h3>ENTRIES TAGGED <span>{tag}</span></h3>
+    <h2>ENTRIES TAGGED <span>{tag}</span></h2>
         
         <div class="masonry">
             {
@@ -64,36 +67,8 @@ const titleTag = tag.toUpperCase();
 
 <style>
 
-    h1 {
-        margin: 2em;
-        font-family: var(--display);
-        text-align: center;
-    }
-
-    h3 {
-		font-family: var(--display);
-        font-size: 1.75rem;
-		margin: 1.5em auto 2em auto;
-		text-align: center;
-	}
-
     span {
         color: var(--primary-accent-clr)
     }
-
-    .masonry {
-        display: grid;
-        padding: 0;
-        grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-        margin: 3em 2em;
-        gap: 0em 1.5em;
-        justify-items: center;
-        justify-content: center;
-        align-items: stretch;
-    }
-
-    .masonry > * {
-		flex: 1;
-	}
 
 </style>

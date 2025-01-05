@@ -11,6 +11,8 @@ import Footer from '../components/Footer.astro';
 
 import '../utility/reset.css';
 import '../utility/utils.js';
+// import '../utility/styles/main-styles.css';
+import '../utility/styles/aside-styles.css';
 import Scrollbox from '../components/Scrollbox.astro';
 ---
 
@@ -32,22 +34,28 @@ import Scrollbox from '../components/Scrollbox.astro';
 
 	</head>
 	
-<body>
-	<Header />
-	<div class="columns">
-		<main>
-			<h1>ARCHIVE</h1>
-			<slot />
-		</main>
-		<aside>
-			<div class="image"></div>
-			<!-- <Filters /> -->
-			<Scrollbox />
-			<Tags />
-		</aside>
-	</div> 
-	<Footer />
-</body>
+	<body>
+
+		<Header />
+
+		<div class="left-column">
+
+			<main>
+				<h1>ARCHIVE</h1>
+				<slot />
+			</main>
+
+			<aside>
+				<div class="image"></div>
+				<Scrollbox />
+				<Tags />
+			</aside>
+
+		</div> 
+		
+		<Footer />
+		
+	</body>
 </html>
 
 <style>
@@ -79,10 +87,6 @@ import Scrollbox from '../components/Scrollbox.astro';
 		margin-block: 0.25em 3em;
 	}
 
-	input[type="submit"] {
-		background: red;
-	}
-
 	main::after {
 		position: absolute;
 		bottom: 0;
@@ -92,32 +96,21 @@ import Scrollbox from '../components/Scrollbox.astro';
 	.columns {
 		display: grid;
 	}
-
-	.fa-ban {
-		color: var(--primary-accent-clr);
-	}
-	
-	.fa-feather {
-		color: var(--primary-clr-200);
-	}
 	
 	.image {
 		display: none;
 	}
 
-	aside {
-		background: var(--primary-clr-dark)
-	}
 
 	@media all and (min-width: 720px) {}
 	
 	@media all and (min-width: 1000px) {
 
-	.columns {
+	.left-column {
 		display: grid;
 		grid-template-areas: 
 			"header main"
-			"archive-sidebar main"
+			"sidebar main"
 			"footer footer";
 		grid-template-columns: 400px 1fr;
 		gap: 0;
@@ -131,7 +124,11 @@ import Scrollbox from '../components/Scrollbox.astro';
 		}
 
 		aside {
-			grid-area: archive-sidebar;
+			grid-area: sidebar;
+		}
+
+		footer {
+			grid-area: footer;
 		}
 		
 		#header {
@@ -140,16 +137,14 @@ import Scrollbox from '../components/Scrollbox.astro';
 
 		.image {
 			display: block;
-        margin: 3rem auto;
-        background-color: white;
-        height: 150px;
-        width: 150px;
-        border-radius: 100%;
+			margin: 3rem auto;
+			background-color: white;
+			height: 150px;
+			width: 150px;
+			border-radius: 100%;
     }
 
-		footer {
-			grid-area: footer;
-		}
+
 	}
 
 </style>

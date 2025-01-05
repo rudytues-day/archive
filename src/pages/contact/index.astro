@@ -1,14 +1,14 @@
 ---
-// import { Image } from "astro:assets";
-// import { getCollection } from "astro:content";
-
 import Layout from '../../layouts/Layout.astro';
 import Card from '../../components/cards/Card.astro';
+import '../../utility/styles/wrapper-styles.css';
 ---
 
 <Layout title="RUDY TUESDAY">
     <main>
+
         <h1>CONTACT</h1>
+
         <div class="card-wrapper">
             <Card
                 title="MESSAGE"
@@ -42,7 +42,6 @@ import Card from '../../components/cards/Card.astro';
                         aria-required="true"
                         required=""
                         ></textarea>
-                        <!-- placeholder="a kind and thoughtful message"  -->
                     <button type="submit">SEND</button>
                 </form>
             </Card>

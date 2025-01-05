@@ -3,6 +3,10 @@ aside {
     color: white;
 }
 
+.column-wrapper {
+    margin-block: 5em;
+}
+
 .column-wrapper h2 {
     margin-bottom: 1em;
 }

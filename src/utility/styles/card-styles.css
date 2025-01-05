@@ -39,7 +39,6 @@ details > .tab-title::marker {
     content: '\f07c';
     font-weight: bold;
     font-size: 1.25rem;
-    /* display: block; */
     margin-right: 0.5em;
 }
 
@@ -88,7 +87,6 @@ details:not([open]) .tab-title::before {
     border: none;
 }
 
-
 .card-thumbnail {
     height: 150px;
     min-width: 150px;
@@ -103,7 +101,6 @@ details:not([open]) .tab-title::before {
     justify-content: center;
     margin: 1em;
     gap: 1em;
-    
 }
 
 .card-preview .description > p {
@@ -157,10 +154,10 @@ details:not([open]) .tab-title::before {
 
 /* wrappers */
 
-.card-wrapper {
+/* .card-wrapper {
     margin: 3em auto;
     max-width: 750px;
-}
+} */
 
 .folder-wrapper {
     display: flex;
@@ -171,49 +168,3 @@ details:not([open]) .tab-title::before {
     border-radius: var(--folder-border-radius);
     overflow: hidden;
 }
-
-/* children styling */
-/* 
-.card-p a,
-.card-list a {
-    font-weight: bold;
-    color: var(--primary-link-clr);
-    text-decoration: underline;
-}
-
-.card-p a:hover,
-.card-list a:hover {
-    color: var(--primary-accent-clr);
-}
-
-.card h3 {
-    text-align: center;
-}
-
-.card-p {
-    margin: 1em;
-    padding: 0;
-}
-
-.card-list,
-.card-list ul {
-    margin: 1em;
-    padding: 0;
-    list-style: none;
-}
-
-.card-list li {
-    padding-left: 0.5em;
-}
-
-.card-list li::marker {
-    content: '/';
-}
-
-.card-list b + a {
-    padding-left: 0.25em;
-}
-
-.card-list ul {
-    margin-block: 0;
-} */

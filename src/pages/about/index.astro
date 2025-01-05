@@ -5,6 +5,8 @@
 import Layout from '../../layouts/Layout.astro';
 import Card from '../../components/cards/Card.astro';
 
+
+import '../../utility/styles/wrapper-styles.css';
 import '../../utility/styles/main-styles.css';
 import '../../utility/styles/scrollbox-styles.css';
 
@@ -126,32 +128,12 @@ import changelog from './changelog.json';
 
 <style>
 
-.card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		align-items: center;
-		gap: 2rem;
-		padding: 0;
-		margin: 2rem;
-	}
-
-    .card-sm {
-        max-width: 350px;
-        margin: auto;
-    }
-    
-    .card-sm p {
-        margin: 1em;
-    }
 
     .sitemap li:has(> ul)::marker {
         content: '';
     }
 
-	.card-wrapper {
-		margin: 3em auto;
-		max-width: 750px;
-	}
+
 
 	.card-masonry {
 		margin: 3em auto;

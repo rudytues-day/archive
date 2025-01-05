@@ -11,6 +11,7 @@ import CardFolder from "../../components/cards/CardFolder.astro";
 import { Image } from "astro:assets";
 
 import '../../utility/styles/main-styles.css';
+import '../../utility/styles/wrapper-styles.css';
 
 ---
 
@@ -21,7 +22,7 @@ import '../../utility/styles/main-styles.css';
         <section>
 			<h2>LINKS</h2>
 
-			<div class="card-wrapper card-flex">
+			<div class="card-wrapper two-card-flex">
 
 				<Card
 					title="ONLINE"
@@ -232,7 +233,7 @@ import '../../utility/styles/main-styles.css';
 			<Card
 				title="AFFILIATES"
 				icon="fa-heart">
-					<div class="affiliate flex-wrap">
+					<div class="flex-wrap">
 						{ banners.map((banner) => {
 							return <a href={banner.data.url}>
 								<Image
@@ -243,7 +244,7 @@ import '../../utility/styles/main-styles.css';
 						})}
 						</div>
 
-						<div class="affiliate flex-wrap">
+						<div class="flex-wrap">
 							{ buttons.map((button) => {
 								return <a href={button.data.url}>
 									<Image
@@ -253,7 +254,7 @@ import '../../utility/styles/main-styles.css';
 								</a>
 							})}
 						</div>
-						<div class="affiliate flex-wrap">
+						<div class="flex-wrap">
 							{ groupButton.map((button) => {
 								return <a href={button.data.url}>
 									<Image
@@ -272,122 +273,3 @@ import '../../utility/styles/main-styles.css';
 	</main>
 
 </Layout>
-
-<style>
-
-	.card-wrapper {
-		margin: 3em auto;
-		height: 100%;
-		gap: 1.25em;
-		display: flex;
-		flex-direction: column;
-	}
-
-	.card-flex {
-		flex-flow: row wrap;
-		justify-content: center;
-		align-items: center;
-		gap: 1.25em;
-	}
-
-	.flex-wrap {
-		display: flex;
-		flex-flow: row wrap;
-		justify-content: center;
-		gap: 1em;
-		margin: 1em;
-	}
-
-	h3 {
-		text-align: left;
-		margin-block: 1.5em 1em
-	}
-
-	h3:first-child {
-		margin-block: 1em;
-	}
-
-@media all and (min-width: 700px) {
-
-	.card-wrapper {
-		max-width: 900px;
-	}
-}
-
-</style>
-<script>
-
-window.addEventListener("DOMContentLoaded", () => {
-        const tabList = document.querySelector('[role="tablist"]');
-        const tabs = tabList!.querySelectorAll(':scope > [role="tab"]');
-
-    // Add a click event handler to each tab
-        tabs.forEach((tab) => {
-            tab.addEventListener("click", changeTabs);
-        });
-
-    // Enable arrow navigation between tabs in the tab list
-    // if read hash switch to specific tab
-    // s 
-    // check
-        let tabFocus = 0;
-
-        // 
-
-        tabList!.addEventListener("keydown", (e) => {
-            // Move right
-            let keyboardEvent = (e as KeyboardEvent);
-            if (keyboardEvent.key === "ArrowRight" || keyboardEvent.key === "ArrowLeft") {
-                tabs[tabFocus].setAttribute("tabindex", "-1");
-                if (keyboardEvent.key === "ArrowRight") {
-                    tabFocus++;
-                // If we're at the end, go to the start
-                    if (tabFocus >= tabs.length) {
-                        tabFocus = 0;
-                    }
-                // Move left
-            } else if (keyboardEvent.key === "ArrowLeft") {
-                tabFocus--;
-                // If we're at the start, move to the end
-                if (tabFocus < 0) {
-                tabFocus = tabs.length - 1;
-                }
-            }
-
-            tabs[tabFocus].setAttribute("tabindex", "0");
-            (tabs[tabFocus] as HTMLElement).focus();
-            }
-        });
-
-    function changeTabs(e) {
-        const targetTab = e.target;
-        
-        const tabList = targetTab.parentNode;
-        const tabGroup = tabList.parentNode;
-
-    // Remove all current selected tabs
-        tabList
-            .querySelectorAll(':scope > [aria-selected="true"]')
-            .forEach((t) => t.setAttribute("aria-selected", false));
-
-    // Set this tab as selected
-        targetTab.setAttribute("aria-selected", true);
-
-    // Hide all tab panels
-        tabGroup
-            .querySelectorAll(':scope > [role="tabpanel"]')
-            .forEach((p) => p.setAttribute("hidden", true));
-
-    // Show the selected panel
-        tabGroup
-            .querySelector(`#${targetTab.getAttribute("aria-controls")}`)
-            .removeAttribute("hidden");
-
-        }
-        
-    })
-
-
-
-</script>
-
