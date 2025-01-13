@@ -31,8 +31,6 @@ const pathName = new URL(Astro.request.url).pathname.slice(0, -1);
 const titleTag = tag.toUpperCase();
 
 import '../../../../utility/styles/wrapper-styles.css';
-// import '../../../../utility/styles/main-styles.css';
-
 ---
 
 <ArchiveLayout 
@@ -40,7 +38,7 @@ import '../../../../utility/styles/wrapper-styles.css';
 
     <h2>ENTRIES TAGGED <span>{tag}</span></h2>
         
-        <div class="masonry">
+        <div class="card-masonry">
             {
                 page.data.map((entry) => 
                 <CardPreview 
