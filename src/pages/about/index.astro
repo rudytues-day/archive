@@ -132,9 +132,7 @@ import changelog from './changelog.json';
     .sitemap li:has(> ul)::marker {
         content: '';
     }
-
-
-
+    
 	.card-masonry {
 		margin: 3em auto;
 		display: flex;
@@ -143,13 +141,6 @@ import changelog from './changelog.json';
 		align-items: center;
 		gap: 1.5em;
 		height: 100%;
-	}
-
-	.grid-masonry {
-		margin: 3em auto;
-		display: flex;
-		flex-direction: column;
-		gap: 1.5em;
 	}
 
 @media all and (min-width: 700px) {
@@ -162,12 +153,6 @@ import changelog from './changelog.json';
 
 	.card-masonry > * {
 		margin: 1em;
-	}
-	
-	.grid-masonry {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		max-width: 800px;
 	}
 
 }

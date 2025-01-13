@@ -11,7 +11,6 @@ interface Props {
 	title: string;
 	thumb: ImageMetadata;
 	date: Date;
-	uploadDate: Date;
 	Nsfw?: boolean;
 	Dd?: boolean;
 	desc: string;
@@ -22,21 +21,18 @@ interface Props {
 }
 
 const { 
-		slug,
-		title,
-		thumb,
-		date,
-		uploadDate,
-		Nsfw,
-		Dd,
-		desc,
-		tags,
-		icons,
-		} = Astro.props as Props; 
-
+	slug,
+	title,
+	thumb,
+	date,
+	Nsfw,
+	Dd,
+	desc,
+	tags,
+	icons,
+} = Astro.props as Props; 
 
 ---
-
 
 	<div class="card card-archive">
         <a href={`/archive/entries/${slug}/`}>
@@ -78,12 +74,3 @@ const {
         </div>
 	</div>
 </a>
-
-<style>
-
-    .card {
-		margin: 2em auto;
-	}
-
-</style>
-

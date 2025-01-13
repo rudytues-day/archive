@@ -1,5 +1,7 @@
 ---
-import Layout from '../../layouts/ArchiveLayout.astro';
+import '../../utility/styles/wrapper-styles.css';
+
+import ArchiveLayout from '../../layouts/ArchiveLayout.astro';
 import CardArchive from '../../components/cards/CardArchive.astro';
 import Pagination from '../../components/Pagination.astro';
 
@@ -23,61 +25,34 @@ const pathname = new URL(Astro.request.url).pathname.split('/');
 const firstPath = pathname[1];
 ---
 
-
-<Layout title="ARCHIVE">
-
-	<main>
-
-		<ul role="list">
-			{
-				page.data.map((entry) =>
-					<CardArchive
-						slug={entry.slug}
-						title={entry.data.title}
-						date={entry.data.date}
-						thumb={entry.data.thumb.src}
-						tags={entry.data.tags}
-						desc={entry.data.desc}
-						original={entry.data.original}
-						medium={entry.data.medium}
-						Nsfw={entry.data.Nsfw}
-						Dd={entry.data.Dd}
-						icons={entry.data.icons}
+<ArchiveLayout title="ARCHIVE">
+		
+	<div class="card-archive-wrapper">
+		{
+			page.data.map((entry) =>
+				<CardArchive
+					slug={entry.slug}
+					title={entry.data.title}
+					date={entry.data.date}
+					thumb={entry.data.thumb.src}
+					tags={entry.data.tags}
+					desc={entry.data.desc}
+					original={entry.data.original}
+					medium={entry.data.medium}
+					Nsfw={entry.data.Nsfw}
+					Dd={entry.data.Dd}
+					icons={entry.data.icons}
 				/>
-			)}
-		</ul>
+		)}
+	</div>
 
-		<Pagination 
-			firstUrl={`/${firstPath}`}
-			prevUrl={page.url.prev} 
-			currentPage={page.currentPage}
-			currentUrl={page.url.current}
-			nextUrl={page.url.next}
-			lastUrl={`/${firstPath}/${page.lastPage}`}
-		/>
+	<Pagination
+		firstUrl={`/${firstPath}`}
+		prevUrl={page.url.prev}
+		currentPage={page.currentPage}
+		currentUrl={page.url.current}
+		nextUrl={page.url.next}
+		lastUrl={`/${firstPath}/${page.lastPage}`}
+	/>
 
-	</main>
-
-</Layout>
-
-<style>
-
-	main {
-		/* margin: auto; */
-	}
-
-	ul {
-		padding: 0;
-		margin: 1em;
-		max-width: 800px;
-	}
-@media all and (min-width: 700px) {
-
-	ul {
-		/* padding: 0 1em; */
-		margin: auto;
-	}
-
-}
-
-</style>
+</ArchiveLayout>

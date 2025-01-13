@@ -1,0 +1,252 @@
+/* index.astro */
+/* about.astro */
+/* links */
+
+.card-wrapper {
+    border: 1px solid blue;
+    margin: 5em auto;
+    height: 100%;
+    max-width: 750px;
+}
+
+/* [tag] */
+
+.card-masonry {
+    display: grid;
+    padding: 0;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    margin: 3em 2em;
+    gap: 0em 1.5em;
+    justify-items: center;
+    justify-content: center;
+}
+
+/* index.astro */
+/* .card-wrapper {
+    display: grid;
+    gap: 1em;
+    border: purple solid 1px;
+} */
+
+/* about.astro */
+/* .card-wrapper {
+    max-width: 750px;
+    border: 1px solid blue
+} */
+
+/* links */
+@media all and (min-width: 1200px) {
+     .card-wrapper {
+    }
+}
+
+
+
+/* .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    align-items: center;
+    gap: 2rem;
+    padding: 0;
+    margin: 2rem;
+} */
+
+
+
+/* media min-width 700px */
+/* .card-wrapper {
+    max-width: 900px;
+} */
+
+/**/
+@media all and (min-width: 700px) {
+    .two-card-flex {
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1.25em;
+        /* border: 1px solid magenta */
+    }
+}
+
+/* affiliates */
+
+.flex-wrap {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 1em;
+    margin: 1em;
+}
+
+
+
+/* projects */
+/* .card-masonry {
+    display: grid;
+    gap: 1em;
+    max-width: 100%;
+} */
+
+/* @media all and (min-width: 700px) {
+
+.card-masonry {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+}
+
+}
+
+@media all and (min-width: 1000px) {
+    
+.card-masonry {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+}
+
+@media all and (min-width: 1200px) {
+    
+    .card-masonry {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+} */
+
+/**/
+
+/* section {
+    margin: 3em 0;
+    text-align: center;
+} */
+
+/* section:last-child {
+    margin-bottom: 2.75em;
+    text-align: center;
+} */
+
+/* section p {
+    margin: 1em;
+    max-width: 800px;
+} */
+
+
+
+/* section:last-child {
+    margin-bottom: 0.25em;
+} */
+
+/* section:last-child::after {
+    margin-bottom: 0em;
+} */
+
+/* section p {
+    margin: 1em;
+    max-width: 800px;
+} */
+
+/* .gallery-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    margin: 3em auto;
+    max-width: 600px;
+} */
+
+/* .card-masonry {
+    margin: 3em auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 1.5em;
+    height: 100%;
+}
+
+/* .thumb {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 0.5em;
+} */
+
+/* @media all and (min-width: 700px) {
+
+section {
+    margin: 3em auto;
+}
+
+section p {
+    margin: auto;
+}
+
+.card-masonry {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 800px;
+}
+
+
+@media all and (min-width: 1200px) {}
+
+section:first-of-type h1 {
+    margin: 1em;
+}
+.three-column {
+    display: flex;
+    flex-direction: column;
+}
+
+section p {
+    margin: 3em 0;
+    margin: 1em;
+    max-width: 800px;
+    text-align: center;
+    margin: 1em;
+    max-width: 800px;
+}
+
+section:last-child {
+    margin-bottom: 2.75em;
+    border: red solid 1px
+}
+section:last-child::after {
+    margin-bottom: 0em;
+}
+
+@media all and (min-width: 1250px) {
+
+section {
+    margin: 3em auto;
+}
+
+section p {
+    margin: auto;
+}
+
+.three-column {
+    display: grid;
+    grid-template-columns: 300px 1fr 300px;
+    grid-template-areas: 'left middle right'
+}
+
+.leftColumn {
+    grid-area: left
+}
+
+.rightColumn {
+    grid-area: right;
+}
+
+main {
+    grid-area: middle;
+}
+
+}
+
+/* .column-wrapper {
+    margin-block: 5em;
+    border: red solid 1px;
+} */

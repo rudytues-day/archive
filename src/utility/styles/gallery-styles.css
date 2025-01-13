@@ -1,0 +1,172 @@
+h1 {
+    margin-block: 2em;
+}
+
+.gallery-card {
+    background-color: #fff;
+    margin: 1em 1em 2em 1em;
+    border: 2px solid #000;
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.gallery-card button {
+    display: none;
+}
+
+.gallery-card img {
+    height: auto;
+    max-height: 80vh;
+    width: auto;
+    margin-bottom: 3em;
+}
+
+.gallery-card figcaption {
+    margin-inline: auto;
+    max-width: 500px;
+}
+
+.thumbnail-container h2 {
+    display: none;
+}
+
+.ratings {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    gap: 0.25em;
+    top: 0.25em;
+    right: 0.25em;
+    justify-content: right;
+}
+
+.thumb {
+    opacity: 33%;
+    transform: opacity 750ms ease;
+}
+
+.thumb:hover {
+    opacity: 100%;
+    outline: 2px var(--primary-accent-clr) solid;
+}
+
+.gallery-card figure {
+    margin: 3em 1em;
+}
+
+
+.folder-wrapper .full-size,
+.folder-wrapper figcaption {
+    display: none;
+}
+
+
+figcaption {
+    text-align: center;
+    display: grid;
+    gap: 1em;
+}
+
+figcaption b {
+    text-transform: uppercase;
+}
+
+.title {
+    font-family: var(--display);
+    text-transform: uppercase;
+    font-size: 1.325rem;
+}
+
+
+.full-size {
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+.body {
+    display: flex;
+    padding: 1em;
+    border: solid 2px var(--primary-clr-dark);		
+    border-radius: 0em 0em 1em 1em;
+}
+
+.thumbnail-container {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    margin: 3em auto;
+}
+
+.thumbnail {
+    padding: 0;
+    background: transparent;
+    outline: none;
+    border-radius: 1em 1em;
+    position: relative;
+    height: 75px;
+    width: 75px;
+}
+
+.thumbnail > * {
+    margin: auto;
+    border-radius: 0.75em;
+    height: auto;
+}
+
+.description {
+    margin: 0em 1em;
+    display: grid;
+    gap: 1em;
+}
+
+.flex {
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+}
+
+.icons {
+    display: flex;
+    gap: 0.25em;
+    padding-top: 0.4em;
+}
+
+.date {
+    font-family: var(--display);
+    text-transform: uppercase;
+    font-size: 1.25em;
+    margin: 0;
+}
+
+@media all and (min-width: 780px) {
+
+    .thumbnail {
+        height: 100px;
+        width: 100px;
+    }
+    
+}
+
+@media all and (min-width: 1000px) {
+    
+
+    .gallery-card,
+    .folder-wrapper {
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    .gallery-card {
+        margin-bottom: 2em;
+    }
+    
+    .tabs {
+        flex-flow: row;
+        width: fit-content;
+    }
+    
+}
+
