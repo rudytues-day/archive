@@ -11,7 +11,7 @@ import '../utility/styles/main-styles.css'
 
 import Header from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
-import MetaTags from '../components/MetaTags.astro';
+// import MetaTags from '../components/MetaTags.astro';
 import ToTop from '../components/ToTop.astro';
 
 ---
@@ -20,7 +20,16 @@ import ToTop from '../components/ToTop.astro';
 <html lang="en">
 	<head>
 
-	<MetaTags />
+		<meta 
+		name="viewport" 
+		content="width=device-width" 
+		/>
+		<meta 
+			name="generator" 
+			content={Astro.generator}
+		/>
+
+		<meta charset="UTF-8"> 
 
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 

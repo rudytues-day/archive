@@ -33,8 +33,7 @@ const {
 	tags,
 	entries,
 	icons,
-	pageTitle,
-} = Astro.props as Props;
+} = Astro.props;
 
 const { slug } = Astro.params;
 
@@ -62,8 +61,7 @@ const similarEntries = sortBySimilar(entries).slice(0, 5).sort(() => Math.random
 
 ---
 
-<ArchiveLayout
-	pageTitle={pageTitle}>
+<ArchiveLayout pageTitle=`ARCHIVE / ${title}`>
 
 	<div class="card-wrapper">
 		<div class="card">
