@@ -7,17 +7,29 @@ import '../utility/reset.css';
 import '../utility/utils.js';
 import '../utility/styles/main-styles.css';
 import '../utility/styles/aside-styles.css';
-import Scrollbox from '../components/Scrollbox.astro';
+
+import '../utility/styles/scrollbox-styles.css';
+
 interface Props {
   pageTitle: string;
 }
 
+
 const { pageTitle = "ARCHIVE" } = Astro.props;
 
-// let pageTitle = 'ARCHIVE';
-// if (pageTitle) {
-// 	pageTitle = pageTitle
-// }
+// import { tagsByFrequency } from '../utility/scripts/sort-fxn.js';
+import { getCollection } from 'astro:content';
+const entries = await getCollection("entries");
+
+import { sortByUploadDate } from '../utility/scripts/sort-fxn.js';
+import { formatDate } from '../utility/utils.js';
+
+
+// const sortedTags = [... new Set(allTags.sort(sortByFrequency).toReversed().flat())];
+// const allTags = entries.map((entry => 
+// 	entry.data.tags)).reduce((accumulator, value) => accumulator.concat(value), [])
+
+// console.log(tagsByFrequency(allTags))
 
 ---
 
@@ -53,8 +65,27 @@ const { pageTitle = "ARCHIVE" } = Astro.props;
 			</main>
 
 			<aside>
-				<div class="image"></div>
-				<Scrollbox />
+				<a href="/archive">
+					<div class="image"></div>
+				</a>
+				<div class="uploads">
+					<h2>RECENT UPLOADS</h2>
+					<ul class="scrollbox scrollbox-dark scrollbox-l">
+						{
+							entries.sort(sortByUploadDate).map((entry) =>
+							<li>
+								<a href={`/archive/entries/${entry.slug}/`}><b>{formatDate(entry.data.date)}</b> : {entry.data.title}
+									<div class="icons">
+											{ entry.data.Nsfw && <i class="fas fa-ban" role="img" aria-label="adult content"></i> }
+											{ entry.data.Dd && <i class="fas fa-feather" role="img" aria-label="dead dove"></i> }
+											{ entry.data.uploadDate > new Date("2024-12-01") && <i class="fas fa-sparkles" role="img" aria-label="dead dove"></i> }
+									</div>
+								</a>
+							</li>
+							)
+						}
+					</ul>
+				</div>
 				<Tags />
 			</aside>
 
@@ -123,6 +154,10 @@ const { pageTitle = "ARCHIVE" } = Astro.props;
 
 	aside {
 		grid-area: sidebar;
+	}
+
+	main::after {
+		position: absolute;
 	}
 
 	.image {

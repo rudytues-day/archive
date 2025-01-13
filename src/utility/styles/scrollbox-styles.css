@@ -1,83 +1,62 @@
 .scrollbox {
+    background: var(--__background);
+    color: var(--__font-color);
+    max-width: 100%;
     margin: 1em 2em;
-    border: 2px solid #000;
-    border-radius: 1em;
+    padding: 0.25em 0.5em;
     overflow: auto;
     overflow-x: hidden;
-    /* padding: 1em; */
-    background: var(--__background);
+    border: var(--__border);
+    border-radius: 1em;
 }
 
-.scrollbox-light,
-.scrollbox-light a {
+.scrollbox-light {
     --__background: var(--white-clr);
     --__font-color: black;
-
+    --__border: 2px solid #000;
 }
 
 .scrollbox-dark {
-    --__background: var(--primary-clr-dark);
+    --__background: var(--primary-clr-med);
+    --__font-color: var(--white-clr);
 }
-
 
 .scrollbox-s { height: 150px }
 .scrollbox-m { height: 250px }
 .scrollbox-l { height: 350px }
 
 .scrollbox-li a:hover,
-.scrollbox-li a:hover .fa-feather {
-    color: var(--primary-accent-clr) !important;
+.scrollbox-li a:hover i {
+    color: var(--primary-accent-clr);
 }
 
-.uploads {
-    background: var(--primary-clr-dark);
-    color: var(--white-clr);
-    padding: 2rem 1rem;
-    margin: auto;
-}
-
-/* .scrollbox {
-    background: var(--primary-clr-med);
-    overflow: scroll;
-    overflow-x: hidden;
-    text-wrap: wrap;
-    height: 278px;
+.uploads .scrollbox {
     list-style: none;
-    margin: 2em auto 0em auto;
-    padding: 0.25em 0.5em;
-    text-align: left;
-    border-radius: 0.5em;
-    max-width: 500px;
-} */
+    margin: 2rem 1rem;
+}
 
 .scrollbox-list {
-list-style: none;
-padding: 0;
+    list-style: none;
+    padding: 0;
 }
 
-.scrollbox a {
-    color: var(--__font-color);
-    text-decoration: none;
-}
-
-.scrollbox-list b {
-    font-size: 1.05rem !important;
-}
-
-.scrollbox li {
+.scrollbox-light li {
     margin: 0.25em 0.5em;
     border-bottom: 1px dotted var(--primary-clr-light);
 }
+.scrollbox-dark li {
+    margin: 0.25em 0.5em;
+    border-bottom: 1px dotted var(--white-clr);
+}
 
 .icons {
-display: inline-block;
-font-size: 0.9rem;
-padding: 0em 0.25em;
+    display: inline-block;
+    font-size: 0.9rem;
+    padding: 0em 0.25em;
 }
 
 .scrollbox i {
-margin: 0em 0.125em;
-
+    margin: 0em 0.125em;
 }
 
 @media all and (min-width: 700px) {

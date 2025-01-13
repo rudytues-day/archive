@@ -45,6 +45,6 @@ aside p {
     text-align: center;
 }
 
-aside li {
+/* aside li:not([class]) {
     margin-bottom: 0.5em;
-}
+} */

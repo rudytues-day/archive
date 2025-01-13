@@ -58,8 +58,6 @@ export function sortEntries(entries) {
 // 	return similarEntries;
 // };
 
-export const sortByCreationDate = (a, b) => new Date(a) - new Date(b);
-export const sortByUploadDate = (a, b) => new Date(b.data.uploadDate) - new Date(a.data.uploadDate);
 
 export function tabToggles() {
   const toggles = document.querySelectorAll<HTMLElement>(`[data-toggle-section]`);

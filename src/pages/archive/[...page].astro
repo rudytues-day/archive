@@ -8,7 +8,7 @@ import Pagination from '../../components/Pagination.astro';
 import { getCollection } from "astro:content";
 import type { GetStaticPaths } from "astro";
 
-import { sortEntries, sortByCreationDate, sortByUploadDate } from '../../utility/utils.js';
+import { sortByCreationDate } from '../../utility/scripts/sort-fxn.js';
 
 export const getStaticPaths = (async ( { paginate } ) => {
     const entries = await getCollection("entries");
