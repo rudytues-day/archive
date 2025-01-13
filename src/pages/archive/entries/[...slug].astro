@@ -5,7 +5,7 @@ import intersection from 'set.prototype.intersection';
 
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-import { slugify, formatDate } from '../../../utility/utils';
+import { slugify, formatDate } from '../../../utility/scripts/format-fxn';
 
 export async function getStaticPaths() {
 	const entries = await getCollection("entries");

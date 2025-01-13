@@ -9,7 +9,7 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import type { GetStaticPaths } from "astro";
 
-import { sortEntries, sortByCreationDate, sortByUploadDate } from '../../utility/utils';
+// import { sortEntries, sortByCreationDate, sortByUploadDate } from '../../utility/scripts/format-fxn.js';
 
 const projects = await getCollection("projects");
 export const getStaticPaths = (async ( { paginate } ) => {

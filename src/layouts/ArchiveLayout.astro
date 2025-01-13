@@ -4,7 +4,7 @@ import Tags from '../components/Tags.astro';
 import Footer from '../components/Footer.astro';
 import ArchiveMetaData from '../components/ArchiveMetaData.astro';
 import '../utility/reset.css';
-import '../utility/utils.js';
+import '../utility/scripts/format-fxn.js';
 import '../utility/styles/main-styles.css';
 import '../utility/styles/aside-styles.css';
 
@@ -22,7 +22,7 @@ import { getCollection } from 'astro:content';
 const entries = await getCollection("entries");
 
 import { sortByUploadDate } from '../utility/scripts/sort-fxn.js';
-import { formatDate } from '../utility/utils.js';
+import { formatDate } from '../utility/scripts/format-fxn.js';
 
 
 // const sortedTags = [... new Set(allTags.sort(sortByFrequency).toReversed().flat())];
