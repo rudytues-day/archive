@@ -3,33 +3,52 @@ aside {
     color: white;
 }
 
+.viewport {
+    margin: 3em auto 4em auto;
+}
+
 .column-wrapper {
-    margin-block: 5em;
+    padding-top: 3.5em;
 }
 
 .column-wrapper h2 {
-    margin-bottom: 1em;
+    text-align: center;
+    margin: 1em;
 }
 
-.column-wrapper ul {
+.column-wrapper ul:not([class]) {
     list-style: none;
     text-align: center;
     padding: 0;
+    margin: 0 auto;
 }
 
-.column-wrapper ul li {
+.column-wrapper ul:not([class]) li {
     padding: 0;
     margin-bottom: 0.75em;
 }
 
+.column-wrapper ul li:last-child {
+    margin-bottom: 0;
+}
+
+.rightColumn .column-wrapper {
+    margin-top: 0;
+}
+
+.column-wrapper p {
+    text-align: center;
+}
+
 .column-wrapper h2,
 .column-wrapper p a,
-.column-wrapper ul li a {
+.column-wrapper ul:not([class]) li a {
     font-family: var(--display);
     font-size: 1.5rem;
     color: white;
     font-weight: normal;
     text-decoration: none;
+    text-align: center;
 }
 
 .column-wrapper h2 {
@@ -40,11 +59,19 @@ aside {
     content: ''
 }
 
-aside p {
-    margin: 1em 2em;
-    text-align: center;
+.column-wrapper p:last-child {
+    margin: 0;
+    padding-bottom: 3em;
 }
 
-/* aside li:not([class]) {
-    margin-bottom: 0.5em;
-} */
+@media all and (min-width: 1000px) {
+
+    .column-wrapper {
+        padding-top: 1.5em;
+    }
+
+    .column-wrapper ul {
+        margin-bottom: 1em;
+    }
+
+}

@@ -26,16 +26,12 @@ const sortedTags = [... new Set(allEntryTags.sort(sortByFrequency).toReversed().
 
 ---
 
-
-<div class="tags">
-    <h2>TAGS</h2>
-    <ul>
+    <ul class="tags tags-cloud">
         {sortedTags.map(tag => (
             <li><a href={`/archive/tagged/${slugify(tag)}/`}>{tag}</a></li>
         ))
         }
     </ul>
-</div>
 
 <style>
 
@@ -48,7 +44,8 @@ const sortedTags = [... new Set(allEntryTags.sort(sortByFrequency).toReversed().
     .tags {
         margin: 0 auto;
         padding: 2em 0;
-        background: var(--primary-clr-dark)
+        background: var(--primary-clr-dark);
+		margin: 0em 1em;
     }
 
     .tags ul {

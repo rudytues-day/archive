@@ -30,9 +30,9 @@
     color: var(--primary-accent-clr);
 }
 
-.uploads .scrollbox {
+.column-wrapper .scrollbox {
     list-style: none;
-    margin: 2rem 1rem;
+    margin: 3em 1em 0em 1em;
 }
 
 .scrollbox-list {
@@ -61,8 +61,9 @@
 
 @media all and (min-width: 700px) {
 
-/* .scrollbox {
-    margin: 2em auto;
-} */
+    .column-wrapper .scrollbox {
+        list-style: none;
+        margin: 3em 1em 1em 1em;
+    }
 
 }

@@ -2,7 +2,6 @@
 import Header from '../components/Navbar.astro';
 import Tags from '../components/Tags.astro';
 import Footer from '../components/Footer.astro';
-import ArchiveMetaData from '../components/ArchiveMetaData.astro';
 import '../utility/reset.css';
 import '../utility/scripts/format-fxn.js';
 import '../utility/styles/main-styles.css';
@@ -65,28 +64,33 @@ import { formatDate } from '../utility/scripts/format-fxn.js';
 			</main>
 
 			<aside>
-				<a href="/archive">
-					<div class="image"></div>
-				</a>
-				<div class="uploads">
-					<h2>RECENT UPLOADS</h2>
-					<ul class="scrollbox scrollbox-dark scrollbox-l">
-						{
-							entries.sort(sortByUploadDate).map((entry) =>
-							<li>
-								<a href={`/archive/entries/${entry.slug}/`}><b>{formatDate(entry.data.date)}</b> : {entry.data.title}
-									<div class="icons">
-											{ entry.data.Nsfw && <i class="fas fa-ban" role="img" aria-label="adult content"></i> }
-											{ entry.data.Dd && <i class="fas fa-feather" role="img" aria-label="dead dove"></i> }
-											{ entry.data.uploadDate > new Date("2024-12-01") && <i class="fas fa-sparkles" role="img" aria-label="dead dove"></i> }
-									</div>
-								</a>
-							</li>
-							)
-						}
-					</ul>
+				<div class="column-wrapper">
+					<a href="/archive">
+						<div class="image viewport"></div>
+					</a>
+					<div class="uploads">
+						<h2>RECENT UPLOADS</h2>
+						<ul class="scrollbox scrollbox-dark scrollbox-l">
+							{
+								entries.sort(sortByUploadDate).map((entry) =>
+								<li>
+									<a href={`/archive/entries/${entry.slug}/`}><b>{formatDate(entry.data.date)}</b> : {entry.data.title}
+										<div class="icons">
+												{ entry.data.Nsfw && <i class="fas fa-ban" role="img" aria-label="adult content"></i> }
+												{ entry.data.Dd && <i class="fas fa-feather" role="img" aria-label="dead dove"></i> }
+												{ entry.data.uploadDate > new Date("2024-12-01") && <i class="fas fa-sparkles" role="img" aria-label="dead dove"></i> }
+										</div>
+									</a>
+								</li>
+								)
+							}
+						</ul>
+					</div>
+					<div class="column-wrapper">
+						<h2>TAGS</h2>
+						<Tags />
+					</div>
 				</div>
-				<Tags />
 			</aside>
 
 		</div> 
@@ -162,7 +166,7 @@ import { formatDate } from '../utility/scripts/format-fxn.js';
 
 	.image {
 		display: block;
-		margin: 3rem auto;
+		/* margin: 3rem auto; */
 		background-color: white;
 		height: 150px;
 		width: 150px;
