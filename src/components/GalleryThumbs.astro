@@ -19,38 +19,37 @@ interface Props {
 }
 
 const { 
-        src,
-		title,
-		thumb,
-		date,
-		Nsfw,
-		Dd,
-		desc,
-        medium,
-        image
-		} = Astro.props as Props; 
-
-
+    src,
+    title,
+    thumb,
+    date,
+    Nsfw,
+    Dd,
+    desc,
+    medium,
+    image
+    } = Astro.props as Props; 
 ---
 
 <div class="image">
     <figure>
         <button class="thumbnail" aria-label={`${title} thumbnail`}>
-				<Image class="card-thumbnail"
-					src={thumb}
-					alt={`${title} thumbnail`}
-				/>
+            <Image class="card-thumbnail"
+                src={thumb}
+                alt={`${title} thumbnail`}
+            />
             <div class="ratings">
                 {Nsfw && <i class="fa-solid fa-ban" aria-label="adult content"></i>}
                 {Dd && <i class="fa-solid fa-feather" aria-label="sensitive content"></i>}
             </div>
         </button>
-            <a href={src} target="_blank">
-                <Image class="full-size"
-                        src={image}
-                        alt=""
-                />
-            </a>
+        <a href={src} target="_blank">
+            <Image 
+                class="full-size"
+                src={image}
+                alt=""
+            />
+        </a>
         <figcaption>
             <p class="title">{title}</p>
             <p>{desc}</p>

@@ -33,6 +33,7 @@ const {
 	tags,
 	entries,
 	icons,
+	pageTitle,
 } = Astro.props as Props;
 
 const { slug } = Astro.params;
@@ -61,7 +62,8 @@ const similarEntries = sortBySimilar(entries).slice(0, 5).sort(() => Math.random
 
 ---
 
-<ArchiveLayout title={title} desc={`${date} // ${desc}`}>
+<ArchiveLayout
+	pageTitle={pageTitle}>
 
 	<div class="card-wrapper">
 		<div class="card">
@@ -79,10 +81,12 @@ const similarEntries = sortBySimilar(entries).slice(0, 5).sort(() => Math.random
 				</div>
 			</h2>
 			<div class="body">
-					<Image class="full-image"
-					src={image.src}
-					alt={`${image.alt}`}
-					/>
+					<a href={image.src.src} target="_blank">
+						<Image class="full-image"
+						src={image.src}
+						alt={`${image.alt}`}
+						/>
+					</a>
 				<div class="date">
 					<b>{formatDate(date)}</b>
 					<div class="icons">
@@ -106,22 +110,20 @@ const similarEntries = sortBySimilar(entries).slice(0, 5).sort(() => Math.random
 	<h3>RELATED ENTRIES</h3>
 
 	<div class="card-masonry">
-			{ similarEntries.slice(0, 3).map((entry) =>
-				<CardPreview
-					slug={entry.slug}
-					title={entry.data.title}
-					date={entry.data.date}
-					thumb={entry.data.thumb.src}
-					desc={entry.data.desc}
-					Nsfw={entry.data.Nsfw}
-					Dd={entry.data.Dd}
-					/>
-			)}
-
+		{ similarEntries.slice(0, 3).map((entry) =>
+			<CardPreview
+				slug={entry.slug}
+				title={entry.data.title}
+				date={entry.data.date}
+				thumb={entry.data.thumb.src}
+				desc={entry.data.desc}
+				Nsfw={entry.data.Nsfw}
+				Dd={entry.data.Dd}
+				/>
+		)}
 	</div>
 
 </ArchiveLayout>
-
 
 <style>
 
@@ -300,10 +302,17 @@ const similarEntries = sortBySimilar(entries).slice(0, 5).sort(() => Math.random
 
 @media all and (min-width: 1200px) {
 		
-		.card-masonry {
-			grid-template-columns: repeat(4, 1fr);
-		}
-	
+	.card-masonry {
+		display: grid;
+		padding: 0;
+		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+		margin: 3em 2em;
+		gap: 0em 1.5em;
+		justify-items: center;
+		justify-content: center;
+		align-items: stretch;
 	}
+	
+}
 
 </style>

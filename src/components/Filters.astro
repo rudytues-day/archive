@@ -106,28 +106,26 @@ const ratedBaby = document.getElementById("ratedBaby")
 </style>
 
 <script>
-
-import { getCookie, setCookie } from 'typescript-cookie'
 	
-const ratingButton = document.querySelectorAll("button")
+// const ratingButton = document.querySelectorAll("button")
 
-ratingButton.forEach(button => {
-	let rating = button.id;
-	if (getCookie(rating) === "on") {
-		button.classList.add("active")
-	}});
+// ratingButton.forEach(button => {
+// 	let rating = button.id;
+// 	if (getCookie(rating) === "on") {
+// 		button.classList.add("active")
+// 	}});
 
-ratingButton.forEach(button => {
-	button.addEventListener("click", () => {
-		let rating = button.id;
-		if (getCookie(rating) === `off` || undefined) {
-			setCookie(rating, "on", { expires: 365 });
-			button.classList.add("active")
-		} else { 
-			setCookie(rating, "off", { expires: 365 });
-			button.classList.remove("active")
-		}
-	});
-});
+// ratingButton.forEach(button => {
+// 	button.addEventListener("click", () => {
+// 		let rating = button.id;
+// 		if (getCookie(rating) === `off` || undefined) {
+// 			setCookie(rating, "on", { expires: 365 });
+// 			button.classList.add("active")
+// 		} else { 
+// 			setCookie(rating, "off", { expires: 365 });
+// 			button.classList.remove("active")
+// 		}
+// 	});
+// });
 
 </script>
