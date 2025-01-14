@@ -1,0 +1,88 @@
+---
+import { Image } from 'astro:assets';
+import '../utility/reset.css';
+import '../utility/styles/main-styles.css';
+import '../utility/styles/form-styles.css';
+import uue2 from '../utility/image/uue2.png'
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator}/>
+		<meta charset="UTF-8"> 
+
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+		<title>404</title>
+	
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Darumadrop+One&display=swap" rel="stylesheet">
+	
+		<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+	</head>
+
+    <body>
+        <main>
+            <div class="wrapper">
+                <h1>WHAT ARE YOU DOING HERE?</h1>
+                <Image
+                    src={uue2}
+                    alt=""
+                    class:list={"uue"}
+                />
+                <p>how did you get here?</p>
+                <p>get out! <b>OUT!!</b></p>
+                <button onclick="history.back()">OK SORRY</button>
+            </div>
+        </main>
+    </body>
+</html>
+
+<style>
+
+    :root {
+
+        --primary-clr-dark: hsl(0, 0%, 7%);
+        --primary-clr-med: hsl(283, 10%, 14%);
+        --primary-clr-light: hsl(263, 10%, 20%);
+        --primary-clr-200: hsl(261, 10%, 40%);
+
+        --primary-accent-clr: #F40662;
+        --primary-link-clr: #BF95A5;
+        /* --primary-link-clr: #8b7e83; */
+        --white-clr: #ffffff;
+
+        --bg-clr: #FBFBFB;
+        --display: "Darumadrop One";
+        --body: 'Averia Libre';
+
+        }
+
+    main {
+        height: 100vh;
+        margin: auto;
+        display: grid;
+        place-items: center;
+        text-align: center;
+    }
+
+    h1 {
+        margin: 0em 1em 1em 1em;
+    }
+
+    p {
+        margin: 1em;
+    }
+
+    button {
+        margin: 0.5em 0.5em 0.25em 0.5em;
+    }
+
+    .uue {
+        margin: 3em auto;
+    }
+
+</style>
