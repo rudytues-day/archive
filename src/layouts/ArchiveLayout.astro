@@ -13,7 +13,6 @@ interface Props {
   pageTitle: string;
 }
 
-
 const { pageTitle = "ARCHIVE" } = Astro.props;
 
 // import { tagsByFrequency } from '../utility/scripts/sort-fxn.js';
@@ -23,7 +22,7 @@ const entries = await getCollection("entries");
 import { sortByUploadDate } from '../utility/scripts/sort-fxn.js';
 import { formatDate } from '../utility/scripts/format-fxn.js';
 
-
+import CardConstruction from '../components/cards/CardConstruction.astro';
 // const sortedTags = [... new Set(allTags.sort(sortByFrequency).toReversed().flat())];
 // const allTags = entries.map((entry => 
 // 	entry.data.tags)).reduce((accumulator, value) => accumulator.concat(value), [])
@@ -38,7 +37,7 @@ import { formatDate } from '../utility/scripts/format-fxn.js';
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml+ico" href="/favicon.ico" />
 
 		<title>{pageTitle}</title>
 
@@ -59,7 +58,9 @@ import { formatDate } from '../utility/scripts/format-fxn.js';
 		<div class="left-column">
 
 			<main>
-				<h1>ARCHIVE</h1>
+				<CardConstruction>
+					<h1>ARCHIVE</h1>
+				</CardConstruction>
 				<slot />
 			</main>
 
@@ -106,7 +107,7 @@ import { formatDate } from '../utility/scripts/format-fxn.js';
 		font-family: var(--display);
 		text-align: center;
 		font-size: 2rem;
-		margin-block: 2em;
+		margin-block: 0.5em 0.75em;
 	}
 	
 	main {

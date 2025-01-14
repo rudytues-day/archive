@@ -16,6 +16,8 @@ import '../utility/styles/card-styles.css';
 import '../utility/styles/form-styles.css';
 import '../utility/styles/wrapper-styles.css';
 
+import CardConstruction from "../components/cards/CardConstruction.astro";
+
 const newsletters = await getCollection("newsletters");
 const newsletterSlice = newsletters.toReversed().slice(0,3);
 
@@ -36,6 +38,16 @@ import viewport3 from '../utility/image/viewport3.png'
 					<h1>LOOK UPON MY WORKS, YE MIGHTY, AND DESPAIR</h1>
 					<p>... nothing beside remains</p>
 				</header>
+			</section>
+
+			<section>
+				<CardConstruction>
+					<div class="left" style="text-align: left">
+						<p>this site is currently under renovation. there are likely to be missing or broken features.</p>
+						<p>please use my <a href="/contact">contact form</a> to report any errors, broken links or bugs you may run into.</p>
+						<p>thank you!</p>
+					</div>
+				</CardConstruction>
 			</section>
 	
 			<section class="newsletter">

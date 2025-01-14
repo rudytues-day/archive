@@ -16,12 +16,19 @@ import faq from "./faq.md";
 import { render } from "astro:content";
 const {Content} = await render(faq)
 console.log(faq)
-
+import CardConstruction from "../../components/cards/CardConstruction.astro";
 
 ---
 <Layout title="ASKBOX">
-
     <main>
+
+        <div class="wrapper" style="margin-bottom: 3em;">
+            <CardConstruction>
+                <p>this page is currently under construction.</p>
+                <p>watch your step!</p>
+            </CardConstruction>
+        </div>
+        
         <h1>ASKBOX</h1>
             
         

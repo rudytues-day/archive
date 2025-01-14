@@ -10,6 +10,9 @@ import GalleryThumbs from "../../components/GalleryThumbs.astro";
 
 import '../../utility/styles/card-styles.css';
 
+
+import CardConstruction from '../../components/cards/CardConstruction.astro';
+
 import placeholderImage from "./abstract_daughter.png";
 
 // import { sortEntries, sortByCreationDate, sortByUploadDate } from '../../../utility/utils';
@@ -40,6 +43,10 @@ function filterEntries(entries) {}
 
     <main>
         <h1>GALLERY</h1>
+        <CardConstruction>
+            <p>this page is currently under construction.</p>
+            <button style="min-width:fit-content; margin-block: 0.5em"><a href="/works/gallery">VIEW ORIGINAL</a></button>
+        </CardConstruction>
 
             <div class="gallery-card" id="display">
                 <div class="image">

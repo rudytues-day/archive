@@ -20,6 +20,8 @@ export const getStaticPaths = (async ( { paginate } ) => {
 
 const { page } = Astro.props;
 
+import CardConstruction from '../../components/cards/CardConstruction.astro';
+
 // const byUploadDate = sortByUploadDate(entries);
 
 ---
@@ -28,6 +30,10 @@ const { page } = Astro.props;
 <Layout title="ARCHIVE">
 
 <main>
+	<CardConstruction>
+		<p>this page is currently under construction.</p>
+		<p>watch your step!</p>
+	</CardConstruction>
 
 	<ul role="list">
 		<div class="grid-masonry">
