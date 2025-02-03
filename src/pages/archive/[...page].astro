@@ -27,7 +27,7 @@ const firstPath = pathname[1];
 
 <ArchiveLayout pageTitle="ARCHIVE">
 		
-	<div class="card-wrapper">
+	<div class="card-wrapper archive-card-wrapper">
 		{
 			page.data.map((entry) =>
 				<CardArchive
@@ -43,7 +43,8 @@ const firstPath = pathname[1];
 					Dd={entry.data.Dd}
 					icons={entry.data.icons}
 				/>
-		)}
+			)
+		}
 	</div>
 
 	<Pagination

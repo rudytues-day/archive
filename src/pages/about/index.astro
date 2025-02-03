@@ -5,6 +5,8 @@
 import Layout from '../../layouts/Layout.astro';
 import Card from '../../components/cards/Card.astro';
 
+import CardConstruction from '../../components/cards/CardConstruction.astro';
+
 
 import '../../utility/styles/wrapper-styles.css';
 import '../../utility/styles/main-styles.css';
@@ -16,10 +18,11 @@ import changelog from './changelog.json';
 <Layout title="RUDY TUESDAY">
 
     <main>
+
         <section>
 			<h2>ABOUT</h2>
 
-			<div class="card-masonry">
+			<div class="card-wrapper">
 
 				<Card
 					title="RUDOLF DIENSTAG"
@@ -36,7 +39,7 @@ import changelog from './changelog.json';
 			
             <h2>SITE INFORMATION</h2>
 
-            <div class="card-masonry">
+            <div class="card-wrapper two-card-flex">
                 <Card
                 title="SITEMAP"
                 icon="fa-sitemap">
@@ -105,17 +108,17 @@ import changelog from './changelog.json';
 						</div>
 					</div>
 				</Card>
+                <Card
+                title="CREDITS"
+                icon="fa-ribbon">
+                    <p style="text-align: center;">thank you to the fandom coders for supporting me on this journey</p>
+                </Card>
 			</div>
 
 		
 
         <div class="card-wrapper card-s" style="width:40ch">
 
-            <Card
-            title="CREDITS"
-            icon="fa-ribbon">
-                <p style="text-align: center;">thank you to the fandom coders for supporting me on this journey</p>
-            </Card>
         </div>
 
 
@@ -132,24 +135,8 @@ import changelog from './changelog.json';
     .sitemap li:has(> ul)::marker {
         content: '';
     }
-    
-	.card-masonry {
-		margin: 3em auto;
-		display: flex;
-		flex-flow: row wrap;
-		justify-content: center;
-		align-items: center;
-		gap: 1.5em;
-		height: 100%;
-	}
 
 @media all and (min-width: 700px) {
-
-	.card-masonry {
-		display: flex;
-		justify-content: center;
-		max-width: 800px;
-	}
 
 	.card-masonry > * {
 		margin: 1em;

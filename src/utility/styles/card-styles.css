@@ -8,18 +8,23 @@
 }
 
 .card {
-    margin: 0em 1em 3em 1em;
-    /* max-width: 750px; */
+    margin: var(--__card-margin);
+    max-width: var(--__card-width);
 }
 
-.card:last-of-type {
-    margin-bottom: 1em;
+[class="card"] {
+    --__card-margin: ;
+    --__card_width: ;
+}
+
+.card-archive {
+    --__card-margin: 0 0 3em 0;
 }
 
 /* card title */
 
-h1.card-title,
-summary.tab-title {
+.card-title,
+.tab-title {
     background: var(--primary-clr-dark);
     color: var(--white-clr);
     margin: 0;
@@ -32,7 +37,7 @@ summary.tab-title {
     transition: var(--link-transition);
 }
 
-summary.tab-title:hover {
+.tab-title:hover {
     cursor: pointer;
     color: var(--primary-accent-clr)
 }
@@ -57,6 +62,15 @@ details:not([open]) .tab-title {
 
 details:not([open]) .tab-title::before {
     content: '\f07b'
+}
+
+.card-entry-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em;
+    gap: 0.5em;
+    text-align: center;
 }
 
 .card-archive h1,
@@ -104,12 +118,24 @@ details:not([open]) .tab-title::before {
     border-radius: 0.75em;
 }
 
-.card-archive .description,
-.card-preview .description {
+.card-archive .description {
+    margin: 1em 0;
+    text-wrap: balance;
+}
+
+/* temp fix */
+
+.card-entry-body {
     display: grid;
-    justify-content: center;
-    margin: 1em;
-    gap: 1em;
+    place-items: center;
+}
+
+.card-archive .description p:not(.date) {
+    margin: 1.25em 0em 1.5em 0em;
+}
+
+.card-preview {
+    max-width: 300px;
 }
 
 .card-preview .description > p {
@@ -143,8 +169,8 @@ details:not([open]) .tab-title::before {
 
 @media all and (min-width: 700px) {
 
-    .card {
-        margin: 1em auto;
+    [class="card"] {
+        --__card-margin: 1em auto;
     }
 
     .card-archive .flex-wrapper {
@@ -154,10 +180,7 @@ details:not([open]) .tab-title::before {
     .card-archive .card-body {
         display: flex;
         flex-direction: row;
-        align-items: flex-start;
-        justify-content: left;
-        gap: 1em;
-        padding-inline: 2em;
+        gap: 1.5em;
     }
 
 }
@@ -173,140 +196,3 @@ details:not([open]) .tab-title::before {
     border-radius: var(--folder-border-radius);
     overflow: hidden;
 }
-
-/* 
-.card {
-    list-style: none;
-    max-width: 750px;
-}
-
-h1 {
-    margin: 0;
-    font-size: 1.5em;
-    font-family: var(--display);
-    background-color: var(--primary-clr-dark);
-    overflow: hidden;
-    padding: 0.5em 1em;
-    color: var(--white-clr);
-    border-radius: 0.75em 0.75em 0em 0em;
-    transition: ease 0.2s;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-h1 i {
-    font-size: 0.8em;
-    padding-bottom: 0.15em;
-}
-
-li a {
-    transition: 200ms;
-}
-
-li:hover h1 {
-    color: var(--primary-accent-clr)
-}
-
-.body {
-    background: var(--white-clr);
-    display: flex;
-    flex-direction: column;
-    padding: 1em;
-    border: solid 2px var(--primary-clr-dark);		
-    border-radius: 0em 0em 1em 1em;
-}
-
-.thumb {
-    display: block;
-    background-color: #111;
-    height: 150px;
-    min-width: 150px;
-    max-width: 150px;
-    margin: 1em auto;
-    border-radius: 100%;
-}
-
-.description {
-    gap: 1em;
-    margin: 1em;
-}
-
-.text {
-    margin-bottom: 0.75em;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;  
-    overflow: hidden;
-}
-
-.flex {
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-}
-
-.icons {
-    display: flex;
-    gap: 0.325em;
-    padding-top: 0.4em;
-}
-
-.flex .icons {
-    margin-block: 0 1.25em;
-}
-
-.date {
-    font-family: var(--display);
-    text-transform: uppercase;
-    font-size: 1.25em;
-    margin-bottom: 1em;
-}
-
-button {
-    font-family: var(--display);
-    font-size: 1.5rem;
-    margin: 0.5em auto;
-    text-align: center;
-    color: #fff;
-    background: var(--primary-clr-dark);
-    padding: 0.125em 1em 0.375em 1em;
-    border-radius: 0.5em;
-}
-
-.tags {
-    display: flex;
-    flex-flow: row wrap;
-    list-style: none;
-    padding: 0;
-    gap: 0.25em;
-    margin-top: 0em;
-    align-items: center;
-    justify-content: center;
-}
-
-.tags li {
-    background-color: var(--primary-clr-dark);
-    color: var(--white-clr);
-    font-family: var(--display);
-    text-transform: uppercase;
-    padding: 0.125em 0.3em 0.4em 0.3em;
-    line-height: 1.125;
-    border-radius: 0.25em;
-}
-
-.tags li a {
-    transition: 200ms;
-}
-
-.tags li a:hover {
-    color: var(--primary-accent-clr)
-}
-
-@media all and (min-width: 700px) {
-
-
-} */

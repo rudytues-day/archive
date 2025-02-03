@@ -4,6 +4,7 @@ import type { ImageMetadata } from 'astro';
 import { formatDate } from '../utility/scripts/format-fxn.js';
 
 import '../utility/styles/gallery-styles.css';
+import '../utility/styles/card-styles.css';
 
 interface Props {
 	title: string;
@@ -32,9 +33,9 @@ const {
 ---
 
 <div class="image">
-    <figure>
-        <button class="thumbnail" aria-label={`${title} thumbnail`}>
-            <Image class="card-thumbnail"
+
+        <button class="gallery-thumb" aria-label={`${title} thumbnail`}>
+            <Image
                 src={thumb}
                 alt={`${title} thumbnail`}
             />
@@ -43,17 +44,18 @@ const {
                 {Dd && <i class="fa-solid fa-feather" aria-label="sensitive content"></i>}
             </div>
         </button>
-        <a href={src} target="_blank">
-            <Image 
-                class="full-size"
-                src={image}
-                alt=""
-            />
-        </a>
-        <figcaption>
-            <p class="title">{title}</p>
-            <p>{desc}</p>
-            <p><b>{medium}<br/>{formatDate(date)}</b></p>
-        </figcaption>
+            <figure>
+                <a href={src} target="_blank">
+                    <Image
+                        class="full-size"
+                        src={image}
+                        alt=""
+                    />
+                </a>
+                <figcaption>
+                    <p class="title">{title}</p>
+                    <p>{desc}</p>
+                    <p><b>{medium}<br/>{formatDate(date)}</b></p>
+                </figcaption>
     </figure>
 </div>

@@ -8,6 +8,8 @@ import '../utility/styles/main-styles.css';
 import '../utility/styles/aside-styles.css';
 
 import '../utility/styles/scrollbox-styles.css';
+import '../utility/styles/card-styles.css';
+import '../utility/styles/wrapper-styles.css';
 
 interface Props {
   pageTitle: string;
@@ -21,6 +23,8 @@ const entries = await getCollection("entries");
 
 import { sortByUploadDate } from '../utility/scripts/sort-fxn.js';
 import { formatDate } from '../utility/scripts/format-fxn.js';
+
+import '../utility/styles/tag-styles.css';
 
 import CardConstruction from '../components/cards/CardConstruction.astro';
 // const sortedTags = [... new Set(allTags.sort(sortByFrequency).toReversed().flat())];
@@ -58,9 +62,7 @@ import CardConstruction from '../components/cards/CardConstruction.astro';
 		<div class="left-column">
 
 			<main>
-				<CardConstruction>
-					<h1>ARCHIVE</h1>
-				</CardConstruction>
+				<h1>ARCHIVE</h1>
 				<slot />
 			</main>
 
@@ -107,37 +109,12 @@ import CardConstruction from '../components/cards/CardConstruction.astro';
 		font-family: var(--display);
 		text-align: center;
 		font-size: 2rem;
-		margin-block: 0.5em 0.75em;
-	}
-	
-	main {
-		margin: auto;
-		width: 100%;
-		position: relative;
-	}
-
-	main::before,
-	main::after {
-		content: '';
-		background-image: url('/imgs/chain_1_horizontal.png');
-		display: block;
-		width: 100%;
-		height: 20px;
-	}
-
-	main::before {
-		margin-block: 0.25em 3em;
-	}
-
-	main::after {
-		bottom: 0;
-		margin-block: 3em 0.25em;
+		margin-bottom: 2em;
 	}
 
 	.image {
 		display: none;
 	}
-
 
 	@media all and (min-width: 720px) {}
 	
