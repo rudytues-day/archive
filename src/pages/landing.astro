@@ -1,0 +1,135 @@
+---
+import '../utility/reset.css';
+import '../utility/styles/main-styles.css';
+import '../utility/styles/form-styles.css';
+
+import viewport from '../utility/image/viewport4.png';
+
+import Image from 'astro/components/Image.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    
+    <title>RUDY TUESDAY</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Darumadrop+One&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">    
+
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    
+    <style>
+    
+        body {
+            color: #fff;
+            background-color: var(--primary-clr-dark); 
+            line-height: 1.6;
+            padding: 1.5em;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 1em auto;
+            max-width: 15ch;
+            text-align: center;
+        }
+
+        p {
+            margin-block: 1.5em;
+        }
+        
+        .container {
+            max-width: 30em; 
+            padding: 3em 1.5em;
+            background: var(--primary-clr-med);
+            border-radius: 12px;
+        }
+
+        .image {
+            width: fit-content;
+            margin-inline: auto;
+        }
+        
+        .verifyage-input {
+            margin: 1.25em;
+            accent-color: var(--primary-clr-med);
+        }
+
+        .fa-solid {
+            font-size: 0.9em; 
+        }
+        
+        @media all and (min-width: 700px) {
+
+            body {
+                height: 100vh;
+                margin: auto;
+                display: grid;
+                place-items: center;
+                padding: 1em 0;
+            }
+        }
+
+    </style>
+    
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="image">
+            <Image
+                src={viewport}
+                alt=""
+            />
+        </div>
+        <h1>THANK GOD IT'S TUESDAY</h1>
+    
+        <p>my work contains transgressive adult themes intended for mature audiences only, including but not limited to non-con/dub-con, csa/cocsa, major age gaps and incest.</p>
+
+        <p>this site is not work safe and contains erotic imagery and writing. <span class="fa-solid fa-ban" aria-label="ban"></span> denotes adult content and <span class="fa-solid fa-feather" aria-label="feather"></span> denotes content for which the above warnings apply.</p>
+        <p><b>viewer discretion is advised.</b></p>
+
+        <p>by submitting below you affirm that you are at least 18 years of age, aware of the content warnings provided and consent to viewing such materials.</p>
+
+        <div class="verifyage-input">
+            <input type="checkbox" id="verifyage-checkbox">
+            <label for="verifyage">i affirm</label>
+        </div>
+        <button id="verifyage-button" type="button">SUBMIT</button>
+
+    </div>
+
+    <script language="javascript" type="text/javascript" src="//counter1.fc2.com/counter.php?id=40217935&main=1"></script><noscript><img src="//counter1.fc2.com/counter_img.php?id=40217935&main=1" /></noscript>
+
+    <script>
+
+    const verifyageButton = document.getElementById("verifyage-button") as HTMLInputElement;
+    const verifyageCheckbox = document.getElementById("verifyage-checkbox") as HTMLInputElement;
+        
+    verifyageButton?.addEventListener("click", () => {
+        // let url: URL = new URL(window.location.href);
+        if (verifyageCheckbox?.checked) {
+            localStorage.setItem("ageVerified", "✓");
+            if (window.location.search.startsWith("?returnto=")) {
+                window.location.href = window.location.search.substring("?returnto=".length);
+            } else {
+                window.location.href = "/";
+            }
+        } else {
+            alert("you must be 18 years or older to submit");
+        }
+    });
+
+    </script>
+    
+    </body>
+</html>

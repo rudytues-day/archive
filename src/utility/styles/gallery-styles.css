@@ -45,8 +45,8 @@ h1 {
 }
 
 
-.folder-wrapper .full-size,
-.folder-wrapper figcaption {
+.folder .full-size,
+.folder figcaption {
     display: none;
 }
 
@@ -157,7 +157,7 @@ figcaption b {
     
 
     .gallery-card,
-    .folder-wrapper {
+    .folder {
         max-width: 1000px;
         margin: auto;
     }

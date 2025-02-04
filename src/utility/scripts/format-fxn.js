@@ -58,7 +58,6 @@ export function sortEntries(entries) {
 // 	return similarEntries;
 // };
 
-
 export function tabToggles() {
   const toggles = document.querySelectorAll<HTMLElement>(`[data-toggle-section]`);
   const sections = document.querySelectorAll<HTMLElement>(`[data-pane-section]`);

@@ -2,14 +2,15 @@
 form,
 .embeddable-buttondown-form {
     display: grid;
-    margin: 2em 1em 0em 1em;
+    margin: 2em 0em 2em 0em;
     justify-content: center;
     gap: 1.5em;
     
 }
 
 form.ask {
-    margin-top: 1em;
+    margin: 1em;
+    align-items: center;
     justify-items: left;
     justify-content: left;
     width: 100%;
@@ -80,9 +81,10 @@ textarea {
     padding: 0.25em 0.75em;
     font-family: inherit;
 }
+
 input[type="text"],
 input[type="email"] {
-    width: 25ch;
+    max-width: 25ch;
 }
 
 
@@ -90,6 +92,7 @@ textarea {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
          box-sizing: border-box;
+    max-width: 30ch;
 }
 
 .form-flex {
@@ -102,3 +105,13 @@ textarea {
     padding-bottom: 0.125em;
 }
 
+/* temp fix */
+
+@media all and (min-width: 700px) {
+    form {
+        margin-inline: 1em;
+    }
+    textarea {
+        max-width: 45ch;
+    }
+}

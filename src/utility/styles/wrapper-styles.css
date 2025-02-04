@@ -6,21 +6,33 @@
 }
 
 [class="card-wrapper"] {
-    --__margin: 1em auto;
+    --__wrapper-margin: 4em 0;
+    --__wrapper-width: 750px;
+    /* border: orangered solid 1px; */
+    padding-inline: 1em;
+    display: grid;
+    gap: 1em;
+}
+
+.two-card-flex {
+    --__wrapper-margin: 4em 1em;
     --__max-width: 750px;
     /* border: orangered solid 1px; */
-    /* display: grid;
-    gap: 1em; */
+    display: grid;
+    gap: 1em;
 }
 
 .entry-card-wrapper {
-    --__wrapper-margin: 1em;
-    --__wrapper-width: 800px;
+    --__wrapper-margin: 0 auto;
+    --__wrapper-width: 100%;
+    padding-inline: 1em;
+
 }
 
 .archive-card-wrapper {
-    --__wrapper-margin: 0 1em;
+    --__wrapper-margin: 0 auto;
     --__wrapper-width: 100%;
+    padding-inline: 1em;
 }
 
 .tile-masonry-wrapper {
@@ -33,7 +45,42 @@
     justify-content: center;
 }
 
+.flex-wrap {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 1em;
+    margin: 1em;
+}
+
+    .archive-card-wrapper {
+        --__wrapper-margin: 0 auto;
+    }
+    
+    .entry-card-wrapper {
+        --__wrapper-margin: 0 auto;
+    }
+
+.folder-wrapper {
+    padding-inline: 1em;
+}
+
 @media all and (min-width: 700px) {
+
+    [class="card-wrapper"] {
+        margin-inline: auto;
+    }
+
+    .two-card-flex {
+        --__wrapper-margin: 4em auto;
+        --__wrapper-width: 800px;
+
+        display: flex;
+        flex-flow: row wrap;
+        gap: 1.25em;
+        align-items: center;
+        justify-content: center;
+    }
 
     .entry-card-wrapper {
         --__wrapper-margin: 0 auto;
@@ -43,8 +90,9 @@
 @media all and (min-width: 1000px) {
 
     .archive-card-wrapper {
-        --__wrapper-margin: 0 1em;
+        --__wrapper-margin: 0 auto;
         --__wrapper-width: 800px;
+        padding-inline: 1em;
     }
     
     .entry-card-wrapper {
@@ -55,29 +103,27 @@
 
 @media all and (min-width: 1250px) {
 
-    .archive-card-wrapper {
-        --__wrapper-margin: 0 auto;
-    }
-    
-    .entry-card-wrapper {
-        --__wrapper-margin: 0 auto;
-    }
+	.three-column {
+		display: grid;
+		grid-template-columns: 300px 1fr 300px;
+		grid-template-areas: 'left middle right'
+	}
+
+	.leftColumn {
+		grid-area: left
+	}
+
+	.rightColumn {
+		grid-area: right;
+	}
+
+	main {
+		grid-area: middle;
+	}
 
 }
 
-@media all and (min-width: 700px) {
-
-    .two-card-flex {
-        --__wrapper-margin: auto;
-        --__wrapper-width: 800px;
-
-        display: flex;
-        flex-flow: row wrap;
-        gap: 1.25em;
-        align-items: center;
-        justify-content: center;
-    }
-}
+/* other */
 
 /* projects */
 
@@ -105,35 +151,3 @@
 /* layout wrappers */
 
     /* three column layout */
-
-@media all and (min-width: 1250px) {
-
-	.three-column {
-		display: grid;
-		grid-template-columns: 300px 1fr 300px;
-		grid-template-areas: 'left middle right'
-	}
-
-	.leftColumn {
-		grid-area: left
-	}
-
-	.rightColumn {
-		grid-area: right;
-	}
-
-	main {
-		grid-area: middle;
-	}
-
-}
-
-/* other */
-
-.flex-wrap {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    gap: 1em;
-    margin: 1em;
-}

@@ -11,6 +11,10 @@ import '../utility/styles/scrollbox-styles.css';
 import '../utility/styles/card-styles.css';
 import '../utility/styles/wrapper-styles.css';
 
+import Image from 'astro/components/Image.astro';
+
+import viewportart from '../utility/image/viewport_art.png';
+
 interface Props {
   pageTitle: string;
 }
@@ -45,7 +49,13 @@ import CardConstruction from '../components/cards/CardConstruction.astro';
 
 		<title>{pageTitle}</title>
 
-		<!-- <ArchiveMetaData/> -->
+		<script>
+        
+			if (localStorage.getItem("ageVerified") == null) {
+				window.location.href = `/landing.html?returnto=${window.location}`; 
+			}
+			
+		</script>
 	
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,7 +79,11 @@ import CardConstruction from '../components/cards/CardConstruction.astro';
 			<aside>
 				<div class="column-wrapper">
 					<a href="/archive">
-						<div class="image viewport"></div>
+						<Image
+							src={viewportart}
+							alt=""
+							class:list={"viewport"}
+						/>
 					</a>
 					<div class="uploads">
 						<h2>RECENT UPLOADS</h2>

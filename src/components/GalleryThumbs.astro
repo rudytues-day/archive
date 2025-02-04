@@ -33,7 +33,6 @@ const {
 ---
 
 <div class="image">
-
         <button class="gallery-thumb" aria-label={`${title} thumbnail`}>
             <Image
                 src={thumb}
@@ -44,18 +43,19 @@ const {
                 {Dd && <i class="fa-solid fa-feather" aria-label="sensitive content"></i>}
             </div>
         </button>
-            <figure>
-                <a href={src} target="_blank">
-                    <Image
-                        class="full-size"
-                        src={image}
-                        alt=""
-                    />
-                </a>
-                <figcaption>
-                    <p class="title">{title}</p>
-                    <p>{desc}</p>
-                    <p><b>{medium}<br/>{formatDate(date)}</b></p>
-                </figcaption>
-    </figure>
+        <figure>
+            <a href={src} target="_blank">
+                <Image
+                    class="full-size"
+                    src={image}
+                    alt=""
+                />
+            </a>
+            <figcaption>
+                <p class="title">{title}</p>
+                <p>{desc}</p>
+                <p><b>{formatDate(date)}<br/>{medium}</b></p>
+            </figcaption>
+        </figure>
 </div>
+

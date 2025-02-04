@@ -3,12 +3,12 @@ interface Props {
 	user: string;
 	title: string;
 	date: Date;
-    
 }
 
 const { title, date, } = Astro.props as Props;
----
 
+import '../../utility/styles/card-styles.css'
+---
 
 <div class="card">
     <div class="question-header">
@@ -21,7 +21,6 @@ const { title, date, } = Astro.props as Props;
     </div>
     <div class="question-wrapper">
         <p class="question">this is where a question would go if i had one. here is some additional dummy text, really stretch it out. maybe a few more lines so i can get three lines and then i will be free.</p>
-        <p class="answer-wrapper">
             <slot />
         </p>
         <div class="read-more">SEE FULL ANSWER</div>

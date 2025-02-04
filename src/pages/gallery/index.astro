@@ -9,7 +9,7 @@ import { getCollection } from "astro:content";
 import GalleryThumbs from "../../components/GalleryThumbs.astro";
 
 import '../../utility/styles/card-styles.css';
-
+import '../../utility/styles/wrapper-styles.css';
 
 import CardConstruction from '../../components/cards/CardConstruction.astro';
 
@@ -35,7 +35,6 @@ const studyAnalog = studyEntries.filter((entry => entry.data.tags.includes("anal
 
 const commissionEntries = galleryEntries.filter((entry => entry.data.tags.includes("commission")));
 
-
 function filterEntries(entries) {}
 
 // const personalEntries = galleryEntries.filter((entry) => {
@@ -43,6 +42,8 @@ function filterEntries(entries) {}
 //         console.log("no");
 //         return entry;
 //     }});
+
+
 
 ---
 
@@ -73,14 +74,106 @@ function filterEntries(entries) {}
             </div>
 
             <div class="folder-wrapper">
-
-                <CardFolder
-                    tabTitle="ILLUSTRATION"
-                    index={true}
-                >
-                    <h4>PERSONAL</h4>
+                <div class="folder">
+                    <CardFolder
+                        tabTitle="ILLUSTRATION"
+                        id="illustration"
+                        index={true}
+                    >
+                        <h4>PERSONAL</h4>
+                        <div class="thumbnail-container">
+                            { originalEntries.map((entry) => (
+                                <a href="#display">
+                                    <GalleryThumbs
+                                            title={entry.data.title}
+                                            thumb={entry.data.thumb.src}
+                                            date={entry.data.date}
+                                            Nsfw={entry.data.Nsfw}
+                                            Dd={entry.data.Dd}
+                                            desc={entry.data.desc}
+                                            original={entry.data.original}
+                                            medium={entry.data.medium}
+                                            image={entry.data.image.src}
+                                            thumb={entry.data.thumb.src}
+                                            src={entry.data.image.src.src}
+                                    />
+                                </a>
+                            ))}
+                        </div>
+                        <h4>FANWORKS</h4>
+                        <div class="thumbnail-container">
+                            { fanartEntries.map((entry) => (
+                                <a href="#display">
+                                    <GalleryThumbs
+                                            title={entry.data.title}
+                                            thumb={entry.data.thumb.src}
+                                            date={entry.data.date}
+                                            Nsfw={entry.data.Nsfw}
+                                            Dd={entry.data.Dd}
+                                            desc={entry.data.desc}
+                                            original={entry.data.original}
+                                            medium={entry.data.medium}
+                                            image={entry.data.image.src}
+                                            thumb={entry.data.thumb.src}
+                                            src={entry.data.image.src.src}
+                                    />
+                                </a>
+                            ))}
+                        </div>
+                    </CardFolder>
+                    <CardFolder
+                        tabTitle="SKETCHBOOK"
+                        id="sketchbook"
+                        index={false}
+                    >
+                        <h4>DIGITAL</h4>
+                        <div class="thumbnail-container">
+                            { sketchDigital.map((entry) => (
+                                <a href="#display">
+                                    <GalleryThumbs
+                                            title={entry.data.title}
+                                            thumb={entry.data.thumb.src}
+                                            date={entry.data.date}
+                                            Nsfw={entry.data.Nsfw}
+                                            Dd={entry.data.Dd}
+                                            desc={entry.data.desc}
+                                            original={entry.data.original}
+                                            medium={entry.data.medium}
+                                            image={entry.data.image.src}
+                                            thumb={entry.data.thumb.src}
+                                            src={entry.data.image.src.src}
+                                    />
+                                    </a>
+                                ))}
+                        </div>
+                        <h4>ANALOG</h4>
+                        <div class="thumbnail-container">
+                            { sketchAnalog.map((entry) => (
+                                <a href="#display">
+                                    <GalleryThumbs
+                                            title={entry.data.title}
+                                            thumb={entry.data.thumb.src}
+                                            date={entry.data.date}
+                                            Nsfw={entry.data.Nsfw}
+                                            Dd={entry.data.Dd}
+                                            desc={entry.data.desc}
+                                            original={entry.data.original}
+                                            medium={entry.data.medium}
+                                            image={entry.data.image.src}
+                                            thumb={entry.data.thumb.src}
+                                            src={entry.data.image.src.src}
+                                    />
+                                    </a>
+                                ))}
+                        </div>
+                    </CardFolder>
+                    <CardFolder
+                        tabTitle="COMMISSIONS"
+                        id="commissions"
+                        index={false}
+                    >
                     <div class="thumbnail-container">
-                        { originalEntries.map((entry) => (
+                        { commissionEntries.map((entry) => (
                             <a href="#display">
                                 <GalleryThumbs
                                         title={entry.data.title}
@@ -98,152 +191,55 @@ function filterEntries(entries) {}
                             </a>
                         ))}
                     </div>
-
-                    <h4>FANWORKS</h4>
-                    <div class="thumbnail-container">
-                        { fanartEntries.map((entry) => (
-                            <a href="#display">
-                                <GalleryThumbs
-                                        title={entry.data.title}
-                                        thumb={entry.data.thumb.src}
-                                        date={entry.data.date}
-                                        Nsfw={entry.data.Nsfw}
-                                        Dd={entry.data.Dd}
-                                        desc={entry.data.desc}
-                                        original={entry.data.original}
-                                        medium={entry.data.medium}
-                                        image={entry.data.image.src}
-                                        thumb={entry.data.thumb.src}
-                                        src={entry.data.image.src.src}
-                                />
-                            </a>
-                        ))}
-                    </div>
-                </CardFolder>
-
-                <CardFolder
-                    tabTitle="SKETCHBOOK"
-                    index={false}
-                >
-                    <h4>DIGITAL</h4>
-
-                    <div class="thumbnail-container">
-                        { sketchDigital.map((entry) => (
-                            <a href="#display">
-                                <GalleryThumbs
-                                        title={entry.data.title}
-                                        thumb={entry.data.thumb.src}
-                                        date={entry.data.date}
-                                        Nsfw={entry.data.Nsfw}
-                                        Dd={entry.data.Dd}
-                                        desc={entry.data.desc}
-                                        original={entry.data.original}
-                                        medium={entry.data.medium}
-                                        image={entry.data.image.src}
-                                        thumb={entry.data.thumb.src}
-                                        src={entry.data.image.src.src}
-                                />
-                                </a>
-                            ))}
-                    </div>
-                    <h4>ANALOG</h4>
-
-                    <div class="thumbnail-container">
-                        { sketchAnalog.map((entry) => (
-                            <a href="#display">
-                                <GalleryThumbs
-                                        title={entry.data.title}
-                                        thumb={entry.data.thumb.src}
-                                        date={entry.data.date}
-                                        Nsfw={entry.data.Nsfw}
-                                        Dd={entry.data.Dd}
-                                        desc={entry.data.desc}
-                                        original={entry.data.original}
-                                        medium={entry.data.medium}
-                                        image={entry.data.image.src}
-                                        thumb={entry.data.thumb.src}
-                                        src={entry.data.image.src.src}
-                                />
-                                </a>
-                            ))}
-                    </div>
-
-                </CardFolder>
-
-                <CardFolder
-                    tabTitle="COMMISSIONS"
-                    index={false}
-                >
-                <div class="thumbnail-container">
-                    { commissionEntries.map((entry) => (
-                        <a href="#display">
-                            <GalleryThumbs
-                                    title={entry.data.title}
-                                    thumb={entry.data.thumb.src}
-                                    date={entry.data.date}
-                                    Nsfw={entry.data.Nsfw}
-                                    Dd={entry.data.Dd}
-                                    desc={entry.data.desc}
-                                    original={entry.data.original}
-                                    medium={entry.data.medium}
-                                    image={entry.data.image.src}
-                                    thumb={entry.data.thumb.src}
-                                    src={entry.data.image.src.src}
-                            />
-                        </a>
-                    ))}
-                </div>
-                </CardFolder>
+                    </CardFolder>
                 
-                <CardFolder
-                    tabTitle="STUDIES"
-                    index={false}
-                >
-                    <h4>DIGITAL</h4>
-
-                    <div class="thumbnail-container">
-                        { studyDigital.map((entry) => (
-                            <a href="#display">
-                                <GalleryThumbs
-                                        title={entry.data.title}
-                                        thumb={entry.data.thumb.src}
-                                        date={entry.data.date}
-                                        Nsfw={entry.data.Nsfw}
-                                        Dd={entry.data.Dd}
-                                        desc={entry.data.desc}
-                                        original={entry.data.original}
-                                        medium={entry.data.medium}
-                                        image={entry.data.image.src}
-                                        thumb={entry.data.thumb.src}
-                                        src={entry.data.image.src.src}
-                                />
-                            </a>
-                        ))}
-                    </div>
-
-                    <h4>ANALOG</h4>
-
-                    <div class="thumbnail-container">
-                        { studyAnalog.map((entry) => (
-                            <a href="#display">
-                                <GalleryThumbs
-                                        title={entry.data.title}
-                                        thumb={entry.data.thumb.src}
-                                        date={entry.data.date}
-                                        Nsfw={entry.data.Nsfw}
-                                        Dd={entry.data.Dd}
-                                        desc={entry.data.desc}
-                                        original={entry.data.original}
-                                        medium={entry.data.medium}
-                                        image={entry.data.image.src}
-                                        thumb={entry.data.thumb.src}
-                                        src={entry.data.image.src.src}
-                                />
+                    <CardFolder
+                        tabTitle="STUDIES"
+                        id="studies"
+                        index={false}
+                    >
+                        <h4>DIGITAL</h4>
+                        <div class="thumbnail-container">
+                            { studyDigital.map((entry) => (
+                                <a href="#display">
+                                    <GalleryThumbs
+                                            title={entry.data.title}
+                                            thumb={entry.data.thumb.src}
+                                            date={entry.data.date}
+                                            Nsfw={entry.data.Nsfw}
+                                            Dd={entry.data.Dd}
+                                            desc={entry.data.desc}
+                                            original={entry.data.original}
+                                            medium={entry.data.medium}
+                                            image={entry.data.image.src}
+                                            thumb={entry.data.thumb.src}
+                                            src={entry.data.image.src.src}
+                                    />
                                 </a>
                             ))}
-                    </div>
-                </CardFolder>
-
+                        </div>
+                        <h4>ANALOG</h4>
+                        <div class="thumbnail-container">
+                            { studyAnalog.map((entry) => (
+                                <a href="#display">
+                                    <GalleryThumbs
+                                            title={entry.data.title}
+                                            thumb={entry.data.thumb.src}
+                                            date={entry.data.date}
+                                            Nsfw={entry.data.Nsfw}
+                                            Dd={entry.data.Dd}
+                                            desc={entry.data.desc}
+                                            original={entry.data.original}
+                                            medium={entry.data.medium}
+                                            image={entry.data.image.src}
+                                            thumb={entry.data.thumb.src}
+                                            src={entry.data.image.src.src}
+                                    />
+                                    </a>
+                                ))}
+                        </div>
+                    </CardFolder>
+                </div>
             </div>
 
     
@@ -275,6 +271,8 @@ thumbnails.forEach(thumbnail => {
         }
         fullsizeDisplay?.replaceChild(thumbFig.cloneNode(true), fullsizeFig);
     })
-})
+});
 
+const details = document.querySelectorAll("details");
+console.log(details)
 </script>

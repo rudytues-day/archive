@@ -6,79 +6,114 @@ import Layout from "../../layouts/Layout.astro";
 
 import CardFolder from "../../components/cards/CardFolder.astro";
 
+import '../../utility/styles/main-styles.css';
 import '../../utility/styles/wrapper-styles.css';
 import '../../utility/styles/form-styles.css';
 
-import { getCollection } from "astro:content";
+// import { getEntry, getCollection } from "astro:content";
 
-// const questions = await getCollection("questions");
-import faq from "./faq.md";
-import { render } from "astro:content";
-const {Content} = await render(faq)
-console.log(faq)
-import CardConstruction from "../../components/cards/CardConstruction.astro";
+// import { render } from "astro:content";
+
+// import faqs from './faq.md';
 
 ---
 <Layout title="ASKBOX">
     <main>
-
-        <div class="wrapper" style="margin-bottom: 3em;">
-            <CardConstruction>
-                <p>this page is currently under construction.</p>
-                <p>watch your step!</p>
-            </CardConstruction>
-        </div>
         
         <h1>ASKBOX</h1>
             
-        
-            <div class="folder-wrapper">
-                <CardFolder
-                    tabTitle="ASK"
-                    index={true}>
-                    
-                    <form
-                        action="https://formspree.io/f/xnnaeobz"
-                        method="POST"
-                        class="ask"
-                        >
-                        <div class="form-flex">
-                            <label for="name">NAME</label>
-                            <input 
-                                type="text" 
-                                name="name" 
-                                id="name"
-                            />
+            <div class="card-wrapper">
+                <div class="folder">
+                    <CardFolder
+                        tabTitle="ASK"
+                        index={true}
+                        id="">
+                
+                        <div class="askbox-wrapper">
+                            <form
+                                action="https://formspree.io/f/xnnaeobz"
+                                method="POST"
+                                class="ask"
+                                >
+                                <div class="form-flex">
+                                    <label for="name">NAME</label>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        id="name"
+                                    />
+                                </div>
+                                <div class="form-flex">
+                                        <label for="email">EMAIL</label>
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            id="email"
+                                            />
+                                    </div>
+                                <label for="question">QUESTION</label>
+                                    <textarea
+                                        class="ask"
+                                        name="question"
+                                        id="question"
+                                        rows="5"
+                                        required=""
+                                        aria-required="true"
+                                        ></textarea>
+                                <button type="submit">SEND</button>
+                            </form>
+                            <div class="">
+                                <p>my askbox is currently under construction but the form still works!</p>
+                                <p>you are welcome to send me any questions you might have and i will add them to this page when the content collection is completed.</p>
+                                <p>fields denoted with a <i class="fas fa-asterisk"></i> are required.</p>
+                                <p>however, if you add your email i will also be able to respond directly to you.</p>
+                            </div>
                         </div>
 
-                        <!-- <div class="form-flex">
-                                <label for="email">EMAIL</label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    id="email"
-                                    />
-                            </div> -->
-
-                        <label for="question">QUESTION</label>
-                            <textarea
-                                class="ask"
-                                name="question"
-                                id="question"
-                                rows="5"
-                                required=""
-                                ></textarea>
-
-                        <button type="submit">SEND</button>
-                    </form>
-
-                </CardFolder>
-            <CardFolder
-                tabTitle="FREQUENTLY ASKED QUESTIONS"
-                index={false}>
-                    <Content />
-                </CardFolder>
+                    </CardFolder>
+                    <CardFolder
+                        tabTitle="FREQUENTLY ASKED QUESTIONS"
+                        index={false}
+                        id="faq">
+                    </CardFolder>
+                </div>
+            </div>
+            <div class="card-wrapper">
             </div>
 
     </main>
+    <style>
+
+@media all and (max-width: 700px) {
+
+    .form-flex {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    label {
+        text-align: center;
+        justify-content: center;
+    }
+
+    textarea {
+        max-width: 100%;
+        resize: none;
+    }
+
+}
+@media all and (min-width: 700px) {
+
+    .askbox-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1em;
+    }
+
+}
+
+
+    </style>
 </Layout>

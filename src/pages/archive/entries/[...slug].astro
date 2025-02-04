@@ -81,23 +81,15 @@ const similarEntries = sortBySimilar(entries).slice(0, 5).sort(() => Math.random
 				</div>
 			</h1>
 			<div class="card-body card-entry-body">
-					<a href={image.src.src} target="_blank">
-						<Image class="full-image"
-						src={image.src}
-						alt={`${image.alt}`}
-						/>
-					</a>
-				<div class="date">
-					<b>{formatDate(date)}</b>
-					<div class="icons">
-						{ Nsfw && <i class="fas fa-ban" role="img" aria-label="nsfw"></i> }
-						{ Dd && <i class="fas fa-feather" role="img" aria-label="dead dove"></i> }
-						{ Nsfw || Dd && <span>/</span>}
-					</div>
-					<b>{medium}</b>
-				</div>
+				<a href={image.src.src} target="_blank">
+					<Image class="full-image"
+					src={image.src}
+					alt={`${image.alt}`}
+					/>
+				</a>
 				<div class="description">
-					<p class="text">{desc}</p>
+					<p>{desc}</p>
+					<p><b>{formatDate(date)}<br/>{medium}</b></p>
 					<ul class="tags">
 						{tags.map((tag) => (
 							<li><a href={`/archive/tagged/${slugify(tag)}/`}>{tag}</a></li>
@@ -129,16 +121,11 @@ const similarEntries = sortBySimilar(entries).slice(0, 5).sort(() => Math.random
 <style>
 	
 	.full-image {
-		margin: 2em 1em;
+		/* margin: 2em 1em; */
+		display: block;
 		height: auto;
 		max-height: 80vh;
 		width: auto;
-	}
-
-	.date {
-		margin: auto;
-		display: flex;
-		gap: 1em;
 	}
 
 	/* temp fix */
@@ -149,9 +136,9 @@ const similarEntries = sortBySimilar(entries).slice(0, 5).sort(() => Math.random
 		margin-block: 2em 1em;
 	}
 
-	.text {
+	.description {
 		text-align: center;
-		margin-block: 1em 2em;
+		margin-bottom:
 	}
 	
 @media all and (min-width: 700px) {}

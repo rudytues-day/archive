@@ -34,6 +34,14 @@ import ToTop from '../components/ToTop.astro';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
 		<title>{title}</title>
+
+		<script>
+        
+			if (localStorage.getItem("ageVerified") == null) {
+				window.location.href = `/landing.html?returnto=${window.location}`; 
+			}
+			
+		</script>
 	
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,8 +70,7 @@ import ToTop from '../components/ToTop.astro';
     --primary-clr-200: hsl(261, 10%, 40%);
 
     --primary-accent-clr: #F40662;
-    --primary-link-clr: #BF95A5;
-    /* --primary-link-clr: #8b7e83; */
+    --primary-link-clr: #a5778a;
     --white-clr: #ffffff;
 
     --bg-clr: #FBFBFB;

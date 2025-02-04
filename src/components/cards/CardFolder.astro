@@ -1,15 +1,19 @@
 ---
 interface Props {
     tabTitle: string,
+    id: string,
     index: boolean,
 }
 
 import '../../utility/styles/card-styles.css';
 
-const { tabTitle, index } = Astro.props as Props
+const { tabTitle, id, index } = Astro.props as Props;
+
+
+
 ---
 
-<details open={index}>
+<details id={id} open={index}>
     <summary class="tab-title">
         {tabTitle}
     </summary>
@@ -17,3 +21,7 @@ const { tabTitle, index } = Astro.props as Props
         <slot />
     </div>
 </details>
+
+<script>
+
+</script>

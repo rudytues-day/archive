@@ -41,22 +41,25 @@ import viewport3 from '../utility/image/viewport3.png'
 			</section>
 
 			<section>
-				<CardConstruction>
-					<div class="left" style="text-align: left">
-						<p>this site is currently under renovation. there are likely to be missing or broken features.</p>
-						<p>please use my <a href="/contact">contact form</a> to report any errors, broken links or bugs you may run into.</p>
-						<p>thank you!</p>
-					</div>
-				</CardConstruction>
+				<div class="card-wrapper">
+					<CardConstruction>
+						<div class="left" style="text-align: left">
+							<p>this site is currently under renovation. there are likely to be missing or broken features.</p>
+							<p>please use my <a href="/contact">contact form</a> to report any errors, broken links or bugs you may run into.</p>
+							<p>thank you.</p>
+						</div>
+					</CardConstruction>
+				</div>
 			</section>
 	
 			<section class="newsletter">
 				<h1>NEWS</h1>
-				<div class="card-wrapper">
+				<div class="card-wrapper" id="newsletter">
 					
 					<Card
 						title="NEWSLETTER"
-						icon="fa-newspaper">
+						icon="fa-newspaper"
+						>
 						<div class="scrollbox scrollbox-m scrollbox-light">
 							<div class="newsletters">
 								{
@@ -174,27 +177,5 @@ import viewport3 from '../utility/image/viewport3.png'
 		width: 100%;
 		margin-bottom: 4em;
 	}
-
-@media all and (min-width: 1250px) {
-
-	.three-column {
-		display: grid;
-		grid-template-columns: 300px 1fr 300px;
-		grid-template-areas: 'left middle right'
-	}
-
-	.leftColumn {
-		grid-area: left
-	}
-
-	.rightColumn {
-		grid-area: right;
-	}
-
-	main {
-		grid-area: middle;
-	}
-
-}
 
 </style>
