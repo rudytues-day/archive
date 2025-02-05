@@ -5,40 +5,41 @@ interface Props {
 
 const { title } = Astro.props;
 
+import ogimg from '../utility/image/preview_card.png';
+
 import '../utility/reset.css';
+import '../utility/styles/main-styles.css';
 import '../utility/styles/form-styles.css';
-import '../utility/styles/main-styles.css'
 
 import Header from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
-// import MetaTags from '../components/MetaTags.astro';
+import MetaTags from '../components/MetaTags.astro';
 import ToTop from '../components/ToTop.astro';
-
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 
-		<meta 
-		name="viewport" 
-		content="width=device-width" 
-		/>
-		<meta 
-			name="generator" 
-			content={Astro.generator}
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml+ico" href="/favicon.ico" />
+
+		<MetaTags
+			title={title}
+			description="rudolf dienstag is a queer and neurodivergent webMaster, erotic artist and content collector. he has no greater achievements or accolades but he does have a very nice website."
+			ogimg={ogimg.src}
+			url="https://rudytues.day"
 		/>
 
-		<meta charset="UTF-8"> 
 
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
 		<title>{title}</title>
 
 		<script>
         
 			if (localStorage.getItem("ageVerified") == null) {
-				window.location.href = `/landing.html?returnto=${window.location}`; 
+				window.location.href = `/landing?returnto=${window.location}`; 
 			}
 			
 		</script>
@@ -77,7 +78,7 @@ import ToTop from '../components/ToTop.astro';
     --display: "Darumadrop One";
     --body: 'Averia Libre';
 	
-	--link-transition: 200ms;
+	--link-transition: 150ms;
 }
 
 	@media all and (min-width: 720px) {}

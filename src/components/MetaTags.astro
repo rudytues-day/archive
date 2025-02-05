@@ -1,0 +1,65 @@
+---
+interface Props {
+    title: string;
+    description: string;
+    ogimg: string;
+    url: string;
+}
+
+const { 
+    title,
+    description,
+    ogimg,
+    url
+} = Astro.props
+---
+
+<meta 
+    name="generator" 
+    content={Astro.generator}
+/>
+
+<meta 
+    property="og:title" 
+    content={title} 
+/>
+
+<meta 
+    name="og:description" 
+    content={description}
+/>
+
+<meta 
+    property="og:type" 
+    content="website" 
+/>
+
+<meta 
+    property="og:url" 
+    content={url}
+/>
+
+<meta 
+    property="og:image" 
+    content={ogimg}
+/>
+
+<meta 
+    name="twitter:card" 
+    content="summary_large_image" 
+/>
+
+<meta 
+    name="twitter:title" 
+    content={title} 
+/>
+
+<meta 
+    property="twitter:description" 
+    content={description} 
+/>
+
+<meta 
+    name="twitter:image" 
+    content={ogimg} 
+/>
