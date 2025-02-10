@@ -66,6 +66,10 @@ import Image from 'astro/components/Image.astro';
         .fa-solid {
             font-size: 0.9em; 
         }
+
+        #counter {
+            padding-top: 1em;
+        }
         
         @media all and (min-width: 700px) {
 
@@ -75,6 +79,10 @@ import Image from 'astro/components/Image.astro';
                 display: grid;
                 place-items: center;
                 padding: 1em 0;
+            }
+
+            #counter {
+                padding-block: 1em;
             }
         }
 
@@ -108,7 +116,9 @@ import Image from 'astro/components/Image.astro';
 
     </div>
 
-    <script language="javascript" type="text/javascript" src="//counter1.fc2.com/counter.php?id=40217935&main=1"></script><noscript><img src="//counter1.fc2.com/counter_img.php?id=40217935&main=1" /></noscript>
+    <div id="counter">
+        <script language="javascript" type="text/javascript" src="//counter1.fc2.com/counter.php?id=40217935&main=1"></script><noscript><img src="//counter1.fc2.com/counter_img.php?id=40217935&main=1" /></noscript>
+    </div>
 
     <script>
 

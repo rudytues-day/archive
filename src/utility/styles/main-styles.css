@@ -108,13 +108,49 @@ li.changelog a:hover em {
 
 /* newsletter styles */
 
+article p,
+article ul {
+    padding-inline: 0.5em;
+}
+
+article::after,
+article::before {
+    content: '';
+    display: block;
+    width: 100%;
+    margin-block: 2.5em;
+    background-size: contain;
+    background-repeat: repeat-x;
+}
+
+article:first-child::before {
+    margin-top: 0.5em;
+}
+
+article:last-child::after {
+    margin-bottom: 0.5em;
+}
+
+article:first-child::before,
+article:nth-child(even)::after {
+    background-image: url('/imgs/chain_1_horizontal.png');
+    height: 15px;
+}
+
+article:nth-child(odd)::after {
+    background-image: url('/imgs/chain_2_horizontal.png');
+    height: 30px;
+}
+
 article h1 {
     font-size: 1.5rem;
-    margin: 1em 0 0.25em 0;
+    margin: 1em auto 0.25em auto;
+    max-width: 20ch;
+    text-align: center;
 }
 
 article h2 {
-    font-size: 1.325rem;
+    font-size: 1.4rem;
     margin: 0 0 1em 0;
     text-align: center;
 }
@@ -128,7 +164,7 @@ article h2::before {
 }
 
 article h3 {
-    font-size: 1.25rem;
+    font-size: 1.325rem;
 }
 
 article h2::before,
@@ -143,11 +179,14 @@ article h2::before {
     content: '\f0c1';
 }
 
-
 article h3::before {
     content: "\f084";
     font-size: 0.85em;
     margin-right: 0.45em;
+}
+
+article strong a {
+    font-weight: 100 !important;
 }
 
 /* chains styling */

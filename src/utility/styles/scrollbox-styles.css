@@ -2,8 +2,8 @@
     background: var(--__background);
     color: var(--__font-color);
     max-width: 100%;
-    margin: 1em 1.25em;
-    padding: 0.25em 0.5em;
+    margin: 1em 0em;
+    /* padding: 0.25em 0.5em; */
     overflow: auto;
     overflow-x: hidden;
     border: var(--__border);
@@ -19,6 +19,7 @@
 .scrollbox-dark {
     --__background: var(--primary-clr-med);
     --__font-color: var(--white-clr);
+    padding: 0.25em 0.5em;
 }
 
 .scrollbox-s { height: 150px }
@@ -60,6 +61,10 @@
 }
 
 @media all and (min-width: 700px) {
+
+    .scrollbox {
+        margin: 1em 1em;
+    }
 
     .column-wrapper .scrollbox {
         list-style: none;
