@@ -4,6 +4,13 @@ dist/
 # generated types
 .astro/
 
+# images
+src/content/**/*.jpg
+src/content/**/*.png
+src/content/**/*.gif
+src/content/**/*.webp
+src/content/**/*.md
+
 # dependencies
 node_modules/
 
@@ -19,3 +26,5 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+*.jpeg
+/my-works
