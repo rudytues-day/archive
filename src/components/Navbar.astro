@@ -319,7 +319,7 @@ import darby from "../utility/image/header_darby.png";
         opacity: 1;
         transition: 
             transform 500ms ease-in-out, 
-            right 500ms ease-in-out;
+            right 500ms ease-in-out,
             opacity 200ms ease-in-out;
     }
 
@@ -448,85 +448,25 @@ hasSubmenu.forEach((submenuLink) => {
     });
 });
 
-// const hasSubmenu = document.querySelectorAll(".has-submenu");
-const submenus = document.querySelectorAll(".submenu");
+// const submenus = document.querySelectorAll(".submenu");
 
-function closeSubmenu(menus) {
-  menus.forEach((menu) => {
-    if (menu.classList.contains("submenu-active")) {
-        let openMenu = menu;
-        let clickMenu = openMenu.contains(menu.target);
-        if (clickMenu) {
-            console.log("clicked the submenu")
-        } else {
-            console.log("clicked outside of the submenu")
-        }
-    if (!clickMenu && openMenu) {
-        console.log("click outside open submenu")
-    } else {
-        console.log("false");
-    }
-    closeSubmenu(submenus)
-
-}}
-)}
-
-// function closeSubmenu(e) {
-//     hasSubmenu.forEach((submenu) => {
-//         let openSubmenu = submenu.querySelector(".submenu-active");
-//         console.log(openSubmenu);
-//         // let isClickInside = openMenu.contains(e.target);
-//         // if (!isClickInside && link.querySelector(".submenu-active")) {
-//             //   link.querySelector(".submenu-active").classList.remove("submenu-active");
+// function closeSubmenu(menus) {
+//   menus.forEach((menu) => {
+//     if (menu.classList.contains("submenu-active")) {
+//         let openMenu = menu;
+//         let clickMenu = openMenu.contains(menu.target);
+//         if (clickMenu) {
+//             console.log("clicked the submenu")
+//         } else {
+//             console.log("clicked outside of the submenu")
 //         }
-//     )}
-    
-    // document.addEventListener("click", closeSubmenu);
+//     if (!clickMenu && openMenu) {
+//         console.log("click outside open submenu")
+//     } else {
+//         console.log("false");
+//     }
+//     closeSubmenu(submenus)
+//     }}
+// )}
 
 </script>
-
-<!-- // const toggle = document.querySelector(".toggle");
-const menu = document.querySelector(".menu");
-const items = document.querySelectorAll(".item");
-
-
- // open submenu -->
-
-<!-- function toggleItem() {
-  if (this.classList.contains("submenu-active")) {
-    
-    this.classList.remove("submenu-active");
-  } else if (menu.querySelector(".submenu-active")) {
-    menu.querySelector(".submenu-active").classList.remove("submenu-active");
-    this.classList.add("submenu-active");
-  } else {
-    this.classList.add("submenu-active");
-  }
-} -->
-
-
-
-<!-- // close submenu on click away -->
-
-<!-- function closeSubmenu(e) {
-  if (menu.querySelector(".submenu-active")) {
-    let isClickInside = menu
-      .querySelector(".submenu-active")
-      .contains(e.target);
-
-    if (!isClickInside && menu.querySelector(".submenu-active")) {
-      menu.querySelector(".submenu-active").classList.remove("submenu-active");
-    }
-  }
-}
-
-/* event listeners */
-
-toggle.addEventListener("click", toggleMenu, false);
-for (let item of items) {
-  if (item.querySelector(".submenu")) {
-    item.addEventListener("click", toggleItem, false);
-  }
-  item.addEventListener("keypress", toggleItem, false);
-}
-document.addEventListener("click", closeSubmenu, false); -->
