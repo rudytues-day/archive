@@ -34,6 +34,9 @@ const studyDigital = studyEntries.filter((entry => entry.data.tags.includes("dig
 const studyAnalog = studyEntries.filter((entry => entry.data.tags.includes("analog")));
 
 const commissionEntries = galleryEntries.filter((entry => entry.data.tags.includes("commission")));
+const commissionSimple = commissionEntries.filter((entry => entry.data.commstyle === "full"));
+const commissionFull = commissionEntries.filter((entry => entry.data.commstyle === "simple"));
+console.log(commissionFull)
 
 function filterEntries(entries) {}
 
@@ -50,6 +53,7 @@ function filterEntries(entries) {}
 <Layout title="GALLERY">
 
     <main>
+
         <h1>GALLERY</h1>
         <CardConstruction>
             <p>this page is currently under construction.</p>
@@ -80,6 +84,7 @@ function filterEntries(entries) {}
                         id="illustration"
                         index={true}
                     >
+
                         <h4>PERSONAL</h4>
                         <div class="thumbnail-container">
                             { originalEntries.map((entry) => (
@@ -100,6 +105,7 @@ function filterEntries(entries) {}
                                 </a>
                             ))}
                         </div>
+
                         <h4>FANWORKS</h4>
                         <div class="thumbnail-container">
                             { fanartEntries.map((entry) => (
@@ -120,6 +126,7 @@ function filterEntries(entries) {}
                                 </a>
                             ))}
                         </div>
+
                     </CardFolder>
                     <CardFolder
                         tabTitle="SKETCHBOOK"
@@ -167,13 +174,15 @@ function filterEntries(entries) {}
                                 ))}
                         </div>
                     </CardFolder>
+
                     <CardFolder
                         tabTitle="COMMISSIONS"
                         id="commissions"
                         index={false}
                     >
+                    <h4>SIMPLE COLOR</h4>
                     <div class="thumbnail-container">
-                        { commissionEntries.map((entry) => (
+                        { commissionSimple.map((entry) => (
                             <a href="#display">
                                 <GalleryThumbs
                                         title={entry.data.title}
@@ -186,6 +195,29 @@ function filterEntries(entries) {}
                                         medium={entry.data.medium}
                                         image={entry.data.image.src}
                                         thumb={entry.data.thumb.src}
+                                        commstyle={entry.data.commstyle}
+                                        src={entry.data.image.src.src}
+                                />
+                            </a>
+                        ))}
+                    </div>
+
+                    <h4>FULL COLOR</h4>
+                    <div class="thumbnail-container">
+                        { commissionFull.map((entry) => (
+                            <a href="#display">
+                                <GalleryThumbs
+                                        title={entry.data.title}
+                                        thumb={entry.data.thumb.src}
+                                        date={entry.data.date}
+                                        Nsfw={entry.data.Nsfw}
+                                        Dd={entry.data.Dd}
+                                        desc={entry.data.desc}
+                                        original={entry.data.original}
+                                        medium={entry.data.medium}
+                                        image={entry.data.image.src}
+                                        thumb={entry.data.thumb.src}
+                                        commstyle={entry.data.commstyle}
                                         src={entry.data.image.src.src}
                                 />
                             </a>
@@ -273,6 +305,4 @@ thumbnails.forEach(thumbnail => {
     })
 });
 
-const details = document.querySelectorAll("details");
-console.log(details)
 </script>

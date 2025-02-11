@@ -133,6 +133,8 @@ details:not([open]) .tab-title::before {
 .card-entry-body {
     display: grid;
     place-items: center;
+    text-align: center;
+    width: minmax(90vw, fit-content)
 }
 
 .card-archive .description p {
@@ -140,7 +142,7 @@ details:not([open]) .tab-title::before {
 }
 
 .card-preview {
-    max-width: 300px;
+    width: minmax(300px, fit-content);
 }
 
 .card-preview .description > p {

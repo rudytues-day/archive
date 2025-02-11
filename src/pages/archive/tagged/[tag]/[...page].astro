@@ -17,7 +17,7 @@ export const getStaticPaths = ( async ({paginate}) => {
         const taggedEntries = entries.toReversed().filter((entry) =>
             entry.data.tags?.includes(tag)); 
         return paginate(taggedEntries, { 
-            pageSize: 9,
+            pageSize: 12,
             params: { tag: `${slugify(tag)}` },
             props: { tag: tag }
         });
@@ -34,7 +34,8 @@ import '../../../../utility/styles/wrapper-styles.css';
 ---
 
 <ArchiveLayout 
-    pageTitle={`ARCHIVE / ENTRIES TAGGED "${titleTag.toUpperCase}"`}>
+    pageTitle={`ARCHIVE / ENTRIES TAGGED "${titleTag.toUpperCase}"`}
+>
 
     <h2>ENTRIES TAGGED <span>{tag}</span></h2>
         

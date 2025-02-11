@@ -23,8 +23,8 @@
 }
 
 .entry-card-wrapper {
-    --__wrapper-margin: 0 auto;
-    --__wrapper-width: 100%;
+    --__wrapper-margin: 0 1em;
+    --__wrapper-width: fit-content;
     padding-inline: 1em;
 
 }
@@ -96,7 +96,7 @@
     }
     
     .entry-card-wrapper {
-        --__wrapper-margin: 0 1em;
+        --__wrapper-margin: 0 auto;
     }
 
 }

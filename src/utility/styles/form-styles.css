@@ -10,11 +10,12 @@ form,
 
 form.ask {
     margin: 1em;
-    align-items: center;
     justify-items: left;
     justify-content: left;
     width: 100%;
 }
+
+
 
 form label {
     font-family: var(--display);
