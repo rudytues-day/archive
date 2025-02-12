@@ -7,8 +7,6 @@ import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import { slugify, formatDate } from '../../../utility/scripts/format-fxn';
 
-// import '../../../utility/styles/card-styles.css'
-
 export async function getStaticPaths() {
 	const entries = await getCollection("entries");
 	return entries.map(entry => {
@@ -18,7 +16,7 @@ export async function getStaticPaths() {
 				entries: entries,
 				renderContent: entry.render,
 				...entry.data
-			 }
+			}
 		}
 	});
 }
@@ -27,14 +25,12 @@ const {
 	title,
 	image,
 	date,
-	Nsfw,
-	uploadDate,
-	Dd,
 	desc,
 	medium,
 	tags,
 	entries,
 	icons,
+	ogimg
 } = Astro.props;
 
 const { slug } = Astro.params;
@@ -63,22 +59,22 @@ const similarEntries = sortBySimilar(entries).slice(0, 5).sort(() => Math.random
 
 ---
 
-<ArchiveLayout pageTitle=`ARCHIVE / ${title}`>
+<ArchiveLayout 
+	pageTitle=`ARCHIVE / ${title}`
+	description={desc}
+	ogimg={ogimg?.src}
+	url=`https://rudytues.day/archive/entries/${slug}`
+>
 
 	<div class="card-wrapper entry-card-wrapper">
 		<div class="card card-entry">
-			<h1 class="card-title card-entry-title">
-				<div class="icons">
-					{icons.toReversed().map((icon) => (
-						<i class={`fas ${(icon)}`}></i>
-					))}
-				</div>
-				<span>{title}</span>
+			<h1 class="card-title">
 				<div class="icons">
 					{icons.map((icon) => (
 						<i class={`fas ${(icon)}`}></i>
 					))}
 				</div>
+				<span>{title}</span>
 			</h1>
 			<div class="card-body card-entry-body">
 				<a href={image.src.src} target="_blank">
@@ -88,6 +84,7 @@ const similarEntries = sortBySimilar(entries).slice(0, 5).sort(() => Math.random
 					/>
 				</a>
 				<div class="description">
+					<h3 aria-hidden>{title}</h3>
 					<p>{desc}</p>
 					<p><b>{formatDate(date)}<br/>{medium}</b></p>
 					<ul class="tags">
@@ -121,7 +118,7 @@ const similarEntries = sortBySimilar(entries).slice(0, 5).sort(() => Math.random
 <style>
 	
 	.full-image {
-		/* margin: 2em 1em; */
+		margin: 1em;
 		display: block;
 		height: auto;
 		max-height: 80vh;
@@ -136,10 +133,10 @@ const similarEntries = sortBySimilar(entries).slice(0, 5).sort(() => Math.random
 		margin-block: 2em 1em;
 	}
 
-	.description {
+	h3 {
 		text-align: center;
-		margin-bottom:
 	}
+
 	
 @media all and (min-width: 700px) {}
 	

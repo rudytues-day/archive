@@ -7,7 +7,6 @@ const allNewsletters
  = defineCollection({
   type: 'content',
   schema: z.object({
-    layout: z.string(),
       title: z.string(),
       date: z.date(),
 
@@ -20,19 +19,23 @@ const allEntries = defineCollection({
             title: z.string(),
             date: z.date(),
             uploadDate: z.date(),
-            thumb: z.object({
-              src: image(),
-              alt: z.string()
-            }),
             image: z.object({
                 src: image(),
                 alt: z.string(),
             }),
+            thumb: z.object({
+              src: image(),
+              alt: z.string()
+            }),
+            ogimg: z.object({
+              src: image(),
+              alt: z.string()
+            }).optional(),
+            desc: z.string(),
             tags: z.array(z.string()),
             icons: z.array(z.string()),
-            desc: z.string(),
-            gallery: z.boolean(),
             original: z.boolean(),
+            gallery: z.boolean(),
             medium: z.string(),
             Nsfw: z.boolean().optional(),
             Dd: z.boolean().optional(),

@@ -2,7 +2,7 @@
 interface Props {
     title: string;
     description: string;
-    ogimg: string;
+    ogimg: ImageMetadata;
     url: string;
 }
 
@@ -40,8 +40,8 @@ const {
 />
 
 <meta 
-    property="og:image" 
-    content={ogimg}
+    property="og:image"
+    content={ogimg.src}
 />
 
 <meta 
@@ -60,6 +60,6 @@ const {
 />
 
 <meta 
-    name="twitter:image" 
-    content={ogimg} 
+    name="twitter:image"
+    content={ogimg.src}
 />

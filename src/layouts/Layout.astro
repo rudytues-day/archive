@@ -1,11 +1,15 @@
 ---
 interface Props {
-	title: string;
+	title?: string;
+	ogimg?: ImageMetadata;
+	description?: string;
+	url?: string;
 }
 
-const { title } = Astro.props;
-
-import ogimg from '../utility/image/preview_card.png';
+const { title = "RUDY TUESDAY",
+		ogimg = previewImage,
+		description = "rudolf dienstag is a queer and neurodivergent webMaster, erotic artist and content collector. he has no greater achievements or accolades but he does have a very nice website."
+	} = Astro.props;
 
 import '../utility/reset.css';
 import '../utility/styles/main-styles.css';
@@ -15,40 +19,31 @@ import Header from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import MetaTags from '../components/MetaTags.astro';
 import ToTop from '../components/ToTop.astro';
+
+import previewImage from '../utility/image/preview_card.png'
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml+ico" href="/favicon.ico" />
 
-		<MetaTags
-			title={title}
-			description="rudolf dienstag is a queer and neurodivergent webMaster, erotic artist and content collector. he has no greater achievements or accolades but he does have a very nice website."
-			ogimg={ogimg.src}
-			url="https://rudytues.day"
-		/>
-
-
-
 		<title>{title}</title>
-
-		<script>
-        
-			if (localStorage.getItem("ageVerified") == null) {
-				window.location.href = `/landing?returnto=${window.location}`; 
-			}
-			
-		</script>
 	
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Darumadrop+One&display=swap" rel="stylesheet">
 	
 		<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+
+		<MetaTags
+			title={title}
+			description={description}
+			ogimg={ogimg}
+			url="https://rudytues.day"
+		/>
 	
 	</head>
 	

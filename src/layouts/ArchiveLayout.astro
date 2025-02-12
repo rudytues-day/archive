@@ -1,42 +1,46 @@
 ---
-import Header from '../components/Navbar.astro';
-import Tags from '../components/Tags.astro';
-import Footer from '../components/Footer.astro';
+interface Props {
+  pageTitle?: string;
+  description?: string;
+  ogimg?: ImageMetadata;
+  url?: string;
+}
+
+const { pageTitle = "ARCHIVE",
+		description = "look upon my works, ye mighty, and despair",
+		ogimg = previewImage,
+		url = "https://rudytues.day/archive"
+	} = Astro.props;
+
+import { getCollection } from 'astro:content';
+const entries = await getCollection("entries");
+
+console.log(entries.length)
+
+import Image from 'astro/components/Image.astro';
+import MetaTags from '../components/MetaTags.astro';
+
 import '../utility/reset.css';
-import '../utility/scripts/format-fxn.js';
 import '../utility/styles/main-styles.css';
 import '../utility/styles/aside-styles.css';
-
 import '../utility/styles/scrollbox-styles.css';
 import '../utility/styles/card-styles.css';
 import '../utility/styles/wrapper-styles.css';
 
-import Image from 'astro/components/Image.astro';
+import Header from '../components/Navbar.astro';
+import Tags from '../components/Tags.astro';
+import Footer from '../components/Footer.astro';
+import ToTop from '../components/ToTop.astro';
+
+import '../utility/scripts/format-fxn.js';
 
 import viewportart from '../utility/image/viewport_art.png';
-
-interface Props {
-  pageTitle: string;
-}
-
-const { pageTitle = "ARCHIVE" } = Astro.props;
-
-// import { tagsByFrequency } from '../utility/scripts/sort-fxn.js';
-import { getCollection } from 'astro:content';
-const entries = await getCollection("entries");
+import previewImage from '../utility/image/preview_card.png';
 
 import { sortByUploadDate } from '../utility/scripts/sort-fxn.js';
 import { formatDate } from '../utility/scripts/format-fxn.js';
 
 import '../utility/styles/tag-styles.css';
-
-import CardConstruction from '../components/cards/CardConstruction.astro';
-// const sortedTags = [... new Set(allTags.sort(sortByFrequency).toReversed().flat())];
-// const allTags = entries.map((entry => 
-// 	entry.data.tags)).reduce((accumulator, value) => accumulator.concat(value), [])
-
-// console.log(tagsByFrequency(allTags))
-
 ---
 
 <!doctype html>
@@ -62,6 +66,13 @@ import CardConstruction from '../components/cards/CardConstruction.astro';
 		<link href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Darumadrop+One&display=swap" rel="stylesheet">
 	
 		<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+
+		<MetaTags
+			title={pageTitle}
+			description={description}
+			ogimg={ogimg}
+			url={url}
+		/>
 
 	</head>
 	
@@ -111,6 +122,8 @@ import CardConstruction from '../components/cards/CardConstruction.astro';
 			</aside>
 
 		</div> 
+
+		<ToTop/>
 		
 		<Footer />
 		
@@ -124,10 +137,6 @@ import CardConstruction from '../components/cards/CardConstruction.astro';
 		text-align: center;
 		font-size: 2rem;
 		margin-bottom: 2em;
-	}
-
-	.image {
-		display: none;
 	}
 
 	@media all and (min-width: 720px) {}
@@ -154,15 +163,6 @@ import CardConstruction from '../components/cards/CardConstruction.astro';
 
 	main::after {
 		position: absolute;
-	}
-
-	.image {
-		display: block;
-		/* margin: 3rem auto; */
-		background-color: white;
-		height: 150px;
-		width: 150px;
-		border-radius: 100%;
 	}
 
 }

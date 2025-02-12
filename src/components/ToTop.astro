@@ -1,0 +1,59 @@
+<button 
+    aria-label="back to top"
+    onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+</button>
+
+<style>
+
+[aria-label="back to top"] {
+    display: grid;
+    place-items: center;
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    width: 3.75rem;
+    height: 3.75rem;
+    border-radius: 100%;
+    text-decoration: none;
+    color: var(--white-clr);
+    background: var(--primary-clr-dark);
+    opacity: 0;
+    transition: ease all 0.2s;
+    outline: transparent;
+    border: transparent;
+}
+
+[aria-label="back to top"]::after {
+    font-family: 'Font Awesome 6 Pro';
+    content: '\f102';
+    font-size: 2rem;
+}
+
+[aria-label="back to top"].visible {
+    opacity: 80%;
+    cursor: pointer;
+}
+
+[aria-label="back to top"].visible:hover {
+    opacity: 100%;
+    color: var(--primary-accent-clr);
+}
+
+@media all and (min-width: 1000px) {
+    [aria-label="back to top"] {
+        display: none;
+    }
+}
+</style>
+
+<script>
+const toTop = document.querySelector(`[aria-label="back to top"]`);
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 350) {
+        toTop?.classList.add("visible");
+    } else {
+        toTop?.classList.remove("visible");
+    }
+});
+</script>
