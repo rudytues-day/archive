@@ -38,6 +38,7 @@ h1 {
     top: 0.25em;
     right: 0.25em;
     justify-content: right;
+    opacity: 100%;
 }
 
 .gallery-card figure {
@@ -46,7 +47,8 @@ h1 {
 
 
 .folder .full-size,
-.folder figcaption {
+.folder figcaption,
+.comms figure {
     display: none;
 }
 
@@ -103,6 +105,7 @@ figcaption b {
     transform: opacity 750ms ease;
     object-fit: cover;
 }
+
 .gallery-thumb:hover {
     opacity: 100%;
     outline: 2px var(--primary-accent-clr) solid;

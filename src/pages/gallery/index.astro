@@ -17,15 +17,19 @@ import placeholderImage from "./abstract_daughter.png";
 
 // import { sortEntries, sortByCreationDate, sortByUploadDate } from '../../../utility/utils';
 
-const entries = await getCollection("entries");   
-// const chronoEntries = entries.toReversed();        
+const entries = await getCollection("entries");        
 
 const galleryEntries = entries.filter((entry => entry.data.gallery === true)).toReversed();
 
-const originalEntries = galleryEntries.filter((entry => entry.data.tags.includes("original")));
-const fanartEntries = galleryEntries.filter((entry => entry.data.tags.includes("fanart")));
+let illustEntries = galleryEntries.filter(e => 
+    !e.data.tags.includes("sketchbook")
+    && !e.data.tags.includes("study")
+    && !e.data.tags.includes("commission"));
 
-const sketchEntries = galleryEntries.filter((entry => entry.data.tags.includes("sketchbook")));
+let illustOriginal = illustEntries.filter(e => e.data.original === true);
+let illustFanart = illustEntries.filter(e => e.data.original === false);
+
+let sketchEntries = galleryEntries.filter((entry => entry.data.tags.includes("sketchbook")));
 const sketchDigital = sketchEntries.filter((entry => entry.data.tags.includes("digital")));
 const sketchAnalog = sketchEntries.filter((entry => entry.data.tags.includes("analog")));
 
@@ -33,20 +37,9 @@ const studyEntries = galleryEntries.filter((entry => entry.data.tags.includes("s
 const studyDigital = studyEntries.filter((entry => entry.data.tags.includes("digital")));
 const studyAnalog = studyEntries.filter((entry => entry.data.tags.includes("analog")));
 
-const commissionEntries = galleryEntries.filter((entry => entry.data.tags.includes("commission")));
-const commissionSimple = commissionEntries.filter((entry => entry.data.commstyle === "full"));
-const commissionFull = commissionEntries.filter((entry => entry.data.commstyle === "simple"));
-console.log(commissionFull)
-
-function filterEntries(entries) {}
-
-// const personalEntries = galleryEntries.filter((entry) => {
-//     if (entry.data.tags.includes("personal")) {
-//         console.log("no");
-//         return entry;
-//     }});
-
-
+const commEntries = galleryEntries.filter((entry => entry.data.tags.includes("commission")));
+const commSimple = commEntries.filter((entry => entry.data.commission === "simple"));
+const commFull = commEntries.filter((entry => entry.data.commission === "full"));
 
 ---
 
@@ -79,6 +72,7 @@ function filterEntries(entries) {}
 
             <div class="folder-wrapper">
                 <div class="folder">
+
                     <CardFolder
                         tabTitle="ILLUSTRATION"
                         id="illustration"
@@ -87,7 +81,7 @@ function filterEntries(entries) {}
 
                         <h4>PERSONAL</h4>
                         <div class="thumbnail-container">
-                            { originalEntries.map((entry) => (
+                            { illustOriginal.map((entry) => (
                                 <a href="#display">
                                     <GalleryThumbs
                                             title={entry.data.title}
@@ -108,7 +102,7 @@ function filterEntries(entries) {}
 
                         <h4>FANWORKS</h4>
                         <div class="thumbnail-container">
-                            { fanartEntries.map((entry) => (
+                            { illustFanart.map((entry) => (
                                 <a href="#display">
                                     <GalleryThumbs
                                             title={entry.data.title}
@@ -128,6 +122,7 @@ function filterEntries(entries) {}
                         </div>
 
                     </CardFolder>
+
                     <CardFolder
                         tabTitle="SKETCHBOOK"
                         id="sketchbook"
@@ -153,6 +148,7 @@ function filterEntries(entries) {}
                                     </a>
                                 ))}
                         </div>
+
                         <h4>ANALOG</h4>
                         <div class="thumbnail-container">
                             { sketchAnalog.map((entry) => (
@@ -173,6 +169,7 @@ function filterEntries(entries) {}
                                     </a>
                                 ))}
                         </div>
+
                     </CardFolder>
 
                     <CardFolder
@@ -182,7 +179,7 @@ function filterEntries(entries) {}
                     >
                     <h4>SIMPLE COLOR</h4>
                     <div class="thumbnail-container">
-                        { commissionSimple.map((entry) => (
+                        { commSimple.map((entry) => (
                             <a href="#display">
                                 <GalleryThumbs
                                         title={entry.data.title}
@@ -195,7 +192,6 @@ function filterEntries(entries) {}
                                         medium={entry.data.medium}
                                         image={entry.data.image.src}
                                         thumb={entry.data.thumb.src}
-                                        commstyle={entry.data.commstyle}
                                         src={entry.data.image.src.src}
                                 />
                             </a>
@@ -204,7 +200,7 @@ function filterEntries(entries) {}
 
                     <h4>FULL COLOR</h4>
                     <div class="thumbnail-container">
-                        { commissionFull.map((entry) => (
+                        { commFull.map((entry) => (
                             <a href="#display">
                                 <GalleryThumbs
                                         title={entry.data.title}
@@ -217,7 +213,6 @@ function filterEntries(entries) {}
                                         medium={entry.data.medium}
                                         image={entry.data.image.src}
                                         thumb={entry.data.thumb.src}
-                                        commstyle={entry.data.commstyle}
                                         src={entry.data.image.src.src}
                                 />
                             </a>
@@ -235,42 +230,44 @@ function filterEntries(entries) {}
                             { studyDigital.map((entry) => (
                                 <a href="#display">
                                     <GalleryThumbs
-                                            title={entry.data.title}
-                                            thumb={entry.data.thumb.src}
-                                            date={entry.data.date}
-                                            Nsfw={entry.data.Nsfw}
-                                            Dd={entry.data.Dd}
-                                            desc={entry.data.desc}
-                                            original={entry.data.original}
-                                            medium={entry.data.medium}
-                                            image={entry.data.image.src}
-                                            thumb={entry.data.thumb.src}
-                                            src={entry.data.image.src.src}
+                                        title={entry.data.title}
+                                        thumb={entry.data.thumb.src}
+                                        date={entry.data.date}
+                                        Nsfw={entry.data.Nsfw}
+                                        Dd={entry.data.Dd}
+                                        desc={entry.data.desc}
+                                        original={entry.data.original}
+                                        medium={entry.data.medium}
+                                        image={entry.data.image.src}
+                                        thumb={entry.data.thumb.src}
+                                        src={entry.data.image.src.src}
                                     />
                                 </a>
                             ))}
                         </div>
+
                         <h4>ANALOG</h4>
                         <div class="thumbnail-container">
                             { studyAnalog.map((entry) => (
                                 <a href="#display">
                                     <GalleryThumbs
-                                            title={entry.data.title}
-                                            thumb={entry.data.thumb.src}
-                                            date={entry.data.date}
-                                            Nsfw={entry.data.Nsfw}
-                                            Dd={entry.data.Dd}
-                                            desc={entry.data.desc}
-                                            original={entry.data.original}
-                                            medium={entry.data.medium}
-                                            image={entry.data.image.src}
-                                            thumb={entry.data.thumb.src}
-                                            src={entry.data.image.src.src}
+                                        title={entry.data.title}
+                                        thumb={entry.data.thumb.src}
+                                        date={entry.data.date}
+                                        Nsfw={entry.data.Nsfw}
+                                        Dd={entry.data.Dd}
+                                        desc={entry.data.desc}
+                                        original={entry.data.original}
+                                        medium={entry.data.medium}
+                                        image={entry.data.image.src}
+                                        thumb={entry.data.thumb.src}
+                                        src={entry.data.image.src.src}
                                     />
-                                    </a>
-                                ))}
+                                </a>
+                            ))}
                         </div>
                     </CardFolder>
+                    
                 </div>
             </div>
 

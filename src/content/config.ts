@@ -37,6 +37,7 @@ const allEntries = defineCollection({
             original: z.boolean(),
             gallery: z.boolean(),
             medium: z.string(),
+            commission: z.string().optional(),
             Nsfw: z.boolean().optional(),
             Dd: z.boolean().optional(),
           }),
