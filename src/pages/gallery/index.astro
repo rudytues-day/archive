@@ -40,7 +40,6 @@ const studyAnalog = studyEntries.filter((entry => entry.data.tags.includes("anal
 const commEntries = galleryEntries.filter((entry => entry.data.tags.includes("commission")));
 const commSimple = commEntries.filter((entry => entry.data.commission === "simple"));
 const commFull = commEntries.filter((entry => entry.data.commission === "full"));
-
 ---
 
 <Layout title="GALLERY">
@@ -218,6 +217,7 @@ const commFull = commEntries.filter((entry => entry.data.commission === "full"))
                             </a>
                         ))}
                     </div>
+                    <p style="text-align:center;"><b>commissions are currently open!</b> click <a href="/commissions">here</a> for more information.</p>
                     </CardFolder>
                 
                     <CardFolder
@@ -267,7 +267,7 @@ const commFull = commEntries.filter((entry => entry.data.commission === "full"))
                             ))}
                         </div>
                     </CardFolder>
-                    
+
                 </div>
             </div>
 
@@ -283,23 +283,19 @@ const commFull = commEntries.filter((entry => entry.data.commission === "full"))
 
 <script>
 
-const displayCard = document.getElementById("display");
-console.log(displayCard)
-
 const thumbnails = document.querySelectorAll('.thumbnail-container .image');
 const fullsizeDisplay = document.querySelector('.gallery-card .image');
 
 thumbnails.forEach(thumbnail => {
     thumbnail.addEventListener('click', function() {
+        console.log(thumbnail);
         const thumbFig = thumbnail.querySelector("figure");
         const fullsizeFig = fullsizeDisplay?.querySelector("figure");
-        // const thumbTitle = thumbnail.querySelector("h2");
-        // const fullsizeTitle = fullsizeDisplay?.querySelector("h2");
         if (!thumbFig || !fullsizeFig) {
             return;
         }
         fullsizeDisplay?.replaceChild(thumbFig.cloneNode(true), fullsizeFig);
     })
-});
+})
 
 </script>

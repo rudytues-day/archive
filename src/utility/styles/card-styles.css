@@ -134,7 +134,6 @@ details:not([open]) .tab-title::before {
     display: grid;
     place-items: center;
     text-align: center;
-    width: minmax(90vw, fit-content)
 }
 
 .card-archive .description p {

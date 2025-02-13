@@ -1,86 +1,153 @@
 [
 
+
     
             {
+                "id": "4fa0570a23ec3e435ed1cd55744a326b406a44bd",
+                "date": "02/10/24",
+                "message": "temp readme update"
+            },
+            {
+                "id": "eb2878a5574b15bc6ac3d1f440f3609041216400",
+                "date": "02/10/24",
+                "message": "gallery sort fxns and styling",
+                "details": "rewrote gallery sort functions; added new prop for commission style"
+            },
+            {
+                "id": "63aa8dbf7fcc567d3355ee203e74a1b80cd725bb",
+                "date": "02/10/24",
+                "message": "archive meta images & back to top modal",
+                "details": "made archive meta images real; you will never understand how hard this was for me; created back to top modal"
+            },
+            {
+                "id": "9fd750489eb629a4cd79d778dda04152f92a1bdd",
+                "date": "02/10/24",
+                "message": "code and repo clean up",
+                "details": "removed commented code from Navbar; returned more cards in tag pages; committed new images; updated readme"
+            },
+            {
+                "id": "b6867b0638db57a8ce1253db4e7ef7381de39137",
+                "date": "02/10/24",
+                "message": "updated transitions to variable"
+            },
+            {
+                "id": "111fd6cd320e55b1d1f4de03986ea4289124bdc4",
+                "date": "02/10/24",
+                "message": "updated .gitignore"
+            },
+            {
+                "id": "b6867b0638db57a8ce1253db4e7ef7381de39137",
+                "date": "02/10/25",
+                "message": "updated transitions to variable"
+            },
+            {
+                "id": "111fd6cd320e55b1d1f4de03986ea4289124bdc4",
+                "date": "02/10/25",
+                "message": "updated .gitignore"
+            },
+            {
+                "id": "a7253672998b1de40f3b6f5b1d3d15068f889a11",
+                "date": "02/10/25",
+                "message": "temp removed content collection"
+            },
+            {
+                "id": "1300d8bf872a7dc8789a97078f9ae06b42946125",
+                "date": "02/10/25",
+                "message": "styled newsletter scrollbox & counter",
+                "details": "added links to index sidebars; removed construction signs from index; styled newsletters as <article>"
+            },
+            {
+                "id": "80dcacaf728c52b28f1b2b78d95c1370580c2522",
+                "date": "02/03/25",
+                "message": "landing page and tidying",
+                "details": "created landing page and redirect script; added id prop to details component; added viewport to archive sidebar; removed unnecessary props from archive entry pages; worked on askbox page; updated wrapper margins in favor of padding; code clean up"
+            },
+            {
+                "id": "98348c1e144d677a2825ffb4970c740bb216893e",
+                "date": "02/02/25",
+                "message": "gallery sorting fxns and archive styling",
+                "details": "created gallery sorting functions; moved more scoped styling to stylesheets; added madotsuki sketch, ychs for adam, ag and niko, oblivion, angelique and lilium to archive"
+            },
+            {
                 "id": "866f6d4936f9a6dbbcb3c4201a80b1987cbb4cd6",
-                "date": "01/13/24",
+                "date": "01/13/25",
                 "message": "put up construction signs"
             },
             {
                 "id": "09bcc5c54bdb18ebac0661eb42f861d4e2e20f3c",
-                "date": "01/13/24",
+                "date": "01/13/25",
                 "message": "created 404 page"
             },
             {
                 "id": "7c6a71a0f6144b7c8844574445abcb784f180f7e",
-                "date": "01/13/24",
+                "date": "01/13/25",
                 "message": "updated aside styles",
                 "details": "updated aside and scrollbox component styles; moved unused components to new folder"
             },
             {
                 "id": "5e79778993fd019880a350ae99db47a02a404abd",
-                "date": "01/13/24",
+                "date": "01/13/25",
                 "message": "added links & css clean up"
             },
             {
                 "id": "8c3ed9d3b0b40bb6f044c78b42e51ee2387f5824",
-                "date": "01/13/24",
+                "date": "01/13/25",
                 "message": "scrollbox, metadata & sort fxn",
                 "details": "deleted Scrollbox component in favor of scrollbox stylesheet; created metadata components; began moving sort functions from utils to sort-fxn"
             },
             {
                 "id": "784826fc9b870af7d99be9fcb947c381ed145ba6",
-                "date": "01/12/24",
+                "date": "01/12/25",
                 "message": "made errors go away"
             },
             {
                 "id": "66ac6e5d49de27bc17572f7e2ebf8a9c3c04b794",
-                "date": "01/12/24",
+                "date": "01/12/25",
                 "message": "code clean up"
             },
             {
                 "id": "06b25176587e2263706a44e35e5f67186b06e32c",
-                "date": "01/12/24",
+                "date": "01/12/25",
                 "message": "created gallery component and stylesheet",
                 "details": "created gallery component and stylesheet; created metadata component; added target _blank functionality to gallery and archive; created wrapper and gallery stylesheets; card, archive, page, pagination and stylesheet clean up"
             },
             {
                 "id": "c57d8993eb56ab0f60f5bb091d2bd796f6731f70",
-                "date": "01/05/24",
+                "date": "01/05/25",
                 "message": "moved page scoped styles",
                 "details": "moved (most) page scoped wrappers to wrapper stylesheet and deleted redundant styles; deleted /works"
             },
             {
                 "id": "0563166680c52c7bdf93d42948012d8da71404a3",
-                "date": "01/03/24",
+                "date": "01/03/25",
                 "message": "styles clean up"
             },
             {
                 "id": "a7716e4419ee2417c4fcc68bc2bc4186dfcc890c",
-                "date": "01/03/24",
+                "date": "01/03/25",
                 "message": "created summary hover animation"
             },
             {
                 "id": "7e436fba5adde3af6715320252cf188f841df6e9",
-                "date": "01/01/24",
+                "date": "01/01/25",
                 "message": "broke global styles down into stylesheets",
                 "details": "broke global styling down into individual stylesheets with default styling; updated (some) pages to include new stylesheets; created main-styles.css, form-styles.css and aside-styles.css; wrapped and styled newsletters as articles; updated .external to aria-label='external'"
             },
             {
                 "id": "9d878b8c48788f3387918fd10622d996c0cbabda",
-                "date": "01/01/24",
+                "date": "01/01/25",
                 "message": "renamed Cards and deleted unused components",
                 "details": "renamed Folder.Astro to CardFolder.astro; renamed CardL.astro to CardArchive.astro; deleted all Tab components and tab mark up and stylesheet"
             },
             {
                 "id": "507b6bc5a239ddcd33145576c416a564c69c1175",
-                "date": "01/01/24",
+                "date": "01/01/25",
                 "message": "css and js clean up",
                 "details": "began rebuilding cards to accommodate new styling syntax; created separate stylesheet for tags; created link transition variable; renamed Header.astro to Navbar.astro"
             },
             {
                 "id": "7e436fba5adde3af6715320252cf188f841df6e9",
-                "date": "01/01/24",
+                "date": "01/01/25",
                 "message": "created Folder.astro"
             },
             {

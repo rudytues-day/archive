@@ -45,13 +45,11 @@ h1 {
     margin: 3em 1em;
 }
 
-
 .folder .full-size,
 .folder figcaption,
 .comms figure {
     display: none;
 }
-
 
 figcaption {
     text-align: center;
@@ -66,7 +64,6 @@ figcaption b {
     text-transform: uppercase;
     font-size: 1.325rem;
 }
-
 
 .full-size {
     max-width: 100%;

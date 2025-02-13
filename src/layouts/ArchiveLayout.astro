@@ -15,8 +15,6 @@ const { pageTitle = "ARCHIVE",
 import { getCollection } from 'astro:content';
 const entries = await getCollection("entries");
 
-console.log(entries.length)
-
 import Image from 'astro/components/Image.astro';
 import MetaTags from '../components/MetaTags.astro';
 

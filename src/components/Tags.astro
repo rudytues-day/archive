@@ -23,7 +23,6 @@ function sortByFrequency(a, b) {
 }
 
 const sortedTags = [... new Set(allEntryTags.sort(sortByFrequency).toReversed().flat())];
-
 ---
 
     <ul class="tags tags-cloud">
