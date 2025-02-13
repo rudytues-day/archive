@@ -8,13 +8,10 @@ interface Props {
 import '../../utility/styles/card-styles.css';
 
 const { tabTitle, id, index } = Astro.props as Props;
-
-
-
 ---
 
 <details id={id} open={index}>
-    <summary class="tab-title">
+    <summary class="tab-title" data-title={tabTitle}>
         {tabTitle}
     </summary>
     <div class="folder-body">
@@ -23,5 +20,29 @@ const { tabTitle, id, index } = Astro.props as Props;
 </details>
 
 <script>
+
+import { slugify } from '../../utility/scripts/format-fxn';
+
+let summaries = document.querySelectorAll("summary");
+
+if (document.location.hash) {
+    let hash = document.location.hash.replace("#", "");
+    summaries.forEach((summary) => {
+        let tabTitle = slugify(summary.dataset.title);
+        if (hash === tabTitle) {
+            let details = summary.parentElement as HTMLDetailsElement;
+            details.open = true; 
+            details.scrollIntoView();
+        };
+    });
+};
+
+summaries.forEach(summary => {
+    summary.addEventListener("click", () => {
+        let currentUrl = new URL(window.location.href);
+        currentUrl.hash = slugify(summary.dataset.title)
+        location.replace(currentUrl);
+    })
+});
 
 </script>
