@@ -1,13 +1,15 @@
-h1 {
-    margin-block: 2em;
+#display {
+    background-color: #fff;
+    margin: 3.5em 1em;
+    border: 2px solid #000;
+    border-radius: 17px;
+    overflow: hidden;
 }
 
-.gallery-card {
-    background-color: #fff;
-    margin: 1em 1em 2em 1em;
-    border: 2px solid #000;
-    border-radius: 1em;
-    overflow: hidden;
+.gallery-card h1 {
+    display: flex;
+    gap: 0.35em;
+    align-items: center;
 }
 
 .gallery-card button {
@@ -24,10 +26,6 @@ h1 {
 .gallery-card figcaption {
     margin-inline: auto;
     max-width: 500px;
-}
-
-.thumbnail-container h2 {
-    display: none;
 }
 
 .ratings {
@@ -87,10 +85,15 @@ figcaption b {
     margin: 3em auto;
 }
 
+.thumbnail-container .card {
+    display: none;
+}
+
 .thumbnail-container .gallery-card {
     overflow: hidden;
 }
 
+.thumbnail,
 .gallery-thumb {
     padding: 0;
     background: transparent;
@@ -98,9 +101,12 @@ figcaption b {
     border-radius: 1em 1em;
     position: relative;
     width: 75px;
+    object-fit: cover;
+}
+
+.gallery-thumb {
     opacity: 33%;
     transform: opacity 750ms ease;
-    object-fit: cover;
 }
 
 .gallery-thumb:hover {
@@ -140,6 +146,10 @@ figcaption b {
     margin: 0;
 }
 
+.fa-image {
+    margin-top: 0.25em;
+}
+
 @media all and (min-width: 780px) {
 
     .thumbnail {
@@ -155,6 +165,9 @@ figcaption b {
 
 @media all and (min-width: 1000px) {
     
+    #display {
+        margin-inline: auto;
+    }
 
     .gallery-card,
     .folder {

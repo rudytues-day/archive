@@ -28,7 +28,7 @@
     background: var(--primary-clr-dark);
     color: var(--white-clr);
     margin: 0;
-    padding: 0.5em 1em;
+    padding: 0.75em 1em;
     text-align: left;
     font-size: 1.5rem;
     font-family: var(--display);
@@ -93,6 +93,7 @@ details:not([open]) .tab-title::before {
 .card-title i {
     font-size: 1.125rem;
     padding: var(--__padding);
+    margin-right: 0.25em;
 }
 
 /* icon padding */
@@ -180,6 +181,8 @@ details:not([open]) .tab-title::before {
     border-radius: var(--folder-border-radius);
     overflow: hidden;
 }
+
+
 
 
 @media all and (min-width: 700px) {

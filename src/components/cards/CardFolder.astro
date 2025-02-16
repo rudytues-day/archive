@@ -42,6 +42,7 @@ summaries.forEach(summary => {
         let currentUrl = new URL(window.location.href);
         currentUrl.hash = slugify(summary.dataset.title)
         location.replace(currentUrl);
+        window.scroll({top: summary.offsetTop})
     })
 });
 

@@ -5,6 +5,7 @@ import { formatDate } from '../utility/scripts/format-fxn.js';
 
 import '../utility/styles/gallery-styles.css';
 import '../utility/styles/card-styles.css';
+import { getEntries } from 'astro:content';
 
 interface Props {
 	title: string;
@@ -14,6 +15,7 @@ interface Props {
 	Dd?: boolean;
 	desc: string;
 	original: boolean;
+    icons: Array<string>;
 	medium: string;
     image: ImageMetadata;
     src: string;
@@ -27,35 +29,50 @@ const {
     Nsfw,
     Dd,
     desc,
+    icons,
     medium,
     image
     } = Astro.props as Props; 
+
+    
 ---
 
-<div class="image">
-        <button class="gallery-thumb" aria-label={`${title} thumbnail`}>
-            <Image
-                src={thumb}
-                alt={`${title} thumbnail`}
-            />
-            <div class="ratings">
-                {Nsfw && <i class="fa-solid fa-ban" aria-label="adult content"></i>}
-                {Dd && <i class="fa-solid fa-feather" aria-label="sensitive content"></i>}
-            </div>
-        </button>
-        <figure>
-            <a href={src} target="_blank">
-                <Image
-                    class="full-size"
-                    src={image}
-                    alt=""
-                />
-            </a>
-            <figcaption>
-                <p class="title">{title}</p>
-                <p>{desc}</p>
-                <p><b>{formatDate(date)}<br/>{medium}</b></p>
-            </figcaption>
-        </figure>
+<div class="thumb-wrapper">
+    <button class="gallery-thumb" aria-label={`${title} thumbnail`}>
+        <Image
+            src={thumb}
+            alt={`${title} thumbnail`}
+        />
+        <div class="ratings">
+            {Nsfw && <i class="fa-solid fa-ban" aria-label="adult content"></i>}
+            {Dd && <i class="fa-solid fa-feather" aria-label="sensitive content"></i>}
+        </div>
+    </button>
+    <div class="card gallery-card">
+        <div class="image">
+            <h1 class="card-title">
+                <div>
+                    {icons.map((icon) => (
+                        <i class:list={[`fas ${(icon)}`]} aria-hidden="true"></i>
+                    ))}
+                </div>
+                <span>{title}</span>
+            </h1>
+            <figure>
+                <a href={src} target="_blank">
+                    <Image
+                        class="full-size"
+                        src={image}
+                        alt=""
+                    />
+                </a>
+                <figcaption>
+                    <p class="title">{title}</p>
+                    <p>{desc}</p>
+                    <p><b>{formatDate(date)}<br/>{medium}</b></p>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
 </div>
 

@@ -30,3 +30,5 @@ pnpm-debug.log*
 /my-works
 .vscode/launch.json
 .vscode/launch.json
+/src/pages/commissions/images
+/src/pages/commission/images

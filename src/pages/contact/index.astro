@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Card from '../../components/cards/Card.astro';
 import '../../utility/styles/wrapper-styles.css';
+import '../../utility/styles/card-styles.css';
 ---
 
 <Layout title="RUDY TUESDAY">
@@ -12,7 +13,8 @@ import '../../utility/styles/wrapper-styles.css';
         <div class="card-wrapper">
             <Card
                 title="MESSAGE"
-                icon="fa-envelopes-bulk">
+                icon="fa-envelopes-bulk"
+                >
                 <!-- <p><b>COMMISSIONS ARE CURRENTLY OPEN!</b> click <a href="#">here</a> for more information.</p> -->
                 <p>fields denoted with a <i class="fas fa-asterisk"></i> are required.</p>
                 <form
@@ -37,9 +39,12 @@ import '../../utility/styles/wrapper-styles.css';
                     <textarea 
                         name="message"
                         id="message"
-                        rows="8"
+                        class="contact"
+                        rows="6"
+                        cols="28"
                         aria-required="true"
                         required=""
+                        class="contact"
                         ></textarea>
                     <button type="submit">SEND</button>
                 </form>
