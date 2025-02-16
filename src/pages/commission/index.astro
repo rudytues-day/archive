@@ -1,0 +1,217 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Card from '../../components/cards/Card.astro';
+import Thumbs from '../../components/Thumbs.astro';
+import GalleryThumbs from '../../components/GalleryThumbs.astro';
+import '../../utility/styles/wrapper-styles.css';
+import '../../utility/styles/card-styles.css';
+import '../../utility/styles/gallery-styles.css';
+import '../../utility/styles/form-styles.css';
+import '../../utility/styles/table-styles.css';
+
+import ychsite from './images/ych1_site.png';
+
+import Image from 'astro/components/Image.astro';
+
+import CardConstruction from '../../components/cards/CardConstruction.astro';
+
+import { getCollection } from 'astro:content';
+const entries = await getCollection("entries")
+const commEntries = entries.filter((entry => entry.data.tags.includes("commission"))).toReversed();
+---
+<Layout title="RUDY TUESDAY / COMMISSIONS">
+<main>
+    
+    <h1>COMMISSIONS</h1>
+    
+        <div class="card-wrapper">
+            <Card
+                title="SAMPLES"
+                icon="fa-palette"
+            >
+                <div class="thumbnail-container comms">
+                    { commEntries.map((entry) => (
+                            <Thumbs
+                                title={entry.data.title}
+                                thumb={entry.data.thumb.src}
+                                date={entry.data.date}
+                                Nsfw={entry.data.Nsfw}
+                                Dd={entry.data.Dd}
+                                desc={entry.data.desc}
+                                original={entry.data.original}
+                                medium={entry.data.medium}
+                                image={entry.data.image.src}
+                                thumb={entry.data.thumb.src}
+                                src={entry.data.image.src.src}
+                            />
+                    ))}
+                </div>
+                <div class="button-wrapper">
+                    <button>
+                        <a href="/gallery">VIEW</a>
+                    </button>
+                </div>
+            </Card>
+        </div>
+
+        <section>
+            <div class="card-wrapper">
+                <Card
+                    title="SPECIALS"
+                    icon="fa-tags"
+                >
+                    <Image
+                        src={ychsite}
+                        alt=""
+                    />
+                    <div class="button-wrapper">
+                        <button>
+                            <a href="/commission/specials/ych">READ MORE</a>
+                        </button>
+                    </div>
+                </Card>
+                </div>
+        </section>
+            <section>
+                <div class="card-wrapper">
+                <Card
+                    title="PRICING"
+                    icon="fa-tags"
+                >
+                <p>there are two commission styles available, <b>SIMPLE COLOR</b> using a color gradient and <b>FULL COLOR</b>. they come with a simple solid hue background unless requested otherwise.</p>
+
+                <div class="comm-option">
+                    <h4>CHARACTERS</h4>
+                        <table>
+                            <tr>
+                                <th></th>
+                                <th>SIMPLE <span>COLOR</span></th>
+                                <th>FULL <span>COLOR</span></th>
+                            </tr>
+                            <tr>
+                                <td>BUST</td>
+                                <td>$60</td>
+                                <td>$75</td>
+                            </tr>
+                            <tr>
+                                <td>HALF-BODY</td>
+                                <td>$70</td>
+                                <td>$85</td>
+                            </tr>
+                            <tr>
+                                <td>FULL-BODY</td>
+                                <td>$80</td>
+                                <td>$95</td>
+                            </tr>
+                        </table>
+                </div>
+
+                <p>i quote commissions based on how much of the body is visible with the <b>largest scale character at full cost</b> and <b>each additional character at a 20% discount.</b> no more than three characters may be requested.</p>
+
+                <div class="comm-option">
+                    <h4>OTHER</h4>
+                        <table>
+                            <tr>
+                                <th></th>
+                                <th>MIN<span>IMUM</span></th>
+                                <th>MAX<span>IMUM</span></th>
+                            </tr>
+                            <tr>
+                                <td>BACKGROUND</td>
+                                <td>$25</td>
+                                <td>$100</td>
+                            </tr>
+                            <tr>
+                                <td>FLORIOGRAPHY</td>
+                                <td>$10</td>
+                                <td>$50</td>
+                            </tr>
+                            <tr>
+                                <td>COMPLEXITY</td>
+                                <td>10%</td>
+                                <td>25%</td>
+                            </tr>
+                            <tr>
+                                <td>EROTIC & FETISH</td>
+                                <td>10%</td>
+                                <td>25%</td>
+                            </tr>
+                        </table>
+                </div>
+
+                <p><b>floriography</b> refers to the <a href="https://en.wikipedia.org/wiki/Language_of_flowers">language of flowers</a>. if requested, i will research which flowers may best reflect the spirit of your commission and present you with options.</p>
+
+                </Card>
+                    </div>
+                    <div class="card-wrapper">
+                <Card
+                    title="TERMS OF SERVICE"
+                    icon="fa-scroll"
+                >
+                    <h3>GENERAL INFORMATION</h3>
+                    <ul>
+                        <li>commissioned works are for <b>personal use only.</b></li>
+                        <li>commissions are managed through <b>email and paypal.</b></li>
+                        <li><b>i reserve the right to refuse any commission request</b> for any reason.</li>
+                        <li><b>i reserve the right to cancel a commission at any time</b> resulting in a 50% refund of the down payment. no refunds will be given for completed commissions. </li>
+                        <li><b>i assume the right to publish any commissioned works</b> or use them for advertising purposes unless requested otherwise. they may also be published anonymously at your request.</li>
+                        <li><b>commissioned works may be published by you with credit.</b></li>
+                    </ul>
+                    <h3>CONTENT GUIDELINES</h3>
+                    <p>i am open to drawing most things with the exception of:</p>
+                    <ul>
+                        <li><b>hard non-con, gas & scat, emeto, zoo.</b></li>
+                        <li><b>real people or public figures</b> — self-insert characters and live action media permitted.</li>
+                        <li><b>bigoted or hateful content.</b></li>
+                        <li><b>mecha, armor & furry.</b></li>
+                        <li><b>no image references</b> — picrews, artbreeders, waifulabs, pinterest boards, ms paint drawings, any and all accepted.</li>
+                        <li><b>"whatever you think is best/your artistic vision"</b> — please be as detailed as possible. the more information you give me, the better result you will get.</li>
+                    </ul>
+                    <p><b>WANT TO BEND THE RULES?</b> any requests for fetish content that falls outside my hard limits will be subject to a fair upcharge at my discretion.</p>
+                </Card>
+                </div>
+                <div class="card-wrapper">
+                <Card
+                    title="WORKFLOW"
+                    icon="fa-pencil"
+                >
+                    <ul>
+                        <li>when your request is accepted, i will send <b>a quote and concept sketches</b> regarding the commission.</li>
+                        <li>once approved, i will send <b>an invoice for a 50% down payment</b> of the total cost of the commission.</li>
+                        <li>once paid, i will send the a <b>watermarked version of completed line work</b> for your approval. you are entitled to <b>2 revisions</b> during this time. you are welcome to red line or draw over the line work for clarity.</li>
+                        <li>once colored, i will send a <b>watermarked version of the completed commission</b> for your approval. you are entitled to <b>2 revisions</b> during this time. i may send several options regarding simple color commissions for your choosing.</li>
+                        <li>once approved, i will send <b>another invoice for the remaining cost</b> of the commission.</li>
+                        <li>once paid, i will send the full commission without watermark.</li>
+                    </ul>
+                </Card>
+                    </div>
+            </section>
+
+    <section>
+        <div class="card-wrapper">
+                <Card
+                    title="INTERESTED?"
+                    icon="fa-clipboard-list"
+                >
+                <p>please send me an email at <b>webmaster @ rudytues.day</b> with the following information for a quote. fields marked with an <span class="required">asterisk</span> are required.</p>
+        
+                <ul>
+                    <li aria-required="true"><b>name</b></li>
+                    <li><b>socials</b></li>
+                    <li aria-required="true"><b>character(s)</b></li>
+                    <li aria-required="true"><b>base figure scale</b></li>
+                    <li><b>additional figure(s) scale</b></li>
+                    <li aria-required="true"><b>commission description</b></li>
+                    <li aria-required="true"><b>color palette/mood</b></li>
+                    <li><b>background</b></li>
+                    <li><b>floriography</b></li>
+                    <li aria-required="true"><b>reference images</b></li>
+                </ul>
+                <p>thank you.</p>
+        
+                </Card>
+            </div>
+        
+    </section>
+</main>
+</Layout>

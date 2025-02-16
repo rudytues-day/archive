@@ -16,8 +16,6 @@ import '../utility/styles/card-styles.css';
 import '../utility/styles/form-styles.css';
 import '../utility/styles/wrapper-styles.css';
 
-import CardConstruction from "../components/cards/CardConstruction.astro";
-
 const newsletters = await getCollection("newsletters");
 const newsletterSlice = newsletters.toReversed().slice(0,3);
 
@@ -39,57 +37,44 @@ import viewport3 from '../utility/image/viewport3.png'
 					<p>... nothing beside remains</p>
 				</header>
 			</section>
-
-			<!-- <section>
-				<div class="card-wrapper">
-					<CardConstruction>
-						<div class="left" style="text-align: left">
-							<p>this site is currently under renovation. there are likely to be missing or broken features.</p>
-							<p>please use my <a href="/contact">contact form</a> to report any errors, broken links or bugs you may run into.</p>
-							<p>thank you.</p>
-						</div>
-					</CardConstruction>
-				</div>
-			</section> -->
 	
-			<section class="newsletter">
-				<!-- <h1>NEWS</h1> -->
-				<div class="card-wrapper" id="newsletter">
+			<section>
+				<div class="card-wrapper">
 					
-					<Card
-						title="NEWSLETTER"
-						icon="fa-newspaper"
-						>
-						<div class="scrollbox scrollbox-m scrollbox-light">
-							<div class="newsletters">
-								{
-									newsletterSlice.map(async (newsletter) => {
-									  const renderedNewsletter = await newsletter.render();
-									  return (
-											<article>
-												<renderedNewsletter.Content />
-											</article>
-									  );
-									})
-								  }
-							</div>
-							<!-- <button><a href="">READ MORE</a></button> -->
-						</div>
-						<p><b>enter your email</b> to subscribe to my newsletter where i send out archive, project and site updates, commission openings, and other goodies every few months.</p>
-						<form
-							action="https://buttondown.com/api/emails/embed-subscribe/rudytuesday"
-							method="post"
-							target="popupwindow"
-							onsubmit="window.open('https://buttondown.com/rudytuesday', 'popupwindow')"
-							class="embeddable-buttondown-form"
+					<div class="newsletter">
+						<Card
+							title="NEWSLETTER"
+							icon="fa-newspaper"
 							>
-							<label for="bd-email" class="visually-hidden">Enter your email</label>
-							<input type="email" name="email" id="bd-email" placeholder="email@address.com" />
-							
-							<input type="submit" value="subscribe" />
-						</form>
-						<!-- <p>powered by <a href="https://buttondown.com/refer/rudytuesday" target="_blank"></a>buttondown</a></p> -->
-					</Card>
+							<div class="scrollbox scrollbox-m scrollbox-light">
+								<div class="newsletters">
+									{
+										newsletterSlice.map(async (newsletter) => {
+										  const renderedNewsletter = await newsletter.render();
+										  return (
+												<article>
+													<renderedNewsletter.Content />
+												</article>
+										  );
+										})
+									  }
+								</div>
+							</div>
+							<p><b>enter your email</b> to subscribe to my newsletter where i send out archive, project and site updates, commission openings, and other goodies every few months.</p>
+							<form
+								action="https://buttondown.com/api/emails/embed-subscribe/rudytuesday"
+								method="post"
+								target="popupwindow"
+								onsubmit="window.open('https://buttondown.com/rudytuesday', 'popupwindow')"
+								class="embeddable-buttondown-form"
+								>
+								<label for="bd-email" class="visually-hidden">Enter your email</label>
+								<input type="email" name="email" id="bd-email" placeholder="email@address.com" />
+						
+								<input type="submit" value="subscribe" />
+							</form>
+						</Card>
+					</div>
 	
 					<Card
 						title="CHANGELOG"
@@ -143,7 +128,7 @@ import viewport3 from '../utility/image/viewport3.png'
 				<ul>
 					<li><a href="/tips">TIPS</a></li>
 					<li><a href="https://boosty.to/rudytuesday">BOOSTY</a></li>
-					<li><a><s>COMMISSION</s></a></li>
+					<li><a href="/commission">COMMISSION</a></li>
 				</ul>
 			</div>
 
@@ -176,6 +161,14 @@ import viewport3 from '../utility/image/viewport3.png'
 		text-align: center;
 		width: 100%;
 		margin-bottom: 4em;
+	}
+
+	.newsletter {
+		margin-bottom: 3em;
+	}
+	main::after {
+		background-image: url('/imgs/chain_1_horizontal.png') !important;
+		height: 20px !important;
 	}
 
 </style>

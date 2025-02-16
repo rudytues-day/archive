@@ -1,0 +1,103 @@
+---
+import ychsite from "../images/ych1_site.png"
+import ychclaimed from '../images/ych_claimed.png'
+
+import Image from "astro/components/Image.astro";
+import '../../../utility/styles/form-styles.css';
+import '../../../utility/styles/main-styles.css';
+---
+
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+
+    <meta charset="UTF-8">
+    
+    <title>RUDY TUESDAY : YOUR CHARACTER HERE</title>
+    
+    <meta property="og:url" content="https://rudytues.day/">
+    <meta property="og:image" content="assets/preview_card.png">
+    <meta property="og:description" content="rudy tuesday is a queer and neurodivergent webMaster, erotic artist and content collector. he has no greater achievements or accolades but he does have a very nice website.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@rudytues_day">
+    <meta name="twitter:creator" content="rudy tuesday">
+    <meta name="twitter:title" content="RUDY TUESDAY : COMMISSIONS">
+    <meta name="twitter:image" content="/assets/preview_card.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Darumadrop+One&display=swap" rel="stylesheet">
+
+    <style>
+
+        .wrapper {
+            display: grid;
+            place-items: center;
+            gap: 1em;
+            width: 100%;
+            margin-block: 3em;
+        }
+
+        .wrapper p {
+            font-family: 'Averia Libre';
+            margin-inline: 1em;
+        }
+
+        .full-image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        button {
+            background: black;
+        }
+
+        button a {
+            text-decoration: none;
+            color: white;
+            font-family: 'Darumadrop One'
+        }
+
+    </style>
+</head>
+
+    <body>
+        <div class="wrapper">
+            <Image
+                src={ychsite}
+                class="full-image"
+                alt="you character here. doodle roundup - sketchbook edition 1. your characters drawn over an old doodle. any genders or body types. comes with simple background. final pose may vary slightly."
+            />
+
+            <a href={ychclaimed.src} target="_blank">
+                <Image
+                    src={ychclaimed}
+                    class="full-image"
+                    alt=`YOUR CHARACTER HERE doodle roundup - sketchbook edition 1.
+                    A: jacking off.
+                    B: big squat.
+                    C: boobie grab
+                    $50 simple color.
+                    $75 full color.
+                    D: claimed! thank you!
+                    E: cowgirl creampie.
+                    E: reverse cowgirl.
+                    G: against the wall.
+                    H: tummy bump squeeze.
+                    I: claimed! thank you!
+                    $90 simple color.
+                    $120 full color.`
+                />
+            </a>
+            <div style="text-align: center">
+                <p>(click to view full in new tab)</p>
+                <p>email me at <a href="mailto:webMaster@rudytues.day">webMaster @ rudytues.day</a> to request.</p>
+            </div>
+            <button><a href="/commission">BACK</a></button>
+
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,34 @@
+table {
+    margin: 2em auto;
+}
+
+th, td {
+    font-family: var(--display);
+    font-weight: normal;
+    font-size: 1.25rem;
+    text-align: center;
+    padding: 0.5em 0.75em;
+    border: 1px solid var(--primary-clr-med);
+    border-radius: 0.25em;
+}
+
+tr:nth-of-type(even) {
+    background-color: hsl(228, 16%, 94%);
+}
+
+th span {
+    display: none;
+}
+
+@media all and (min-width: 700px) {
+
+    table {
+    margin: 2em auto;
+
+    }
+
+    th span {
+    display: inline-block;
+    }
+
+}

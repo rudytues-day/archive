@@ -1,0 +1,37 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+import '../utility/styles/gallery-styles.css';
+import '../utility/styles/card-styles.css';
+
+interface Props {
+	title: string;
+	thumb: ImageMetadata;
+	date: Date;
+	Nsfw?: boolean;
+	Dd?: boolean;
+	desc: string;
+	original: boolean;
+	medium: string;
+    image: ImageMetadata;
+    src: string;
+}
+
+const { 
+    title,
+    thumb,
+    Nsfw,
+    Dd
+    } = Astro.props as Props; 
+---
+
+<div class="image">
+    <div class="thumbnail" aria-label={`${title} thumbnail`}>
+        <Image
+            src={thumb}
+            alt={`${title} thumbnail`}
+        />
+    </div>
+</div>
+

@@ -29,6 +29,11 @@ form label.left {
     text-align: left;
 }
 
+li[aria-required="true"] {
+    position: relative;
+}
+
+li[aria-required="true"]::after,
 label:has(+ [aria-required="true"])::after,
 .fa-asterisk {
     content: "\2a";
@@ -40,6 +45,11 @@ label:has(+ [aria-required="true"])::after,
     bottom: 0;
     color: var(--primary-accent-clr);
     font-weight: bold;
+}
+
+li[aria-required="true"]::after {
+    vertical-align: baseline;
+    bottom: 0.5em;
 }
 
 .fa-asterisk {
@@ -68,7 +78,11 @@ button[role="tab"] {
     width: fit-content;
 }
 
-            
+.button-wrapper {
+    width: fit-content;
+    margin: 1em auto 1.5em auto;
+}
+
 button:hover,
 input[type="submit"]:hover {
     color: var(--primary-accent-clr); 
@@ -93,7 +107,7 @@ textarea {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
          box-sizing: border-box;
-    max-width: 30ch;
+    width: 100%;
 }
 
 .form-flex {
@@ -112,7 +126,5 @@ textarea {
     form {
         margin-inline: 1em;
     }
-    textarea {
-        max-width: 45ch;
-    }
+
 }
