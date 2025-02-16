@@ -1,47 +1,59 @@
 [
 
     {
+        "id": "494f6706f8d33d8c1e550646377d9ef58fb5b2bf",
+        "date": "02/15/25",
+        "message": "rebuilt galley and restyled chains",
+        "details": "rebuilt gallery function to update card title to corresponding entry on click and added summary scroll offset; styled chains to alternate between single and double between even and odd sections; updated contact form to add more textarea columns; updated changelog; updated gitignore to hide commission images"
+    },
+    {
+        "id": "e3072ccad39dfee20396695f379a03e1fbd71669",
+        "date": "02/15/25",
+        "message": "created commissions page and table stylesheet",
+        "details": "created commissions page; created thumbnail component for commission samples"
+    },
+    {
         "id": "30762ae972f2d7fccd14f95eec6d87b94e106da3",
-        "date": "02/12/24",
+        "date": "02/12/25",
         "message": "updated CardFolder to open and toggle with hash"
     },
     {
         "id": "30762ae972f2d7fccd14f95eec6d87b94e106da3",
-        "date": "02/12/24",
+        "date": "02/12/25",
         "message": "aside style fix & code clean up",
         "details": "cleaned up code; updated gitignore and launch.json; added a temporary styling fix to asides"
     },
     {
         "id": "4fa0570a23ec3e435ed1cd55744a326b406a44bd",
-        "date": "02/10/24",
+        "date": "02/10/25",
         "message": "temp readme update"
     },
     {
         "id": "eb2878a5574b15bc6ac3d1f440f3609041216400",
-        "date": "02/10/24",
+        "date": "02/10/25",
         "message": "gallery sort fxns and styling",
         "details": "rewrote gallery sort functions; added new prop for commission style"
     },
     {
         "id": "63aa8dbf7fcc567d3355ee203e74a1b80cd725bb",
-        "date": "02/10/24",
+        "date": "02/10/25",
         "message": "archive meta images & back to top modal",
         "details": "made archive meta images real; you will never understand how hard this was for me; created back to top modal"
     },
     {
         "id": "9fd750489eb629a4cd79d778dda04152f92a1bdd",
-        "date": "02/10/24",
+        "date": "02/10/25",
         "message": "code and repo clean up",
         "details": "removed commented code from Navbar; returned more cards in tag pages; committed new images; updated readme"
     },
     {
         "id": "b6867b0638db57a8ce1253db4e7ef7381de39137",
-        "date": "02/10/24",
+        "date": "02/10/25",
         "message": "updated transitions to variable"
     },
     {
         "id": "111fd6cd320e55b1d1f4de03986ea4289124bdc4",
-        "date": "02/10/24",
+        "date": "02/10/25",
         "message": "updated .gitignore"
     },
     {
