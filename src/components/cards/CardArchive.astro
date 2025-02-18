@@ -13,7 +13,6 @@ interface Props {
 	date: Date;
 	Nsfw?: boolean;
 	Dd?: boolean;
-	desc: string;
 	original: boolean;
 	medium: string;
 	tags: Array<string>;
@@ -27,7 +26,6 @@ const {
 	date,
 	Nsfw,
 	Dd,
-	desc,
 	tags,
 	icons,
 } = Astro.props as Props; 
@@ -62,7 +60,9 @@ const {
 				</div>
 			</div>
 
-			<p>{desc}</p>
+			<div class="content">
+				<slot />
+			</div>
 
 			<ul class="tags">
 				{tags.map((tag) => (

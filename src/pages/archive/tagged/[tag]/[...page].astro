@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import type { GetStaticPaths } from "astro";
+import { render } from 'astro:content';
 
 import ArchiveLayout from '../../../../layouts/ArchiveLayout.astro';
 import CardPreview from '../../../../components/cards/CardPreview.astro';
@@ -41,17 +42,21 @@ import '../../../../utility/styles/wrapper-styles.css';
         
         <div class="card-wrapper tile-masonry-wrapper">
             {
-                page.data.map((entry) => 
-                <CardPreview 
-                    slug={entry.slug}
-                    title={entry.data.title}
-                    date={entry.data.date}
-                    thumb={entry.data.thumb.src}
-                    Nsfw={entry.data.Nsfw}
-                    Dd={entry.data.Dd}
-                    desc={entry.data.desc}
-                />
-            )}
+                page.data.map(async (entry) => {
+                const { Content } = await render(entry);
+                return (
+                    <CardPreview 
+                        slug={entry.slug}
+                        title={entry.data.title}
+                        date={entry.data.date}
+                        thumb={entry.data.thumb.src}
+                        Nsfw={entry.data.Nsfw}
+                        Dd={entry.data.Dd}
+                    >
+                        <Content />
+                    </CardPreview>
+                )})
+            }
         </div>
 
         <Pagination 

@@ -5,10 +5,11 @@ import ArchiveLayout from '../../layouts/ArchiveLayout.astro';
 import CardArchive from '../../components/cards/CardArchive.astro';
 import Pagination from '../../components/Pagination.astro';
 
+import { sortByCreationDate } from '../../utility/scripts/sort-fxn.js';
+
 import { getCollection } from "astro:content";
 import type { GetStaticPaths } from "astro";
-
-import { sortByCreationDate } from '../../utility/scripts/sort-fxn.js';
+import { render } from 'astro:content';
 
 export const getStaticPaths = (async ( { paginate } ) => {
     const entries = await getCollection("entries");
@@ -27,25 +28,29 @@ const firstPath = pathname[1];
 
 <ArchiveLayout>
 		
-	<div class="card-wrapper archive-card-wrapper">
-		{
-			page.data.map((entry) =>
-				<CardArchive
-					slug={entry.slug}
-					title={entry.data.title}
-					date={entry.data.date}
-					thumb={entry.data.thumb.src}
-					tags={entry.data.tags}
-					desc={entry.data.desc}
-					original={entry.data.original}
-					medium={entry.data.medium}
-					Nsfw={entry.data.Nsfw}
-					Dd={entry.data.Dd}
-					icons={entry.data.icons}
-				/>
-			)
-		}
-	</div>
+<div class="card-wrapper archive-card-wrapper">
+{
+	page.data.map(async (entry) => {
+		const { Content } = await render(entry);
+		return (
+			<CardArchive
+				slug={entry.slug}
+				title={entry.data.title}
+				date={entry.data.date}
+				thumb={entry.data.thumb.src}
+				tags={entry.data.tags}
+				original={entry.data.original}
+				medium={entry.data.medium}
+				Nsfw={entry.data.Nsfw}
+				Dd={entry.data.Dd}
+				icons={entry.data.icons}
+			>
+				<Content />
+			</CardArchive>
+		)
+	})
+}
+</div>
 
 	<Pagination
 		firstUrl={`/${firstPath}`}

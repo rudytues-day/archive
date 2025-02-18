@@ -12,7 +12,6 @@ interface Props {
 	date: Date;
 	Nsfw?: boolean;
 	Dd?: boolean;
-	desc: string;
 }
 
 const { 
@@ -22,7 +21,6 @@ const {
 		date,
 		Nsfw,
 		Dd,
-		desc,
 		} = Astro.props as Props;
 ---
 
@@ -42,7 +40,7 @@ const {
 						{ Dd && <i class="fas fa-feather" role="img" aria-label="dead dove"></i>}
 					</div>
 				</div>
-				<p>{desc}</p>
+				<slot />
 			</div>
 		</div>
 	</div>
