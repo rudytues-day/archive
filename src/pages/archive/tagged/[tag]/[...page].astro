@@ -9,7 +9,6 @@ import Pagination from "../../../../components/Pagination.astro";
 
 import { slugify } from "../../../../utility/scripts/format-fxn";
 
-
 export const getStaticPaths = ( async ({paginate}) => {
     const entries = await getCollection("entries");
     const allTags = [...new Set(entries.flatMap((entry => 
@@ -34,12 +33,9 @@ const titleTag = tag.toUpperCase();
 import '../../../../utility/styles/wrapper-styles.css';
 ---
 
-<ArchiveLayout 
-    pageTitle={`ARCHIVE / ENTRIES TAGGED "${titleTag.toUpperCase}"`}
->
+<ArchiveLayout
+    pageTitle=`ARCHIVE / QUESTIONS TAGGED ${titleTag}`>
 
-    <h2>ENTRIES TAGGED <span>{tag}</span></h2>
-        
         <div class="card-wrapper tile-masonry-wrapper">
             {
                 page.data.map(async (entry) => {
@@ -76,5 +72,6 @@ import '../../../../utility/styles/wrapper-styles.css';
     span {
         color: var(--primary-accent-clr)
     }
+
 
 </style>

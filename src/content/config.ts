@@ -31,7 +31,7 @@ const allEntries = defineCollection({
               src: image(),
               alt: z.string()
             }).optional(),
-            desc: z.string(),
+            description: z.string(),
             tags: z.array(z.string()),
             icons: z.array(z.string()),
             original: z.boolean(),

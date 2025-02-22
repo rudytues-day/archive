@@ -70,6 +70,8 @@ const { Content } = await render(entry)
 	url=`https://rudytues.day/archive/entries/${slug}`
 >
 
+<h1 slot="h1-title">ARCHIVE</h1>
+
 	<div class="card-wrapper entry-card-wrapper">
 		<div class="card card-entry">
 			<h1 class="card-title">
@@ -93,7 +95,7 @@ const { Content } = await render(entry)
 						<Content />
 					</div>
 					<p><b>{formatDate(date)}<br/>{medium}</b></p>
-					<ul class="tags">
+					<ul class="tags tags-entry">
 						{tags.map((tag) => (
 							<li><a href={`/archive/tagged/${slugify(tag)}/`}>{tag}</a></li>
 						))}
@@ -128,11 +130,15 @@ const { Content } = await render(entry)
 <style>
 	
 	.full-image {
-		margin: 1em;
+		margin-block: 1em;
 		display: block;
 		height: auto;
 		max-height: 80vh;
 		width: auto;
+	}
+
+	h1:not([class]) {
+		margin-bottom: 3.5rem
 	}
 
 	/* temp fix */

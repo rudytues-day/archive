@@ -27,6 +27,8 @@ const firstPath = pathname[1];
 ---
 
 <ArchiveLayout>
+
+	<h1 slot="h1-title">ARCHIVE</h1>
 		
 <div class="card-wrapper archive-card-wrapper">
 {
@@ -62,3 +64,10 @@ const firstPath = pathname[1];
 	/>
 
 </ArchiveLayout>
+
+<style>
+		h1:not([class]) {
+		margin-bottom: 3.5rem
+	}
+	
+</style>
