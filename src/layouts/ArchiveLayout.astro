@@ -24,21 +24,17 @@ import '../utility/styles/aside-styles.css';
 import '../utility/styles/scrollbox-styles.css';
 import '../utility/styles/card-styles.css';
 import '../utility/styles/wrapper-styles.css';
+import '../utility/styles/tag-styles.css';
 
 import Header from '../components/Navbar.astro';
-import Tags from '../components/Tags.astro';
 import Footer from '../components/Footer.astro';
 import ToTop from '../components/ToTop.astro';
-
-import '../utility/scripts/format-fxn.js';
 
 import viewportart from '../utility/image/viewport_art.png';
 import previewImage from '../utility/image/preview_card.png';
 
-import { sortByUploadDate } from '../utility/scripts/sort-fxn.js';
-import { formatDate } from '../utility/scripts/format-fxn.js';
-
-import '../utility/styles/tag-styles.css';
+import { sortByUploadDate, tagsByFrequency } from '../utility/scripts/sort-fxn.js';
+import { slugify, formatDate } from '../utility/scripts/format-fxn.js';
 ---
 
 <!doctype html>
@@ -81,7 +77,7 @@ import '../utility/styles/tag-styles.css';
 		<div class="left-column">
 
 			<main>
-				<h1>ARCHIVE</h1>
+				<slot name="h1-title"/>
 				<slot />
 			</main>
 
@@ -114,7 +110,12 @@ import '../utility/styles/tag-styles.css';
 					</div>
 					<div class="column-wrapper">
 						<h2>TAGS</h2>
-						<Tags />
+						<ul class="tags tag-cloud">
+							{ tagsByFrequency(entries).map(tag => (
+								<li><a href={`/archive/tagged/${slugify(tag)}/`}>{tag}</a></li>
+							))
+							}
+						</ul>
 					</div>
 				</div>
 			</aside>
@@ -136,6 +137,30 @@ import '../utility/styles/tag-styles.css';
 		font-size: 2rem;
 		margin-bottom: 2em;
 	}
+
+	main::before {
+		margin-bottom: 4rem;
+	}
+
+	/* h1::after {
+		content: "";
+		display: block;
+		width: 100%;
+		background-image: url('/imgs/chain_1_horizontal.png');
+		height: 20px;
+		bottom: 0;
+		margin-block: 3.5rem 0.25em;
+	}
+
+	main::before {
+		margin-bottom: 3.5rem;
+	}
+
+	main::after {
+		background-image: url('/imgs/chain_2_horizontal.png');
+		height: 45px;
+	} */
+	
 
 	@media all and (min-width: 720px) {}
 	

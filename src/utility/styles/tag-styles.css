@@ -1,15 +1,28 @@
 .tags {
     display: flex;
     flex-flow: row wrap;
-    gap: 0.25em;
-    padding: 0;
     list-style: none;
-    /* margin: 1em; */
+    padding: 0;
+    gap: 0.4em;
+    margin: 3em 1em;
 }
 
-.tags-cloud {
+.tag-cloud {
     align-items: center;
     justify-content: center;
+    margin: var(--__tags-margin);
+}
+
+.tag-cloud-card {
+    --__tags-margin: 2em 1em;
+}
+
+.tag-cloud-askbox {
+    --__tags-margin: 1em;
+}
+
+aside .tag-cloud {
+    --__tags-margin: 3em 1em;
 }
 
 .tags li {
@@ -22,10 +35,22 @@
     border-radius: 0.25em;
 }
 
+aside .tags li {
+    background-color: var(--primary-clr-med)
+}
+
+.tag {
+    max-width: fit-content;
+}
+
 .tags li a {
     transition: var(--link-transition);
 }
 
 .tags li a:hover {
     color: var(--primary-accent-clr);
+}
+
+.description .tags {
+    margin: 2em auto 1em auto;
 }
