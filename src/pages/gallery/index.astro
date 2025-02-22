@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import CardFolder from '../../components/cards/CardFolder.astro';
 import { formatDate } from '../../utility/scripts/format-fxn.js';
+import { render } from 'astro:content';
 
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
@@ -77,45 +78,53 @@ const commFull = commEntries.filter((entry => entry.data.commission === "full"))
                         >
                             <h4>PERSONAL</h4>
                             <div class="thumbnail-container">
-                                { illustOriginal.map((entry) => (
+                                { illustOriginal.map(async (entry) => {
+                                    const { Content } = await render(entry);
+                                    return (
                                     <a href="#display">
                                         <GalleryThumbs
-                                                title={entry.data.title}
-                                                thumb={entry.data.thumb.src}
-                                                date={entry.data.date}
-                                                Nsfw={entry.data.Nsfw}
-                                                Dd={entry.data.Dd}
-                                                desc={entry.data.desc}
-                                                icons={entry.data.icons}
-                                                original={entry.data.original}
-                                                medium={entry.data.medium}
-                                                image={entry.data.image.src}
-                                                thumb={entry.data.thumb.src}
-                                                src={entry.data.image.src.src}
-                                        />
+                                            title={entry.data.title}
+                                            thumb={entry.data.thumb.src}
+                                            date={entry.data.date}
+                                            Nsfw={entry.data.Nsfw}
+                                            Dd={entry.data.Dd}
+                                            icons={entry.data.icons}
+                                            original={entry.data.original}
+                                            medium={entry.data.medium}
+                                            image={entry.data.image.src}
+                                            thumb={entry.data.thumb.src}
+                                            src={entry.data.image.src.src}
+                                        >
+                                            <Content />
+                                        </GalleryThumbs>
                                     </a>
-                                ))}
+                                    )
+                                })}
                             </div>
                             <h4>FANWORKS</h4>
                             <div class="thumbnail-container">
-                                { illustFanart.map((entry) => (
+                                { illustFanart.map(async (entry) => {
+                                    const { Content } = await render(entry);
+                                    return (
                                     <a href="#display">
                                         <GalleryThumbs
-                                                title={entry.data.title}
-                                                thumb={entry.data.thumb.src}
-                                                date={entry.data.date}
-                                                Nsfw={entry.data.Nsfw}
-                                                Dd={entry.data.Dd}
-                                                icons={entry.data.icons}
-                                                desc={entry.data.desc}
-                                                original={entry.data.original}
-                                                medium={entry.data.medium}
-                                                image={entry.data.image.src}
-                                                thumb={entry.data.thumb.src}
-                                                src={entry.data.image.src.src}
-                                        />
+                                            title={entry.data.title}
+                                            thumb={entry.data.thumb.src}
+                                            date={entry.data.date}
+                                            Nsfw={entry.data.Nsfw}
+                                            Dd={entry.data.Dd}
+                                            icons={entry.data.icons}
+                                            original={entry.data.original}
+                                            medium={entry.data.medium}
+                                            image={entry.data.image.src}
+                                            thumb={entry.data.thumb.src}
+                                            src={entry.data.image.src.src}
+                                        >
+                                            <Content />
+                                        </GalleryThumbs>
                                     </a>
-                                ))}
+                                    )
+                                })}
                             </div>
                         </CardFolder>
                         <CardFolder
@@ -125,45 +134,54 @@ const commFull = commEntries.filter((entry => entry.data.commission === "full"))
                         >
                             <h4>DIGITAL</h4>
                             <div class="thumbnail-container">
-                                { sketchDigital.map((entry) => (
+                                { sketchDigital.map(async (entry) => {
+                                    const { Content } = await render(entry);
+                                    return (
                                     <a href="#display">
                                         <GalleryThumbs
-                                                title={entry.data.title}
-                                                thumb={entry.data.thumb.src}
-                                                date={entry.data.date}
-                                                Nsfw={entry.data.Nsfw}
-                                                Dd={entry.data.Dd}
-                                                icons={entry.data.icons}
-                                                desc={entry.data.desc}
-                                                original={entry.data.original}
-                                                medium={entry.data.medium}
-                                                image={entry.data.image.src}
-                                                thumb={entry.data.thumb.src}
-                                                src={entry.data.image.src.src}
-                                        />
-                                        </a>
-                                    ))}
+                                            title={entry.data.title}
+                                            thumb={entry.data.thumb.src}
+                                            date={entry.data.date}
+                                            Nsfw={entry.data.Nsfw}
+                                            Dd={entry.data.Dd}
+                                            icons={entry.data.icons}
+                                            original={entry.data.original}
+                                            medium={entry.data.medium}
+                                            image={entry.data.image.src}
+                                            thumb={entry.data.thumb.src}
+                                            src={entry.data.image.src.src}
+                                        >
+                                            <Content />
+                                        </GalleryThumbs>
+                                    </a>
+                                    )
+                                })}                            
                             </div>
+
                             <h4>ANALOG</h4>
                             <div class="thumbnail-container">
-                                { sketchAnalog.map((entry) => (
+                                { sketchAnalog.map(async (entry) => {
+                                    const { Content } = await render(entry);
+                                    return (
                                     <a href="#display">
                                         <GalleryThumbs
-                                                title={entry.data.title}
-                                                thumb={entry.data.thumb.src}
-                                                date={entry.data.date}
-                                                Nsfw={entry.data.Nsfw}
-                                                Dd={entry.data.Dd}
-                                                icons={entry.data.icons}
-                                                desc={entry.data.desc}
-                                                original={entry.data.original}
-                                                medium={entry.data.medium}
-                                                image={entry.data.image.src}
-                                                thumb={entry.data.thumb.src}
-                                                src={entry.data.image.src.src}
-                                        />
-                                        </a>
-                                    ))}
+                                            title={entry.data.title}
+                                            thumb={entry.data.thumb.src}
+                                            date={entry.data.date}
+                                            Nsfw={entry.data.Nsfw}
+                                            Dd={entry.data.Dd}
+                                            icons={entry.data.icons}
+                                            original={entry.data.original}
+                                            medium={entry.data.medium}
+                                            image={entry.data.image.src}
+                                            thumb={entry.data.thumb.src}
+                                            src={entry.data.image.src.src}
+                                        >
+                                            <Content />
+                                        </GalleryThumbs>
+                                    </a>
+                                    )
+                                })}                            
                             </div>
                         </CardFolder>
                         <CardFolder
@@ -173,28 +191,9 @@ const commFull = commEntries.filter((entry => entry.data.commission === "full"))
                         >
                             <h4>SIMPLE COLOR</h4>
                             <div class="thumbnail-container">
-                                { commSimple.map((entry) => (
-                                    <a href="#display">
-                                        <GalleryThumbs
-                                                title={entry.data.title}
-                                                thumb={entry.data.thumb.src}
-                                                date={entry.data.date}
-                                                Nsfw={entry.data.Nsfw}
-                                                Dd={entry.data.Dd}
-                                                desc={entry.data.desc}
-                                                icons={entry.data.icons}
-                                                original={entry.data.original}
-                                                medium={entry.data.medium}
-                                                image={entry.data.image.src}
-                                                thumb={entry.data.thumb.src}
-                                                src={entry.data.image.src.src}
-                                        />
-                                    </a>
-                                ))}
-                            </div>
-                            <h4>FULL COLOR</h4>
-                            <div class="thumbnail-container">
-                                { commFull.map((entry) => (
+                                { commSimple.map(async (entry) => {
+                                    const { Content } = await render(entry);
+                                    return (
                                     <a href="#display">
                                         <GalleryThumbs
                                             title={entry.data.title}
@@ -203,15 +202,42 @@ const commFull = commEntries.filter((entry => entry.data.commission === "full"))
                                             Nsfw={entry.data.Nsfw}
                                             Dd={entry.data.Dd}
                                             icons={entry.data.icons}
-                                            desc={entry.data.desc}
                                             original={entry.data.original}
                                             medium={entry.data.medium}
                                             image={entry.data.image.src}
                                             thumb={entry.data.thumb.src}
                                             src={entry.data.image.src.src}
-                                        />
+                                        >
+                                            <Content />
+                                        </GalleryThumbs>
                                     </a>
-                                ))}
+                                    )
+                                })}
+                            </div>
+                            <h4>FULL COLOR</h4>
+                            <div class="thumbnail-container">
+                                { commFull.map(async (entry) => {
+                                    const { Content } = await render(entry);
+                                    return (
+                                    <a href="#display">
+                                        <GalleryThumbs
+                                            title={entry.data.title}
+                                            thumb={entry.data.thumb.src}
+                                            date={entry.data.date}
+                                            Nsfw={entry.data.Nsfw}
+                                            Dd={entry.data.Dd}
+                                            icons={entry.data.icons}
+                                            original={entry.data.original}
+                                            medium={entry.data.medium}
+                                            image={entry.data.image.src}
+                                            thumb={entry.data.thumb.src}
+                                            src={entry.data.image.src.src}
+                                        >
+                                            <Content />
+                                        </GalleryThumbs>
+                                    </a>
+                                    )
+                                })}
                             </div>
                             <div class="button-wrapper">
                                 <button>
@@ -228,7 +254,9 @@ const commFull = commEntries.filter((entry => entry.data.commission === "full"))
                         >
                             <h4>DIGITAL</h4>
                             <div class="thumbnail-container">
-                                { studyDigital.map((entry) => (
+                                { studyDigital.map(async (entry) => {
+                                    const { Content } = await render(entry);
+                                    return (
                                     <a href="#display">
                                         <GalleryThumbs
                                             title={entry.data.title}
@@ -236,20 +264,24 @@ const commFull = commEntries.filter((entry => entry.data.commission === "full"))
                                             date={entry.data.date}
                                             Nsfw={entry.data.Nsfw}
                                             Dd={entry.data.Dd}
-                                            desc={entry.data.desc}
                                             icons={entry.data.icons}
                                             original={entry.data.original}
                                             medium={entry.data.medium}
                                             image={entry.data.image.src}
                                             thumb={entry.data.thumb.src}
                                             src={entry.data.image.src.src}
-                                        />
+                                        >
+                                            <Content />
+                                        </GalleryThumbs>
                                     </a>
-                                ))}
+                                    )
+                                })}
                             </div>
                             <h4>ANALOG</h4>
                             <div class="thumbnail-container">
-                                { studyAnalog.map((entry) => (
+                                { studyAnalog.map(async (entry) => {
+                                    const { Content } = await render(entry);
+                                    return (
                                     <a href="#display">
                                         <GalleryThumbs
                                             title={entry.data.title}
@@ -258,15 +290,17 @@ const commFull = commEntries.filter((entry => entry.data.commission === "full"))
                                             Nsfw={entry.data.Nsfw}
                                             Dd={entry.data.Dd}
                                             icons={entry.data.icons}
-                                            desc={entry.data.desc}
                                             original={entry.data.original}
                                             medium={entry.data.medium}
                                             image={entry.data.image.src}
                                             thumb={entry.data.thumb.src}
                                             src={entry.data.image.src.src}
-                                        />
+                                        >
+                                            <Content />
+                                        </GalleryThumbs>
                                     </a>
-                                ))}
+                                    )
+                                })}
                             </div>
                         </CardFolder>
                     </div>
@@ -293,23 +327,5 @@ thumbnails.forEach(thumbnail => {
         galleryDisplay?.replaceChild(thumbImage.cloneNode(true), displayImage);
     })
 })
-
-
-
-
-
-// const thumbnails = document.querySelectorAll('.thumbnail-container .gallery-image');
-// const fullsizeDisplay = document.querySelector('.gallery-card .image');
-
-// thumbnails.forEach(thumbnail => {
-//     thumbnail.addEventListener('click', function() {
-//         const thumbFig = thumbnail.querySelector("figure");
-//         const fullsizeFig = fullsizeDisplay?.querySelector("figure");
-//         if (!thumbFig || !fullsizeFig) {
-//             return;
-//         }
-//         fullsizeDisplay?.replaceChild(thumbFig.cloneNode(true), fullsizeFig);
-//     })
-// })
 
 </script>

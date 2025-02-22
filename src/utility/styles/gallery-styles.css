@@ -28,15 +28,24 @@
     max-width: 500px;
 }
 
+.thumb-grid {
+    position: relative;
+}
+
+.thumb-wrapper {
+    position: relative;
+}
+
 .ratings {
     position: absolute;
     display: flex;
     flex-direction: row;
-    gap: 0.25em;
-    top: 0.25em;
-    right: 0.25em;
+    gap: 0.325em;
+    top: 0.325em;
+    right: 0.325em;
     justify-content: right;
     opacity: 100%;
+    z-index: 1;
 }
 
 .gallery-card figure {
@@ -104,12 +113,12 @@ figcaption b {
     object-fit: cover;
 }
 
-.gallery-thumb {
+.thumb-wrapper button {
     opacity: 33%;
     transform: opacity 750ms ease;
 }
 
-.gallery-thumb:hover {
+.thumb-wrapper button:hover {
     opacity: 100%;
     outline: 2px var(--primary-accent-clr) solid;
 }
@@ -167,6 +176,7 @@ figcaption b {
     
     #display {
         margin-inline: auto;
+        width: clamp(fit-content, 750px, 80vw);
     }
 
     .gallery-card,

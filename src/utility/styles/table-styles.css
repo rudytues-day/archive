@@ -20,15 +20,40 @@ th span {
     display: none;
 }
 
+td:has(.mobile),
+tr:has(.line-height) td:first-child {
+    line-height: 1.3;
+}
+
+.desktop {
+    display: none;
+}
+
+@media all and (min-width: 400px) {
+
+    .mobile {
+        display: none;
+    }
+
+    .desktop {
+        display: inline-block;
+    }
+
+    td:has(.mobile),
+    tr:has(.line-height) td:first-child {
+        line-height: 1.5;
+    }
+}
+
 @media all and (min-width: 700px) {
 
     table {
-    margin: 2em auto;
+        margin: 2em auto;
 
     }
 
     th span {
-    display: inline-block;
+        display: inline-block;
     }
 
 }

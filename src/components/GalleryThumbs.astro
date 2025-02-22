@@ -13,7 +13,6 @@ interface Props {
 	date: Date;
 	Nsfw?: boolean;
 	Dd?: boolean;
-	desc: string;
 	original: boolean;
     icons: Array<string>;
 	medium: string;
@@ -28,26 +27,25 @@ const {
     date,
     Nsfw,
     Dd,
-    desc,
     icons,
     medium,
     image
     } = Astro.props as Props; 
-
-    
 ---
 
 <div class="thumb-wrapper">
-    <button class="gallery-thumb" aria-label={`${title} thumbnail`}>
-        <Image
-            src={thumb}
-            alt={`${title} thumbnail`}
-        />
-        <div class="ratings">
-            {Nsfw && <i class="fa-solid fa-ban" aria-label="adult content"></i>}
-            {Dd && <i class="fa-solid fa-feather" aria-label="sensitive content"></i>}
+        <div class="thumb-grid">
+            <div class="ratings">
+                {Nsfw && <i class="fa-solid fa-ban" aria-label="adult content"></i>}
+                {Dd && <i class="fa-solid fa-feather" aria-label="sensitive content"></i>}
+            </div>
+            <button class="gallery-thumb" aria-label={`${title} thumbnail`}>
+                <Image
+                    src={thumb}
+                    alt={`${title} thumbnail`}
+                />
+            </button>
         </div>
-    </button>
     <div class="card gallery-card">
         <div class="image">
             <h1 class="card-title">
@@ -68,7 +66,7 @@ const {
                 </a>
                 <figcaption>
                     <p class="title">{title}</p>
-                    <p>{desc}</p>
+                    <slot />
                     <p><b>{formatDate(date)}<br/>{medium}</b></p>
                 </figcaption>
             </figure>

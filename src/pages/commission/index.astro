@@ -34,15 +34,6 @@ const commEntries = entries.filter((entry => entry.data.tags.includes("commissio
                             <Thumbs
                                 title={entry.data.title}
                                 thumb={entry.data.thumb.src}
-                                date={entry.data.date}
-                                Nsfw={entry.data.Nsfw}
-                                Dd={entry.data.Dd}
-                                desc={entry.data.desc}
-                                original={entry.data.original}
-                                medium={entry.data.medium}
-                                image={entry.data.image.src}
-                                thumb={entry.data.thumb.src}
-                                src={entry.data.image.src.src}
                             />
                     ))}
                 </div>
@@ -63,6 +54,7 @@ const commEntries = entries.filter((entry => entry.data.tags.includes("commissio
                     <Image
                         src={ychsite}
                         alt=""
+                        id="specials"
                     />
                     <div class="button-wrapper">
                         <button>
@@ -94,12 +86,12 @@ const commEntries = entries.filter((entry => entry.data.tags.includes("commissio
                                 <td>$75</td>
                             </tr>
                             <tr>
-                                <td>HALF-BODY</td>
+                                <td class="line-height">HALF-BODY</td>
                                 <td>$70</td>
                                 <td>$85</td>
                             </tr>
                             <tr>
-                                <td>FULL-BODY</td>
+                                <td class="line-height">FULL-BODY</td>
                                 <td>$80</td>
                                 <td>$95</td>
                             </tr>
@@ -117,22 +109,31 @@ const commEntries = entries.filter((entry => entry.data.tags.includes("commissio
                                 <th>MAX<span>IMUM</span></th>
                             </tr>
                             <tr>
-                                <td>BACKGROUND</td>
+                                <td>
+                                    <span class="mobile">BACK-<br/>GROUND</span>
+                                    <span class="desktop">BACKGROUND</span>
+                                </td>
                                 <td>$25</td>
                                 <td>$100</td>
                             </tr>
                             <tr>
-                                <td>FLORIOGRAPHY</td>
+                                <td>
+                                    <span class="mobile">FLORIO-<br/>GRAPHY</span>
+                                    <span class="desktop">FLORIOGRAPHY</span>
+                                </td>
                                 <td>$10</td>
                                 <td>$50</td>
                             </tr>
                             <tr>
-                                <td>COMPLEXITY</td>
+                                <td>
+                                    <span class="mobile">COMPLEX-<br/>ITY</span>
+                                    <span class="desktop">COMPLEXITY</span>
+                                </td>
                                 <td>10%</td>
                                 <td>25%</td>
                             </tr>
                             <tr>
-                                <td>EROTIC & FETISH</td>
+                                <td>EROTIC <span class="desktop">& FETISH</span></td>
                                 <td>10%</td>
                                 <td>25%</td>
                             </tr>
@@ -215,3 +216,9 @@ const commEntries = entries.filter((entry => entry.data.tags.includes("commissio
     </section>
 </main>
 </Layout>
+<style>
+    #specials {
+        height: auto;
+        width: auto;
+    }
+</style>
