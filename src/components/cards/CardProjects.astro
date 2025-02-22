@@ -3,14 +3,17 @@ import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import { slugify, formatDateYear } from "../../utility/scripts/format-fxn.js";
 
+import '../../utility/styles/card-styles.css';
+import '../../utility/styles/main-styles.css';
+import '../../utility/styles/form-styles.css'
+
 interface Props {
 	slug: string;
 	title: string;
 	href: string;
-	// thumb: ImageMetadata;
-	desc: string;
+	thumb: ImageMetadata;
 	createDate: Date;
-	finishDate: Date;
+	finishDate?: Date;
 	Nsfw?: boolean;
 	Dd?: boolean;
 	featured: boolean;
@@ -23,7 +26,7 @@ const {
 		slug,
 		title,
 		href,
-		desc,
+		thumb,
 		createDate,
 		finishDate,
 		Nsfw,
@@ -33,41 +36,55 @@ const {
 		categories,
 		icons,
 		} = Astro.props as Props; 
-
 ---
 
-	<li class="card">
-        <h1>
+<div class="card card-projects">
+	<h1 class="card-title">
+		<div>
+			{icons.map((icon) => (
+				<i class={`fas ${(icon)}`}></i>
+			))}
 			<span>{title}</span>
-			<div class="icons">
-				{ featured && <i class="fas fa-stars" role="img" aria-label="collaborative"></i> }
-				<!-- {icons.map((icon) => (
-					<i class={`fas ${(icon)}`}></i>
-					))} -->
-				{ collab && <i class="fas fa-people-pulling" role="img" aria-label="collaborative"></i> || <i class="fas fa-person-running" role="img" aria-label="independent"></i> }
-			</div>
-		</h1>
-        <div class="body">
-			<!-- <Image class="thumb"
+		</div>
+		<div class="icons">
+			{ featured && <i class="fas fa-stars" aria-label="featured"></i> }
+			{ collab ? <i class="fas fa-people-pulling" aria-label="collaborative"></i> : <i class="fas fa-person-running" aria-label="independent"></i> }
+		</div>
+	</h1>
+	<div class="card-body card-projects-body">
+		<div class="description">
+			<Image class="card-thumbnail"
 				src={thumb}
 				alt={`${title} thumbnail`}
-			/> -->
-			<div class="thumb"></div>
-            <div class="description">
-                <div class="flex">
-                    <p class="date">{formatDateYear(createDate)}</p>
-                    <div class="icons">
-                        { Nsfw && <i class="fas fa-ban" role="img" aria-label="adult content"></i> }
-                        { Dd && <i class="fas fa-feather" role="img" aria-label="dead dove"></i>}
-                    </div>
-                </div>
-                <p class="text">{desc}</p>
-				<button class="button"><a href={href}>VISIT</a></button>
-				<!-- <ul class="tags">
-					{categories.map((category) => (
-						<li><a href={`/archive/tagged/${slugify(category)}/`}>{category}</a></li>
-					))}
-				</ul> -->
-            </div>
-        </div>
-	</li>
+			/>
+			<div class="flex-wrapper">
+				<p class="date">
+					{formatDateYear(createDate)} 
+					{finishDate && `- ${formatDateYear(finishDate)}`}
+				</p>
+				<div class="content-flags">
+					{ Nsfw && <i class="fas fa-ban" role="img" aria-label="adult content"></i> }
+					{ Dd && <i class="fas fa-feather" role="img" aria-label="dead dove"></i>}
+				</div>
+			</div>
+			<div class="content-wrapper">
+				<slot />
+			</div>
+		</div>
+		{href && 
+			<div class="button-wrapper">
+				<button><a href={href}>VISIT</a></button>
+			</div>
+		}
+	</div>
+</div>
+
+<style>
+	.card-thumbnail {
+		margin-bottom: 1em;
+		min-width: 150px;
+		min-height: 150px;
+		border-radius: 100%;
+	}
+	
+</style>

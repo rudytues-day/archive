@@ -48,18 +48,14 @@ const allProjects = defineCollection({
   schema: ({ image }: SchemaContext) => 
       z.object({
         title: z.string(),
-        href: z.string(),
+        href: z.string().optional(),
         createDate: z.date(),
-        finishDate: z.date(),
-        desc: z.string(),
-        // thumb: z.object({
-        //   src: image(),
-        //   alt: z.string()
-        // }),
-        // image: z.object({
-        //     src: image(),
-        //     alt: z.string(),
-        // }),
+        finishDate: z.date().optional(),
+        description: z.string().optional(),
+        thumb: z.object({
+          src: image(),
+          alt: z.string()
+        }),
         categories: z.array(z.string()),
         icons: z.array(z.string()),
         featured: z.boolean(),

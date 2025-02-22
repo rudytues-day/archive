@@ -5,59 +5,100 @@ import Pagination from '../../components/Pagination.astro';
 import '../../utility/styles/main-styles.css';
 import '../../utility/styles/wrapper-styles.css';
 
-import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import type { GetStaticPaths } from "astro";
 
-// import { sortEntries, sortByCreationDate, sortByUploadDate } from '../../utility/scripts/format-fxn.js';
+import { sortByCreationDate } from '../../utility/scripts/sort-fxn.js';
 
 const projects = await getCollection("projects");
 export const getStaticPaths = (async ( { paginate } ) => {
     return paginate(projects, {
-        pageSize: 4,
+        pageSize: 6,
     })
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
 
-import CardConstruction from '../../components/cards/CardConstruction.astro';
+import { render } from 'astro:content';
 
-// const byUploadDate = sortByUploadDate(entries);
+const byCreationDate = projects.sort(sortByCreationDate);
 
+const featuredProjects = byCreationDate.filter((project => project.data.featured === true))
+const otherProjects = byCreationDate.filter((project => project.data.featured === false))
 ---
 
 
-<Layout title="ARCHIVE">
+<Layout title="PROJECTS">
 
-<main>
-	<CardConstruction>
-		<p>this page is currently under construction.</p>
-		<p>watch your step!</p>
-	</CardConstruction>
+	<main>
 
-	<ul role="list">
-		<div class="grid-masonry">
-			{ projects.map((project) =>
-				<CardProjects
-					slug={project.slug}
-					href={project.data.href}
-					title={project.data.title}
-					desc={project.data.desc}
-					createDate={project.data.createDate}
-					finishDate={project.data.finishDate}
-					categories={project.data.categories}
-					featured={project.data.featured}
-					collab={project.data.collab}
-					Nsfw={project.data.Nsfw}
-					Dd={project.data.Dd}
-					icons={project.data.icons}
-					/>
-			)}
-		</div>
+		<section>
+			<h1>PROJECTS</h1>
+		</section>
 
-	</ul>
+		<section>
+			<h1>FEATURED</h1>
+			<div class="card-wrapper projects-card-wrapper">
+				{ featuredProjects.map(async (project) => {
+					const { Content } = await render(project);
+					return (
+						<CardProjects
+							slug={project.slug}
+							href={project.data.href}
+							title={project.data.title}
+							thumb={project.data.thumb.src}
+							createDate={project.data.createDate}
+							finishDate={project.data.finishDate}
+							categories={project.data.categories}
+							featured={project.data.featured}
+							collab={project.data.collab}
+							Nsfw={project.data.Nsfw}
+							Dd={project.data.Dd}
+							icons={project.data.icons}
+							>
+								<Content />
+							</CardProjects>
+						)
+					}
+				)}
+			</div>
+		</section>
+		<section>
+			<h1>WEB BASED</h1>
+			<div class="card-wrapper projects-card-wrapper">
+				{ otherProjects.map(async (project) => {
+					const { Content } = await render(project);
+					return (
+						<CardProjects
+							slug={project.slug}
+							href={project.data.href}
+							title={project.data.title}
+							thumb={project.data.thumb.src}
+							createDate={project.data.createDate}
+							finishDate={project.data.finishDate}
+							categories={project.data.categories}
+							featured={project.data.featured}
+							collab={project.data.collab}
+							Nsfw={project.data.Nsfw}
+							Dd={project.data.Dd}
+							icons={project.data.icons}
+							>
+								<Content />
+							</CardProjects>
+						)
+					}
+				)}
+			</div>
+		</section>
 
-	<!-- <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} /> -->
+		<!-- <Pagination
+			firstUrl={`/${firstPath}`}
+			prevUrl={page.url.prev}
+			currentPage={page.currentPage}
+			currentUrl={page.url.current}
+			nextUrl={page.url.next}
+			lastUrl={`/${firstPath}/${page.lastPage}`}
+		/> -->
 
 	</main>
 

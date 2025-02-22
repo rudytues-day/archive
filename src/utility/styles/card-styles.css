@@ -18,6 +18,7 @@
 }
 
 .card-archive {
+.card-projects {
     --__card-margin: 0 0 3em 0;
 }
 
@@ -75,6 +76,11 @@ details:not([open]) .tab-title::before {
 
 .card-archive h1,
 .card-projects h1 {
+.card-projects h1
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -97,6 +103,7 @@ details:not([open]) .tab-title::before {
 }
 
 /* icon padding */
+/* card body */
 
 .card-body,
 .folder-body {
@@ -152,6 +159,24 @@ details:not([open]) .tab-title::before {
     -webkit-box-orient: vertical;
     overflow: hidden;
     max-width: 20ch;
+}
+
+.card-projects {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.card-projects-body {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 3em;
+}
+
+.card-projects-body .button-wrapper {
+    margin-bottom: 0 !important;
 }
 
 .flex-wrapper {
