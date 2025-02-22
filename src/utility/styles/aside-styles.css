@@ -52,16 +52,6 @@ aside {
     transition: var(--link-transition);
 }
 
-/* temp fix */
-
-.column-wrapper ul:not([class]) li a s {
-    font-family: var(--display);
-    font-size: 1.5rem;
-    color: white;
-    font-weight: normal;
-    text-align: center;
-}
-
 .column-wrapper ul:not([class]) li a:hover {
     color: var(--primary-accent-clr);
     transition: var(--link-transition);

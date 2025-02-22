@@ -44,6 +44,14 @@ import previewImage from '../utility/image/preview_card.png'
 			ogimg={ogimg}
 			url="https://rudytues.day"
 		/>
+
+		<script>
+        
+			if (localStorage.getItem("ageVerified") == null) {
+				window.location.href = `/landing?returnto=${window.location}`; 
+			}
+			
+		</script>
 	
 	</head>
 	
