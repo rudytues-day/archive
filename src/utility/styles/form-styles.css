@@ -2,27 +2,24 @@
 form,
 .embeddable-buttondown-form {
     display: grid;
-    margin: 2em 0em 2em 0em;
     justify-content: center;
     gap: 1.5em;
-    
+    margin: 2em 0em 2em 0em;
 }
 
-form.ask {
-    margin: 1em;
-    justify-items: left;
-    justify-content: left;
+form .askbox {
+    justify-content: center;
+    margin: 1em auto;
+    padding-inline: 1em;
     width: 100%;
 }
 
-
-
 form label {
-    font-family: var(--display);
-    text-transform: uppercase;
+    position: relative;
     font-size: 1.325rem;
     text-align: center;
-    position: relative;
+    font-family: var(--display);
+    text-transform: uppercase;
 }
 
 form label.left {
@@ -101,7 +98,6 @@ input[type="text"],
 input[type="email"] {
     max-width: 25ch;
 }
-
 
 textarea {
     -webkit-box-sizing: border-box;

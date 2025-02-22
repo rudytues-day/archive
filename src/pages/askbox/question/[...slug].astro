@@ -1,0 +1,65 @@
+---
+import AskboxLayout from '../../../layouts/AskboxLayout.astro';
+import CardAskbox from '../../../components/cards/CardAskbox.astro';
+
+import { getCollection } from "astro:content";
+import { render } from 'astro:content';
+import { slugify, formatDate } from '../../../utility/scripts/format-fxn';
+
+export async function getStaticPaths() {
+	const questions = await getCollection("entries");
+	return questions.map(question => {
+		return {
+			params: { slug: question.slug },
+			props: { 
+				question: question,
+				questions: questions,
+				renderContent: question.render,
+				...question.data
+			}
+		}
+	});
+}
+
+const {  
+    question,
+    user,
+    date,
+    tags
+} = Astro.props;
+
+const { page } = Astro.props;
+
+const { Content } = await render(question);
+
+---
+
+<AskboxLayout>
+
+    <h1 slot="h1-title">ASKBOX</h1>
+                <div class="question-wrapper">
+                    { question.map(async (q) => {
+                        const { Content } = await render(q);
+                        return (
+                            <div class="q-card-wrapper">
+                                <CardAskbox
+                                    user={user}
+                                    date={date}
+                                    tags={tags}
+                                >
+                                    <Content />
+                                </CardAskbox>
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
+
+</AskboxLayout>
+
+<style>
+		h1:not([class]) {
+		margin-bottom: 3.5rem
+	}
+	
+</style>

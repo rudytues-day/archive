@@ -1,5 +1,6 @@
 export const sortByCreationDate = (a, b) => new Date(a) - new Date(b);
 export const sortByUploadDate = (a, b) => new Date(b.data.uploadDate) - new Date(a.data.uploadDate);
+export const sortByAskDate = (a, b) => new Date(b.data.date) - new Date(a.data.date);
 
 export function tagsByFrequency(collection) {
 	const allEntryTags = collection.map((entry => 

@@ -1,98 +1,67 @@
 ---
-import AskboxLayout from "../../layouts/AskboxLayout.astro"
-import CardAskbox from "../../components/cards/CardAskbox.astro"
-import Card from "../../components/cards/Card.astro";
-import Layout from "../../layouts/Layout.astro";
+import AskboxLayout from "../../layouts/AskboxLayout.astro";
+import CardAskbox from "../../components/cards/CardAskbox.astro";
 
 import CardFolder from "../../components/cards/CardFolder.astro";
+
+import { slugify } from "../../utility/scripts/format-fxn";
+import { tagsByFrequency } from "../../utility/scripts/sort-fxn";
 
 import '../../utility/styles/main-styles.css';
 import '../../utility/styles/wrapper-styles.css';
 import '../../utility/styles/form-styles.css';
+import '../../utility/styles/tag-styles.css';
 
-// import { getEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
+import { render } from "astro:content";
 
-// import { render } from "astro:content";
+const questions = await getCollection("questions");
+const qA = questions.filter(q => q.data.faq === undefined);
+const faqQ = questions.filter(q => q.data.faq === true);
 
-// import faqs from './faq.md';
+import { formatDate } from "../../utility/scripts/format-fxn";
+
+const allQuestionTags = tagsByFrequency(questions);
+const askboxTagCloud = allQuestionTags
 
 ---
-<Layout title="ASKBOX">
-    <main>
-        
-        <h1>ASKBOX</h1>
-            
-            <div class="card-wrapper">
-                <div class="folder">
-                    <CardFolder
-                        tabTitle="ASK"
-                        index={true}
-                        id="">
-                
-                        <div class="askbox-wrapper">
-                            <form
-                                action="https://formspree.io/f/xnnaeobz"
-                                method="POST"
-                                class="ask"
+<AskboxLayout pageTitle="ASKBOX">
+    <h1 slot="h1-title">ASKBOX</h1>
+                <div class="question-wrapper">
+                    { qA.map(async (q) => {
+                        const { Content } = await render(q);
+                        return (
+                            <div class="q-card-wrapper">
+                                <CardAskbox
+                                    user={q.data.user}
+                                    date={q.data.date}
+                                    tags={q.data.tags}
+                                    collapsed={q.data.collapsed}
                                 >
-                                <div class="form-flex">
-                                    <label for="name">NAME</label>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        id="name"
-                                    />
-                                </div>
-                                <div class="form-flex">
-                                        <label for="email">EMAIL</label>
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            id="email"
-                                            />
-                                    </div>
-                                <label for="question">QUESTION</label>
-                                    <textarea
-                                        class="ask"
-                                        name="question"
-                                        id="question"
-                                        rows="5"
-                                        required=""
-                                        aria-required="true"
-                                        ></textarea>
-                                <button type="submit">SEND</button>
-                            </form>
-                            <div class="">
-                                <p>my askbox is currently under construction but the form still works!</p>
-                                <p>you are welcome to send me any questions you might have and i will add them to this page when the content collection is completed.</p>
-                                <p>fields denoted with a <i class="fas fa-asterisk"></i> are required.</p>
-                                <p>however, if you add your email i will also be able to respond directly to you.</p>
+                                    <Content />
+                                </CardAskbox>
                             </div>
-                        </div>
-
-                    </CardFolder>
-                    <CardFolder
-                        tabTitle="FREQUENTLY ASKED QUESTIONS"
-                        index={false}
-                        id="faq">
-                    </CardFolder>
+                        )
+                    })}
                 </div>
             </div>
-            <div class="card-wrapper">
-            </div>
-
     </main>
     <style>
 
+        .two-column {
+            margin: 4.5em 1em;
+            display: grid;
+            gap: 1em;
+        }
+
+        .folder {
+            margin: 0 1em 3em 1em
+        }
+        .q-card-wrapper {
+            margin: 0 1em 2em 0em
+        }
+
 @media all and (max-width: 700px) {
-
-    .form-flex {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-
     label {
         text-align: center;
         justify-content: center;
@@ -106,14 +75,15 @@ import '../../utility/styles/form-styles.css';
 }
 @media all and (min-width: 700px) {
 
-    .askbox-wrapper {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1em;
-    }
-
 }
 
+@media all and (min-width: 1000px) {
+    .two-column {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        align-items: start;
 
+    }
+}
     </style>
 </Layout>

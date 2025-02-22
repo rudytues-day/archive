@@ -69,11 +69,11 @@ const allQuestions = defineCollection({
   type: 'content',
   schema: ({ image }: SchemaContext) => 
       z.object({
-        user: z.string(),
-        href: z.string(),
-        date: z.date(),
-        tags: z.array(z.string()),
-        question: z.string(),
+        user: z.string().optional(),
+        date: z.date().optional(),
+        tags: z.array(z.string()).optional(),
+        faq: z.boolean().optional(),
+        collapsed: z.boolean().optional(),
     }),
 });
 

@@ -1,23 +1,53 @@
 ---
 interface Props {
-	title: string;
+  pageTitle?: string;
+  description?: string;
+  ogimg?: ImageMetadata;
+  url?: string;
 }
 
-const { title } = Astro.props;
+const { pageTitle = "ASKBOX",
+		description = "look upon my works, ye mighty, and despair",
+		ogimg = previewImage,
+		url = "https://rudytues.day/archive"
+	} = Astro.props;
+
+import { getCollection } from 'astro:content';
+const questions = await getCollection("questions");
+const faqQ = questions.filter(q => q.data.faq === true);
 
 import '../utility/reset.css'
 import Footer from '../components/Footer.astro';
+import Header from '../components/Navbar.astro';
+import CardFolder from "../components/cards/CardFolder.astro";
+import ToTop from '../components/ToTop.astro';
+import MetaTags from '../components/MetaTags.astro';
 
-import '../../utility/styles/main-styles.css';
+import '../utility/styles/main-styles.css';
+import '../utility/styles/form-styles.css';
+
+import previewImage from '../utility/image/preview_card.png';
+
+import { sortByUploadDate, tagsByFrequency } from '../utility/scripts/sort-fxn.js';
+import { slugify, formatDate } from '../utility/scripts/format-fxn.js';
+
+import { render } from 'astro:content';
+
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="icon" type="image/svg+xml+ico" href="/favicon.ico" />
+		<link rel="icon" type="image/svg+xml+ico" href="/favicon.ico" />
+
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-		<title>{title}</title>
+		<title>{pageTitle}</title>
 
 		<script>
         
@@ -33,11 +63,119 @@ import '../../utility/styles/main-styles.css';
 	
 		<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
 	
+		<MetaTags
+			title={pageTitle}
+			description={description}
+			ogimg={ogimg}
+			url={url}
+		/>
+
 	</head>
     <body>
-        
-        <slot />
+		
+		<Header />
+		<main>
+			<slot name="h1-title"/>
+
+		<div class="two-column">
+			<div class="folder">
+				<CardFolder
+					tabTitle="ASK"
+					index={true}
+					id="">
+					<div class="askbox">
+						<form
+							action="https://formspree.io/f/xnnaeobz"
+							method="POST"
+							class="ask"
+							>
+							<div class="form-flex">
+								<label for="name">NAME</label>
+								<input
+									type="text"
+									name="name"
+									id="name"
+								/>
+							</div>
+							<div class="form-flex">
+									<label for="email">EMAIL</label>
+									<input
+										type="email"
+										name="email"
+										id="email"
+										/>
+								</div>
+							<label for="question">QUESTION</label>
+								<textarea
+									class="ask"
+									name="question"
+									id="question"
+									rows="5"
+									required=""
+									aria-required="true"
+									></textarea>
+							<button type="submit">SEND</button>
+						</form>
+							<p style="text-align: center">fields denoted with a <i class="fas fa-asterisk"></i> are required.</p>
+						<ul class="tags tag-cloud tag-cloud-card">
+							{ tagsByFrequency(questions)
+								.filter(tag => tag !== undefined)
+								.map((tag) => {
+								return (
+									<li class="tag"><a href="">{tag}</a></li>
+								)
+							})}
+						</ul>
+					</div>
+				</CardFolder>
+				<CardFolder
+					tabTitle="FREQUENTLY ASKED QUESTIONS"
+					index={false}
+					id="faq">
+					{ faqQ.map(async (q) => {
+						const { Content } = await render(q);
+							return (
+								<div class="faq-wrapper">
+									<Content />
+								</div>
+							)
+						})
+					}
+				</CardFolder>
+		</div>
+
+        <div class="">
+			<slot />
+		</div>
+	</div>
+</main>
+		<ToTop/>
+		
+		<Footer />
 
     </body>
 
 </html>
+
+<style>
+	    .two-column {
+            margin: 4.5em 1em;
+            display: grid;
+            gap: 3em;
+        }
+
+		h1 .accent {
+			color: var(--primary-clr-accent) !important;
+		}
+
+		@media all and (min-width: 1000px) {
+    .two-column {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        align-items: start;
+		margin-inline: 3em;
+
+    }
+}
+
+</style>

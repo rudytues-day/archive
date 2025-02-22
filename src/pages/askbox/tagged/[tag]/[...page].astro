@@ -1,0 +1,83 @@
+---
+import { getCollection } from "astro:content";
+import type { GetStaticPaths } from "astro";
+import { render } from 'astro:content';
+
+import CardAskbox from '../../../../components/cards/CardAskbox.astro';
+import Pagination from "../../../../components/Pagination.astro";
+
+import { slugify } from "../../../../utility/scripts/format-fxn";
+import { sortByAskDate } from "../../../../utility/scripts/format-fxn";
+
+export const getStaticPaths = ( async ({paginate}) => {
+    const questions = await getCollection("questions");
+    const taggedQs = questions.filter(q => q.data.tags !== undefined);
+    const allTags = [...new Set(taggedQs.flatMap((question => 
+    question.data.tags)))];
+    const filteredTags = allTags.filter(tag => tag !== undefined);
+    return filteredTags.flatMap((tag) => {
+        const thisTagQs = taggedQs.sort(sortByAskDate).toReversed().filter((q) =>
+            q.data.tags?.includes(tag));
+        return paginate(thisTagQs, { 
+            pageSize: 12,
+            params: { tag: `${slugify(tag)}` },
+            props: { tag: tag }
+        });
+    })
+}) satisfies GetStaticPaths;
+
+const { page, tag } = Astro.props;
+
+
+const pathName = new URL(Astro.request.url).pathname.slice(0, -1);
+
+const titleTag = tag.toUpperCase();
+const pageTitle = `ASKBOX / QUESTIONS TAGGED ${titleTag}`;
+
+import '../../../../utility/styles/wrapper-styles.css';
+import AskboxLayout from "../../../../layouts/AskboxLayout.astro";
+import { sortByCreationDate } from "../../../../utility/scripts/sort-fxn";
+---
+
+<AskboxLayout
+    pageTitle={pageTitle}>
+    <h1 slot="h1-title">QUESTIONS TAGGED <span>{titleTag}</span></h1>
+            {
+                page.data.map(async (question) => {
+                const { Content } = await render(question);
+                return (
+                    <div class="q-card-wrapper">
+                        <CardAskbox
+                            user={question.data.user}
+                            date={question.data.date}
+                            tags={question.data.tags}
+                        >
+                            <Content />
+                        </CardAskbox>
+                    </div>
+                )})
+            }
+        </div>
+
+        <Pagination 
+            firstUrl={pathName}
+            prevUrl={page.url.prev} 
+            currentUrl={page.url.current}
+            currentPage={page.currentPage}
+            nextUrl={page.url.next}
+            lastUrl={`${pathName}/${page.lastPage}`}
+        />
+
+</AskboxLayout>
+
+<style>
+
+span {
+    color: var(--primary-accent-clr)
+}
+
+.q-card-wrapper {
+            margin: 0 1em 2em 0em
+        }
+
+</style>

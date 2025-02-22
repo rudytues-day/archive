@@ -1,172 +1,90 @@
 ---
 interface Props {
-	user: string;
-	title: string;
-	date: Date;
+	user?: string;
+	date?: Date;
+    tags?: Array<string>;
+    collapsed?: boolean
 }
 
-const { title, date, } = Astro.props as Props;
+const { date, user, collapsed, tags } = Astro.props as Props;
 
+import '../../utility/styles/tag-styles.css'
+import '../../utility/styles/main-styles.css'
 import '../../utility/styles/card-styles.css'
+
+import { formatDate, slugify } from '../../utility/scripts/format-fxn';
+import { undefined } from 'astro:schema';
 ---
 
-<div class="card">
-    <div class="question-header">
-        <div class="question-details">
-            <p><span class="fas fa-user"></span>ANONYMOUS</p>
-            <p>10/10/1010</p>
-    
-        </div>
-        
+<div class="card card-askbox">
+    <h1 class="card-title">
+        <span>
+            { user ?
+                <i class="fas fa-user"></i> <span>{user}</span> :
+                <i class="fas fa-user-secret"></i> <span>ANONYMOUS</span>
+            }
+        </span>
+        <span>{formatDate(date)} <i class="fas fa-arrow-up-right-from-square"></i>
+        </span>
+    </h1>
+    <div class="card-body">
+        { collapsed ?
+            (<div class="answer collapsed">
+                <slot />
+                <button class="read-more">READ MORE</button>
+            </div>)
+            : (<div class="answer">
+                <slot />
+            </div>) 
+        }
+        { tags &&
+            <ul class="tags tag-cloud tag-cloud-askbox">
+                {tags.map((tag) => (
+                    <li class="tag"><a href={`/askbox/tagged/${slugify(tag)}`}>{tag}</a></li>
+                ))}
+            </ul>
+        }
     </div>
-    <div class="question-wrapper">
-        <p class="question">this is where a question would go if i had one. here is some additional dummy text, really stretch it out. maybe a few more lines so i can get three lines and then i will be free.</p>
-            <slot />
-        </p>
-        <div class="read-more">SEE FULL ANSWER</div>
-    </div>
-    <ul class="tags"><li>lorem</li>
-    <li>ipsum dolor</li>
-    <li>sit amet</li>
-    <li>darby allsorts</li>
-    <li>web dev</li>
-    <li>other stuff</li>
-    <li>just a</li>
-    <li>few</li>
-    <li>more tags</li>
-</ul>
 </div>
 
 <style>
-
-.card {
-    max-width: 800px;
-    border: 2px solid black;
-    border-radius: 1em;
-    margin: 2em;
-}
-
-    .question-header {
-        margin: 0;
-        font-size: 1.125rem;
-		font-family: var(--display);
-        background-color: var(--primary-clr-dark);
-        overflow: hidden;
-        padding: 0.5em 1em;
-        color: var(--white-clr);
-        border-radius: 0.75em 0.75em 0em 0em;
-        transition: var(--link-transition);
-		text-align: left;
-        text-transform: uppercase;
-    }
-
-    .question-details {
-        display: flex;
-        justify-content: space-between;
-        font-size: 1.25rem;
-    }
-
-    .question-details .fas {
-        font-size: 0.8em;
-        display: inline-block;
-        margin-right: 0.5em;
-    }
-
-    .question {
-		font-family: var(--display);
-        margin: 1.25em;
+    .answer {
+        margin: 0em auto 1em auto;
         position: relative;
-        max-width: fit-content;
-        text-align: left;
-        /* text-align: center; */
-        line-height: 1.3;
-        text-transform: uppercase;
-        font-size: 1.125rem;
     }
 
-    /* .question::before,
-    .question::after {
-        font-family: 'Font Awesome 6 Pro';
-        font-weight: bold;
-        font-size: 0.9rem;
-        color: var(--primary-clr-med)
+    .answer.collapsed {
+        /* max-height: 20rem; */
+        /* overflow: hidden; */
     }
 
-    .question::before {
-        content: '\f10d';
-        top: 0.325em;
-        left: -1.25em;
+    .answer.collapsed:after {
+        content: "";
+        z-index: 9;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(to top,
+        rgba(255, 255, 0, 1) 0%
+        rgba(0,0,255, 1) 100%);
+        position: absolute;
+        bottom: 0;
     }
 
-    .question::after {
-        content: '\f10e';
-        bottom: 0.325;
-        right: -1.25em;
+    .read-more {
+        /* position: absolute; */
+        margin: auto;
+    }
+
+    /* .collapsed {
+        display: -webkit-box;
+        -webkit-line-clamp: 10;
+                line-clamp: 10;
+                text-overflow: ellipsis;
     } */
 
-    .answer {
-        margin: 1.25em;
+    .fa-arrow-up-right-from-square {
+        margin-inline: 0.25em 0em;
     }
-
-    .tags {
-		display: flex;
-		flex-flow: row wrap;
-		list-style: none;
-		padding: 0;
-		gap: 0.25em;
-		margin: 1.5em;
-        align-items: center;
-	}
-
-	.tags li,
-    .read-more {
-		background-color: var(--primary-clr-dark);
-		color: var(--white-clr);
-		font-family: var(--display);
-		text-transform: uppercase;
-		padding: 0.125em 0.3em 0.4em 0.3em;
-		line-height: 1.125;
-		border-radius: 0.25em;
-	}
-
-    .read-more {
-        padding: 0.2em 0.4em 0.5em 0.4em;
-        margin: auto;
-        max-width: fit-content;
-    }
-
-	.tags li a {
-		transition: var(--link-transition);
-	}
-
-	.tags li a:hover {
-		color: var(--primary-accent-clr)
-	}
-
-    button {
-        margin: auto;
-        text-align: center;
-    }
-
-
-	h1 i {
-		font-size: 0.8em;
-		padding: 0 0.75em 0.15em 0;
-	}
-
-    h2:first-of-type {
-			text-align: left;
-			margin-block: 1.5em 1em;
-			font-size: 1.5em;
-		}
-
-		h2::before {
-			content: '\f084';
-			font-family: 'Font Awesome 6 Pro';
-			font-weight: bold;
-			font-size: 1.25rem;
-			margin-right: 0.5rem;
-		}
 
 </style>
 

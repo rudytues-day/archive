@@ -77,10 +77,13 @@ details:not([open]) .tab-title::before {
 .card-archive h1,
 .card-projects h1 {
 .card-projects h1
+.card-askbox h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
+.card-askbox .card-title {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -95,6 +98,8 @@ details:not([open]) .tab-title::before {
 .card-projects:hover h1 {
     color: var(--primary-accent-clr);
 }
+
+/* card icons */
 
 .card-title i {
     font-size: 1.125rem;
