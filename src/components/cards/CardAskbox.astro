@@ -13,7 +13,6 @@ import '../../utility/styles/main-styles.css'
 import '../../utility/styles/card-styles.css'
 
 import { formatDate, slugify } from '../../utility/scripts/format-fxn';
-import { undefined } from 'astro:schema';
 ---
 
 <div class="card card-askbox">
@@ -21,7 +20,7 @@ import { undefined } from 'astro:schema';
         <span>
             { user ?
                 <i class="fas fa-user"></i> <span>{user}</span> :
-                <i class="fas fa-user-secret"></i> <span>ANONYMOUS</span>
+                <i class="fas fa-user-secret"></i> <span>[REDACTED]</span>
             }
         </span>
         <span>{formatDate(date)} <i class="fas fa-arrow-up-right-from-square"></i>

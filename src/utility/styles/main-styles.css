@@ -75,11 +75,18 @@ ul:not([class]) li ul {
 }
 
 ul:not([class]) li {
-    padding: 0 0 0.25em 0.25em
+    padding: 0 0 0.25em 0.25em;
+    position: relative;
 }
 
-ul:not([class]) li::marker {
+ul:not([class]) li::before {
     content: '/';
+    position: absolute;
+    left: -0.65em;
+}
+
+ul:not([class]) li:has(b)::before {
+    top: 0.25em;
 }
 
 p:not([class]) b + a,
@@ -196,8 +203,6 @@ main {
     width: 100%;
     position: relative;
 }
-
-
 
 main::before,
 main::after {

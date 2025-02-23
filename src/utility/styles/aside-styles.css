@@ -16,14 +16,14 @@ aside {
     margin: 1em;
 }
 
-.column-wrapper ul:not([class]) {
+.column-wrapper ul.sidebar-links {
     list-style: none;
     text-align: center;
     padding: 0;
     margin: 0 auto;
 }
 
-.column-wrapper ul:not([class]) li {
+.column-wrapper ul.sidebar-links li {
     padding: 0;
     margin-bottom: 0.75em;
 }
@@ -42,7 +42,7 @@ aside {
 
 .column-wrapper h2,
 .column-wrapper p a,
-.column-wrapper ul:not([class]) li a {
+.column-wrapper ul.sidebar-links li a {
     font-family: var(--display);
     font-size: 1.5rem;
     color: white;
@@ -52,7 +52,7 @@ aside {
     transition: var(--link-transition);
 }
 
-.column-wrapper ul:not([class]) li a:hover {
+.column-wrapper ul.sidebar-links li a:hover {
     color: var(--primary-accent-clr);
     transition: var(--link-transition);
 }
