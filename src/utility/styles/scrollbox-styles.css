@@ -25,6 +25,7 @@
 .scrollbox-s { height: 150px }
 .scrollbox-m { height: 250px }
 .scrollbox-l { height: 350px }
+.scrollbox-rss { height: 750px;}
 
 .scrollbox-li a:hover,
 .scrollbox-li a:hover i {

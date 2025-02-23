@@ -1,5 +1,5 @@
 // 1. Import utilities from `astro:content`
-import { string } from 'astro/zod';
+import { string, undefined } from 'astro/zod';
 import { defineCollection,  z, type SchemaContext } from 'astro:content';
 
 // 2. Define your collection(s)
@@ -8,6 +8,8 @@ const allNewsletters
   type: 'content',
   schema: z.object({
       title: z.string(),
+      description: z.string(),
+      uploadDate: z.date(),
       date: z.date(),
 
 })});

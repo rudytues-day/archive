@@ -1,0 +1,243 @@
+---
+import '../../utility/reset.css';
+import '../../utility/styles/main-styles.css';
+import '../../utility/styles/form-styles.css';
+
+import viewport from '../../utility/image/viewport4.png';
+
+import Image from 'astro/components/Image.astro';
+// import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
+import LandingLayout from '../../layouts/LandingLayout.astro';
+import Card from '../../components/cards/Card.astro';
+
+import CardConstruction from '../../components/cards/CardConstruction.astro';
+
+import '../../utility/styles/scrollbox-styles.css';
+import { sortByUploadDate } from "../../utility/scripts/sort-fxn";
+import { formatDate } from "../../utility/scripts/format-fxn";
+
+const entries = await getCollection("entries");
+const newsletters = await getCollection("newsletters");
+const feeds = [...entries, ...newsletters].sort(sortByUploadDate);
+
+interface feeds {
+    title: string;
+    description: string;
+    date: Date;
+    thumb?: ImageMetadata;
+    Nsfw?: boolean;
+    Dd?: boolean;
+}
+
+console.log("thumb" in feeds[10].data)
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    
+    <title>RUDY TUESDAY</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Darumadrop+One&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">    
+
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+        
+</head>
+
+<body>
+    <h1>RSS FEEDS</h1>
+
+    copy and paste the urls below into your newsreader to subscribe.
+
+    <p><b>HTTPS://RUDYTUES.DAY<br/>
+        HTTPS://RUDYTUES.DAY/ARCHIVE</b></p>
+
+    <h1>UPDATES</h1>
+
+<ul class="scrollbox scrollbox-dark scrollbox-rss">
+    {feeds.map((update) => 
+        <li>
+            { update.data.thumb != null ? 
+                (
+                <Image src={update.data?.thumb.src}
+                        alt=""
+                        class="thumb"
+                    />
+                ) : (
+                <Image src={viewport}
+                        alt=""
+                        class="image"
+                    />
+                )
+            }
+            <div class="content">
+                <h2>
+                    <span>
+                        {update.data.title}
+                        {update.data.Nsfw && <i class="fas fa-ban"></i>}
+                        {update.data.Dd && <i class="fas fa-feather"></i>}
+                    </span>
+                    <span>{formatDate(update.data.uploadDate)}</span>
+                </h2>
+                <p>{update.data.description}</p>
+            </div>
+        </li>
+        )}
+</ul>
+</body>
+    <style>
+
+        h1 {
+            margin-block: 1em;
+        }
+    
+        body {
+            color: #fff;
+            background-color: var(--primary-clr-dark); 
+            line-height: 1.6;
+            padding: 1.5em;
+            text-align: center;
+        }
+        .scrollbox p {
+            margin: 0.75em 0em;
+            text-align: left;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+                    line-clamp: 2;
+            overflow: hidden;
+        }
+
+        h2 {
+            font-size: 1.325rem;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            
+        }
+
+        .content {
+            width: 100%;
+            margin-block: 0.5em 0;
+        }
+
+        .scrollbox {
+            padding: 1em;
+            margin-bottom: 3em;
+        }
+
+        li {
+            padding: 1em;
+            display: flex;
+            gap: 1.5em;
+            align-items: center;
+        
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        p {
+            margin-block: 1.75em;
+        }
+        
+        .container {
+            /* max-width: 30em;  */
+            padding: 3em 1.5em;
+            background: var(--primary-clr-med);
+            border-radius: 12px;
+        }
+
+        .image,
+        .thumb {
+            height: 75px;
+            width: 75px;
+        }
+
+        .image {
+            height:
+        }
+
+        .thumb {
+            border-radius: 0.5em;
+        }
+        
+        .verifyage-input {
+            margin: 1.25em;
+            accent-color: var(--primary-clr-med);
+        }
+
+        .fas {
+            
+        }
+
+        .scrollbox i {
+            font-size: 1.25rem; 
+            margin: 0;
+        }
+
+        .scrollbox i {
+            margin-left: 0.125em;
+        }
+
+        #counter {
+            padding-top: 1em;
+        }
+        
+        @media all and (min-width: 700px) {
+
+            body {
+                /* height: 100vh; */
+                margin: auto;
+                display: grid;
+                place-items: center;
+                padding: 1em 0;
+            }
+
+            .scrollbox {
+                width: 800px;
+            }
+
+            #counter {
+                padding-block: 1em;
+            }
+        }
+
+    </style>
+
+
+    <script>
+
+    const verifyageButton = document.getElementById("verifyage-button") as HTMLInputElement;
+    const verifyageCheckbox = document.getElementById("verifyage-checkbox") as HTMLInputElement;
+        
+    verifyageButton?.addEventListener("click", () => {
+        // let url: URL = new URL(window.location.href);
+        if (verifyageCheckbox?.checked) {
+            localStorage.setItem("ageVerified", "✓");
+            if (window.location.search.startsWith("?returnto=")) {
+                window.location.href = window.location.search.substring("?returnto=".length);
+            } else {
+                window.location.href = "/";
+            }
+        } else {
+            alert("you must be 18 years or older to submit");
+        }
+    });
+
+    </script>
+    
+    </body>
+</html>

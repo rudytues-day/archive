@@ -1,0 +1,122 @@
+---
+import '../utility/reset.css';
+import '../utility/styles/main-styles.css';
+import '../utility/styles/form-styles.css';
+
+import viewport from '../utility/image/viewport4.png';
+
+import Image from 'astro/components/Image.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    
+    <title>RUDY TUESDAY</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Darumadrop+One&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">    
+
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+        
+</head>
+
+<body>
+    <div class="container">
+        <slot/>
+    </div>
+    <slot name="counter" />
+</body>
+    <style>
+    
+        body {
+            color: #fff;
+            background-color: var(--primary-clr-dark); 
+            line-height: 1.6;
+            padding: 1.5em;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 1em auto;
+            max-width: 15ch;
+            text-align: center;
+        }
+
+        p {
+            margin-block: 1.5em;
+        }
+        
+        .container {
+            /* max-width: 30em;  */
+            padding: 3em 1.5em;
+            background: var(--primary-clr-med);
+            border-radius: 12px;
+        }
+
+        .image {
+            width: fit-content;
+            margin-inline: auto;
+        }
+        
+        .verifyage-input {
+            margin: 1.25em;
+            accent-color: var(--primary-clr-med);
+        }
+
+        .fa-solid {
+            font-size: 0.9em; 
+        }
+
+        #counter {
+            padding-top: 1em;
+        }
+        
+        @media all and (min-width: 700px) {
+
+            body {
+                height: 100vh;
+                margin: auto;
+                display: grid;
+                place-items: center;
+                padding: 1em 0;
+            }
+
+            #counter {
+                padding-block: 1em;
+            }
+        }
+
+    </style>
+
+
+    <script>
+
+    const verifyageButton = document.getElementById("verifyage-button") as HTMLInputElement;
+    const verifyageCheckbox = document.getElementById("verifyage-checkbox") as HTMLInputElement;
+        
+    verifyageButton?.addEventListener("click", () => {
+        // let url: URL = new URL(window.location.href);
+        if (verifyageCheckbox?.checked) {
+            localStorage.setItem("ageVerified", "✓");
+            if (window.location.search.startsWith("?returnto=")) {
+                window.location.href = window.location.search.substring("?returnto=".length);
+            } else {
+                window.location.href = "/";
+            }
+        } else {
+            alert("you must be 18 years or older to submit");
+        }
+    });
+
+    </script>
+    
+    </body>
+</html>
