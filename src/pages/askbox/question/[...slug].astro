@@ -2,12 +2,14 @@
 import AskboxLayout from '../../../layouts/AskboxLayout.astro';
 import CardAskbox from '../../../components/cards/CardAskbox.astro';
 
+import type { GetStaticPaths } from 'astro';
+
 import { getCollection } from "astro:content";
 import { render } from 'astro:content';
 import { slugify, formatDate } from '../../../utility/scripts/format-fxn';
 
 export async function getStaticPaths() {
-	const questions = await getCollection("entries");
+	const questions = await getCollection("questions");
 	return questions.map(question => {
 		return {
 			params: { slug: question.slug },
@@ -28,38 +30,55 @@ const {
     tags
 } = Astro.props;
 
-const { page } = Astro.props;
-
-const { Content } = await render(question);
-
+const { slug }  = Astro.params;
+const { Content } = await render(question)
 ---
 
 <AskboxLayout>
 
     <h1 slot="h1-title">ASKBOX</h1>
-                <div class="question-wrapper">
-                    { question.map(async (q) => {
-                        const { Content } = await render(q);
-                        return (
-                            <div class="q-card-wrapper">
-                                <CardAskbox
-                                    user={user}
-                                    date={date}
-                                    tags={tags}
-                                >
-                                    <Content />
-                                </CardAskbox>
-                            </div>
-                        )
-                    })}
-                </div>
+        <div class="question-wrapper">
+                <div class="q-card-wrapper">
+                    <CardAskbox
+                        slug={slug}
+                        user={user}
+                        date={date}
+                        tags={tags}
+                    >
+                        <Content />
+                    </CardAskbox>
+                </div>  
             </div>
+            <div class="button-wrapper"><button id="return">BACK</button></div>
+        </div>
 
 </AskboxLayout>
+
+<script>
+    
+function backToAskbox() {
+    const previousPage = document.referrer;
+    if (previousPage == null || previousPage.indexOf(`${Astro.site?.origin}/askbox`) > -1) {
+        history.back()
+    } else {
+        window.location.href = `${Astro.site?.origin}/askbox`
+    }
+}
+
+const backButton = document.getElementById("return")
+backButton?.addEventListener("click", () => {
+    backToAskbox()
+})
+    
+</script>
 
 <style>
 		h1:not([class]) {
 		margin-bottom: 3.5rem
 	}
+
+    .button-wrapper {
+        margin-block: 3em;
+    }
 	
 </style>

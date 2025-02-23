@@ -122,10 +122,11 @@ import { render } from 'astro:content';
 								.filter(tag => tag !== undefined)
 								.map((tag) => {
 								return (
-									<li class="tag"><a href="">{tag}</a></li>
+									<li class="tag"><a href={`/askbox/tagged/${slugify(tag)}`}>{tag}</a></li>
 								)
 							})}
 						</ul>
+						<slot name="return"/>
 					</div>
 				</CardFolder>
 				<CardFolder

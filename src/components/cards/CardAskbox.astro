@@ -1,21 +1,24 @@
 ---
 interface Props {
+    slug: string;
 	user?: string;
 	date?: Date;
     tags?: Array<string>;
-    collapsed?: boolean
+    collapsed?: boolean;
 }
 
-const { date, user, collapsed, tags } = Astro.props as Props;
+const { slug, date, user, collapsed, tags } = Astro.props as Props;
 
 import '../../utility/styles/tag-styles.css'
 import '../../utility/styles/main-styles.css'
 import '../../utility/styles/card-styles.css'
 
 import { formatDate, slugify } from '../../utility/scripts/format-fxn';
+
 ---
 
 <div class="card card-askbox">
+    <a href={`/askbox/question/${slug}/`}>
     <h1 class="card-title">
         <span>
             { user ?
@@ -26,6 +29,7 @@ import { formatDate, slugify } from '../../utility/scripts/format-fxn';
         <span>{formatDate(date)} <i class="fas fa-arrow-up-right-from-square"></i>
         </span>
     </h1>
+</a>
     <div class="card-body">
         { collapsed ?
             (<div class="answer collapsed">
@@ -83,6 +87,10 @@ import { formatDate, slugify } from '../../utility/scripts/format-fxn';
 
     .fa-arrow-up-right-from-square {
         margin-inline: 0.25em 0em;
+    }
+
+    h1:hover {
+        color: var(--primary-accent-clr)
     }
 
 </style>

@@ -20,19 +20,17 @@ const qA = questions.filter(q => q.data.faq === undefined);
 const faqQ = questions.filter(q => q.data.faq === true);
 
 import { formatDate } from "../../utility/scripts/format-fxn";
-
-const allQuestionTags = tagsByFrequency(questions);
-const askboxTagCloud = allQuestionTags
-
 ---
+
 <AskboxLayout pageTitle="ASKBOX">
     <h1 slot="h1-title">ASKBOX</h1>
                 <div class="question-wrapper">
-                    { qA.map(async (q) => {
+                    { qA.slice(0,6).map(async (q) => {
                         const { Content } = await render(q);
                         return (
                             <div class="q-card-wrapper">
                                 <CardAskbox
+                                    slug={q.slug}
                                     user={q.data.user}
                                     date={q.data.date}
                                     tags={q.data.tags}
@@ -45,7 +43,6 @@ const askboxTagCloud = allQuestionTags
                     })}
                 </div>
             </div>
-    </main>
     <style>
 
         .two-column {
