@@ -94,6 +94,10 @@
     }
 }
 
+.q-card-wrapper {
+    margin: 0 1em 2em 0em
+}
+
 @media all and (min-width: 1000px) {
 
     .archive-card-wrapper {

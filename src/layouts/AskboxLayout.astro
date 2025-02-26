@@ -75,81 +75,93 @@ import { render } from 'astro:content';
 		
 		<Header />
 		<main>
-			<slot name="h1-title"/>
 
-		<div class="two-column">
-			<div class="folder">
-				<CardFolder
-					tabTitle="ASK"
-					index={true}
-					id="">
-					<div class="askbox">
-						<form
-							action="https://formspree.io/f/xnnaeobz"
-							method="POST"
-							class="ask"
-							>
-							<div class="form-flex">
-								<label for="name">NAME</label>
-								<input
-									type="text"
-									name="name"
-									id="name"
-								/>
+				<div class="two-column">
+					<div>
+						<h1><a href="/askbox">ASKBOX</a></h1>
+						<div class="askbox-wrapper">
+							<div class="folder">
+								<CardFolder
+									tabTitle="ASK"
+									index={true}
+									id="">
+									<div class="askbox">
+										<form
+											action="https://formspree.io/f/xnnaeobz"
+											method="POST"
+											class="ask"
+											>
+											<div class="form-flex">
+												<label for="name">NAME</label>
+												<input
+													type="text"
+													name="name"
+													id="name"
+												/>
+											</div>
+											<div class="form-flex">
+													<label for="email">EMAIL</label>
+													<input
+														type="email"
+														name="email"
+														id="email"
+														/>
+												</div>
+											<label for="question">QUESTION</label>
+												<textarea
+													class="ask"
+													name="question"
+													id="question"
+													rows="5"
+													required=""
+													aria-required="true"
+													></textarea>
+											<button type="submit">SEND</button>
+										</form>
+											<p style="text-align: center">fields denoted with a <i class="fas fa-asterisk"></i> are required.</p>
+										<ul class="tags tag-cloud tag-cloud-card">
+											{ tagsByFrequency(questions)
+												.filter(tag => tag !== undefined)
+												.map((tag) => {
+												return (
+													<li class="tag"><a href={`/askbox/tagged/${slugify(tag)}`}>{tag}</a></li>
+												)
+											})}
+										</ul>
+									</div>
+								</CardFolder>
+								<CardFolder
+									tabTitle="FREQUENTLY ASKED QUESTIONS"
+									index={false}
+									id="faq">
+									{ faqQ.map(async (q) => {
+										const { Content } = await render(q);
+											return (
+												<div class="faq-wrapper">
+													<Content />
+												</div>
+											)
+										})
+									}
+									<div class="faq-wrapper">
+										<blockquote><p></p></blockquote>
+										<p></p>
+									</div>
+									
+								</CardFolder>
 							</div>
-							<div class="form-flex">
-									<label for="email">EMAIL</label>
-									<input
-										type="email"
-										name="email"
-										id="email"
-										/>
-								</div>
-							<label for="question">QUESTION</label>
-								<textarea
-									class="ask"
-									name="question"
-									id="question"
-									rows="5"
-									required=""
-									aria-required="true"
-									></textarea>
-							<button type="submit">SEND</button>
-						</form>
-							<p style="text-align: center">fields denoted with a <i class="fas fa-asterisk"></i> are required.</p>
-						<ul class="tags tag-cloud tag-cloud-card">
-							{ tagsByFrequency(questions)
-								.filter(tag => tag !== undefined)
-								.map((tag) => {
-								return (
-									<li class="tag"><a href={`/askbox/tagged/${slugify(tag)}`}>{tag}</a></li>
-								)
-							})}
-						</ul>
-						<slot name="return"/>
+						</div>
 					</div>
-				</CardFolder>
-				<CardFolder
-					tabTitle="FREQUENTLY ASKED QUESTIONS"
-					index={false}
-					id="faq">
-					{ faqQ.map(async (q) => {
-						const { Content } = await render(q);
-							return (
-								<div class="faq-wrapper">
-									<Content />
-								</div>
-							)
-						})
-					}
-				</CardFolder>
-		</div>
 
-        <div class="">
-			<slot />
-		</div>
-	</div>
-</main>
+					<div>
+						<slot name="h1-header"></slot>
+						<slot />
+					</div>
+				</div>
+
+			<slot name="pagination"/>
+
+		</main>
 		<ToTop/>
 		
 		<Footer />
@@ -159,24 +171,46 @@ import { render } from 'astro:content';
 </html>
 
 <style>
+
+		h1 {
+			margin-top: 0;
+			margin-bottom: 1.75em;
+		}
+
 	    .two-column {
             margin: 4.5em 1em;
             display: grid;
             gap: 3em;
         }
 
-		h1 .accent {
-			color: var(--primary-clr-accent) !important;
+		.faq-wrapper {
+			margin-bottom: 2.25em;
 		}
 
 		@media all and (min-width: 1000px) {
     .two-column {
         display: grid;
         grid-template-columns: 1fr 1.5fr;
+		grid-template-rows: repeat(2fr, fit-content);
         align-items: start;
-		margin-inline: 3em;
+		margin: 4.5em 3em 0em 3em;
 
     }
 }
 
 </style>
+
+<script>
+	import lastQs from '../pages/askbox/lastQ.json';
+	const random = lastQ => lastQ[Math.floor(Math.random() * lastQ.length)]
+	const lastQA = random(lastQs);
+	const lastQ = lastQA.q
+	const lastA = lastQA.a
+
+	const faqWrapper = document.getElementById("faq")?.querySelector(".folder-body")?.lastElementChild
+	const faqBQ = faqWrapper?.querySelector("blockquote p")
+	const faqP = faqWrapper?.lastElementChild
+	faqBQ!.textContent = lastQ
+	faqP!.textContent = lastA
+	
+</script>

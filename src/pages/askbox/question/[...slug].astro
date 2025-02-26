@@ -1,6 +1,7 @@
 ---
 import AskboxLayout from '../../../layouts/AskboxLayout.astro';
 import CardAskbox from '../../../components/cards/CardAskbox.astro';
+import '../../../utility/styles/tag-styles.css';
 
 import type { GetStaticPaths } from 'astro';
 
@@ -19,9 +20,9 @@ export async function getStaticPaths() {
 				renderContent: question.render,
 				...question.data
 			}
-		}
+		};
 	});
-}
+};
 
 const {  
     question,
@@ -36,21 +37,39 @@ const { Content } = await render(question)
 
 <AskboxLayout>
 
-    <h1 slot="h1-title">ASKBOX</h1>
+    <h1 slot="h1-title"></h1>
         <div class="question-wrapper">
                 <div class="q-card-wrapper">
-                    <CardAskbox
-                        slug={slug}
-                        user={user}
-                        date={date}
-                        tags={tags}
-                    >
-                        <Content />
-                    </CardAskbox>
+                    <div class="card card-askbox">
+                        <a href={`/askbox/question/${slug}/`}>
+                        <h1 class="card-title">
+                            <span>
+                                { user ?
+                                    <i class="fas fa-user"></i> <span>{user}</span> :
+                                    <i class="fas fa-user-secret"></i> <span>[REDACTED]</span>
+                                }
+                            </span>
+                            <span>{formatDate(date)} <i class="fas fa-arrow-up-right-from-square"></i>
+                            </span>
+                        </h1>
+                    </a>
+                        <div class="card-body">
+                    
+                            <div class="answer">
+                                <Content />
+                            </div>
+                            { tags &&
+                                <ul class="tags tag-cloud tag-cloud-askbox">
+                                    {tags.map((tag) => (
+                                        <li class="tag"><a href={`/askbox/tagged/${slugify(tag)}`}>{tag}</a></li>
+                                    ))}
+                                </ul>
+                            }
+                        </div>
+                    </div>
+                    
                 </div>  
             </div>
-            <div class="button-wrapper"><button id="return">BACK</button></div>
-        </div>
 
 </AskboxLayout>
 
@@ -58,10 +77,10 @@ const { Content } = await render(question)
     
 function backToAskbox() {
     const previousPage = document.referrer;
-    if (previousPage == null || previousPage.indexOf(`${Astro.site?.origin}/askbox`) > -1) {
+    if (previousPage == null || previousPage.indexOf("askbox") > -1) {
         history.back()
     } else {
-        window.location.href = `${Astro.site?.origin}/askbox`
+        window.location.href = "http://localhost:4321/askbox"
     }
 }
 
@@ -73,12 +92,14 @@ backButton?.addEventListener("click", () => {
 </script>
 
 <style>
-		h1:not([class]) {
-		margin-bottom: 3.5rem
-	}
 
-    .button-wrapper {
-        margin-block: 3em;
+    .card-body .tags {
+        margin-top: 2.5em;    
     }
-	
+
+    .question-wrapper {
+        margin-top: 5.5rem;
+    }
+
+
 </style>

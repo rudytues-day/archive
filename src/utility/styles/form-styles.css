@@ -55,7 +55,8 @@ li[aria-required="true"]::after {
 }
 
 button:not([class]),
-input[type="submit"] {
+input[type="submit"],
+.read-more {
     background-color: var(--primary-clr-dark);
     color: var(--white-clr);
     margin: auto;
@@ -68,6 +69,10 @@ input[type="submit"] {
     border-color: #000;
     width: 8em;
     cursor: pointer;
+}
+
+.read-more {
+    font-size: 1.25rem;
 }
 
 .button-wrapper {
@@ -88,6 +93,11 @@ textarea {
     padding: 0.25em 0.75em;
     font-family: inherit;
 }
+
+    .verifyage-input {
+        margin-block: 2em 1.5em;
+        accent-color: var(--primary-clr-med);
+    }
 
 input[type="text"],
 input[type="email"] {

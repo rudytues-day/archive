@@ -4,17 +4,16 @@ interface Props {
 	user?: string;
 	date?: Date;
     tags?: Array<string>;
-    collapsed?: boolean;
 }
 
-const { slug, date, user, collapsed, tags } = Astro.props as Props;
+const { slug, date, user, tags } = Astro.props as Props;
 
 import '../../utility/styles/tag-styles.css'
 import '../../utility/styles/main-styles.css'
 import '../../utility/styles/card-styles.css'
+import '../../utility/styles/form-styles.css'
 
 import { formatDate, slugify } from '../../utility/scripts/format-fxn';
-
 ---
 
 <div class="card card-askbox">
@@ -31,15 +30,10 @@ import { formatDate, slugify } from '../../utility/scripts/format-fxn';
     </h1>
 </a>
     <div class="card-body">
-        { collapsed ?
-            (<div class="answer collapsed">
-                <slot />
-                <button class="read-more">READ MORE</button>
-            </div>)
-            : (<div class="answer">
-                <slot />
-            </div>) 
-        }
+
+        <div class="answer">
+            <slot />
+        </div>
         { tags &&
             <ul class="tags tag-cloud tag-cloud-askbox">
                 {tags.map((tag) => (
@@ -51,39 +45,46 @@ import { formatDate, slugify } from '../../utility/scripts/format-fxn';
 </div>
 
 <style>
+
+    .card-body {
+        display: grid;
+        gap: 0.125em;
+        align-items: start;
+    }
+
     .answer {
         margin: 0em auto 1em auto;
         position: relative;
+        width: 100%;
     }
 
     .answer.collapsed {
-        /* max-height: 20rem; */
-        /* overflow: hidden; */
+        max-height: 250px;
+        overflow: hidden;
     }
 
-    .answer.collapsed:after {
-        content: "";
-        z-index: 9;
-        height: 100%;
-        width: 100%;
-        background: linear-gradient(to top,
-        rgba(255, 255, 0, 1) 0%
-        rgba(0,0,255, 1) 100%);
-        position: absolute;
-        bottom: 0;
+    .answer.collapsed:before {
+        content:'';
+        width:100%;
+        height:100%;    
+        position:absolute;
+        left: 0;
+        top: 0;
+        background: linear-gradient(transparent 40%, white);
     }
+
 
     .read-more {
         /* position: absolute; */
+        display: block;
         margin: auto;
+        text-align: center;
+        /* align-self: center; */
     }
 
-    /* .collapsed {
-        display: -webkit-box;
-        -webkit-line-clamp: 10;
-                line-clamp: 10;
-                text-overflow: ellipsis;
-    } */
+    .collapsed {
+
+    }
 
     .fa-arrow-up-right-from-square {
         margin-inline: 0.25em 0em;
@@ -97,24 +98,26 @@ import { formatDate, slugify } from '../../utility/scripts/format-fxn';
 
 <script>
 
-    const readMoreBtn = document.querySelectorAll(".read-more");
+const answers = document.querySelectorAll(".answer");
 
-    
-    readMoreBtn.forEach(button => {
-        button.addEventListener("click", () => {
-            // let getAnswer = function(button, selector) {
-                let answer = button.previousElementSibling;
-                console.log(answer);
-                answer?.classList.toggle("red")
-            }
-        // let newsletters = document.querySelectorAll(".answer");
-        // console.log(newsletters);
-        // newsletters.forEach(letter => {
-        //     letter.classList.toggle("red")
-        // });
-    )
-})
+answers.forEach((answer) => {
+if (answer.getBoundingClientRect().height > 250) {
+    answer.classList.add("collapsed");
+        let readMoreBtn = document.createElement("button");
+        readMoreBtn.textContent = "READ MORE"; 
+        readMoreBtn.classList.add("read-more");
+        answer.parentNode?.insertBefore(readMoreBtn, answer.nextSibling);
+    };
+});
 
-;
+const readMoreBtns = document.querySelectorAll("button");
+
+readMoreBtns?.forEach((button) => {
+    button?.addEventListener("click", () => {
+        let answerCollapse = button.closest("div")?.querySelector(".answer");
+        const collapse = answerCollapse?.classList.toggle("collapsed");
+        button.textContent = collapse ? "READ MORE" : "CLOSE";
+    })
+});
 
 </script>

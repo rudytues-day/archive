@@ -1,0 +1,116 @@
+---
+import AskboxLayout from "../../layouts/AskboxLayout.astro";
+import CardAskbox from "../../components/cards/CardAskbox.astro";
+import type { GetStaticPaths } from "astro";
+
+import CardFolder from "../../components/cards/CardFolder.astro";
+
+import Pagination from "../../components/Pagination.astro";
+
+import { slugify } from "../../utility/scripts/format-fxn";
+import { tagsByFrequency, sortByDate } from "../../utility/scripts/sort-fxn";
+
+import '../../utility/styles/main-styles.css';
+import '../../utility/styles/wrapper-styles.css';
+import '../../utility/styles/form-styles.css';
+import '../../utility/styles/tag-styles.css';
+
+export const getStaticPaths = (async ( { paginate } ) => {
+    const questions = await getCollection("questions");
+    const filterQs = questions.filter(q => q.data.faq === undefined)
+	const sortedQs = filterQs.sort(sortByDate).toReversed();
+    return paginate(sortedQs, {
+        pageSize: 5,
+    })
+}) satisfies GetStaticPaths;
+
+import { getCollection } from "astro:content";
+import { render } from "astro:content";
+
+const questions = await getCollection("questions");
+const qA = questions.filter(q => q.data.faq === undefined);
+const faqQ = questions.filter(q => q.data.faq === true);
+
+const { page } = Astro.props;
+
+const pathname = new URL(Astro.request.url).pathname.split('/');
+
+const firstPath = pathname[1];
+---
+
+<AskboxLayout pageTitle="ASKBOX">
+    <h1 slot="h1-title">ASKBOX</h1>
+        <div class="question-wrapper">
+            { page.data.map(async (q) => {
+                const { Content } = await render(q);
+                return (
+                    <div class="q-card-wrapper">
+                        <CardAskbox
+                            slug={q.slug}
+                            user={q.data.user}
+                            date={q.data.date}
+                            tags={q.data.tags}
+                            collapsed={q.data.collapsed}
+                        >
+                            <Content />
+                        </CardAskbox>
+                    </div>
+                )
+            })}
+        </div>
+
+        <div slot="pagination">
+            <Pagination
+                firstUrl={`/${firstPath}`}
+                prevUrl={page.url.prev}
+                currentPage={page.currentPage}
+                currentUrl={page.url.current}
+                nextUrl={page.url.next}
+                lastUrl={`/${firstPath}/${page.lastPage}`}
+            />
+        </div>
+
+    </AskboxLayout>
+    <style>
+
+        .two-column {
+            margin: 4.5em 1em;
+            display: grid;
+            gap: 1em;
+        }
+
+        .folder {
+            margin: 0 1em 3em 1em
+        }
+
+        .question-wrapper {
+            margin-top: 5.5rem;
+        }
+
+
+@media all and (max-width: 700px) {
+    label {
+        text-align: center;
+        justify-content: center;
+    }
+
+    textarea {
+        max-width: 100%;
+        resize: none;
+    }
+
+}
+@media all and (min-width: 700px) {
+
+}
+
+@media all and (min-width: 1000px) {
+    .two-column {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        align-items: start;
+
+    }
+}
+    </style>
+</Layout>

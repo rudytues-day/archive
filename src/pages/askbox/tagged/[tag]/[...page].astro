@@ -16,10 +16,10 @@ export const getStaticPaths = ( async ({paginate}) => {
     question.data.tags)))];
     const filteredTags = allTags.filter(tag => tag !== undefined);
     return filteredTags.flatMap((tag) => {
-        const thisTagQs = taggedQs.sort(sortByAskDate).toReversed().filter((q) =>
+        const thisTagQs = taggedQs.sort(sortByAskDate).filter((q) =>
             q.data.tags?.includes(tag));
         return paginate(thisTagQs, { 
-            pageSize: 12,
+            pageSize: 5,
             params: { tag: `${slugify(tag)}` },
             props: { tag: tag }
         });
@@ -29,10 +29,11 @@ export const getStaticPaths = ( async ({paginate}) => {
 const { page, tag } = Astro.props;
 
 
-const pathName = new URL(Astro.request.url).pathname.slice(0, -1);
-
 const titleTag = tag.toUpperCase();
 const pageTitle = `ASKBOX / QUESTIONS TAGGED ${titleTag}`;
+
+const pathname = new URL(Astro.request.url).pathname.slice(0, -1);
+const firstPath = pathname[1];
 
 import '../../../../utility/styles/wrapper-styles.css';
 import '../../../../utility/styles/tag-styles.css';
@@ -42,36 +43,38 @@ import { sortByCreationDate } from "../../../../utility/scripts/sort-fxn";
 
 <AskboxLayout
     pageTitle={pageTitle}>
-    <h1 slot="h1-title">QUESTIONS TAGGED <span>{titleTag}</span></h1>
-    <!-- <div class="button-wrapper" slot="return">
-        <div class="tag-button"><a href="/askbox">RETURN</a></div>
-    </div> -->
-            {
-                page.data.map(async (question) => {
-                const { Content } = await render(question);
-                return (
-                    <div class="q-card-wrapper">
-                        <CardAskbox
-                            slug={question.slug}
-                            user={question.data.user}
-                            date={question.data.date}
-                            tags={question.data.tags}
-                        >
-                            <Content />
-                        </CardAskbox>
-                    </div>
-                )})
-            }
+    <h1 slot="h1-header">QUESTIONS TAGGED <span>{titleTag}</span></h1>
+            <div class="question-wrapper">
+                {
+                    page.data.map(async (question) => {
+                    const { Content } = await render(question);
+                    return (
+                        <div class="q-card-wrapper">
+                            <CardAskbox
+                                slug={question.slug}
+                                user={question.data.user}
+                                date={question.data.date}
+                                tags={question.data.tags}
+                            >
+                                <Content />
+                            </CardAskbox>
+                        </div>
+                    )})
+                }
+            </div>
         </div>
 
-        <Pagination 
-            firstUrl={pathName}
-            prevUrl={page.url.prev} 
-            currentUrl={page.url.current}
-            currentPage={page.currentPage}
-            nextUrl={page.url.next}
-            lastUrl={`${pathName}/${page.lastPage}`}
-        />
+        <div slot="pagination">
+            <Pagination
+                firstUrl={page.url.first}
+                prevUrl={page.url.prev}
+                currentPage={page.currentPage}
+                currentUrl={page.url.current}
+                nextUrl={page.url.next}
+                lastUrl={page.url.last}
+            />
+                </div>
+
 
 </AskboxLayout>
 
@@ -80,9 +83,8 @@ import { sortByCreationDate } from "../../../../utility/scripts/sort-fxn";
 span {
     color: var(--primary-accent-clr)
 }
-
-.q-card-wrapper {
-            margin: 0 1em 2em 0em
-        }
+h1 {
+    margin-bottom: 1.75em;
+}
 
 </style>

@@ -320,7 +320,6 @@ thumbnails.forEach(thumbnail => {
     thumbnail.addEventListener('click', function() {
         const thumbImage = thumbnail.querySelector(".image");
         const displayImage = galleryDisplay?.querySelector(".image");
-        console.log(displayImage)
         if (!thumbImage || !displayImage) {
             return;
         }
