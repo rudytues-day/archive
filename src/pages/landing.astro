@@ -8,40 +8,36 @@ import viewport from '../utility/image/viewport4.png';
 import Image from 'astro/components/Image.astro';
 import LandingLayout from '../layouts/LandingLayout.astro';
 ---
-<LandingLayout>
 
-    <div class="container">
-        <div class="image">
-            <Image
-                src={viewport}
-                alt=""
-            />
+    <LandingLayout>
+
+        <div class="container">
+            <div class="image">
+                <Image
+                    src={viewport}
+                    alt=""
+                />
+            </div>
+            <h1>THANK GOD IT'S TUESDAY</h1>
+            <p>my work contains transgressive adult themes intended for mature audiences only, including but not limited to non-con/dub-con, csa/cocsa, major age gaps and incest.</p>
+            <p>this site is not work safe and contains erotic imagery and writing. <span class="fa-solid fa-ban" aria-label="ban symbol"></span> denotes adult content and <span class="fa-solid fa-feather" aria-label="feather-symbol"></span> denotes content for which the above warnings apply.</p>
+            <p><b>viewer discretion is advised.</b></p>
+            <p>by submitting below you affirm that you are at least 18 years of age, aware of the content warnings provided and consent to viewing such materials.</p>
+            <div class="verifyage-input">
+                <input type="checkbox" id="verifyage-checkbox">
+                <label for="verifyage">i affirm</label>
+            </div>
+            <button id="verifyage-button" type="button">SUBMIT</button>
+            
+                </div>
         </div>
-        <h1>THANK GOD IT'S TUESDAY</h1>
-    
-        <p>my work contains transgressive adult themes intended for mature audiences only, including but not limited to non-con/dub-con, csa/cocsa, major age gaps and incest.</p>
 
-        <p>this site is not work safe and contains erotic imagery and writing. <span class="fa-solid fa-ban" aria-label="ban"></span> denotes adult content and <span class="fa-solid fa-feather" aria-label="feather"></span> denotes content for which the above warnings apply.</p>
-        <p><b>viewer discretion is advised.</b></p>
-
-        <p>by submitting below you affirm that you are at least 18 years of age, aware of the content warnings provided and consent to viewing such materials.</p>
-
-        <div class="verifyage-input">
-            <input type="checkbox" id="verifyage-checkbox">
-            <label for="verifyage">i affirm</label>
-        </div>
-        <button id="verifyage-button" type="button">SUBMIT</button>
-
-    </div>
-
-    
     <div id="counter" slot="counter">
         <script language="javascript" type="text/javascript" src="//counter1.fc2.com/counter.php?id=40217935&main=1"></script><noscript><img src="//counter1.fc2.com/counter_img.php?id=40217935&main=1" /></noscript>
     </div>
 </LandingLayout>
 
 <style>
-        <style>
     
     body {
         color: #fff;
@@ -54,18 +50,11 @@ import LandingLayout from '../layouts/LandingLayout.astro';
     h1 {
         margin: 1em auto;
         max-width: 15ch;
-        text-align: center;
     }
 
     p {
         margin-block: 1.5em;
-    }
-    
-    .container {
-        max-width: 30em; 
-        padding: 0em 1em;
-        background: var(--primary-clr-med);
-        border-radius: 12px;
+        text-wrap:pretty;
     }
 
     .image {
@@ -73,32 +62,17 @@ import LandingLayout from '../layouts/LandingLayout.astro';
         margin-inline: auto;
     }
     
-    .verifyage-input {
+    /* .verifyage-input {
         margin: 1.25em;
         accent-color: var(--primary-clr-med);
-    }
+    } */
 
     .fa-solid {
         font-size: 0.9em; 
     }
 
     #counter {
-        padding-top: 1em;
-    }
-    
-    @media all and (min-width: 700px) {
-
-        body {
-            height: 100vh;
-            margin: auto;
-            display: grid;
-            place-items: center;
-            padding: 1em 0;
-        }
-
-        #counter {
-            padding-block: 1em;
-        }
+        padding-block: 1em;
     }
 
 </style>

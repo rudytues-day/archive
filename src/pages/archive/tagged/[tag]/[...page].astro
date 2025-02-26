@@ -36,6 +36,9 @@ import '../../../../utility/styles/wrapper-styles.css';
 <ArchiveLayout
     pageTitle=`ARCHIVE / QUESTIONS TAGGED ${titleTag}`>
 
+
+    <h1>ENTRIES TAGGED <span>{titleTag}</span></h1>
+
         <div class="card-wrapper tile-masonry-wrapper">
             {
                 page.data.map(async (entry) => {
@@ -65,13 +68,3 @@ import '../../../../utility/styles/wrapper-styles.css';
         />
 
 </Layout>
-
-<style>
-
-
-    span {
-        color: var(--primary-accent-clr)
-    }
-
-
-</style>

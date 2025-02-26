@@ -5,13 +5,13 @@
     --primary-clr-200: hsl(261, 10%, 40%);
 
     --primary-accent-clr: #F40662;
-    --primary-link-clr: #BF95A5;
+    --primary-link-clr: hsl(333, 36%, 56%);
     --white-clr: #ffffff;
 
-    --bg-clr: #FBFBFB;
+    --bg-clr: #f9f0f;
     --display: "Darumadrop One";
     --body: 'Averia Libre';
-}
+};
 
 *,
 *::before,

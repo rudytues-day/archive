@@ -25,7 +25,7 @@
 .scrollbox-s { height: 150px }
 .scrollbox-m { height: 250px }
 .scrollbox-l { height: 350px }
-.scrollbox-rss { height: 750px;}
+.scrollbox-rss { height: 750px; width: 800px;}
 
 .scrollbox-li a:hover,
 .scrollbox-li a:hover i {
@@ -59,6 +59,16 @@
 
 .scrollbox i {
     margin: 0em 0.125em;
+}
+
+.scrollbox-rss p {
+    margin: 1em 0em;
+    text-align: left;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+            line-clamp: 2;
+    overflow: hidden;
 }
 
 @media all and (min-width: 700px) {

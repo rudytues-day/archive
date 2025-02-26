@@ -16,6 +16,8 @@
     --__card-margin: auto;
 }
 
+
+
 .card-archive,
 .card-projects {
     --__card-margin: 0 0 3em 0;
@@ -47,8 +49,7 @@
 }
 
 .card-archive h1,
-.card-projects h1
-.card-askbox h1 {
+.card-projects h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -56,8 +57,11 @@
 
 .card-askbox .card-title {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 0.125em;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
 }
 
 .card-preview h1 {
@@ -128,6 +132,7 @@
     display: grid;
     place-items: center;
     text-align: center;
+    
 }
 
 .card-archive .description p {
@@ -136,10 +141,6 @@
 
 .card-preview {
     width: minmax(300px, fit-content);
-}
-
-.card-preview .card-body {
-    min-height: 21.5rem;
 }
 
 .card-preview .description {
@@ -239,6 +240,11 @@ details:not([open]) .tab-title::before {
         flex-direction: row;
         gap: 1.5em;
         padding-left: 2em;
+    }
+
+    .card-askbox .card-title {
+        flex-direction: row;
+        justify-content: space-between;
     }
 
 }

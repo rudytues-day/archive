@@ -70,8 +70,6 @@ const { Content } = await render(entry)
 	url=`https://rudytues.day/archive/entries/${slug}`
 >
 
-<h1 slot="h1-title">ARCHIVE</h1>
-
 	<div class="card-wrapper entry-card-wrapper">
 		<div class="card card-entry">
 			<h1 class="card-title">
@@ -90,7 +88,7 @@ const { Content } = await render(entry)
 					/>
 				</a>
 				<div class="description">
-					<h3 aria-hidden>{title}</h3>
+					<h3 aria-hidden class="text-center">{title}</h3>
 					<div class="content-wrapper">
 						<Content />
 					</div>
@@ -137,20 +135,8 @@ const { Content } = await render(entry)
 		width: auto;
 	}
 
-	h1:not([class]) {
-		margin-bottom: 3.5rem
-	}
-
-	/* temp fix */
-
 	h2 {
-		text-align: center;
-		font-size: 1.75rem;
 		margin-block: 2em 1em;
-	}
-
-	h3 {
-		text-align: center;
 	}
 
 	.content-wrapper {
@@ -162,12 +148,5 @@ const { Content } = await render(entry)
 	.tile-masonry-wrapper {
 		margin-bottom: 6em;
 	}
-
-	
-@media all and (min-width: 700px) {}
-	
-@media all and (min-width: 1000px) {}
-
-@media all and (min-width: 1200px) {}
 
 </style>

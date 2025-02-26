@@ -29,21 +29,22 @@ import Image from 'astro/components/Image.astro';
 </head>
 
 <body>
+
     <div class="container">
         <slot/>
     </div>
+        
     <slot name="counter" />
+
 </body>
     <style>
     
         body {
             color: #fff;
             background-color: var(--primary-clr-dark); 
-            line-height: 1.6;
-            padding: 1.5em;
+            padding: 3em 1.5em;
             text-align: center;
         }
-
         h1 {
             margin: 1em auto;
             max-width: 15ch;
@@ -55,10 +56,11 @@ import Image from 'astro/components/Image.astro';
         }
         
         .container {
-            /* max-width: 30em;  */
-            padding: 3em 1.5em;
+            max-width: 30em; 
+            padding: 3em;
             background: var(--primary-clr-med);
             border-radius: 12px;
+            margin: 1em auto
         }
 
         .image {
@@ -76,22 +78,7 @@ import Image from 'astro/components/Image.astro';
         }
 
         #counter {
-            padding-top: 1em;
-        }
-        
-        @media all and (min-width: 700px) {
-
-            body {
-                height: 100vh;
-                margin: auto;
-                display: grid;
-                place-items: center;
-                padding: 1em 0;
-            }
-
-            #counter {
-                padding-block: 1em;
-            }
+            padding-block: 1em;
         }
 
     </style>

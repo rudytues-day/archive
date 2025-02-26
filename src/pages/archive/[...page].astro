@@ -1,5 +1,6 @@
 ---
 import '../../utility/styles/wrapper-styles.css';
+import '../../utility/styles/main-styles.css';
 
 import ArchiveLayout from '../../layouts/ArchiveLayout.astro';
 import CardArchive from '../../components/cards/CardArchive.astro';
@@ -27,47 +28,47 @@ const firstPath = pathname[1];
 ---
 
 <ArchiveLayout>
-
-	<h1 slot="h1-title">ARCHIVE</h1>
 		
-<div class="card-wrapper archive-card-wrapper">
-{
-	page.data.map(async (entry) => {
-		const { Content } = await render(entry);
-		return (
-			<CardArchive
-				slug={entry.slug}
-				title={entry.data.title}
-				date={entry.data.date}
-				thumb={entry.data.thumb.src}
-				tags={entry.data.tags}
-				original={entry.data.original}
-				medium={entry.data.medium}
-				Nsfw={entry.data.Nsfw}
-				Dd={entry.data.Dd}
-				icons={entry.data.icons}
-			>
-				<Content />
-			</CardArchive>
-		)
-	})
-}
-</div>
+	<div class="card-wrapper archive-card-wrapper">
+	{
+		page.data.map(async (entry) => {
+			const { Content } = await render(entry);
+			return (
+				<CardArchive
+					slug={entry.slug}
+					title={entry.data.title}
+					date={entry.data.date}
+					thumb={entry.data.thumb.src}
+					tags={entry.data.tags}
+					original={entry.data.original}
+					medium={entry.data.medium}
+					Nsfw={entry.data.Nsfw}
+					Dd={entry.data.Dd}
+					icons={entry.data.icons}
+				>
+					<Content />
+				</CardArchive>
+			)
+		})
+	}
+	</div>
 
-	<Pagination
-		firstUrl={`/${firstPath}`}
-		prevUrl={page.url.prev}
-		currentPage={page.currentPage}
+	<Pagination 
+		firstUrl={page.url.first}
+		prevUrl={page.url.prev} 
 		currentUrl={page.url.current}
+		currentPage={page.currentPage}
 		nextUrl={page.url.next}
-		lastUrl={`/${firstPath}/${page.lastPage}`}
+		lastUrl={page.url.last}
 	/>
 
-</ArchiveLayout>
+	</ArchiveLayout>
 
 <style>
 		h1:not([class]) {
 		margin-bottom: 3.5rem
-	}
+		}
+
+		.card-wrapper {margin-top: 3em;}
 	
 </style>

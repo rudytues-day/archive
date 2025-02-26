@@ -77,6 +77,7 @@ import { slugify, formatDate } from '../utility/scripts/format-fxn.js';
 		<div class="left-column">
 
 			<main>
+				<h1><a href="/archive">ARCHIVE</a></h1>
 				<slot name="h1-title"/>
 				<slot />
 			</main>
@@ -138,29 +139,17 @@ import { slugify, formatDate } from '../utility/scripts/format-fxn.js';
 		margin-bottom: 2em;
 	}
 
+	h1:has(+ h1) {
+		margin-bottom: 1em;
+	}
+
 	main::before {
 		margin-bottom: 4rem;
 	}
 
-	/* h1::after {
-		content: "";
-		display: block;
-		width: 100%;
-		background-image: url('/imgs/chain_1_horizontal.png');
-		height: 20px;
-		bottom: 0;
-		margin-block: 3.5rem 0.25em;
+	h1 span {
+		color: var(--primary-accent-clr)
 	}
-
-	main::before {
-		margin-bottom: 3.5rem;
-	}
-
-	main::after {
-		background-image: url('/imgs/chain_2_horizontal.png');
-		height: 45px;
-	} */
-	
 
 	@media all and (min-width: 720px) {}
 	

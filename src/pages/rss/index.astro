@@ -1,7 +1,6 @@
 ---
 import '../../utility/reset.css';
 import '../../utility/styles/main-styles.css';
-import '../../utility/styles/form-styles.css';
 
 import viewport from '../../utility/image/viewport4.png';
 
@@ -104,18 +103,8 @@ console.log("thumb" in feeds[10].data)
         body {
             color: #fff;
             background-color: var(--primary-clr-dark); 
-            line-height: 1.6;
             padding: 1.5em;
             text-align: center;
-        }
-        .scrollbox p {
-            margin: 0.75em 0em;
-            text-align: left;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 2;
-                    line-clamp: 2;
-            overflow: hidden;
         }
 
         h2 {
@@ -144,7 +133,6 @@ console.log("thumb" in feeds[10].data)
             align-items: center;
         
         }
-
         ul {
             list-style: none;
         }
@@ -152,14 +140,6 @@ console.log("thumb" in feeds[10].data)
         p {
             margin-block: 1.75em;
         }
-        
-        .container {
-            /* max-width: 30em;  */
-            padding: 3em 1.5em;
-            background: var(--primary-clr-med);
-            border-radius: 12px;
-        }
-
         .image,
         .thumb {
             height: 75px;
@@ -169,50 +149,18 @@ console.log("thumb" in feeds[10].data)
         .image {
             height:
         }
-
         .thumb {
             border-radius: 0.5em;
         }
-        
-        .verifyage-input {
-            margin: 1.25em;
-            accent-color: var(--primary-clr-med);
-        }
 
-        .fas {
-            
-        }
-
-        .scrollbox i {
-            font-size: 1.25rem; 
-            margin: 0;
-        }
-
-        .scrollbox i {
-            margin-left: 0.125em;
-        }
-
-        #counter {
-            padding-top: 1em;
-        }
-        
         @media all and (min-width: 700px) {
 
             body {
-                /* height: 100vh; */
                 margin: auto;
                 display: grid;
                 place-items: center;
-                padding: 1em 0;
             }
 
-            .scrollbox {
-                width: 800px;
-            }
-
-            #counter {
-                padding-block: 1em;
-            }
         }
 
     </style>

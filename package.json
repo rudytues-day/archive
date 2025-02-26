@@ -10,6 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/rss": "^4.0.11",
     "@xexiu/astro-tabs": "^0.5.10",
     "astro": "^4.16.14",
     "set.prototype.intersection": "^1.1.3"

@@ -1,3 +1,8 @@
+    .verifyage-input {
+        margin: 1.25em;
+        accent-color: var(--primary-clr-med);
+    }
+
 h1, h2, h3, h4 {
     font-family: var(--display);
 }
@@ -5,12 +10,29 @@ h1, h2, h3, h4 {
 h1 {
     font-size: 2rem;
     text-align: center;
+    margin-block: 1.5em 2em;
 }
+
+h1:not([class]) span {
+    color: var(--primary-accent-clr)
+}
+
+/* archive  [...page] */
+/* archive/entries  [...page] */
+
+/* h1:not([class]) {
+    /* archive [...slug] ,
+    margin-bottom: 3.5rem
+} */
+
 
 h2 {
     text-align: center;
     font-size: 2rem;
 }
+
+/*  .card h3 */
+/* margin-block: 2em 1em; */
 
 h3 {
     margin-block: 1.5em 1em;
@@ -31,6 +53,10 @@ h4 {
 
 p:not([class]) {
     margin: 1em;
+}
+
+.text-center {
+    text-align: center;
 }
 
 li:not([class]) p {
@@ -74,6 +100,11 @@ ul:not([class]) li ul {
     margin-block: 0.5em;
 }
 
+ul:not([class]):has(li) {
+    margin-bottom: 0.5em;
+}
+
+
 ul:not([class]) li {
     padding: 0 0 0.25em 0.25em;
     position: relative;
@@ -116,6 +147,7 @@ li.changelog a:hover em {
 /* newsletter styles */
 
 article p,
+/* margin: 1em; */
 article ul {
     padding-inline: 0.5em;
 }
@@ -270,4 +302,4 @@ section:not(:last-of-type):nth-child(odd):after {
     position: absolute;
     white-space: nowrap;
     width: 1px;
-  }
+}

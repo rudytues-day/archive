@@ -44,16 +44,28 @@ import changelog from './changelog.json';
                 icon="fa-sitemap">
                     <ul>
                         <li><a href="">index</a></li>
-                        <li><a href="">about</a> <em>(you are here)</em></li>
-                        <li><a href="">archive</a></li>
-                        <li><a href="">gallery</a></li>
-                        <li><a href="">projects</a></li>
-                        <li><a href="">links</a></li>
-                        <li><a href="">message</a></li>
+                        <li>
+                            <a href="/about">about</a><em>(you are here)</em>
+                                <ul>
+                                    <li><a href="/about#sitemap">sitemap</a></li>
+                                </ul>
+                        <li><a href="/archive">archive</a></li>
+                        <li><a href="/gallery">gallery</a></li>
+                        <li><a href="/projects">projects</a></li>
+                        <li><a href="/links">links</a></li>
+                        <ul>
+                            <li><a href="/links/#webdesign">web-design</a>
+                            <li><a href="/links/#art-comics">art-comics</a>
+                                <li><a href="/links/#assets-references">assets-references</a>
+                                <li><a href="/links/#other">other</a>
+
+                            </li>
+                        </ul>
+                        <li><a href="/message">message</a></li>
                         <li><a href="" aria-label="external">guestbook</a></li>
                         <li><a href="" aria-label="external">newsletter</a></li>
-                        <li><a href="">rss</a></li>
-                        <li><a href="">not_found.astro</a></li>
+                        <li><a href="/rss">rss</a></li>
+                        <li><a href="/404">not_found.</a></li>
                     </ul>
                         </Card>
                 
@@ -112,11 +124,9 @@ import changelog from './changelog.json';
                 <Card
                 title="CREDITS"
                 icon="fa-ribbon">
-                    <p style="text-align: center;">thank you to the fandom coders for supporting me on this journey</p>
+                    <p style="text-center">thank you to the fandom coders for supporting me on this journey</p>
                 </Card>
 			</div>
-
-		
 
         <div class="card-wrapper card-s" style="width:40ch">
 
