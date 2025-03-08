@@ -1,0 +1,22 @@
+:root {
+    /* --primary-clr-900: ; */
+    --primary-clr-800: hsl(0, 0%, 7%);
+    --primary-clr-700: hsl(283, 10%, 14%);
+    --primary-clr-600: hsl(263, 10%, 20%);
+    /* --primary-clr-500: ; */
+    /* --primary-clr-400: ; */
+    --primary-clr-200: hsl(261, 10%, 40%);
+    /* --primary-clr-300: ; */
+    --primary-clr-200: hsl(261, 10%, 40%);
+    --primary-clr-100: hsl(0, 0%, 100%);
+
+    --primary-accent-clr: hsl(337, 96%, 49%);
+    --primary-link-clr: hsl(333, 36%, 56%);
+    --primary-bg-clr: hsl(0, 43%, 96%);
+
+    --primary-display-font: "Darumadrop One";
+    --primary-body-font: 'Averia Libre';
+	
+	--primary-link-transition: 150ms;
+}
+
