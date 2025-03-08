@@ -1,0 +1,108 @@
+---
+
+import NewsletterLayout from '../../layouts/NewsletterLayout.astro';
+
+import type { GetStaticPaths } from 'astro';
+import { render } from 'astro:content';
+import { getCollection } from 'astro:content';
+import { slugify } from '../../utility/scripts/format-fxn';
+
+export const getStaticPaths = (async () => {
+	const newsletter = await getCollection("newsletters");
+	return newsletter.map((news : any) => ({
+    	params: { slug: news.slug },
+    	props: { news, 
+				...news.data },
+	}));
+}) satisfies GetStaticPaths;
+
+// const news = await getCollection("newsletters");
+// const newsByDate = news.sort((a, b) => b.data.date.valueOf() - a.data.date!.valueOf());
+// const current = newsByDate.findIndex(news => news.slug === Astro.params);
+// console.log(current)
+// const previous = current + 1 === newsByDate.length ? undefined : newsByDate[current + 1];
+// const next = current === 0 ? undefined : newsByDate[current - 1];
+
+// const lastUpdate = newsByDate[0]
+
+const { news, title, date } = Astro.props;
+const { slug }  = Astro.params;
+
+import { formatDate } from '../../utility/scripts/format-fxn';
+
+import '../../utility/styles/main-styles.css'
+import '../../utility/styles/card-styles.css'
+import Pagination from '../../components/Pagination.astro';
+
+const { Content } = await render(news)
+
+const newsletters = await getCollection("newsletters");
+const newsByDate = newsletters.sort((a, b) => b.data.date.valueOf() - a.data.date!.valueOf());
+
+// const current = newsByDate.find(current => current.slug === news.slug);
+// const index = newsByDate.findIndex(news);
+// console.log(index)
+
+// const getPrevAndNext = (currentNews) => {
+// 	// always returns 0
+// 	if (index === -1) {
+// 		return undefined;
+// 	}
+// 	const previous = newsByDate[index - 1];
+// 	if (!previous) {
+// 		return undefined;
+// 	}
+
+// 	const next = newsByDate[index + 1]
+// 	if (!next) {
+// 		return undefined;
+// 	}
+// 	return [previous, next]
+// };
+
+// console.log(getPrevAndNext(current))
+
+const first = newsByDate[newsByDate.length = 0];
+const last = newsByDate[newsByDate.length - 1];
+
+
+---
+
+<NewsletterLayout>
+
+
+	<div class="card-wrapper">
+		<div class="card">
+			<h1 class="card-title">
+				<i class="fas fa-paper-plane"></i> {formatDate(date)}
+			</h1>
+			<div class="card-body">
+				<article>
+					<Content/>
+				</article>
+			</div>
+		</div>
+	</div>
+	<!-- <Pagination
+		// 	firstUrl={first.slug}
+		// 	prevUrl={previous?.slug}
+		// 	nextUrl={next?.slug}
+		// 	lastUrl={last.slug}
+		// 	currentPage={}
+		// 	currentUrl={}
+	/> -->
+</NewsletterLayout>
+
+<style>
+
+	.card-wrapper {
+		padding-inline: 1em;
+		max-width: 800px;
+		margin: auto;
+	}
+
+	strong a {
+		font-weight: 100 !important;
+	}
+	
+</style>

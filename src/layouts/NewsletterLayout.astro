@@ -1,0 +1,156 @@
+---
+interface Props {
+	title?: string;
+	ogimg?: ImageMetadata;
+	description?: string;
+	url?: string;
+}
+
+const { title = "RUDY TUESDAY",
+		ogimg = previewImage,
+		description = "rudolf dienstag is a queer and neurodivergent webMaster, erotic artist and content collector. he has no greater achievements or accolades but he does have a very nice website."
+	} = Astro.props;
+
+import '../utility/reset.css';
+import '../utility/styles/main-styles.css';
+import '../utility/styles/form-styles.css';
+import '../utility/styles/aside-styles.css';
+
+import '../utility/styles/scrollbox-styles.css';
+
+import Header from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import MetaTags from '../components/MetaTags.astro';
+import ToTop from '../components/ToTop.astro';
+
+import viewport from '../utility/image/viewport6.png'
+
+import previewImage from '../utility/image/preview_card.png'
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+
+const newsletters = await getCollection("newsletters");
+import { sortByDate } from '../utility/scripts/sort-fxn';
+import { formatDate } from '../utility/scripts/format-fxn';
+import Pagination from '../components/Pagination.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml+ico" href="/favicon.ico" />
+
+		<title>{title}</title>
+	
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Darumadrop+One&display=swap" rel="stylesheet">
+	
+		<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+
+		<MetaTags
+			title={title}
+			description={description}
+			ogimg={ogimg}
+			url="https://rudytues.day"
+		/>
+
+		<script>
+        
+			if (localStorage.getItem("ageVerified") == null) {
+				window.location.href = `/landing?returnto=${window.location}`; 
+			}
+			
+		</script>
+	
+	</head>
+	
+	<body>
+		<Header />
+			<div class="two-column">
+                <main>
+                    <h1>NEWSLETTER</h1>
+                    <slot />
+                    <Pagination/>
+                </main>
+                <aside>
+                    <div class="column-wrapper">
+                    <Image 
+                        src={viewport}
+                        alt=""
+                        class:list={"viewport"}
+                    />
+                        <h2>SUBSCRIBE</h2>
+                        <p><b>enter your email</b> to subscribe to my newsletter where i send out archive, project and site updates, commission openings, and other goodies every few months.</p>
+
+                        <form
+                            action="https://buttondown.com/api/emails/embed-subscribe/rudytuesday"
+                            method="post"
+                            target="popupwindow"
+                            onsubmit="window.open('https://buttondown.com/rudytuesday', 'popupwindow')"
+                            class="embeddable-buttondown-form"
+                            >
+                            <label for="bd-email" class="visually-hidden">Enter your email</label>
+                            <input type="email" name="email" id="bd-email" placeholder="email@address.com" />
+                    
+                            <input type="submit" value="subscribe" />
+                        </form>
+                    </div>
+                    <div class="column-wrapper">
+                        <h2>ARCHIVE</h2>
+                        <div class="sidebar-links">
+                            <ul class="sidebar-links">
+                                {
+                                    newsletters.sort(sortByDate).toReversed().map((news) =>
+                                        <li>
+                                            <a href={`/newsletter/${news.slug}/`}>{formatDate(news.data.date)}
+                                            </a>
+                                        </li>
+                                    )
+                                }
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <!-- <p>unsure what will go here. probably a list of most recent entries and a subscribe button.</p> -->
+                </aside>
+            </div>
+		<Footer />
+		<ToTop />
+	</body>
+</html>
+
+<style>
+
+:root {
+
+    --primary-clr-dark: hsl(0, 0%, 7%);
+    --primary-clr-med: hsl(283, 10%, 14%);
+    --primary-clr-light: hsl(263, 10%, 20%);
+    --primary-clr-200: hsl(261, 10%, 40%);
+
+    --primary-accent-clr: #F40662;
+    --primary-link-clr: hsl(333, 36%, 56%);
+    --white-clr: #ffffff;
+
+    --bg-clr: #FBFBFB;
+    --display: "Darumadrop One";
+    --body: 'Averia Libre';
+	
+	--link-transition: 150ms;
+}
+
+	@media all and (min-width: 720px) {}
+
+	@media all and (min-width: 1000px) {
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+        }
+    }
+	
+</style>

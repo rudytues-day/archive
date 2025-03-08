@@ -76,11 +76,20 @@ a:not([class]):hover {
     color: var(--primary-accent-clr);
 }
 
-p:not([class]) a,
-ul:not([class]) li a {
+p:not([class]) a {
     font-weight: bold;
     color: var(--primary-link-clr);
     text-decoration: underline;
+}
+
+ul:not([class]) li a,
+ul:not([class]) li a:not(strong a) {
+    color: var(--primary-link-clr);
+    text-decoration: underline;
+}
+
+ul:not([class]) li a:not(strong a) {
+    font-weight: bold;
 }
 
 p:not([class]) a:hover,
@@ -146,13 +155,17 @@ li.changelog a:hover em {
 
 /* newsletter styles */
 
+article {
+    margin: 2em 0em;
+}
+
 article p,
 /* margin: 1em; */
 article ul {
     padding-inline: 0.5em;
 }
 
-article::after,
+/* article::after,
 article::before {
     content: '';
     display: block;
@@ -160,7 +173,7 @@ article::before {
     margin-block: 2.5em;
     background-size: contain;
     background-repeat: repeat-x;
-}
+} */
 
 article:first-child::before {
     margin-top: 0.5em;
@@ -182,20 +195,20 @@ article:nth-child(odd)::after {
 }
 
 article h1 {
-    font-size: 1.5rem;
-    margin: 1em auto 0.25em auto;
+    font-size: 1.75rem;
+    margin: 0 auto 1.25em auto;
     max-width: 20ch;
     text-align: center;
 }
 
 article h2 {
-    font-size: 1.4rem;
-    margin: 0 0 1em 0;
-    text-align: center;
+    font-size: 1.5rem;
+    margin: 1.5em 0.5em 1em 0.5em;
+    text-align: left;
 }
 
 article h2::before {
-    content: '\f0c1';
+    /* content: '\f0c1'; */
     font-family: 'Font Awesome 6 Pro';
     font-size: 0.825em;
     font-weight: bold;
@@ -211,7 +224,7 @@ article h3::before {
     font-family: 'Font Awesome 6 Pro';
     font-weight: bold;
     font-size: 0.95em;
-    margin-right: 0.325em;
+    margin-right: 0.5em;
 }
 
 article h2::before {
@@ -228,12 +241,15 @@ article strong a {
     font-weight: 100 !important;
 }
 
+
+
 /* chains styling */
 
 main {
     margin: auto;
     width: 100%;
     position: relative;
+    min-height: 100% !important;
 }
 
 main::before,

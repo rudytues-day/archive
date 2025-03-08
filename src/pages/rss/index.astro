@@ -26,11 +26,12 @@ interface feeds {
     description: string;
     date: Date;
     thumb?: ImageMetadata;
+    slug?: string;
     Nsfw?: boolean;
     Dd?: boolean;
 }
 
-console.log("thumb" in feeds[10].data)
+console.log(feeds[0].data)
 ---
 
 <!DOCTYPE html>
@@ -56,43 +57,64 @@ console.log("thumb" in feeds[10].data)
 <body>
     <h1>RSS FEEDS</h1>
 
-    copy and paste the urls below into your newsreader to subscribe.
+    <p style="center-text">my rss feeds are currently under construction.</p>
+        <p>there will be two feeds, one for my art archive and another for my newsletter, so you can subscribe to either or both.</p>
+        <p>in the meantime, here is a list of everything that will appear between both feeds.</p>
+    <!-- copy and paste the urls below into your newsreader to subscribe.
 
     <p><b>HTTPS://RUDYTUES.DAY<br/>
-        HTTPS://RUDYTUES.DAY/ARCHIVE</b></p>
+        HTTPS://RUDYTUES.DAY/ARCHIVE</b></p> -->
 
     <h1>UPDATES</h1>
 
-<ul class="scrollbox scrollbox-dark scrollbox-rss">
-    {feeds.map((update) => 
-        <li>
-            { update.data.thumb != null ? 
-                (
-                <Image src={update.data?.thumb.src}
-                        alt=""
-                        class="thumb"
-                    />
-                ) : (
-                <Image src={viewport}
-                        alt=""
-                        class="image"
-                    />
-                )
-            }
-            <div class="content">
-                <h2>
-                    <span>
-                        {update.data.title}
-                        {update.data.Nsfw && <i class="fas fa-ban"></i>}
-                        {update.data.Dd && <i class="fas fa-feather"></i>}
-                    </span>
-                    <span>{formatDate(update.data.uploadDate)}</span>
-                </h2>
-                <p>{update.data.description}</p>
-            </div>
-        </li>
-        )}
-</ul>
+<div class="scrollbox scrollbox-dark scrollbox-rss">
+    <ul class="rss">
+        {feeds.map((update) =>
+            <li>
+                { update.data.thumb != null ?
+                    (
+                    <a href={`/archive/entries/${update.slug}`}>
+                        <Image src={update.data?.thumb.src}
+                                alt=""
+                                class="thumb"
+                            />
+                    </a>
+                    <div class="content">
+                        <a href={`/archive/entries/${update.slug}`}>
+                            <h2>
+                                <div>
+                                    {update.data.title}
+                                    {update.data.Nsfw && <i class="fas fa-ban"></i>}
+                                    {update.data.Dd && <i class="fas fa-feather"></i>}
+                                </div>
+                                <div>{formatDate(update.data.uploadDate)}</div>
+                            </h2>
+                        </a>
+                        <p class="description">{update.data.description}</p>
+                    </div>
+                    ) : (
+                    <a href={`/newsletter/${update.slug}`}>
+                        <Image src={viewport}
+                                alt=""
+                                class="image"
+                            />
+                    </a>
+                        <div class="content">
+                            <a href={`/newsletter/${update.slug}`}>
+                                <h2>
+                                    <div>{update.data.title}</div>
+                                    <div>{formatDate(update.data.uploadDate)}</div>
+                                </h2>
+                            </a>
+                            <p class="description">{update.data.description}</p>
+                    </div>
+
+                    )
+                }
+            </li>
+            )}
+    </ul>
+</div>
 </body>
     <style>
 
@@ -109,45 +131,45 @@ console.log("thumb" in feeds[10].data)
 
         h2 {
             font-size: 1.325rem;
-            text-align: left;
-            display: flex;
-            justify-content: space-between;
+            margin-bottom: 0.5em;
             width: 100%;
-            
+            line-height: 1.3;
+        }
+
+        h2 i {
+            font-size: 0.9em;
         }
 
         .content {
             width: 100%;
-            margin-block: 0.5em 0;
+            display: grid;
         }
 
         .scrollbox {
-            padding: 1em;
             margin-bottom: 3em;
+            width: 100%;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
         }
 
         li {
-            padding: 1em;
-            display: flex;
-            gap: 1.5em;
-            align-items: center;
-        
-        }
-        ul {
-            list-style: none;
+            padding: 1.5em 1em;
+            
         }
 
-        p {
-            margin-block: 1.75em;
+        .description {
+            margin-block: 0.5em;
+            text-align: center;
         }
+
         .image,
         .thumb {
-            height: 75px;
             width: 75px;
-        }
-
-        .image {
-            height:
+            height: auto;
+            margin: 0.25em auto 0.75em auto;
         }
         .thumb {
             border-radius: 0.5em;
@@ -155,12 +177,34 @@ console.log("thumb" in feeds[10].data)
 
         @media all and (min-width: 700px) {
 
+            .scrollbox-rss {
+                max-width: 800px;
+            }
+
             body {
                 margin: auto;
                 display: grid;
                 place-items: center;
             }
 
+            h2 {
+                text-align: left;
+                display: flex;
+                justify-content: space-between;
+                line-height: 1;
+            }
+
+            li {
+                display: flex;
+                gap: 1.5em;
+                padding: 1em;
+                align-items: center;
+            }
+
+            .description {
+                text-align: left;
+            }
+            
         }
 
     </style>

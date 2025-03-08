@@ -27,6 +27,10 @@
 .scrollbox-l { height: 350px }
 .scrollbox-rss { height: 750px; width: 800px;}
 
+.scrollbox-rss {
+    padding: 0;
+}
+
 .scrollbox-li a:hover,
 .scrollbox-li a:hover i {
     color: var(--primary-accent-clr);
