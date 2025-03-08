@@ -2,12 +2,12 @@
 export type RouteString = string | null | undefined
 
 interface Props {
-  firstUrl?: RouteString
-  prevUrl?: RouteString
-  nextUrl?: RouteString
-  lastUrl?: RouteString
+  firstUrl?: RouteString | string
+  prevUrl?: RouteString | string
+  nextUrl?: RouteString | string
+  lastUrl?: RouteString | string
   currentPage?: string | number
-  currentUrl?: RouteString
+  currentUrl?: RouteString | string
 }
 
 const {
@@ -59,7 +59,7 @@ const {
 
     nav {
         font-family: var(--display);
-        margin: 1em auto 0 auto;
+        margin: 1em auto 3em auto;
         display: flex;
         align-items: center;
         justify-content: center;

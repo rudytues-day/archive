@@ -63,6 +63,7 @@
     /* --__max-width: 750px; */
     display: grid;
     gap: 1em;
+    /* padding-inline: 1em; */
 }
 
 @media all and (min-width: 700px) {

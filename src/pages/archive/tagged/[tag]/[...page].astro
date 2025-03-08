@@ -26,7 +26,6 @@ export const getStaticPaths = ( async ({paginate}) => {
 
 const { page, tag } = Astro.props;
 
-
 const pathName = new URL(Astro.request.url).pathname.slice(0, -1);
 const titleTag = tag.toUpperCase();
 
@@ -34,8 +33,7 @@ import '../../../../utility/styles/wrapper-styles.css';
 ---
 
 <ArchiveLayout
-    pageTitle=`ARCHIVE / QUESTIONS TAGGED ${titleTag}`>
-
+    pageTitle=`ARCHIVE / ENTRIES TAGGED ${titleTag}`>
 
     <h1>ENTRIES TAGGED <span>{titleTag}</span></h1>
 
@@ -68,3 +66,11 @@ import '../../../../utility/styles/wrapper-styles.css';
         />
 
 </Layout>
+
+<style>
+
+    h1 {
+        margin-block: 0em 1em;
+    }
+
+</style>

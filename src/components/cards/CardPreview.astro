@@ -22,11 +22,15 @@ const {
 		Nsfw,
 		Dd,
 		} = Astro.props as Props;
+
+
 ---
 
 <a href={`/archive/entries/${slug}/`}>
 	<div class:list={["card", "card-preview"]}>
-		<h1 class:list={"card-title"}>{title}</h1>
+		<h1 class:list={"card-title"}>
+			<span class="clamp">{title}</span>
+		</h1>
 		<div class:list={"card-body"}>
 			<Image class:list={"card-thumbnail"}
 				src={thumb}
@@ -40,20 +44,34 @@ const {
 						{ Dd && <i class="fas fa-feather" role="img" aria-label="dead dove"></i>}
 					</div>
 				</div>
-				<slot />
+				<div class="desc-text">
+					<slot />
+				</div>
 			</div>
 		</div>
 	</div>
 </a>
 
 <style>
-	h1 {
-		overflow: hidden;
-		display: -webkit-box;
-		-webkit-box-orient: vertical; 
-		-webkit-line-clamp: 1;
-		line-clamp: 1;
-		text-overflow: ellipsis;
-		white-space: break-spaces;
+	.card-body {
+		height: 300px;
+		width: 200px;
 	}
+
+	.card-preview .card-title {
+		width: 200px;
+		max-height: 62px;
+
+	}
+	.clamp {
+		text-align: center;
+		display: -webkit-box;
+		-webkit-line-clamp: 1;
+				line-clamp: 1;
+		-webkit-box-orient: vertical;
+		text-overflow: ellipsis;
+		white-space-collapse: break-spaces;
+		overflow: hidden;
+	}
+
 </style>

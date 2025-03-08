@@ -132,21 +132,9 @@ import { slugify, formatDate } from '../utility/scripts/format-fxn.js';
 
 <style>
 
-	h1 {
-		font-family: var(--display);
-		text-align: center;
-		font-size: 2rem;
-		margin-bottom: 2em;
-	}
-
-	h1:has(+ h1) {
-		margin-bottom: 1em;
-	}
-
 	main::before {
 		margin-bottom: 4rem;
 	}
-
 	h1 span {
 		color: var(--primary-accent-clr)
 	}
@@ -154,6 +142,10 @@ import { slugify, formatDate } from '../utility/scripts/format-fxn.js';
 	@media all and (min-width: 720px) {}
 	
 	@media all and (min-width: 1000px) {
+
+		h1 {
+        margin-block: 0em 2em;
+    }
 
 	.left-column {
 		display: grid;
@@ -165,6 +157,8 @@ import { slugify, formatDate } from '../utility/scripts/format-fxn.js';
 	}
 
 	main {
+		display: flex;
+		flex-direction: column;
 		grid-area: main;
 		margin: 0 auto;
 	}
@@ -174,7 +168,12 @@ import { slugify, formatDate } from '../utility/scripts/format-fxn.js';
 	}
 
 	main::after {
-		position: absolute;
+		display: block;
+		margin-top: auto;
+	}
+
+	.tag-cloud {
+		margin-bottom: 3em;
 	}
 
 }

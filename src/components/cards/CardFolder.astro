@@ -1,7 +1,7 @@
 ---
 interface Props {
     tabTitle: string,
-    id: string,
+    id?: string,
     index: boolean,
 }
 
@@ -40,9 +40,15 @@ if (document.location.hash) {
 summaries.forEach(summary => {
     summary.addEventListener("click", () => {
         let currentUrl = new URL(window.location.href);
-        currentUrl.hash = slugify(summary.dataset.title)
-        location.replace(currentUrl);
-        window.scroll({top: summary.offsetTop})
+        if (currentUrl.hash === `#${slugify(summary.dataset.title)}`) {
+            console.log("clicked on active hash");
+            history.pushState("", document.title, window.location.pathname);
+            return
+        } else {
+            currentUrl.hash = slugify(summary.dataset.title)
+            location.replace(currentUrl);
+            window.scroll({top: summary.offsetTop})
+        };
     })
 });
 

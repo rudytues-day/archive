@@ -16,8 +16,6 @@
     --__card-margin: auto;
 }
 
-
-
 .card-archive,
 .card-projects {
     --__card-margin: 0 0 3em 0;
@@ -66,6 +64,12 @@
 
 .card-preview h1 {
     text-align: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+            line-clamp: 1;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+    overflow: hidden;
 }
 
 .card-archive:hover h1,
@@ -143,13 +147,15 @@
     width: minmax(300px, fit-content);
 }
 
-.card-preview .description {
+.card-preview .desc-text {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
             line-clamp: 2;
     overflow: hidden;
-    max-width: 20ch;
+    text-overflow: hidden;
+    /* max-width: 20ch; */
+    height: auto;
 }
 
 .card-projects {
