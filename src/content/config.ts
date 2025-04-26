@@ -1,6 +1,7 @@
 // 1. Import utilities from `astro:content`
 import { string, undefined } from 'astro/zod';
 import { defineCollection,  z, type SchemaContext } from 'astro:content';
+import { rssSchema } from '@astrojs/rss';
 
 // 2. Define your collection(s)
 const allNewsletters
