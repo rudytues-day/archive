@@ -73,8 +73,8 @@ import Pagination from '../components/Pagination.astro';
                 <main>
                     <h1>NEWSLETTER</h1>
                     <slot />
-                    <Pagination/>
                 </main>
+
                 <aside>
                     <div class="column-wrapper">
                     <Image 
@@ -100,18 +100,17 @@ import Pagination from '../components/Pagination.astro';
                     </div>
                     <div class="column-wrapper">
                         <h2>ARCHIVE</h2>
-                        <div class="sidebar-links">
-                            <ul class="sidebar-links">
+
+                            <ul class="scrollbox scrollbox-dark scrollbox-m">
                                 {
                                     newsletters.sort(sortByDate).toReversed().map((news) =>
                                         <li>
-                                            <a href={`/newsletter/${news.slug}/`}>{formatDate(news.data.date)}
+                                            <a href={`/newsletter/${news.slug}/`}><b>{formatDate(news.data.date)}</b> : {news.data.title}
                                             </a>
                                         </li>
                                     )
                                 }
                             </ul>
-                        </div>
                     </div>
 
 
@@ -142,15 +141,48 @@ import Pagination from '../components/Pagination.astro';
 	
 	--link-transition: 150ms;
 }
+main {
+    position: relative;
+}
 
-	@media all and (min-width: 720px) {}
+main::after {
+    position: absolute;
+    bottom: 0;
+}
+
+.scrollbox li {
+    display: -webkit-box;
+		-webkit-line-clamp: 1;
+				line-clamp: 1;
+		-webkit-box-orient: vertical;
+		text-overflow: ellipsis;
+		white-space-collapse: break-spaces;
+		overflow: hidden;
+        text-transform: lowercase;
+}
+
+.scrollbox {
+    margin-bottom: 0;
+}
+
+	@media all and (min-width: 720px) {
+
+        .scrollbox {
+            margin-inline: 3em;
+        }
+    }
 
 	@media all and (min-width: 1000px) {
+
+        .scrollbox {
+            margin-inline: 2em;
+        }
 
         .two-column {
             display: grid;
             grid-template-columns: 1fr 400px;
         }
+
     }
 	
 </style>

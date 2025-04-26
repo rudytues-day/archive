@@ -38,6 +38,7 @@ aside {
 
 .column-wrapper p {
     text-align: center;
+    text-wrap: balance;
 }
 
 .column-wrapper h2,

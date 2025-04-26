@@ -36,7 +36,7 @@ const {
             <i class="fas fa-angle-left disabled"></i>
     )}
 
-    <span>{ currentPage == 1 && !nextUrl ? ("") : (currentPage) }</span>
+    <span slot="current">{ currentPage == 1 && !nextUrl ? ("") : (currentPage) }</span>
 
     {
         nextUrl ? (

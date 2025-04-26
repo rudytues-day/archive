@@ -7,8 +7,7 @@ const news = await getCollection("newsletters")
 // Sort by latest and take the first.
 const mostRecent = news.sort((a : any, b : any) => b.data.date.valueOf() - a.data.date.valueOf())[0];
 const recentUrl = `${ Astro.site?.origin }/newsletter/${ mostRecent?.slug }`;
-// console.log(mostRecent)
-// console.log(recentUrl)
+
 ---
 <head>
     <meta http-equiv="refresh" content={ `0; url=${ recentUrl }` } />
