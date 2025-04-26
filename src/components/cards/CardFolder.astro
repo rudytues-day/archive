@@ -41,7 +41,6 @@ summaries.forEach(summary => {
     summary.addEventListener("click", () => {
         let currentUrl = new URL(window.location.href);
         if (currentUrl.hash === `#${slugify(summary.dataset.title)}`) {
-            console.log("clicked on active hash");
             history.pushState("", document.title, window.location.pathname);
             return
         } else {
