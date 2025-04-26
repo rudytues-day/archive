@@ -1,0 +1,178 @@
+{
+  "main": {
+    "id": "23507176540ff3e7",
+    "type": "split",
+    "children": [
+      {
+        "id": "31625177995af4c8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cf7c600418112db7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "newsletters/2023-02-05.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2023-02-05"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "4851d06f8fcee901",
+    "type": "split",
+    "children": [
+      {
+        "id": "76f4d212c2d6dff8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "00064574023a602e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "c3cc8fef3291338b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "277a4c88fa80e665",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "6cb49fca8e9cadaf",
+    "type": "split",
+    "children": [
+      {
+        "id": "6c5b75b2b6335e68",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b10833667626202f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "newsletters/2023-02-05.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 2023-02-05"
+            }
+          },
+          {
+            "id": "b7e4084ddd385877",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "newsletters/2023-02-05.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 2023-02-05"
+            }
+          },
+          {
+            "id": "2c15d50ca0cf0d9c",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "2bbe8b9632351a30",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "newsletters/2023-02-05.md",
+                "followCursor": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 2023-02-05"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "cf7c600418112db7",
+  "lastOpenFiles": [
+    "affiliates/100years/100years.md",
+    "affiliates/100years/100years.png",
+    "newsletters/2024-06-18.md"
+  ]
+}
