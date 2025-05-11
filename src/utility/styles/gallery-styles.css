@@ -1,5 +1,5 @@
 #display {
-    background-color: #fff;
+    background-color: var(--card-clr);
     margin: 3.5em 1em;
     border: 2px solid #000;
     border-radius: 17px;
@@ -67,7 +67,7 @@ figcaption b {
 }
 
 .title:not(li a .title) {
-    font-family: var(--display);
+    font-family: var(--display-font);
     text-transform: uppercase;
     font-size: 1.325rem;
 }
@@ -81,7 +81,7 @@ figcaption b {
 .body {
     display: flex;
     padding: 1em;
-    border: solid 2px var(--primary-clr-dark);		
+    border: solid 2px var(--primary-clr-900);		
     border-radius: 0em 0em 1em 1em;
 }
 
@@ -120,7 +120,8 @@ figcaption b {
 
 .thumb-wrapper button:hover {
     opacity: 100%;
-    outline: 2px var(--primary-accent-clr) solid;
+    outline: 2px var(--primary-accent-600) solid;
+    cursor: pointer;
 }
 
 .gallery-thumb > *,
@@ -128,6 +129,10 @@ figcaption b {
     margin: auto;
     border-radius: 0.75em;
     height: auto;
+}
+
+.thumbnail:hover {
+    cursor: pointer;
 }
 
 .description {
@@ -149,7 +154,7 @@ figcaption b {
 }
 
 .date {
-    font-family: var(--display);
+    font-family: var(--display-font);
     text-transform: uppercase;
     font-size: 1.25em;
     margin: 0;
@@ -176,12 +181,12 @@ figcaption b {
     
     #display {
         margin-inline: auto;
-        width: clamp(fit-content, 750px, 80vw);
+        max-width: 950px;
     }
 
     .gallery-card,
     .folder {
-        max-width: 1000px;
+
         margin: auto;
     }
 

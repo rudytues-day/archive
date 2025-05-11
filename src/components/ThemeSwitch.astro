@@ -1,0 +1,68 @@
+---
+import '../utility/styles/main-styles.css'
+---
+<div class="theme-switch-wrapper">
+    <button aria-label="theme switch"></button>
+</div>
+
+<style>
+
+    :root {
+        --lightbulb: "\f672";
+    }
+
+    html[data-theme="dark"] {
+        --lightbulb: "\f0eb";
+    }
+    
+    button {
+        display: grid;
+        place-items: center;
+        position: fixed;
+        padding: 0;
+        top: 2em;
+        right: 2em;
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 100%;
+        text-decoration: none;
+        color: var(--white-clr);
+        background: var(--aside-clr);
+        opacity: 35%;
+        transition: ease all 0.2s;
+        outline: transparent;
+        border: transparent;
+        z-index: 1;
+    }
+
+    button::after {
+        content: var(--lightbulb);
+        font-family: 'Font Awesome 6 Pro';
+        display: block;
+        margin: auto;
+        font-weight: 900;
+        font-size: 1.5rem; 
+    }
+
+    button:hover {
+        opacity: 100%;
+        color: var(--primary-accent-600);
+    }
+
+    </style>
+    
+<script>
+
+const toggleSwitch = document.querySelector('button');
+
+toggleSwitch?.addEventListener("click", () => {
+    let theme = document.documentElement.getAttribute('data-theme');
+    if (!theme || theme === "light") {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem("theme", "dark");
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem("theme", "light");
+    }
+});
+</script>

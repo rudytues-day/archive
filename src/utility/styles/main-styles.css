@@ -1,10 +1,11 @@
-    .verifyage-input {
+.verifyage-input {
         margin: 1.25em;
-        accent-color: var(--primary-clr-med);
+        accent-color: var(--primary-clr-800);
     }
 
 h1, h2, h3, h4 {
-    font-family: var(--display);
+    font-family: var(--display-font);
+    color: var(--display-clr);
 }
 
 h1 {
@@ -14,7 +15,7 @@ h1 {
 }
 
 h1:not([class]) span {
-    color: var(--primary-accent-clr)
+    color: var(--primary-accent-600)
 }
 
 /* archive  [...page] */
@@ -66,25 +67,25 @@ li:not([class]) p {
 b:not([class]),
 strong:not([class]),
 blockquote {
-    font-family: var(--display);
+    font-family: var(--display-font);
     font-size: 1.125rem;
     font-weight: normal;
     text-transform: uppercase;
 }
 
 a:not([class]):hover {
-    color: var(--primary-accent-clr);
+    color: var(--hover-clr);
 }
 
 p:not([class]) a {
     font-weight: bold;
-    color: var(--primary-link-clr);
+    color: var(--link-clr);
     text-decoration: underline;
 }
 
 ul:not([class]) li a,
 ul:not([class]) li a:not(strong a) {
-    color: var(--primary-link-clr);
+    color: var(--link-clr);
     text-decoration: underline;
 }
 
@@ -94,13 +95,13 @@ ul:not([class]) li a:not(strong a) {
 
 p:not([class]) a:hover,
 ul:not([class]) a:hover {
-    color: var(--primary-accent-clr);
+    color: var(--primary-accent-600);
 }
 
 /* fix */
 
 ul:not([class]) {
-    margin: 1em;
+    margin: 0em 1em 0em 1em;
     padding: 0;
     list-style: none;
 }
@@ -136,7 +137,7 @@ ul:not([class]) b + a {
 
 p:not([class]) em,
 li:not([class]) em {
-    color: var(--primary-clr-light);
+    color: var(--em-clr);
     padding-left: 0.3em;
 }
 
@@ -163,6 +164,7 @@ article p,
 /* margin: 1em; */
 article ul {
     padding-inline: 0.5em;
+    color: var(--body-clr);
 }
 
 /* article::after,
@@ -192,6 +194,11 @@ article:nth-child(even)::after {
 article:nth-child(odd)::after {
     background-image: url('/imgs/chain_2_horizontal.png');
     height: 30px;
+}
+
+article h1,
+article h2 {
+    color: var(--display-clr);
 }
 
 article h1 {
@@ -261,17 +268,17 @@ main::after {
 }
 
 main::before {
-    background-image: url('/imgs/chain_1_horizontal.png');
+    background-image: var(--one-chain-h);
     height: 20px;
 }
 
 main::after {
-    background-image: url('/imgs/chain_2_horizontal.png');
+    background-image: var(--two-chain-h);
     height: 45px;
 }
 
 main:has(section:nth-child(even))::after {
-    background-image: url('/imgs/chain_2_horizontal.png');
+    background-image: var(--two-chain-h);
     height: 45px;
 }
 
@@ -293,17 +300,16 @@ section:not(:last-of-type)::after {
 }
 
 section:not(:last-of-type):nth-child(even):after {
-    background-image: url('/imgs/chain_1_horizontal.png');
+    background-image: var(--one-chain-h);;
     height: 20px;
 }
 
 section:not(:last-of-type):nth-child(odd):after {
-    background-image: url('/imgs/chain_2_horizontal.png');
     height: 45px;
 }
 
 .fa-ban {
-    color: var(--primary-accent-clr);
+    color: var(--primary-accent-600);
 }
 
 .fa-feather {

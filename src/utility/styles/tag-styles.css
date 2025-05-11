@@ -27,20 +27,20 @@ aside .tag-cloud {
 }
 
 .tags li {
-    background-color: var(--primary-clr-dark);
+    background-color: var(--button-clr);
     color: var(--white-clr);
     padding: 0.125em 0.3em 0.4em 0.3em;
-    font-family: var(--display);
+    font-family: var(--display-font);
     text-transform: uppercase;
     line-height: 1.125;
     border-radius: 0.25em;
 }
 
 .tag-button {
-    background-color: var(--primary-clr-dark);
+    background-color: var(--primary-clr-900);
     color: var(--white-clr);
     padding: 0.125em 0.3em 0.4em 0.3em;
-    font-family: var(--display);
+    font-family: var(--display-font);
     font-size: 1.25rem;
     text-transform: uppercase;
     line-height: 1.125;
@@ -49,7 +49,7 @@ aside .tag-cloud {
 }
 
 aside .tags li {
-    background-color: var(--primary-clr-med)
+    background-color: var(--primary-clr-800)
 }
 
 .tag {
@@ -61,7 +61,7 @@ aside .tags li {
 }
 
 .tags li a:hover {
-    color: var(--primary-accent-clr);
+    color: var(--primary-accent-600);
 }
 
 .description .tags {

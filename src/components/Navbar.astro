@@ -112,9 +112,9 @@ import darby from "../utility/image/header_darby.png";
     }
 
     #rudy-tuesday {
-        color: var(--primary-clr-dark);
+        color: var(--display-clr);
         font-size: 3.25em;
-        font-family: var(--display);
+        font-family: var(--display-font);
         font-weight: 400;
         text-align: center;
         line-height: 0.85;
@@ -130,12 +130,12 @@ import darby from "../utility/image/header_darby.png";
     }
 
     #rudy-tuesday span {
-        color: var(--link-clr);
+        color: var(--primary-accent-400);
         transition: color 0.25s ease;
     }
 
     #rudy-tuesday:hover span {
-        color: var(--primary-clr-dark);
+        color: var(--display-clr);
     }
     
     #rudy-tuesday::after {
@@ -147,12 +147,12 @@ import darby from "../utility/image/header_darby.png";
         opacity: 30%;
         left: 10%;
         bottom: -20%;
-        color: var(--link-clr);
+        color: var(--primary-accent-400);
         transition: 300ms;
     }
 
     #rudy-tuesday:hover::after {
-        color: var(--primary-accent-clr);
+        color: var(--primary-accent-600);
         opacity: 80%;
     }
 
@@ -186,13 +186,13 @@ import darby from "../utility/image/header_darby.png";
     }
 
     .menu {
-        background-color: var(--primary-clr-dark);
+        background-color: var(--aside-clr);
         color: var(--white-clr);
         position: relative;
         margin: 0;
         padding: 0.75em 1em;
         font-size: 1.5rem;
-        font-family: var(--display);
+        font-family: var(--display-font);
         text-transform: uppercase;
         text-align: center;
         list-style: none;
@@ -220,7 +220,8 @@ import darby from "../utility/image/header_darby.png";
     }
 
     li a:hover {
-        color: var(--primary-accent-clr);
+        color: var(--primary-accent-600);
+        cursor: pointer;
     }
 
     .link {
@@ -234,13 +235,18 @@ import darby from "../utility/image/header_darby.png";
     
     .link.active,
     .menu .submenu-active {
-        background-color: var(--primary-clr-med);
+        background: var(--primary-clr-800);
         display: block;
+    }
+
+    [data-theme="dark"] .link.active {
+        background: var(--primary-clr-900) !important;
+
     }
 
     .submenu {
         display: none;
-        background-color: var(--primary-clr-med);
+        background-color: var(--primary-clr-800);
         list-style: none;
         padding: 1em;
         border-radius: 8px;
@@ -272,7 +278,7 @@ import darby from "../utility/image/header_darby.png";
     }
 
     .has-submenu > a:hover::after {
-        color: var(--primary-accent-clr);
+        color: var(--primary-accent-600);
     }
     
     .submenu-active > a::after {
@@ -280,9 +286,11 @@ import darby from "../utility/image/header_darby.png";
     }
 
     .sublink {
-        background: var(--primary-clr-light);
+        background: var(--primary-clr-600);
         padding: 0.5em;
     }
+
+
 
     .link:nth-child(2),
     .sublink:first-child {
@@ -334,20 +342,21 @@ import darby from "../utility/image/header_darby.png";
 
     .link {
         display: block;
-        background-color: var(--primary-clr-dark);
+        background-color: var(--aside-clr);
         margin: 0;
 	}
     
     .link.active {
-        background-color: var(--primary-clr-dark);
+        background-color: var(--aside-clr);
     }
 
     .has-submenu.submenu-active {
-        background-color: var(--primary-clr-med);
+        background-color: var(--primary-clr-800);
         border-radius: 8px 8px 0px 0px;
     }
 
     .submenu {
+        border-top: 0;
         position: absolute;
         z-index: 9;
         min-width: 175px;
@@ -355,12 +364,18 @@ import darby from "../utility/image/header_darby.png";
         left: 0;
         padding: 0;
         border-radius: 0px 0px 8px 8px;
+        box-shadow: 0px 2px 1px 1px hsl(0, 0%, 0%, 0.3);
     }
 
     .sublink {
-        background-color: var(--primary-clr-med);
+        background-color: var(--primary-clr-800);
         padding: 0;
         margin: 0.5em;
+        
+    }
+
+    [data-theme="dark"] .link.active {
+        background: var(--primary-clr-900);
     }
 
     .sublink:last-child {

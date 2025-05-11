@@ -11,13 +11,13 @@
 }
 
 .scrollbox-light {
-    --__background: var(--white-clr);
-    --__font-color: black;
+    --__background: var(--bg-clr);
+    --__font-color: var(--body-clr);
     --__border: 2px solid #000;
 }
 
 .scrollbox-dark {
-    --__background: var(--primary-clr-med);
+    --__background: var(--textbox-clr);
     --__font-color: var(--white-clr);
     padding: 0.25em 0.5em;
 }
@@ -33,7 +33,7 @@
 
 .scrollbox-li a:hover,
 .scrollbox-li a:hover i {
-    color: var(--primary-accent-clr);
+    color: var(--primary-accent-600);
 }
 
 .column-wrapper .scrollbox {

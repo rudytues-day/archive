@@ -4,7 +4,7 @@
     --folder-border-radius: 24px;
     --transition: ease 1ms;
     --box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 5%);
-    --border: solid 2px var(--primary-clr-dark);
+    --border: solid 2px var(--border-clr);
 }
 
 .card {
@@ -25,13 +25,13 @@
 
 .card-title,
 .tab-title {
-    background: var(--primary-clr-dark);
-    color: var(--white-clr);
+    background: var(--card-header-clr);
+    color: var(--card-title-clr);
     margin: 0;
     padding: 0.75em 1em;
     text-align: left;
     font-size: 1.5rem;
-    font-family: var(--display);
+    font-family: var(--display-font);
     border: var(--border);
     border-radius: var(--title-border-radius);
     transition: var(--link-transition);
@@ -74,7 +74,7 @@
 
 .card-archive:hover h1,
 .card-preview:hover h1 {
-    color: var(--primary-accent-clr);
+    color: var(--primary-accent-600);
 }
 
 /* card icons */
@@ -89,7 +89,7 @@
 
 .card-body,
 .folder-body {
-    background: var(--white-clr);
+    background: var(--card-clr);
     padding: 1.5em;
     border: var(--border);		
     border-radius: var(--body-border-radius);
@@ -190,7 +190,7 @@
 }
 
 .date {
-    font-family: var(--display);
+    font-family: var(--display-font);
     text-transform: uppercase;
     font-size: 1.25rem;
 }
@@ -208,7 +208,7 @@
 
 .tab-title:hover {
     cursor: pointer;
-    color: var(--primary-accent-clr)
+    color: var(--primary-accent-600)
 }
 
 details > .tab-title::marker {
@@ -224,7 +224,7 @@ details > .tab-title::marker {
 }
 
 details:not([open]) .tab-title {
-    background: var(--primary-clr-med);
+    background: var(--primary-clr-800);
 }
 
 details:not([open]) .tab-title::before {

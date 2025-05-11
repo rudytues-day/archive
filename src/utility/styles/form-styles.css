@@ -18,7 +18,7 @@ form label {
     position: relative;
     font-size: 1.325rem;
     text-align: center;
-    font-family: var(--display);
+    font-family: var(--display-font);
     text-transform: uppercase;
 }
 
@@ -40,7 +40,7 @@ label:has(+ [aria-required="true"])::after,
     padding-left: 0.5em;
     position: absolute;
     bottom: 0;
-    color: var(--primary-accent-clr);
+    color: var(--primary-accent-600);
     font-weight: bold;
 }
 
@@ -57,11 +57,11 @@ li[aria-required="true"]::after {
 button:not([class]),
 input[type="submit"],
 .read-more {
-    background-color: var(--primary-clr-dark);
+    background-color: var(--button-clr);
     color: var(--white-clr);
     margin: auto;
     padding: 0.125em 0.75em 0.3em 0.75em;
-    font-family: var(--display);
+    font-family: var(--display-font);
     text-transform: uppercase;
     font-size: 1.5rem;
     line-height: 1.5;
@@ -82,7 +82,7 @@ input[type="submit"],
 
 button:hover,
 input[type="submit"]:hover {
-    color: var(--primary-accent-clr); 
+    color: var(--primary-accent-600); 
 }
 
 input[type="text"],
@@ -90,15 +90,23 @@ input[type="email"],
 textarea {
     margin: auto;
     border-radius: 1em;
-    padding: 0.25em 0.75em;
+    padding: 0.325em 0.75em;
     font-family: inherit;
+    background-color: var(--textbox-clr);
+    color: var(--em-clr);
+    text-align: center;
+    border: 2px solid var(--aside-clr)
 }
 
     .verifyage-input {
         margin-block: 2em 1.5em;
-        accent-color: var(--primary-clr-med);
+        accent-color: var(--primary-clr-800);
     }
 
+    input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+textarea::placeholder {
+    opacity: 100% !important;
 input[type="text"],
 input[type="email"] {
     max-width: 25ch;

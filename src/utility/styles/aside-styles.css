@@ -1,5 +1,5 @@
 aside {
-    background: var(--primary-clr-dark);
+    background: var(--aside-clr);
     color: white;
 }
 
@@ -44,7 +44,7 @@ aside {
 .column-wrapper h2,
 .column-wrapper p a,
 .column-wrapper ul.sidebar-links li a {
-    font-family: var(--display);
+    font-family: var(--display-font);
     font-size: 1.5rem;
     color: white;
     font-weight: normal;
@@ -54,7 +54,7 @@ aside {
 }
 
 .column-wrapper ul.sidebar-links li a:hover {
-    color: var(--primary-accent-clr);
+    color: var(--primary-accent-600);
     transition: var(--link-transition);
 }
 

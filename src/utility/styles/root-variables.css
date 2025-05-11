@@ -1,22 +1,54 @@
 :root {
-    /* --primary-clr-900: ; */
-    --primary-clr-800: hsl(0, 0%, 7%);
-    --primary-clr-700: hsl(283, 10%, 14%);
+
+    --primary-clr-900: hsl(0, 0%, 7%);
+    --primary-clr-800: hsl(283, 10%, 14%);
     --primary-clr-600: hsl(263, 10%, 20%);
-    /* --primary-clr-500: ; */
-    /* --primary-clr-400: ; */
     --primary-clr-200: hsl(261, 10%, 40%);
-    /* --primary-clr-300: ; */
-    --primary-clr-200: hsl(261, 10%, 40%);
-    --primary-clr-100: hsl(0, 0%, 100%);
 
-    --primary-accent-clr: hsl(337, 96%, 49%);
-    --primary-link-clr: hsl(333, 36%, 56%);
-    --primary-bg-clr: hsl(0, 43%, 96%);
+    --primary-accent-600: hsl(337, 95%, 49%);
+    --primary-accent-400: hsl(333, 36%, 56%);
 
-    --primary-display-font: "Darumadrop One";
-    --primary-body-font: 'Averia Libre';
+    --white-clr: #ffffff;
+	--black-clr: #000000;
+
+	--display-font: "Darumadrop One";
+    --body-font: 'Averia Libre';
+	--body-clr: var(--black-clr);
+	--display-clr: var(--black-clr);
+    
+	--card-title-clr: var(--white-clr);
+    --card-header-clr: var(--primary-clr-900);
+	--card-clr: var(--white-clr);
+
+	--link-clr: var(--primary-accent-400);
+	--hover-clr: var(--primary-accent-600);
+	--aside-clr: var(--primary-clr-900);
+    --border-clr: var(--primary-clr-900);
+    --bg-clr: var(--white-clr);
+	--em-clr: var(--primary-clr-200);
+    --button-clr: var(--primary-clr-900);
 	
-	--primary-link-transition: 150ms;
+	--link-transition: 150ms;
+
+    --one-chain-h: url(/public/imgs/chain_1_horizontal_lt.png);
+    --two-chain-h: url(/public/imgs/chain_2_horizontal_lt.png);
 }
 
+	html[data-theme="dark"] {
+		--body-clr: var(--white-clr);
+		--card-clr: var(--black-clr);
+        --card-header-clr: var(--black-clr);
+		--aside-clr: var(--black-clr);
+		--bg-clr: var(--primary-clr-800);
+        --border-clr: var(--black-clr);
+		--display-clr: var(--white-clr);
+		--button-clr: var(--primary-clr-800);
+
+        --textbox-clr: var(--primary-clr-800);
+        --em-clr: var(--primary-clr-200);
+        
+        --one-chain-h: url(/public/imgs/chain_1_horizontal_dk.png);
+        --two-chain-h: url(/public/imgs/chain_2_horizontal_dk.png);
+
+
+	}
