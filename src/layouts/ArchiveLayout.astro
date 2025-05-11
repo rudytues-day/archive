@@ -63,6 +63,13 @@ import { slugify, formatDate } from '../utility/scripts/format-fxn.js';
 	
 		<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
 
+		<link
+			rel="alternate"
+			type="application/rss+xml"
+			title="RUDY TUESDAY"
+			href={new URL("art-log.xml", Astro.site)}
+		/>
+
 		<MetaTags
 			title={pageTitle}
 			description={description}

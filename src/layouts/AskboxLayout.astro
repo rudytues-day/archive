@@ -67,6 +67,13 @@ import { render } from 'astro:content';
 			url={url}
 		/>
 
+		<link
+			rel="alternate"
+			type="application/rss+xml"
+			title="RUDY TUESDAY"
+			href={new URL("rss.xml", Astro.site)}
+		/>
+
 	</head>
     <body>
 		

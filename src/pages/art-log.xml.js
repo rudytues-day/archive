@@ -5,18 +5,18 @@ import MarkdownIt from 'markdown-it';
 const parser = new MarkdownIt();
 
 export async function GET(context) {
-  const news = await getCollection("newsletters");
+  const entries = await getCollection("entries");
   return rss({
-    title: 'RUDY TUESDAY’S BAD NEWS',
-    description: 'A humble Astronaut’s guide to the stars',
+    title: 'RUDY TUESDAY’S ART ARCHIVE',
+    description: '',
     site: context.site,
-    items: news.map((letter) => ({
-      title: letter.data.title,
-      description: letter.data.description,
+    items: entries.map((entry) => ({
+      title: entry.data.title,
+      description: entry.data.description,
       site: context.site,
-      pubDate: letter.data.uploadDate,
-      link: `/newsletter/${letter.slug}`,
-      content: sanitizeHtml(parser.render(letter.body), {
+      pubDate: entry.data.uploadDate,
+      link: `/newsletter/${entry.slug}`,
+      content: sanitizeHtml(parser.render(entry.body), {
         allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img'])
       }),
     })),

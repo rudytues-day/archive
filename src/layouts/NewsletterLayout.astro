@@ -57,6 +57,12 @@ import Pagination from '../components/Pagination.astro';
 			url="https://rudytues.day"
 		/>
 
+        <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="RUDY TUESDAY"
+            href={new URL("rss.xml", Astro.site)}
+        />
 		<script>
         
 			if (localStorage.getItem("ageVerified") == null) {
