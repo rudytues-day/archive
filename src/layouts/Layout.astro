@@ -33,6 +33,13 @@ import previewImage from '../utility/image/preview_card.png'
 		<meta name="viewport" content="width=device-width" />
 
 		<title>{title}</title>
+
+		<script is:inline>
+
+		if (localStorage.getItem("ageVerified") == null) {
+			window.location.href = `/landing?returnto=${window.location}`; 
+		}
+
 		if (window.matchMedia && 
 			window.matchMedia('(prefers-color-scheme: dark)').matches &&
 			!localStorage.hasOwnProperty('theme')) {
@@ -52,13 +59,13 @@ import previewImage from '../utility/image/preview_card.png'
 		<link href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Darumadrop+One&display=swap" rel="stylesheet">
 	
 		<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
-<!-- 
+
 		<link
 			rel="alternate"
 			type="application/rss+xml"
 			title="RUDY TUESDAY"
 			href={new URL("rss.xml", Astro.site)}
-		/> -->
+		/>
 
 		<MetaTags
 			title={title}
@@ -67,18 +74,15 @@ import previewImage from '../utility/image/preview_card.png'
 			url="https://rudytues.day"
 		/>
 
-		<script>
-        
-			if (localStorage.getItem("ageVerified") == null) {
-				window.location.href = `/landing?returnto=${window.location}`; 
-			}
-			
-		</script>
+
+
+
 	
 	</head>
 	
 	<body>
 		<Header />
+		<ThemeSwitch />
 			<slot />
 		<Footer />
 		<ToTop />

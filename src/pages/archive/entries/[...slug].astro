@@ -93,7 +93,7 @@ const { Content } = await render(entry)
 						<Content />
 					</div>
 					<p><b>{formatDate(date)}<br/>{medium}</b></p>
-					<ul class="tags tags-entry">
+					<ul class="tags tag-cloud">
 						{tags.map((tag) => (
 							<li><a href={`/archive/tagged/${slugify(tag)}/`}>{tag}</a></li>
 						))}
@@ -126,9 +126,13 @@ const { Content } = await render(entry)
 </ArchiveLayout>
 
 <style>
+
+	.test {
+		display: none;
+	}
 	
 	.full-image {
-		margin-block: 1em;
+		margin: 1em auto;
 		display: block;
 		height: auto;
 		max-height: 80vh;
@@ -147,6 +151,12 @@ const { Content } = await render(entry)
 
 	.tile-masonry-wrapper {
 		margin-bottom: 6em;
+	}
+
+	@media all and (width > 700px) {
+		.full-image {
+			margin: 1em 1.5em;
+		}
 	}
 
 </style>

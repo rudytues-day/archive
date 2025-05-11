@@ -31,8 +31,6 @@ const nextPage = currentIndex === 0 ? undefined : newsByDate[currentIndex - 1];
 const firstPage = newsByDate[0];
 const lastPage = newsByDate[newsByDate.length - 1];
 
-console.log(nextPage)
-
 import { formatDate } from '../../utility/scripts/format-fxn';
 
 import '../../utility/styles/main-styles.css'
@@ -53,47 +51,47 @@ const { Content } = await render(news)
 			</h1>
 			<div class="card-body">
 				<article>
+					<h1>{title}</h1>
 					<Content/>
 				</article>
 			</div>
 
-				<nav>
+		<nav>
         
-		{
-			currentIndex == 0 ? (
-				<i class="fas fa-angle-double-left disabled"></i>    
-			) : (
-				<a href={`/newsletter/${firstPage.slug}`}><i class="fas fa-angle-double-left" role="img" aria-label="first page"></i></a>
-		)}
-		{
-			nextPage ? (
-				<a href={`/newsletter/${nextPage.slug}`}><i class="fas fa-angle-left" role="img" aria-label="previous page"></i></a>     
-			) : (
-				<i class="fas fa-angle-left disabled"></i>
-			)
-		}
+			{
+				currentIndex == 0 ? (
+					<i class="fas fa-angle-double-left disabled"></i>    
+				) : (
+					<a href={`/newsletter/${firstPage.slug}`}><i class="fas fa-angle-double-left" role="img" aria-label="first page"></i></a>
+			)}
+			{
+				nextPage ? (
+					<a href={`/newsletter/${nextPage.slug}`}><i class="fas fa-angle-left" role="img" aria-label="previous page"></i></a>     
+				) : (
+					<i class="fas fa-angle-left disabled"></i>
+				)
+			}
 	
-	<span>{formatDate(date)}</span>
-	
-		{
-			previousPage ? (
-				<a href={`/newsletter/${previousPage.slug}`}><i class="fas fa-angle-right" role="img" aria-label="next page"></i></a>
-			) : (
-				<i class="fas fa-angle-right disabled"></i>
-		)}
-	
+			<span>{formatDate(date)}</span>
 		
-		{
-			lastPage == currentPage ? (
-				<i class="fas fa-angle-double-right disabled"></i>
-			) : (
-				<a href={`/newsletter/${lastPage.slug}`}><i class="fas fa-angle-double-right" role="img" aria-label="last page"></i></a> 
-		)}
-	</nav>
+			{
+				previousPage ? (
+					<a href={`/newsletter/${previousPage.slug}`}><i class="fas fa-angle-right" role="img" aria-label="next page"></i></a>
+				) : (
+					<i class="fas fa-angle-right disabled"></i>
+			)}
+		
+			
+			{
+				lastPage == currentPage ? (
+					<i class="fas fa-angle-double-right disabled"></i>
+				) : (
+					<a href={`/newsletter/${lastPage.slug}`}><i class="fas fa-angle-double-right" role="img" aria-label="last page"></i></a> 
+			)}
+		</nav>
 
 
 	</div>
-
 
 </NewsletterLayout>
 

@@ -23,6 +23,8 @@ import viewport1 from '../utility/image/viewport1.png'
 import viewport2 from '../utility/image/viewport2.png'
 import viewport3 from '../utility/image/viewport3.png'
 // import viewport1 from '../utility/image/viewport1.png'
+
+
 ---
 
 <Layout title="RUDY TUESDAY">
@@ -47,13 +49,14 @@ import viewport3 from '../utility/image/viewport3.png'
 							icon="fa-newspaper"
 							>
 							<div class="scrollbox scrollbox-m scrollbox-light">
-								<div class="newsletters">
 									{
 										newsletterSlice.map(async (newsletter) => {
-										  const renderedNewsletter = await newsletter.render();
+										const title = newsletter.data.title;
+										  const content = await newsletter.render();
 										  return (
-												<article>
-													<renderedNewsletter.Content />
+											  <article>
+													<h1>{title}</h1>
+													<content.Content />
 												</article>
 												<div class="button-wrapper">
 													<button><a href="/newsletter">READ MORE</a></button>
@@ -61,7 +64,6 @@ import viewport3 from '../utility/image/viewport3.png'
 										  );
 										})
 									  }
-								</div>
 							</div>
 							<p><b>enter your email</b> to subscribe to my newsletter where i send out archive, project and site updates, commission openings, and other goodies every few months.</p>
 							<form
@@ -105,6 +107,8 @@ import viewport3 from '../utility/image/viewport3.png'
 
 		<aside class="column leftColumn">
 			<div class="column-wrapper">
+
+				
 				<Image
 					src={viewport1}
 					alt=""
@@ -169,6 +173,13 @@ import viewport3 from '../utility/image/viewport3.png'
 	.newsletter {
 		margin-bottom: 3em;
 	}
+
+	.newsletter h1 {
+		max-width: 15ch;
+		font-size: 1.75rem;
+		margin: 1.25em auto 1em auto;
+	}
+
 	main::after {
 		background-image: var(--one-chain-h) !important;
 		height: 20px !important;
