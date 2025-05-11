@@ -107,6 +107,8 @@ textarea {
 input[type="email"]::placeholder,
 textarea::placeholder {
     opacity: 100% !important;
+}
+
 input[type="text"],
 input[type="email"] {
     max-width: 25ch;

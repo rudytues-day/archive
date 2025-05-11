@@ -31,9 +31,21 @@ import previewImage from '../utility/image/preview_card.png'
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml+ico" href="/favicon.ico" />
 
 		<title>{title}</title>
+		if (window.matchMedia && 
+			window.matchMedia('(prefers-color-scheme: dark)').matches &&
+			!localStorage.hasOwnProperty('theme')) {
+				document.documentElement.setAttribute('data-theme', "dark");
+				localStorage.setItem("data-theme", "dark")
+		} else {
+			let theme = localStorage.getItem("theme")
+			document.documentElement.setAttribute('data-theme', `${theme}`)
+		}
+		</script>
+
+		<link rel="icon" type="image/svg+xml+ico" href="/favicon.ico" />
+
 	
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,24 +86,6 @@ import previewImage from '../utility/image/preview_card.png'
 </html>
 
 <style>
-
-:root {
-
-    --primary-clr-dark: hsl(0, 0%, 7%);
-    --primary-clr-med: hsl(283, 10%, 14%);
-    --primary-clr-light: hsl(263, 10%, 20%);
-    --primary-clr-200: hsl(261, 10%, 40%);
-
-    --primary-accent-clr: #F40662;
-    --primary-link-clr: hsl(333, 36%, 56%);
-    --white-clr: #ffffff;
-
-    --bg-clr: #FBFBFB;
-    --display: "Darumadrop One";
-    --body: 'Averia Libre';
-	
-	--link-transition: 150ms;
-}
 
 	@media all and (min-width: 720px) {}
 

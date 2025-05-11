@@ -18,15 +18,6 @@ h1:not([class]) span {
     color: var(--primary-accent-600)
 }
 
-/* archive  [...page] */
-/* archive/entries  [...page] */
-
-/* h1:not([class]) {
-    /* archive [...slug] ,
-    margin-bottom: 3.5rem
-} */
-
-
 h2 {
     text-align: center;
     font-size: 2rem;
@@ -305,6 +296,7 @@ section:not(:last-of-type):nth-child(even):after {
 }
 
 section:not(:last-of-type):nth-child(odd):after {
+    background-image: var(--two-chain-h);
     height: 45px;
 }
 
