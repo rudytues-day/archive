@@ -22,9 +22,11 @@ import Header from '../components/Navbar.astro';
 import CardFolder from "../components/cards/CardFolder.astro";
 import ToTop from '../components/ToTop.astro';
 import MetaTags from '../components/MetaTags.astro';
+import MainContent from '../components/MainContent.astro';
 
 import '../utility/styles/main-styles.css';
 import '../utility/styles/form-styles.css';
+import '../utility/styles/root-variables.css';
 
 import previewImage from '../utility/image/preview_card.png';
 
@@ -46,7 +48,7 @@ import { render } from 'astro:content';
 
 		<title>{pageTitle}</title>
 
-		<script>
+		<script is:inline>
         
 			if (localStorage.getItem("ageVerified") == null) {
 				window.location.href = `/landing?returnto=${window.location}`; 
@@ -77,8 +79,10 @@ import { render } from 'astro:content';
 	</head>
     <body>
 		
+		<MainContent />
 		<Header />
 		<main>
+		<main id="main-content">
 
 				<div class="two-column">
 					<div>
@@ -192,6 +196,7 @@ import { render } from 'astro:content';
 		}
 
 		@media all and (min-width: 1000px) {
+
     .two-column {
         display: grid;
         grid-template-columns: 1fr 1.5fr;

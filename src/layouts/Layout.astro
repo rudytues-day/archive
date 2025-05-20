@@ -22,6 +22,7 @@ import MetaTags from '../components/MetaTags.astro';
 import ToTop from '../components/ToTop.astro';
 
 import ThemeSwitch from '../components/ThemeSwitch.astro';
+import MainContent from '../components/MainContent.astro';
 
 import previewImage from '../utility/image/preview_card.png'
 ---
@@ -82,6 +83,7 @@ import previewImage from '../utility/image/preview_card.png'
 	
 	<body>
 		<Header />
+		<MainContent />
 		<ThemeSwitch />
 			<slot />
 		<Footer />

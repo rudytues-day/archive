@@ -15,6 +15,7 @@ import '../utility/reset.css';
 import '../utility/styles/main-styles.css';
 import '../utility/styles/form-styles.css';
 import '../utility/styles/aside-styles.css';
+import '../utility/styles/root-variables.css';
 
 import '../utility/styles/scrollbox-styles.css';
 
@@ -22,6 +23,7 @@ import Header from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import MetaTags from '../components/MetaTags.astro';
 import ToTop from '../components/ToTop.astro';
+import MainContent from '../components/MainContent.astro';
 
 import viewport from '../utility/image/viewport6.png'
 
@@ -75,9 +77,10 @@ import Pagination from '../components/Pagination.astro';
 	</head>
 	
 	<body>
+        <MainContent />
 		<Header />
 			<div class="two-column">
-                <main>
+                <main id="main-content">
                     <h1>NEWSLETTER</h1>
                     <slot />
                 </main>

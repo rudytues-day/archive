@@ -17,6 +17,7 @@ const entries = await getCollection("entries");
 
 import Image from 'astro/components/Image.astro';
 import MetaTags from '../components/MetaTags.astro';
+import MainContent from '../components/MainContent.astro';
 
 import '../utility/reset.css';
 import '../utility/styles/main-styles.css';
@@ -49,7 +50,7 @@ import { slugify, formatDate } from '../utility/scripts/format-fxn.js';
 
 		<title>{pageTitle}</title>
 
-		<script>
+		<script is:inline>
         
 			if (localStorage.getItem("ageVerified") == null) {
 				window.location.href = `/landing?returnto=${window.location}`; 
@@ -83,11 +84,12 @@ import { slugify, formatDate } from '../utility/scripts/format-fxn.js';
 
 		<Header />
 
+		<MainContent />
 		<ThemeSwitch />
 
 		<div class="left-column">
 
-			<main>
+			<main id="main-content">
 				<h1><a href="/archive">ARCHIVE</a></h1>
 				<slot name="h1-title"/>
 				<slot />
