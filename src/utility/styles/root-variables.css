@@ -32,6 +32,10 @@
 
     --one-chain-h: url(/public/imgs/chain_1_horizontal_lt.png);
     --two-chain-h: url(/public/imgs/chain_2_horizontal_lt.png);
+
+    --one-chain-v-1: url(/public/imgs/hero_chain_1_lt.png);
+    --one-chain-v-2: url(/public/imgs/hero_chain_2_lt.png);
+    --two-chain-v: url(/public/imgs/hero_chain_3_lt.png);
 }
 
 	html[data-theme="dark"] {
@@ -46,9 +50,11 @@
 
         --textbox-clr: var(--primary-clr-800);
         --em-clr: var(--primary-clr-200);
-        
+
         --one-chain-h: url(/public/imgs/chain_1_horizontal_dk.png);
         --two-chain-h: url(/public/imgs/chain_2_horizontal_dk.png);
 
-
+        --one-chain-v-1: url(/public/imgs/hero_chain_1_dk.png);
+        --one-chain-v-2: url(/public/imgs/hero_chain_2_dk.png);
+        --two-chain-v: url(/public/imgs/hero_chain_3_dk.png);
 	}

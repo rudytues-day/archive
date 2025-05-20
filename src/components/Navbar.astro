@@ -10,39 +10,18 @@ import darby from "../utility/image/header_darby.png";
     <a href="/">
         <div class="hero">
                 <div class="chains">
-                    <Image src={chain1}
-                        alt=""
-                        height="225"
-                        class="desktop-chain"
-                    />
-                    <Image src={chain2}
-                        alt=""
-                        height="225"
-                    />
-                    <Image src={chain3}
-                        alt=""
-                        height="225"
-                        class="desktop-chain"
-                    />
-                    <Image src={chain3}
-                        alt=""
-                        height="225"
-                        class="desktop-chain"
-                    />
-                    <Image src={chain1}
-                        alt=""
-                        height="225"
-                        
-                    />
-                    <Image src={chain2}
-                        alt=""
-                        height="225"
-                        class="desktop-chain"
-                    />
+                    
+                    <div class="desktop-chain one-chain-1"></div>
+                    <div class="two-chains"></div>
+                    <div class="desktop-chain one-chain-2"></div>
+                    <div class="desktop-chain one-chain-2"></div>
+                    <div class="one-chain-1"></div>
+                    <div class="desktop-chain two-chains"></div>
+                
                 </div>
                 <div class="header-logo">
                     <Image src={darby} 
-                        alt="darby"
+                        alt=""
                         class="darby"
                         height="225"
                     />
@@ -59,7 +38,7 @@ import darby from "../utility/image/header_darby.png";
         <li class="link"><a href="/">HOME</a></li>
         <li class="link has-submenu"><a tabindex="0">WORKS</a>
             <ul class="submenu">
-                <li class="sublink"><a href="https://ux.rudytues.day">UX</s></li>
+                <li class="sublink"><a href="https://ux.rudytues.day">UX</a></li>
                 <li class="sublink"><a href="/archive">ARCHIVE</a></li>
                 <li class="sublink"><a href="/gallery">GALLERY</a></li>
                 <li class="sublink"><a href="/projects">PROJECTS</a></li>
@@ -131,11 +110,13 @@ import darby from "../utility/image/header_darby.png";
 
     #rudy-tuesday span {
         color: var(--primary-accent-400);
-        transition: color 0.25s ease;
+        /* transition: color 0.25s ease; */
+        transition: var(--link-transition);
     }
 
     #rudy-tuesday:hover span {
         color: var(--display-clr);
+        transition: var(--link-transition);
     }
     
     #rudy-tuesday::after {
@@ -148,7 +129,7 @@ import darby from "../utility/image/header_darby.png";
         left: 10%;
         bottom: -20%;
         color: var(--primary-accent-400);
-        transition: 300ms;
+        transition: var(--link-transition);
     }
 
     #rudy-tuesday:hover::after {
@@ -181,6 +162,24 @@ import darby from "../utility/image/header_darby.png";
         overflow: hidden;
     }
 
+    .one-chain-1 {
+        background-image: var(--one-chain-v-1);
+        background-size: contain;
+        width: 14px;
+    }
+
+    .one-chain-2 {
+        background-image: var(--one-chain-v-2);
+        background-size: contain;
+        width: 13px;
+    }
+
+    .two-chains {
+        background-image: var(--two-chain-v);
+        background-size: contain;
+        width: 28px;
+    }
+
     #header:hover {
         background-image: var(--header-image)
     }
@@ -206,6 +205,12 @@ import darby from "../utility/image/header_darby.png";
 
     .toggle i {
         font-size: 0.8em;
+        cursor: pointer;
+    }
+
+    .toggle i:hover {
+        color: var(--primary-accent-600);
+        transition: var(--link-transition);
     }
 
     .toggle:has(+ .link.active ){
@@ -221,6 +226,7 @@ import darby from "../utility/image/header_darby.png";
 
     li a:hover {
         color: var(--primary-accent-600);
+        transition: var(--link-transition);
         cursor: pointer;
     }
 
@@ -238,12 +244,6 @@ import darby from "../utility/image/header_darby.png";
         background: var(--primary-clr-800);
         display: block;
     }
-
-    [data-theme="dark"] .link.active {
-        background: var(--primary-clr-900) !important;
-
-    }
-
     .submenu {
         display: none;
         background-color: var(--primary-clr-800);
@@ -279,6 +279,7 @@ import darby from "../utility/image/header_darby.png";
 
     .has-submenu > a:hover::after {
         color: var(--primary-accent-600);
+        transition: var(--link-transition);
     }
     
     .submenu-active > a::after {
@@ -370,8 +371,7 @@ import darby from "../utility/image/header_darby.png";
     .sublink {
         background-color: var(--primary-clr-800);
         padding: 0;
-        margin: 0.5em;
-        
+        margin: 0.5em;  
     }
 
     [data-theme="dark"] .link.active {
@@ -402,7 +402,7 @@ import darby from "../utility/image/header_darby.png";
     #rudy-tuesday {
         left: auto;
         right: 30%;
-        transition: right 500ms ease-in-out;
+        transition: var(--link-transition);
     }
 }
 
@@ -435,19 +435,13 @@ toggle?.addEventListener("click", () => {
 
 // open submenus
 
-hasSubmenu.forEach((submenuLink) => {
-    submenuLink.addEventListener("click", () => {
-        let submenu = submenuLink.querySelector(".submenu");
-        if (submenuLink.classList.contains("submenu-active")) {
-            submenuLink.classList.remove("submenu-active");
+function openSubmenu(submenuLink) {
+    let submenu = submenuLink.querySelector(".submenu");
+        if (submenuLink?.classList.contains("submenu-active")) {
+            submenuLink?.classList.remove("submenu-active");
             submenu?.classList.remove("submenu-active");
         } else {
-            menuLinks.forEach((menuLink) => {
-                let submenu = menuLink.querySelector(".submenu");
-                menuLink.classList.remove("submenu-active");
-                submenu?.classList.remove("submenu-active");
-            });
-            submenuLink.classList.add("submenu-active");
+            submenuLink?.classList.add("submenu-active");
             submenu?.classList.add("submenu-active");
         }
         if (submenuLink.classList.contains("submenu-active")) {
@@ -457,8 +451,10 @@ hasSubmenu.forEach((submenuLink) => {
                 toggle?.classList.add("fa-unlock-keyhole");
             });
         } 
-    });
-});
+    };
+
+hasSubmenu.forEach((submenu => submenu.addEventListener("click", function(){openSubmenu(submenu)})))
+hasSubmenu.forEach((submenu => submenu.addEventListener("keypress", function(){openSubmenu(submenu)})))
 
 // const submenus = document.querySelectorAll(".submenu");
 
