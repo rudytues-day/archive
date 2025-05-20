@@ -1,5 +1,6 @@
 ---
 import '../utility/styles/main-styles.css'
+import '../utility/styles/form-styles.css'
 ---
 <div class="theme-switch-wrapper">
     <button aria-label="theme switch"></button>
@@ -8,11 +9,11 @@ import '../utility/styles/main-styles.css'
 <style>
 
     :root {
-        --lightbulb: "\f672";
+        --lightbulb: "\e5a7";
     }
 
     html[data-theme="dark"] {
-        --lightbulb: "\f0eb";
+        --lightbulb: "\e5a6";
     }
     
     button {
@@ -20,10 +21,10 @@ import '../utility/styles/main-styles.css'
         place-items: center;
         position: fixed;
         padding: 0;
-        top: 2em;
-        right: 2em;
-        width: 3.5rem;
-        height: 3.5rem;
+        top: 1.5em;
+        right: 1.5em;
+        width: 3.25rem;
+        height: 3.25rem;
         border-radius: 100%;
         text-decoration: none;
         color: var(--white-clr);
@@ -32,7 +33,7 @@ import '../utility/styles/main-styles.css'
         transition: ease all 0.2s;
         outline: transparent;
         border: transparent;
-        z-index: 1;
+        z-index: 9;
     }
 
     button::after {
@@ -44,7 +45,8 @@ import '../utility/styles/main-styles.css'
         font-size: 1.5rem; 
     }
 
-    button:hover {
+    button:hover,
+    button:focus {
         opacity: 100%;
         color: var(--primary-accent-600);
     }
@@ -53,7 +55,7 @@ import '../utility/styles/main-styles.css'
     
 <script>
 
-const toggleSwitch = document.querySelector('button');
+const toggleSwitch = document.querySelector('[aria-label="theme switch"]');
 
 toggleSwitch?.addEventListener("click", () => {
     let theme = document.documentElement.getAttribute('data-theme');
@@ -65,4 +67,5 @@ toggleSwitch?.addEventListener("click", () => {
         localStorage.setItem("theme", "light");
     }
 });
+
 </script>

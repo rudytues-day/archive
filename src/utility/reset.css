@@ -71,3 +71,7 @@ textarea:not([rows]) {
 .fa-feather {
     color: var(--primary-clr-200);
 }
+
+:focus {
+    outline-color: var(--primary-accent-600);
+}

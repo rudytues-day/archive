@@ -16,7 +16,7 @@ import '../utility/styles/main-styles.css';
 import '../utility/styles/form-styles.css';
 import '../utility/styles/root-variables.css';
 
-import Header from '../components/Navbar.astro';
+import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import MetaTags from '../components/MetaTags.astro';
 import ToTop from '../components/ToTop.astro';
@@ -50,10 +50,10 @@ import previewImage from '../utility/image/preview_card.png'
 			let theme = localStorage.getItem("theme")
 			document.documentElement.setAttribute('data-theme', `${theme}`)
 		}
+
 		</script>
 
 		<link rel="icon" type="image/svg+xml+ico" href="/favicon.ico" />
-
 	
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,17 +74,13 @@ import previewImage from '../utility/image/preview_card.png'
 			ogimg={ogimg}
 			url="https://rudytues.day"
 		/>
-
-
-
-
 	
 	</head>
 	
 	<body>
-		<Header />
 		<MainContent />
 		<ThemeSwitch />
+		<Navbar />
 			<slot />
 		<Footer />
 		<ToTop />

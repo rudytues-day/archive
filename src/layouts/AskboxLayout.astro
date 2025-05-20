@@ -22,6 +22,7 @@ import Header from '../components/Navbar.astro';
 import CardFolder from "../components/cards/CardFolder.astro";
 import ToTop from '../components/ToTop.astro';
 import MetaTags from '../components/MetaTags.astro';
+import ThemeSwitch from '../components/ThemeSwitch.astro';
 import MainContent from '../components/MainContent.astro';
 
 import '../utility/styles/main-styles.css';
@@ -53,6 +54,16 @@ import { render } from 'astro:content';
 			if (localStorage.getItem("ageVerified") == null) {
 				window.location.href = `/landing?returnto=${window.location}`; 
 			}
+
+			if (window.matchMedia && 
+			window.matchMedia('(prefers-color-scheme: dark)').matches &&
+			!localStorage.hasOwnProperty('theme')) {
+				document.documentElement.setAttribute('data-theme', "dark");
+				localStorage.setItem("data-theme", "dark")
+			} else {
+				let theme = localStorage.getItem("theme")
+				document.documentElement.setAttribute('data-theme', `${theme}`)
+			}
 			
 		</script>
 	
@@ -80,8 +91,8 @@ import { render } from 'astro:content';
     <body>
 		
 		<MainContent />
+		<ThemeSwitch />
 		<Header />
-		<main>
 		<main id="main-content">
 
 				<div class="two-column">

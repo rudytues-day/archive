@@ -23,6 +23,7 @@ import Header from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import MetaTags from '../components/MetaTags.astro';
 import ToTop from '../components/ToTop.astro';
+import ThemeSwitch from '../components/ThemeSwitch.astro';
 import MainContent from '../components/MainContent.astro';
 
 import viewport from '../utility/image/viewport6.png'
@@ -66,10 +67,20 @@ import Pagination from '../components/Pagination.astro';
             href={new URL("rss.xml", Astro.site)}
         />
 
-		<script>
+		<script is:inline>
         
 			if (localStorage.getItem("ageVerified") == null) {
 				window.location.href = `/landing?returnto=${window.location}`; 
+			}
+
+            if (window.matchMedia && 
+			window.matchMedia('(prefers-color-scheme: dark)').matches &&
+			!localStorage.hasOwnProperty('theme')) {
+				document.documentElement.setAttribute('data-theme', "dark");
+				localStorage.setItem("data-theme", "dark")
+			} else {
+				let theme = localStorage.getItem("theme")
+				document.documentElement.setAttribute('data-theme', `${theme}`)
 			}
 			
 		</script>
@@ -78,6 +89,7 @@ import Pagination from '../components/Pagination.astro';
 	
 	<body>
         <MainContent />
+		<ThemeSwitch />	
 		<Header />
 			<div class="two-column">
                 <main id="main-content">

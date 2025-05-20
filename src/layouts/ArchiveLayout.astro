@@ -55,6 +55,16 @@ import { slugify, formatDate } from '../utility/scripts/format-fxn.js';
 			if (localStorage.getItem("ageVerified") == null) {
 				window.location.href = `/landing?returnto=${window.location}`; 
 			}
+
+			if (window.matchMedia && 
+			window.matchMedia('(prefers-color-scheme: dark)').matches &&
+			!localStorage.hasOwnProperty('theme')) {
+				document.documentElement.setAttribute('data-theme', "dark");
+				localStorage.setItem("data-theme", "dark")
+			} else {
+				let theme = localStorage.getItem("theme")
+				document.documentElement.setAttribute('data-theme', `${theme}`)
+			}
 			
 		</script>
 	

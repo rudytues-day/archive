@@ -70,7 +70,7 @@ import { formatDate, slugify } from '../../utility/scripts/format-fxn';
         position:absolute;
         left: 0;
         top: 0;
-        background: linear-gradient(transparent 40%, white);
+        background: linear-gradient(transparent 40%, var(--card-clr));
     }
 
 
@@ -79,7 +79,7 @@ import { formatDate, slugify } from '../../utility/scripts/format-fxn';
         display: block;
         margin: auto;
         text-align: center;
-        /* align-self: center; */
+        width: fit-content;
     }
 
     .collapsed {
@@ -104,13 +104,13 @@ answers.forEach((answer) => {
 if (answer.getBoundingClientRect().height > 250) {
     answer.classList.add("collapsed");
         let readMoreBtn = document.createElement("button");
-        readMoreBtn.textContent = "READ MORE"; 
         readMoreBtn.classList.add("read-more");
+        readMoreBtn.textContent = "READ MORE"; 
         answer.parentNode?.insertBefore(readMoreBtn, answer.nextSibling);
     };
 });
 
-const readMoreBtns = document.querySelectorAll("button");
+const readMoreBtns = document.querySelectorAll(".read-more");
 
 readMoreBtns?.forEach((button) => {
     button?.addEventListener("click", () => {
