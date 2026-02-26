@@ -17,7 +17,7 @@
 }
 
 .scrollbox-dark {
-    --__background: var(--textbox-clr);
+    --__background: var(--primary-clr-600);
     --__font-color: var(--white-clr);
     padding: 0.25em 0.5em;
 }
@@ -37,8 +37,15 @@
 }
 
 .column-wrapper .scrollbox {
+    font-family: var(--display-font);
     list-style: none;
     margin: 3em 1em 0em 1em;
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+.column-wrapper .scrollbox li a {
+    text-transform: uppercase;
 }
 
 .scrollbox-list {
@@ -50,6 +57,7 @@
     margin: 0.25em 0.5em;
     border-bottom: 1px dotted var(--primary-clr-light);
 }
+
 .scrollbox-dark li {
     margin: 0.25em 0.5em;
     border-bottom: 1px dotted var(--white-clr);

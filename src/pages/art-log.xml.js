@@ -10,12 +10,17 @@ export async function GET(context) {
     title: 'RUDY TUESDAY’S ART ARCHIVE',
     description: '',
     site: context.site,
+    xmlns: {
+      media: "http://search.yahoo.com/mrss/",
+    },
     items: entries.map((entry) => ({
       title: entry.data.title,
+      customData: `<media:content
+        url="${context.site.origin + entry.data.ogimg?.src.src}" />`,
       description: entry.data.description,
       site: context.site,
       pubDate: entry.data.uploadDate,
-      link: `/newsletter/${entry.slug}`,
+      link: `archive/entries/${entry.slug}`,
       content: sanitizeHtml(parser.render(entry.body), {
         allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img'])
       }),

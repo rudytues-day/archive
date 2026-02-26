@@ -183,20 +183,27 @@ article h1 {
     margin: 0 auto 1.25em auto;
     max-width: 20ch;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+article h1 span:nth-of-type(2) {
+    font-size: 1.5rem;
+    margin-top: 0.5em;
+}
+
+article h1 span:nth-of-type(2)::before {
+    content: '\f1d8';
+    font-family: 'Font Awesome 6 Pro';
+    font-size: 0.825em;
+    font-weight: bold;
+    margin-right: 0.5em;
 }
 
 article h2 {
     font-size: 1.5rem;
     margin: 1.5em 0.5em 1em 0.5em;
     text-align: left;
-}
-
-article h2::before {
-    /* content: '\f0c1'; */
-    font-family: 'Font Awesome 6 Pro';
-    font-size: 0.825em;
-    font-weight: bold;
-    margin-right: 0.25em;
 }
 
 article h3 {
@@ -207,7 +214,7 @@ article h2::before,
 article h3::before {
     font-family: 'Font Awesome 6 Pro';
     font-weight: bold;
-    font-size: 0.95em;
+    font-size: 0.825em;
     margin-right: 0.5em;
 }
 
