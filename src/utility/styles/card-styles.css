@@ -225,7 +225,7 @@ details > .tab-title::marker {
 }
 
 details:not([open]) .tab-title {
-    background: var(--primary-clr-900);
+    background: var(--primary-clr-800);
 }
 
 details:not([open]) .tab-title::before {

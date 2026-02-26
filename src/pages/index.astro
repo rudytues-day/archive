@@ -133,7 +133,7 @@ import viewport3 from '../utility/image/viewport3.png'
 				/>
 				<h2>SUPPORT ME</h2>
 				<ul class="sidebar-links">
-					<li><a href="/tips">TIPS</a></li>
+					<!-- <li><a href="/tips">TIPS</a></li> -->
 					<li><a href="https://boosty.to/rudytuesday">BOOSTY</a></li>
 					<li><a href="/commission">COMMISSION</a></li>
 				</ul>
@@ -149,10 +149,11 @@ import viewport3 from '../utility/image/viewport3.png'
 					style="margin: 3em auto"
 				/>
 				<h2>ABOUT</h2>
-					<p><b>rudolf dienstag</b> is a queer and neurodivergent webMaster, erotic artist and content collector.</p>
-					<p>he serves the leather community as a bootblack and archivist, and supports local mutual aid efforts through networking, distribution and frontend design.</p>
-					<p>he has no further achievements or accolades but he does have a very nice website.</p>
-					<p><a href="/about">READ MORE <i class="fas fa-angles-right"></i></a></p>
+					<div class="about-wrapper">
+						<p><b>rudolf dienstag</b> is a queer and neurodivergent webMaster, erotic artist and content collector.</p>
+						<p>he has no further achievements or accolades but he does have a very nice website.</p>
+						<p><a href="/about">READ MORE <i class="fas fa-angles-right"></i></a></p>
+					</div>
 				</div>
 		</aside>
 
@@ -183,6 +184,21 @@ import viewport3 from '../utility/image/viewport3.png'
 	main::after {
 		background-image: var(--one-chain-h) !important;
 		height: 20px !important;
+	}
+
+	.about-wrapper {
+		max-width: 50ch;
+		margin: auto;
+	}
+
+	.about-wrapper p a {
+		font-family: var(--display-font);
+		font-size: 1.5rem;
+		color: white;
+		font-weight: normal;
+		text-decoration: none;
+		text-align: center;
+		transition: var(--link-transition);
 	}
 
 </style>

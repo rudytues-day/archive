@@ -42,6 +42,7 @@ aside {
 }
 
 .column-wrapper h2,
+.column-wrapper > a,
 .column-wrapper p a,
 .column-wrapper ul.sidebar-links li a {
     font-family: var(--display-font);

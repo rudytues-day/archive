@@ -6,6 +6,7 @@ export default defineConfig({
   integrations: [],
   devToolbar: {
     enabled: false
+
   }
 });
 

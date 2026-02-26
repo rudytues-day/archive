@@ -23,9 +23,6 @@ h2 {
     font-size: 2rem;
 }
 
-/*  .card h3 */
-/* margin-block: 2em 1em; */
-
 h3 {
     margin-block: 1.5em 1em;
     text-align: left;
@@ -152,21 +149,10 @@ article {
 }
 
 article p,
-/* margin: 1em; */
 article ul {
     padding-inline: 0.5em;
     color: var(--body-clr);
 }
-
-/* article::after,
-article::before {
-    content: '';
-    display: block;
-    width: 100%;
-    margin-block: 2.5em;
-    background-size: contain;
-    background-repeat: repeat-x;
-} */
 
 article:first-child::before {
     margin-top: 0.5em;
@@ -238,8 +224,6 @@ article h3::before {
 article strong a {
     font-weight: 100 !important;
 }
-
-
 
 /* chains styling */
 
